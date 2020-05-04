@@ -1,0 +1,36 @@
+{% if imageUrl is not defined %}
+    {% set imageUrl = '/assets/uploads/1588510581_heading-01.jpg' %}
+{% endif %}
+
+{% include '/template_1/_components/_heading_banner' with {'title': 'Pricing','subtitle': 'Check out our prices','imageUrl': imageUrl} %}
+
+<div class="row-full-width clearfix"></div>
+<div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid bg-grey row-has-fill  padding-lg-110t padding-lg-80b padding-sm-70t padding-sm-40b">
+   {% for entry in craft.entries.section('prices').all() %}
+      
+    <div class="column_container col-sm-6 col-md-4 ">
+       <div class="column-inner">
+          <div>
+             <div class="cs-pricing  cs-pricing--image">
+                <div class="cs-pricing__inner  cs-pricing__inner--image">
+                   <div class="cs-pricing__img-wrapp cs-pricing__img-wrapp--overlay">
+                     {% set image = entry.backgroundImage.first() %}
+                      <img class="s-img-switch" src="{{image.getUrl() }}"  alt="">
+                      <h5 class="cs-pricing__price cs-pricing__price--image">{{entry.indiviudalPrice}}</h5>
+                      <a class="cs-btn cs-btn--c-custom cs-pricing__btn cs-pricing__btn--image" href="#"  target=" _blank">{{entry.priceSubtitle}}</a>
+                   </div>
+                   <div class="cs-pricing__content cs-pricing__content--image">
+                      <h4 class="cs-pricing__title cs-pricing__title--image">{{entry.title}}</h4>
+                      <div class="cs-pricing__info cs-pricing__info--image">
+                        {{entry.priceIncludes}}
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+   {% endfor %}
+
+ </div>

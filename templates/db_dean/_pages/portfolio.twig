@@ -1,0 +1,15 @@
+{% extends 'template_1/_layout' %}
+
+{% block main %}
+   <div class="cs-main-wrapp__inner">
+      <div class="container padd-only-xs">
+         {% include '/template_1/_components/_title_image_banner'  with {'title': 'PORTFOLIO','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+
+         {% include '/template_1/_components/_portfolio_masonary' %}
+        
+
+         <div class="row-full-width clearfix"></div>
+      </div>
+   </div>
+{% endblock %}
+   

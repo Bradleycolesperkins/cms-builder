@@ -1,0 +1,65 @@
+{% extends 'template_1/_layout' %}
+
+{% block main %}
+   <div class="cs-main-wrapp__inner">
+      <div class="container padd-only-xs">
+         {% include '/template_1/_components/_full_screen_image_banner'  with {'title': companyInformation.companyTitle,'subtitle': companyInformation.companySlogan,'imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+
+         <div class="row-full-width clearfix"></div>
+         <div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid bg-grey row-has-fill  padding-lg-110t padding-lg-110b padding-sm-70t padding-sm-70b">
+            <div class="column_container col-sm-12 ">
+               <div class="column-inner padding-t-z">
+                  <div>
+                     <div class="cs-counter row cs-counter--img-left">
+                        <div class="col-sm-12 col-md-6">
+                           <div class="cs-counter__img-wrapp">
+                              <img src="./template_1/images/image-01.jpg" class="s-img-switch" alt="image">
+                           </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                           <div class="cs-counter__wrapp">
+                              <div class="cs-counter__info">
+                                 <h3 class="cs-counter__title">GROW &amp; SUCCEED</h3>
+                                 <div class="cs-counter__desc">
+                                    <p>Erat volutpat. Ut wisi enim nostrud exerci ullam corper suscipit lobortis nisl ut aliquip ex commo do consquatErat volutpat. Ut wisi enim nostrud exerci ullamcorper suscipit lobortis nisl ut aliquip</p>
+                                 </div>
+                                 <div class="cs-counter__numbers">
+                                    <div class="cs-counter__item">
+                                       <h3 class="cs-counter__item-number">925</h3>
+                                       <p class="cs-counter__item-title">Working Hours</p>
+                                    </div>
+                                    <div class="cs-counter__item">
+                                       <h3 class="cs-counter__item-number">15</h3>
+                                       <p class="cs-counter__item-title">Awards</p>
+                                    </div>
+                                    <div class="cs-counter__item">
+                                       <h3 class="cs-counter__item-number">121</h3>
+                                       <p class="cs-counter__item-title">Projects Done</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+
+         {% include '/template_1/_components/_portfolio' %}
+         {% include '/template_1/_components/_services' %}
+         {% include '/template_1/_components/_team' %}
+         {% include '/template_1/_components/_awards' %}
+         {% include '/template_1/_components/_clients' %}
+         {% include '/template_1/_components/_testimonials' %}
+         {% include '/template_1/_components/_blog' %}
+
+
+
+         
+         <div class="row-full-width clearfix"></div>
+      </div>
+   </div>
+{% endblock %}
+   

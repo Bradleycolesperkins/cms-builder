@@ -1,0 +1,50 @@
+<div class="row-full-width clearfix"></div>
+<div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="row row-fluid bg-grey row-has-fill row-no-padding  margin-lg-60t margin-sm-30t padding-lg-80b padding-sm-40b">
+   <div class="cs-filter-top js-filter-top">
+      <ul class="cs-filter-top__list">
+            <li class="cs-filter-top__item js-filter-top-item cs-filter-top__item--active " data-filter="*">ALL</li>
+         {% for tag in craft.tags().site(currentSite.handle).group('portfolio') %}
+            <li class="cs-filter-top__item js-filter-top-item" data-filter="p_f_{{ tag.title|replace('/[^a-zA-Z0-9_+]/', '') }}">{{ tag }}</li>
+         {% endfor %}
+      </ul>
+   </div>
+   <div class="column_container col-sm-12 ">
+      <div class="column-inner margin-l-r">
+         <div>
+            <div data-unique-key="14ad5b356d917aa464e6341724c17a46" class="js-cs-load-more">
+               <div class=" cs-block cs-block--masonry js-cs-block--masonry cs-block--col4 cs-block--gap15  no-footer-content ">
+
+                  {% for entry in craft.entries.section('portfolio').limit(18).all() %}
+                     {% set entryTags = craft.tags.relatedTo(entry) %}
+                     {% set tweakedEntryTags = [] %}
+                     {% for tweakEntryTag in entryTags %}
+                        {% set tweakedEntryTags = tweakedEntryTags|merge([
+                           'p_f_' ~ tweakEntryTag|replace('/[^a-zA-Z0-9_+]/', '')
+                        ]) %}
+                     {% endfor %}
+
+                     <div class="cs-block__item  {{tweakedEntryTags |join(' ')}}">
+                        <div class="cs-block__item-wrapp">
+                           <div class="cs-portfolio cs-portfolio--masonry">
+                              <a class="cs-portfolio__link cs-portfolio__link--masonry cs-portfolio__link--block cs-portfolio__link--parallax cs-portfolio__link--overlay" href="/Portfolio/{{entry.slug}}" target="_self">
+                                 {% set image = entry.portfolioImage.first() %}
+                                 <img width="355" height="281" src="{{image.getUrl()}}" class="s-img-switch wp-post-image" alt="masonry-img" data-s-hidden="true" data-s-sibling="true" srcset="{{image.getUrl()}} 355w, {{image.getUrl()}} 300w" sizes="(max-width: 355px) 100vw, 355px" />                    
+                                 <div class="cs-portfolio__img cs-portfolio__img--parallax"></div>
+                                 <div class="cs-portfolio__overlay cs-portfolio__overlay--dark-xs cs-portfolio__overlay--hidden"></div>
+                                 <div class="cs-portfolio__content cs-portfolio__content--masonry cs-portfolio__content--parallax">
+                                    <h5 class="cs-portfolio__title cs-portfolio__title--masonry">{{ entry.title }}</h5>
+                                    <div class="cs-portfolio__pix cs-portfolio__pix--masonry cs-portfolio__pix--content">{{ entry.portfolioSubtitle }}</div>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+
+                  {% endfor %}
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

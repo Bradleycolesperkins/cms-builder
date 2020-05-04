@@ -1,0 +1,50 @@
+{% include '/template_1/_components/_heading_banner' with {'title': 'TESTIMONIALS','subtitle': 'They Remember us','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+
+<div class="row-full-width clearfix"></div>
+<div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid bg-grey row-has-fill  padding-lg-70t padding-lg-95b padding-sm-55b">
+   <div class="column_container col-sm-12 ">
+      <div class="column-inner padding-t-z">
+         <div>
+            <div class="cs-testimonials ">
+               <div class="cs-testimonials__swiper swiper-container" data-speed='500'
+                  data-loop='1' data-autoplay-on='1'
+                  data-autoplay-delay='3000' data-center='0' data-direction='horizontal'
+                  data-space-between='0' data-slides-per-view='3' data-lg-slides='3,0' data-md-slides='3,0'
+                  data-sm-slides='2,0' data-xs-slides='2,0' data-xx-slides='1,0'>
+                  <!-- Additional required wrapper -->
+                  <div class="swiper-wrapper">
+
+                     {% for testimonial in craft.entries.section('testimonials') %}
+                        <div class="swiper-slide">
+                           <div class="cs-testimonials__item">
+                              <div class="cs-testimonials__info">
+                                 <h6 class="cs-testimonials__title">{{testimonial.title}}</h6>
+                                 <div class="cs-testimonials__description">
+                                    <p>{{testimonial.testimonialBody}}</p>
+                                 </div>
+                              </div>
+                              <div class="cs-testimonials__user">
+                                 {% if testimonial.testimonialImage|length > 0 %}
+                                 <div class="cs-testimonials__user-img">
+                                    {% set image = testimonial.testimonialImage.first() %}
+                                    <img class="s-img-switch" src="{{image.getUrl() }}"  alt="testimonial-imeg">
+                                 </div>
+                                 {% endif %}
+                                 <div class="cs-testimonials__user-info">
+                                    <h6 class="cs-testimonials__user-name">{{testimonial.testimonialAuthor}}</h6>
+                                    <p class="cs-testimonials__user-position">{{testimonial.testimonialAuthorSubtitle}}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     {% endfor %}
+
+                  </div>
+                  <!-- If we need pagination -->
+                  <div class="swiper-pagination cs-testimonials__pagination"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% if companyInformation.companyFavicon|length > 0 %}
+      {% set image = companyInformation.companyFavicon.first() %}
+         <link rel="apple-touch-icon" sizes="180x180" href="{{image.getUrl()}}">
+         <link rel="icon" href="{{image.getUrl()}}">
+      {% endif %}
+
+      <title>{{companyInformation.companyTitle}}</title>
+
+      {% block stylesheets %}
+         <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+         <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif%3A400%7CUbuntu%3A300%7CNeuton%3A400%2C700%26subset%3Dlatin%2Clatin-ext&ver=1.1.2">
+         <link rel="stylesheet" id="wp-block-library-css" href="/template_1/css/style1.min.css?ver=5.1.1" type="text/css" media="all">
+         <link rel="stylesheet" id="contact-form-7-css" href="/template_1/css/styles.css?ver=5.1.1" type="text/css" media="all">
+         <link rel="stylesheet" id="rs-plugin-settings-css" href="/template_1/css/settings.css?ver=5.4.6.6" type="text/css" media="all">
+         <link rel="stylesheet" id="swiper-css" href="/template_1/css/swiper.min.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="fancybox-css" href="/template_1/css/jquery.fancybox.min.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="slick-css" href="/template_1/css/slick.min.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="woodford-bourne-font-css" href="/template_1/css/woodford-bourne.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="font-awesomes-css" href="/template_1/css/font-awesome.min.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="et-line-font-css" href="/template_1/css/et-line-font.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="coca-before-after-css" href="/template_1/css/before-after.min.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="normalize-css" href="/template_1/css/normalize.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="bootstrap-css" href="/template_1/css/bootstrap.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="coca-core-css" href="/template_1/css/style.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="coca-theme-css" href="/template_1/css/style2.min.css?ver=1.1.2" type="text/css" media="all">
+         <link rel="stylesheet" id="js_composer_front-css" href="/template_1/css/js_composer.min.css?ver=5.5.5" type="text/css" media="all">
+      {% endblock %}
+
+   </head>
+   <body class="home page-template-default page page-id-3946">
+      <!-- MAIN_WRAPPER -->
+      <!--<body class="home page-template-default page page-id-961 woocommerce-no-js wpb-js-composer js-comp-ver-5.5.5 responsive" data-scrollbar="">-->
+      <div class="cs-loader js-loader">
+         <div class="cs-loader__scale">
+            <div class="cs-loader__bg">
+               <div class="cs-loader__progress js-loader-progress">
+                  <div class="cs-loader__logo cs-loader__logo--img cs-loader__logo--light js-loader-logo">
+                     {{ companyInformation.companyTitle }}
+                  </div>
+               </div>
+               <div class="cs-loader__logo">
+                  {{ companyInformation.companyTitle }}
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="cs-main-wrapp">
+         <div class="cs-top-header js-top-header">
+            <div class="cs-top-header__content-wr">
+               <ul class="cs-top-header__links">
+                  <li class="cs-top-header__links-item"><a href="contact-me.html">FAQ</a></li>
+                  <li class="cs-top-header__links-item"><a href="contact-us.html">CONTACT</a></li>
+                  <li class="cs-top-header__links-item"><a href="tel:{{ companyInformation.companyContactNumber }}">{{ companyInformation.companyContactNumber }}</a></li>
+               </ul>
+               <div class="cs-top-header__desc">
+                  <p>
+                     MON - FRI: 08:00 - 05:00 PM
+                  </p>
+               </div>
+            </div>
+         </div>
+         <header class="cs-header js-header  js-sticky-container cs-header--fixed">
+            <div class="cs-header__wrapp js-header-height  js-sticky-header">
+               <div class="cs-header__content-wr">
+                  <div class="cs-logo cs-logo--header">
+                     {% if companyInformation.companyLogo|length > 0 %}
+                        {% set image = companyInformation.companyLogo.first() %}
+                        <a class="cs-logo__link" href="/">
+                           <img src="{{image.getUrl()}}" srcset="{{image.getUrl()}} 2x" class="image_logo" alt="">
+                        </a>
+
+                        {% if companyInformation.companyLogoAlternative|length > 0 %}
+                           {% set image = companyInformation.companyLogoAlternative.first() %}
+                           <a class="cs-logo__link cs-logo__link cs-logo__link--light" href="/">
+                              <img src="{{image.getUrl()}}" srcset="{{image.getUrl()}} 2x" class="image_logo" alt="">
+                           </a>
+                        {% else %}   
+                           <a class="cs-logo__link cs-logo__link cs-logo__link--light" href="/">
+                              <img src="{{image.getUrl()}}" srcset="{{image.getUrl()}} 2x" class="image_logo" alt="">
+                           </a>
+                        {% endif %}
+
+                     {% endif %}
+
+
+
+                  </div>
+                  <div class="cs-header__nav js-header-nav">
+                     <div class="cs-header__inner">
+                        <nav>
+                           {% set menu = craft.entries.section('headerNavigation') %}
+
+                           <ul class="main-menu">
+
+                              {% nav link in menu %}
+                                  <li class="menu-item">
+                                    {% if link.relatedEntry|length %}
+                                       <a href="{{ link.relatedEntry[0].url }}">{{ link.title }}</a>
+                                    {% else %}
+                                       <a href="{{ link.customUrl }}">{{ link.title }}</a>
+                                    {% endif %}
+                                    {% ifchildren %}
+                                       <ul  class="sub-menu">
+                                          {% children %}
+                                       </ul>
+                                    {% endifchildren %}
+                                  </li> 
+                              {% endnav %}
+
+                           </ul>
+                        </nav>
+                        <div class="cs-header__socials">
+                           <ul class="cs-socials cs-socials--nav-menu">
+                              <li class="cs-socials__item">
+                                 <a target="_blank" href="#">
+                                 <i aria-hidden="true" class="fa fa-facebook"  ></i>
+                                 </a>
+                              </li>
+                              <li class="cs-socials__item">
+                                 <a target="_blank" href="#">
+                                 <i aria-hidden="true" class="fa fa-twitter"  ></i>
+                                 </a>
+                              </li>
+                              <li class="cs-socials__item">
+                                 <a target="_blank" href="#">
+                                 <i aria-hidden="true" class="fa fa-instagram"  ></i>
+                                 </a>
+                              </li>
+                              <li class="cs-socials__item">
+                                 <a target="_blank" href="#">
+                                 <i aria-hidden="true" class="fa fa-pinterest-p"  ></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cs-header__nav-btn">
+                     <ul class="cs-socials cs-socials--menu">
+                        <li class="cs-socials__item">
+                           <a target="_blank" href="{{ companySocialMedias.companyFacebook }}">
+                           <i aria-hidden="true" class="fa fa-facebook"  ></i>
+                           </a>
+                        </li>
+                        <li class="cs-socials__item">
+                           <a target="_blank" href="{{ companySocialMedias.companyTwitter }}">
+                           <i aria-hidden="true" class="fa fa-twitter"  ></i>
+                           </a>
+                        </li>
+                        <li class="cs-socials__item">
+                           <a target="_blank" href="{{ companySocialMedias.companyInstagram }}">
+                           <i aria-hidden="true" class="fa fa-instagram"  ></i>
+                           </a>
+                        </li>
+                        <li class="cs-socials__item">
+                           <a target="_blank" href="{{ companySocialMedias.companyTwitter }}">
+                           <i aria-hidden="true" class="fa fa-twitter"  ></i>
+                           </a>
+                        </li>
+                     </ul>
+                     <!-- mobile icon -->
+                     <div class="cs-nav-menu js-menu-block">
+                        <div class="cs-nav-menu__label">
+                           <span class="cs-nav-menu__text cs-nav-menu__text--open js-menu-btn-txt">Open</span>
+                           <span class="cs-nav-menu__text cs-nav-menu__text--close js-menu-btn-txt">Close</span>
+                        </div>
+                        <a class="cs-nav-menu__icon js-menu-btn" href="#">
+                        <i></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>         
+
+
+
+         {% block main %}
+         {% endblock %}
+
+
+         <footer class="cs-footer cs-footer--full">
+            <div class="container padd-only-xs">
+               <div class="row cs-footer__align cs-footer__align--full">
+                  <div class="col-md-3 col-sm-6">
+                     <div class="cs-footer__copyright">
+                        <h4>{{ companyInformation.companyTitle }},<br />
+                           {{ companyInformation.companySlogan }}
+                        </h4>
+                     </div>
+                  </div>
+                  <div class="widget widget--footer col-md-3 col-sm-6 widget_text">
+                     <h6 class="widget__title">FIND US</h6>
+                     <div class="textwidget">
+                        <p>{{ companyInformation.companyAddress }}
+                     </div>
+                  </div>
+                  <div class="widget widget--footer col-md-3 col-sm-6 widget_text">
+                     <h6 class="widget__title">LET’S TALK</h6>
+                     <div class="textwidget">
+                        <p><a href="mailto:{{ companyInformation.companyEmailAddress }}"><span class="__cf_email__" >{{ companyInformation.companyEmailAddress }}</span></a><br />
+                           <a href="tel:{{ companyInformation.companyContactNumber }}">{{ companyInformation.companyContactNumber }}</a>
+                        </p>
+                     </div>
+                  </div>
+                  <div class="widget widget--footer col-md-3 col-sm-6 widget_subscribe">
+                     <h6 class="widget__title">FOLLOW US</h6>
+                     <div class="widget_subscribe">
+                        <div class="widget_subscribe__description"></div>
+                        <ul class="widget_subscribe__social">
+                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-facebook"></a></li>
+                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-twitter"></a></li>
+                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-pinterest-p"></a></li>
+                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-instagram"></a></li>
+                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-dribbble"></a></li>
+                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-google-plus"></a></li>
+                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-linkedin"></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </div>
+
+      {% block javascript %}
+
+         <!-- <script src="/template_1/js/initMap.js?ver=1.12.4"></script> -->
+         <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn9Z52AK0VWP8VPeMAEHWT-qXHBDH737E&callback=initMap"></script> -->
+         <script src="/template_1/js/jquery.js?ver=1.12.4"></script>
+         <script src="/template_1/js/jquery-migrate.min.js?ver=1.4.1"></script>
+         <script src="/template_1/js/jquery.themepunch.tools.min.js?ver=5.4.6.6"></script>
+         <script src="/template_1/js/jquery.blockUI.min.js?ver=2.70"></script>
+         <script src="/template_1/js/add-to-cart.min.js?ver=3.5.6"></script>
+         <script src="/template_1/js/scripts.js?ver=5.1.1"></script>
+         <script src="/template_1/js/js.cookie.min.js?ver=2.1.4"></script>
+         <script src="/template_1/js/cart-fragments.min.js?ver=3.5.6"></script>
+         <script src="/template_1/js/swiper.min.js?ver=1.1.2"></script>
+         <script src="/template_1/js/jquery.fancybox.min.js?ver=1.1.2"></script>
+         <script src="/template_1/js/isotope.pkgd.min.js?ver=5.5.5"></script>
+         <script src="/template_1/js/tweenMax.min.js?ver=1.1.2"></script>
+         <script src="/template_1/js/vivus.min.js?ver=1.1.2"></script>
+         <script src="/template_1/js/slick.min.js?ver=1.1.2"></script>
+         <script src="/template_1/js/hammer.min.js?ver=1.1.2"></script>
+         <script src="/template_1/js/jquery.fitvids.js?ver=1.1.2"></script>
+         <script src="/template_1/js/script.js?ver=1.1.2"></script>
+         <script src="/template_1/js/before-after.min.js?ver=1.1.2"></script>
+         <script src="/template_1/js/comment-reply.min.js?ver=5.1.1"></script>
+         <script src="/template_1/js/js_composer_front.min.js?ver=5.5.5"></script>
+
+      {% endblock %}  
+   </body>
+</html>

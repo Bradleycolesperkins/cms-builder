@@ -1,0 +1,48 @@
+{% include '/template_1/_components/_heading_banner' with {'title': 'Portfolio','subtitle': 'Check out our','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+
+<div class="row-full-width clearfix"></div>
+<div data-vc-full-width="true" data-vc-full-width-init="true" data-vc-stretch-content="true" class="row row-fluid bg-grey row-has-fill row-no-padding  padding-lg-80b padding-sm-40b">
+   <div class="column_container col-sm-12 ">
+      <div class="column-inner padding-t-z">
+         <div>
+            <div class="container-fluid no-padd cs-parent ">
+               <div class="cs-parent__img  cs-parent__img--not-empty js-parallax-banner-parent">
+                  <span class="cs-overlay"></span>                                         
+                  <div class="js-parallax-banner-item" data-parallax-speed='1'>
+                     <img src="./template_1/images/heading-02.jpg" class="s-img-switch" alt="" />
+                  </div>
+               </div>
+               <div class="cs-parent__content-wr">
+                  <div class="cs-heading js-banner-animation cs-parent__heading  cs-heading--left cs-heading--c-custom">
+                     <h6 class="cs-heading__subtitle">WHAT WE DO</h6>
+                     <h2 class="cs-heading__title">SERVICES</h2>
+                  </div>
+                  <div data-unique-key="0bf3c8aa9017e52dd041b7e2c3327621" class="js-cs-load-more" data-start-page="1" data-max-page="1" data-next-link="">
+                     <div class=" cs-block cs-block--services js-cs-block--services cs-block--col3 cs-block--gap15 js-cs-load-more-block no-footer-content ">
+
+                     {% for entry in craft.entries.section('services') %}
+                        <div class="cs-block__item js-filter-simple-block p_f_95af047">
+                           <div class="cs-block__item-wrapp">
+                              <div class="cs-portfolio cs-portfolio--services">
+                                 <span class="cs-portfolio__icon cs-portfolio__icon--services">
+                                    {% set image = entry.serviceImageIcon.first() %}
+                                    <img src="{{image.getUrl() }}">
+                                 </span>
+                                 <h6 class="cs-portfolio__title cs-portfolio__title--services">{{entry.title}}</h6>
+                                 <div class="cs-portfolio__desc cs-portfolio__desc--services">
+                                    <p>{{entry.serviceSubtitle }}</p>
+                                 </div>
+                                 <a href="planning.html" class="cs-btn cs-portfolio__btn cs-portfolio__btn--services" target="_self">READ MORE</a>
+                              </div>
+                           </div>
+                        </div>
+                     {% endfor %}
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,179 @@
+{% extends '/template_1/_layout' %}
+
+{% block main %}
+   <div class="cs-details cs-details--post">
+   <div class="cs-details__thumb">
+   <img src="/assets/images/post-04.jpg" class="s-img-switch" alt="blog-img">
+   </div>
+   <div class="container padd-only-xs">
+   <div class="row">
+      <div class="col-xs-12">
+         <div class="cs-details__content cs-details__content--post cs-details__content--post-top">
+            <div class="row">
+               <div class=" col-md-9">
+                  <!-- Post content -->
+                  <div class="cs-post cs-post--post post-4193 post type-post status-publish format-standard has-post-thumbnail hentry category-modern">
+                     <h3 class="cs-post__title cs-post__title--post">{{ entry.title }}</h3>
+                     <div class="cs-post__content clearfix">
+                        <h5>{{ entry.title }}</h5>
+                        <div>
+                           {{ entry.blogBody }}
+                        </div>
+                        <div class="pixfields_box" >
+                           <ul class="pixfields_list">
+                              <li class="pixfield">
+                                 <strong>Category</strong> :         
+                              </li>
+                              <li class="pixfield">
+                                 <strong>Type</strong> : Modern      
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="cs-post__info">
+                        <div class="cs-post__info-block">
+                           <h6 class="cs-post__info-label">
+                              Created                                                        
+                           </h6>
+                           <p class="cs-post__author-name">
+                              admin                                                            
+                           </p>
+                        </div>
+                        <div class="cs-post__info-block">
+                           <h6 class="cs-post__info-label cs-post__info-label--right">
+                              Share To                
+                           </h6>
+                           <button class="cs-post__share-icon fa fa-facebook" data-share="#"></button>
+                           <button class="cs-post__share-icon fa fa-twitter" data-share="#" title="Tweet this!"></button>
+                           <button class="cs-post__share-icon fa fa-pinterest-p" data-share="#"></button>
+                           <button class="cs-post__share-icon fa fa-linkedin" data-share="#" title="Share on LinkedIn"></button>
+                        </div>
+                     </div>
+                     <div class="cs-navigation cs-post__navigation">
+                        <ul class="cs-navigation__list cs-navigation__list--left">
+                           <li>
+                              <a href="#">Prev Page</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <!-- End post content -->
+               </div>
+               <div class="col-md-3 margin-sm-50t">
+                  {% include '/template_1/blog/_sidebar' %}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   <!-- Post comments -->
+   <div class="cs-details__comments">
+   <div class="container-fluid no-padd cs-parent">
+      <div class="cs-parent__img">
+         <span class="cs-overlay"></span>
+         <img class="s-img-switch" src="/assets/images/heading-04.jpg" alt="blog-img">
+      </div>
+      <div class="cs-parent__content-wr">
+         <div class="cs-heading cs-parent__heading cs-heading--left cs-heading--c-custom cs-heading--comments">
+            <h6 class="cs-heading__subtitle">Comments</h6>
+            <h2 class="cs-heading__title">Just Say Your Opinion</h2>
+         </div>
+      </div>
+   </div>
+   <div class="cs-comments">
+      <div class="container padd-only-xs">
+         <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+               <div class="cs-comments__list" id="comments">
+                  <ul class="cs-comments__listing">
+                     <li class="comment even thread-even depth-1 ct-part" id="li-comment-57">
+                        <div class="comm-block" id="comment-57">
+                           <div class="comm-img">
+                              <img alt='' src='/assets/images/9fd1b836c100c6c984d883aebf89907a.png' class='avatar avatar-80 photo' height='60' width='60' />                        
+                           </div>
+                           <div class="comm-txt">
+                              <div class="comm-info">
+                                 <h4>Alice Duty</h4>
+                                 <div class="date-post">
+                                    <h6>
+                                       1 year ago                                    
+                                    </h6>
+                                 </div>
+                              </div>
+                              <p>Proin sit amet dui est. Proin vitae lectus aliquet, vehicula lacus sed, fermentum massa. Morbi eleifend sapien orci, vitae imperdiet ante facilisis sit amet.</p>
+                              <a rel='nofollow' class='comment-reply-link' href='#' data-commentid="57" data-postid="4193" data-belowelement="comment-57" data-respondelement="respond" aria-label='Reply to Alice Duty'>Reply</a>                       
+                           </div>
+                        </div>
+                        <ul class="children">
+                           <li class="comment odd alt depth-2 ct-part" id="li-comment-58">
+                              <div class="comm-block" id="comment-58">
+                                 <div class="comm-img">
+                                    <img alt='' src='/assets/images/9fd1b836c100c6c984d883aebf89907a.png' class='avatar avatar-80 photo' height='60' width='60' />                      
+                                 </div>
+                                 <div class="comm-txt">
+                                    <div class="comm-info">
+                                       <h4>Howard Patterson</h4>
+                                       <div class="date-post">
+                                          <h6>
+                                             1 year ago                                    
+                                          </h6>
+                                       </div>
+                                    </div>
+                                    <p>Nunc non purus efficitur, semper tortor faucibus, bibendum magna. Maecenas pulvinar ullamcorper justo in eleifend. Nulla feugiat nulla quis sodales condimentum. Sed iaculis, enim eget tincidunt pulvinar, lectus risus tempor nulla.</p>
+                                    <a rel='nofollow' class='comment-reply-link' href='#' data-commentid="58" data-postid="4193" data-belowelement="comment-58" data-respondelement="respond" aria-label='Reply to Howard Patterson'>Reply</a>                       
+                                 </div>
+                              </div>
+                           </li>
+                           <!-- #comment-## -->
+                        </ul>
+                        <!-- .children -->
+                     </li>
+                     <!-- #comment-## -->
+                     <li class="comment even thread-odd thread-alt depth-1 ct-part" id="li-comment-59">
+                        <div class="comm-block" id="comment-59">
+                           <div class="comm-img">
+                              <img alt='' src='/assets/images/9fd1b836c100c6c984d883aebf89907a.png'  class='avatar avatar-80 photo' height='60' width='60' />                       
+                           </div>
+                           <div class="comm-txt">
+                              <div class="comm-info">
+                                 <h4>Mike Heisenberg</h4>
+                                 <div class="date-post">
+                                    <h6>
+                                       1 year ago                                    
+                                    </h6>
+                                 </div>
+                              </div>
+                              <p>Proin ultricies convallis urna nec dignissim. Vestibulum accumsan sem ut quam facilisis pretium. Quisque tristique laoreet fermentum. Nullam a ipsum metus. Quisque non massa nec ante tristique viverra at eget mauris. Etiam quis orci condimentum turpis malesuada consectetur nec et ex.</p>
+                              <a rel='nofollow' class='comment-reply-link' href='#' data-commentid="59" data-postid="4193" data-belowelement="comment-59" data-respondelement="respond" aria-label='Reply to Mike Heisenberg'>Reply</a>                      
+                           </div>
+                        </div>
+                     </li>
+                     <!-- #comment-## -->
+                  </ul>
+               </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+               <div class="cs-comments__form-wrapp">
+                  <div id="respond" class="comment-respond">
+                     <h3 id="reply-title" class="comment-reply-title">Your Comment <small>
+                        <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel</a></small>
+                     </h3>
+                     <form method="post" id="coca-comment-form" class="cs-form cs-form--md-height cs-form--comments" novalidate>
+                        <textarea cols="30"  name="comment" rows="10" placeholder="Comment" required></textarea><input name="author" type="text"  placeholder="Name" required />
+                        <input name="email" type="email" placeholder="Mail" required />
+                        <input name="submit" type="submit" id="submit" class="submit-btn" value="Leave Comment" /> <input type='hidden' name='comment_post_ID' value='4193' id='comment_post_ID' />
+                        <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                     </form>
+                  </div>
+                  <!-- #respond -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   <!-- End post comments -->
+   </div>
+{% endblock %}
+   

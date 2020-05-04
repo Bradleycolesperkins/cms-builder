@@ -1,0 +1,80 @@
+<div class="row-full-width clearfix"></div>
+<div class="cs-details">
+   <div class="cs-details__content cs-details__content--splitted">
+      <div class="container padd-only-xs">
+         <div class="row js-fixed-parent">
+            <div class="col-sm-6 col-md-5">
+               <div class="js-fixed-aside">
+                  <div class="row">
+                     <div class="col-sm-12 col-md-10">
+                        <section class="cs-heading cs-heading--left cs-heading--c-default cs-heading--modern margin-lg-30b">
+                           <h6 class="cs-heading__subtitle">{{entry.portfolioSubtitle}}</h6>
+                           <h3 class="cs-heading__title">{{entry.title}}</h3>
+                        </section>
+                        <div class="cs-post">
+                           <div class="cs-post__content">
+                              <div>
+                                 {{entry.portfolioBody}}
+                              </div>
+                              <!-- <div class="pixfields_box" >
+                                 <ul class="pixfields_list">
+                                    <li class="pixfield">
+                                       <strong>YEAR</strong> : 		
+                                    </li>
+                                    <li class="pixfield">
+                                       <strong>LOCATION</strong> : Filbert Street		
+                                    </li>
+                                    <li class="pixfield">
+                                       <strong>TYPE</strong> : Bathroom		
+                                    </li>
+                                    <li class="pixfield">
+                                       <strong>CREATIVE DIRECTOR</strong> : 		
+                                    </li>
+                                    <li class="pixfield">
+                                       <strong>VISUALIZATION</strong> : 		
+                                    </li>
+                                    <li class="pixfield">
+                                       <strong>PORTFOLIO</strong> : 		
+                                    </li>
+                                 </ul>
+                              </div> -->
+                           </div>
+                        </div>
+                        <div class="cs-pixfields cs-pixfields--vertical margin-lg-85t margin-sm-30t">
+                           <div class="cs-pixfields__item">
+                              <h6 class="cs-pixfields__title">LOCATION</h6>
+                              <p class="cs-pixfields__desc">{{entry.portfolioLocation}}</p>
+                              <span class="cs-pixfields__separate"></span>
+                           </div>
+                           <div class="cs-pixfields__item">
+                              <h6 class="cs-pixfields__title">TYPE</h6>
+                              <p class="cs-pixfields__desc">Bathroom</p>
+                              <span class="cs-pixfields__separate"></span>
+                           </div>
+                        </div>
+                        <div class="cs-share margin-lg-80t margin-sm-30t">
+                           <h6 class="cs-share__label">SHARE PROJECT</h6>
+                           <button data-share="http://www.facebook.com/sharer.php?u=https://w4.themedemo.co/coca/projects-item/restoration-hardware/&amp;t=RESTORATION HARDWARE" class="cs-share__icon icon fa fa-facebook"></button>
+                           <button data-share="http://twitter.com/home/?status=RESTORATION HARDWARE - https://w4.themedemo.co/coca/projects-item/restoration-hardware/" class="cs-share__icon icon fa fa-twitter"></button>
+                           <button data-share="http://www.linkedin.com/shareArticle?mini=true&amp;title=RESTORATION HARDWARE&amp;url=https://w4.themedemo.co/coca/projects-item/restoration-hardware/" class="cs-share__icon icon fa fa-linkedin"></button>
+                           <button data-share="http://pinterest.com/pin/create/button/?url=https://w4.themedemo.co/coca/projects-item/restoration-hardware/&media=https://w4.themedemo.co/coca/wp-content/uploads/2018/03/restoration-hardware.png" class="cs-share__icon icon fa fa-pinterest-p"></button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-sm-6 col-md-7 margin-xs-30t">
+               <div class="cs-details__gallery">
+                  
+                  {% for image in entry.portfolioGalleryImages %}
+
+                     <img width="1614" height="1009" src="{{image.getUrl()}}" class="attachment-full size-full" alt="" srcset="{{image.getUrl()}} 1614w, {{image.getUrl()}} 300w, {{image.getUrl()}} 768w, {{image.getUrl()}} 1024w, {{image.getUrl()}} 600w" sizes="(max-width: 1614px) 100vw, 1614px" />
+
+                  {% endfor %}
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

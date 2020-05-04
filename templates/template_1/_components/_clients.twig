@@ -1,0 +1,23 @@
+{% include '/template_1/_components/_heading_banner' with {'title': 'CLIENTS','subtitle': 'With whom we work with','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+
+<div class="row-full-width clearfix"></div>
+<div class="row row-fluid  padding-lg-70t padding-lg-115b padding-sm-70b">
+   <div class="column_container col-sm-12 ">
+      <div class="column-inner ">
+         <div>
+            <div class="cs-client">
+               {% for client in craft.entries.section('clients') %}
+                  <div class="cs-client__item">
+                     {% set image = client.clientLogo.first() %}
+                     <img class="cs-client__logo" src="{{image.getUrl() }}"  alt="visit-site">
+                     <div class="cs-client__overlay"></div>
+                     <div class="cs-client__link-wrapp">
+                        <a href="{{client.clientWebsite }}" class="cs-btn cs-btn--c-custom"  target="_blank" >VISIT SITE</a>
+                     </div>
+                  </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

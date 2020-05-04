@@ -1,0 +1,42 @@
+{% set awards = craft.entries.section('awards') %}
+{% set awardsLength = awards|length %}
+{% if awardsLength > 0 %}
+
+   {% include '/template_1/_components/_heading_banner' with {'title': 'Awards','subtitle': 'Step by Step','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+
+   <div class="row-full-width clearfix"></div>
+   <div class="row row-fluid  padding-lg-35t padding-lg-90b padding-sm-35b">
+
+
+
+         {% set roundUpBatch = (awardsLength / 2)|round(1, 'ceil') %}
+
+         {% for awardsChunks in awards|batch(roundUpBatch) %}
+            <div class="column_container col-sm-6 ">
+               <div class="column-inner ">
+                  <div>
+                     <div class="cs-awards ">
+                        {% for award in awardsChunks %}
+                           <div class="cs-awards__item">
+                              <h6 class="cs-awards__date">{{ award.awardDate|date("Y-m-d") }}</h6>
+                              <span class="cs-awards__separator"></span>
+                              <div class="cs-awards__info ">
+                                 <a class="cs-awards__title-link" href="#">
+                                    <h6 class="cs-awards__title">{{ award.title }}</h6>
+                                 </a>
+                                 <div class="cs-awards__subtitle">
+                                    <p>{{ award.awardSubtitle }}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         {% endfor %}
+
+
+   </div>
+{% endif %}
