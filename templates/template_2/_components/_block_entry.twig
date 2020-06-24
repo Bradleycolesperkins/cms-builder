@@ -9,6 +9,8 @@
             {% include '/template_2/_components/_messages' with {'message_block': entry} %}
         {% case "iconBlocks" %}
             {% include '/template_2/_components/_icon_boxes' with {'icon_block': entry} %}
+        {% case "sliderBlocks" %}
+            {% include '/template_2/_components/_sliders' with {'slider_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}

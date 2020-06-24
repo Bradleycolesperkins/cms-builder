@@ -1,6 +1,8 @@
 <!-- Case Studis Area Start -->
 <div class="case-studis-area">
 
+
+
     <div class="row brook-element-carousel slick-arrow-center" data-slick-options='{
                  "slidesToShow": 1,
                  "slidesToScroll": 1,
@@ -10,30 +12,42 @@
                  "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
                  "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
                  }'>
+        {% if(slider.amountOfCaseStudies) %}
+            {% set limit = slider.amountOfCaseStudies %}
+        {% else %}
+            {% set limit = 3 %}
+        {% endif %}
 
-        <div class="col-12">
-            <div class="row mt--30">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="case-slider-content">
-                        <div class="post-count">
-                            01.
+        {% for entry in craft.entries.section('	caseStudies').limit(limit).all() %}
+            <!-- Start Single Portfolio -->
+            <div class="col-12">
+                <div class="row mt--30">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="case-slider-content">
+                            <div class="post-count">
+                                01.
+                            </div>
+                            <h6 class="heading headin-h6 theme-color wow move-up animate">{{entry.title}}</h6>
+                            <h3 class="heading-font line-height-1-5 wow move-up animate">{{entry.caseStudiesSubtitle}}</h3>
+                            <p class="text">
+                                {{ entry.caseStudiesBody|length > 250 ? entry.caseStudiesBody|slice(0, 250)|striptags ~ '...' : entry.caseStudiesBody|striptags  }}
+                            </p>
+                            <a class="brook-btn bk-btn-secondary-border btn-sd-size space-between btn-essential" href="/Case-Study/{{entry.slug}}">View Case Study</a>
                         </div>
-                        <h6 class="heading headin-h6 theme-color wow move-up animate">Web Design</h6>
-                        <h3 class="heading-font line-height-1-5 wow move-up animate">Open lane - Modern dashboard from ThemeMove</h3>
-                        <p class="text">The key to this ThemeMove dashboard is that it clearly shows progress towards daily and monthly goals using bullet charts.</p>
                     </div>
-                </div>
-                <div class="col-xl-7 col-lg-6">
-                    <div class="image-wrap">
-                        <div class="image">
+                    <div class="col-xl-7 col-lg-6">
+                        <div class="image-wrap">
                             <div class="image">
-                                <img src="img/case-study/home-essential-case-study-image-01.png" alt="">
+                                <div class="image">
+                                    {% set image = entry.caseStudiesMainImage.first() %}
+                                    <img src="{{image.getUrl}}" alt="{{ image.imageAltTag  }}">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
 
     </div>
 </div>
