@@ -1,0 +1,14 @@
+<div class="bk-title--default text-left  mb--45">
+    {% if block.textBlockTitle %}
+        <h5 class="heading-13 theme-color text-uppercase fw-500">{{block.textBlockTitle}}</h5>
+        <div class="bkseparator--30"></div>
+    {% endif %}
+    {% if block.textBlockSubtitle %}
+        <h3 class="heading-40 fw-200">{{block.textBlockSubtitle}}</h3>
+    {% endif %}
+</div>
+{% if block.textBlockParagraph %}
+    <div class="modern-service-content wow move-up  mb--45">
+        <p>{{block.textBlockParagraph}}</p>
+    </div>
+{% endif %}

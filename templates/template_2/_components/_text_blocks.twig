@@ -1,0 +1,17 @@
+
+{% if text_block %}
+    {% for block in text_block.textBlock.all() %}
+        {% switch block.type %}
+
+            {% case "standardTextSubtitleParagraph" %}
+                {% include '/template_2/_components/_text_blocks/_standard_text_subtitle_paragraph' with { 'block' : block} %}
+            {% case "blockTitles" %}
+                {% include '/template_2/_components/_text_blocks/_title_text_block' with { 'block' : block} %}
+            {% case "subBlockTitleDescription" %}
+                {% include '/template_2/_components/_text_blocks/_title_with_descriptions_text_block' with { 'block' : block} %}
+            {% default %}
+                {{ dd('text entry', block.type.handle) }}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}

@@ -11,6 +11,8 @@
             {% include '/template_2/_components/_icon_boxes' with {'icon_block': entry} %}
         {% case "sliderBlocks" %}
             {% include '/template_2/_components/_sliders' with {'slider_block': entry} %}
+        {% case "textBlocks" %}
+            {% include '/template_2/_components/_text_blocks' with {'text_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}

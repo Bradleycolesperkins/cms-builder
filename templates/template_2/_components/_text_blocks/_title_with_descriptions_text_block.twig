@@ -1,0 +1,14 @@
+<div class="brook-section-title text-center mb--45">
+    {% if block.textBlockTitle %}
+        <h6 class="heading-13 theme-color text-uppercase fw-500">{{ block.textBlockTitle }}</h6>
+        <div class="bkseparator--25"></div>
+    {% endif %}
+    {% if block.textBlockSubtitle %}
+        <h2 class="heading-40 fw-200">{{ block.textBlockSubtitle }}</h2>
+    {% endif %}
+</div>
+{% if block.textBlockParagraph %}
+    <div class="brook-section-title text-center mb--45" >
+        <p>{{block.textBlockParagraph}}</p>
+    </div>
+{% endif %}
