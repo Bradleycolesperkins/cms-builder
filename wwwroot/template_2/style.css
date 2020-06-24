@@ -17846,6 +17846,9 @@ Pre Loader
   vertical-align: middle;
   text-align: center; }
 
+.preloader-wrap .wrap-2 img {
+    max-height: 150px;}
+
 body.loaded .page-loading {
   -webkit-transform: translate3d(0, -100%, 0);
   transform: translate3d(0, -100%, 0); }
@@ -23008,6 +23011,7 @@ header.br_header.header-default.vertical-slide-portfolio {
         padding-bottom: 15px;
         width: 170px;
         height: auto;
+          max-height: 90px;
         max-width: 100%; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
           .header-default .header__wrapper .header-left .logo a img {
