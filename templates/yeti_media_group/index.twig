@@ -1,0 +1,26 @@
+{% extends 'template_2/_layout' %}
+
+{% block main %}
+{#    {% set slider = craft.entries.section('sliders').slug('home-page-slider').first() %}#}
+{#    {% include '/template_2/_components/_slider' with {'slider': slider}%}#}
+
+
+    <!-- Page Conttent -->
+    <main class="page-content">
+        {# loop matrix block #}
+        {% if entry.blockSelection %}
+            {% include '/template_2/_components/_blocks' with {'block': entry.blockSelection} %}
+        {% endif %}
+
+
+        {# {% include '/template_2/_components/_progress_area' %} #}
+
+        {% include '/template_2/_components/_testimonials_slider' with {'background': '/assets/uploads/1591557140_footerbg.svg'} %}
+
+        {# {% include '/template_2/_components/_pricing_table' %} #}
+
+        {# {% include '/template_2/_components/_contact_with_map' %} #}
+
+    </main>
+{% endblock %}
+   

@@ -1,0 +1,41 @@
+{% extends 'db_dean/_layout' %}
+
+{% block main %}
+   <div class="cs-main-wrapp__inner">
+      <div class="container padd-only-xs">
+         {% include '/template_1/_components/_title_image_banner'  with {'title': 'BLOG','imageUrl': '/assets/uploads/1590251058_Blog-Image.jpg'} %}
+         <div class="row-full-width clearfix"></div>
+      </div>
+   </div>
+
+
+   <div class="cs-blog cs-blog--padd">
+      <div class="container padd-only-xs">
+         <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+               <section class="cs-heading cs-heading--left cs-heading--c-default cs-heading--modern cs-heading--blog">
+                  <h6 class="cs-heading__subtitle">BLOG</h6>
+                  <h3 class="cs-heading__title">Find new information</h3>
+               </section>
+            </div>
+         </div>
+      </div>
+      <div class="container padd-only-xs">
+         <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+               <div class="cs-blog__content ">
+                  <div class="row">
+                     <div class=" col-md-9 js-cs-load-more blog-content" data-unique-key="blog-posts">
+                        {% include '/template_1/blog/_list' %}
+                     </div>
+                     <div class="col-md-3 margin-sm-50t">
+                        {% include '/template_1/blog/_sidebar' %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endblock %}
+   

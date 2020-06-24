@@ -1,10 +1,22 @@
 <div class="row-full-width clearfix"></div>
 <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="row row-fluid bg-grey row-has-fill row-no-padding  margin-lg-60t margin-sm-30t padding-lg-80b padding-sm-40b">
-   <div class="cs-filter-top js-filter-top">
+   <div class=" col-md-12 col-sm-12 col-lg-12 cs-filter-top js-filter-top">
       <ul class="cs-filter-top__list">
             <li class="cs-filter-top__item js-filter-top-item cs-filter-top__item--active " data-filter="*">ALL</li>
-         {% for tag in craft.tags().site(currentSite.handle).group('portfolio') %}
-            <li class="cs-filter-top__item js-filter-top-item" data-filter="p_f_{{ tag.title|replace('/[^a-zA-Z0-9_+]/', '') }}">{{ tag }}</li>
+          {% set portfolioItems = craft.entries.section('portfolio').all() %}
+          {% set tagTitles = [] %}
+
+          {% for tweakEntryTag in portfolioItems %}
+              {% set entryTags = craft.tags.relatedTo(tweakEntryTag) %}
+
+              {% for tweakEntryTag in entryTags %}
+                  {% if tweakEntryTag.title not in tagTitles %}
+                      {% set tagTitles = tagTitles|merge([tweakEntryTag.title]) %}
+                  {% endif %}
+              {% endfor %}
+          {% endfor %}
+         {% for tag in tagTitles %}
+            <li class="cs-filter-top__item js-filter-top-item" data-filter="p_f_{{ tag|replace('/[^a-zA-Z0-9_+]/', '') }}">{{ tag }}</li>
          {% endfor %}
       </ul>
    </div>
@@ -19,7 +31,7 @@
                      {% set tweakedEntryTags = [] %}
                      {% for tweakEntryTag in entryTags %}
                         {% set tweakedEntryTags = tweakedEntryTags|merge([
-                           'p_f_' ~ tweakEntryTag|replace('/[^a-zA-Z0-9_+]/', '')
+                           'p_f_' ~ tweakEntryTag.title|replace('/[^a-zA-Z0-9_+]/', '')
                         ]) %}
                      {% endfor %}
 

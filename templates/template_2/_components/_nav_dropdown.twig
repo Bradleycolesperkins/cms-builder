@@ -1,0 +1,33 @@
+<nav class="page_nav">
+    {% set menu = craft.entries.section('headerNavigation') %}
+    <ul class="mainmenu">
+        {% nav link in menu %}
+            
+            {% if link.hasDescendants() is same as(false) %}
+              {% if link.relatedEntry|length %}
+                <li class="menu-item lavel-{{link.level}}">
+                  <a href="{{ link.relatedEntry[0].url }}"><span>{{ link.title }}</span></a>
+                </li>
+              {% else %}
+                <li class="menu-item lavel-{{link.level}}">
+                  <a href="{{ link.customUrl }}"><span>{{ link.title }}</span></a>
+                </li>
+              {% endif %}
+            {% endif %}
+            {% ifchildren %}
+              {% if link.level is same as('1') %}
+                <li class="lavel-{{link.level}} with--drop slide-dropdown">
+                  <a href="#"><span>{{ link.title }}</span></a>
+                  <ul class="dropdown__menu">
+              {% else %}
+                <li class="drop-lavel--{{link.level}} ">
+                  <a href="#"><span>{{ link.title }}</span></a>
+                  <ul class="lavel--{{link.level}} ">
+              {% endif %}
+                  {% children %}
+               </ul>
+             </li>
+            {% endifchildren %}
+      {% endnav %}
+    </ul>
+</nav>

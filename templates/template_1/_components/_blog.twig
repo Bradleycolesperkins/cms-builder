@@ -1,4 +1,14 @@
-{% include '/template_1/_components/_heading_banner' with {'title': 'BLOG','subtitle': 'Our latest posts','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+{% if title is not defined %}
+    {% set title = 'BLOG' %}
+{% endif %}
+{% if subtitle is not defined %}
+    {% set subtitle = 'Check out our' %}
+{% endif %}
+{% if imageUrl is not defined %}
+    {% set imageUrl = '/assets/uploads/1588510581_heading-01.jpg' %}
+{% endif %}
+
+{% include '/template_1/_components/_heading_banner' with {'title': title,'subtitle': subtitle,'imageUrl': imageUrl} %}
 
 
 
@@ -14,9 +24,7 @@
                   <div class="cs-tblog__wrapp cs-tblog__wrapp--grid">
                      <div class="cs-tblog__content cs-tblog__content--grid">
                         <div class="cs-tblog__info cs-tblog__info--grid">
-                           <p class="cs-tblog__info-item">
-                              3 Comments                                                            
-                           </p>
+                           <p class="cs-tblog__info-item">{#3 Comments#}</p>
                            <p class="cs-tblog__info-item">{{blog.postDate|date('Y-m-d')}}</p>
                         </div>
                         {% set image = blog.blogImage.first() %}
@@ -24,11 +32,11 @@
                         <div class="cs-tblog__img cs-tblog__img--grid s-back-switch" style="background-image: url('{{image.getUrl() }}');">
                            <img width="670" height="529" src="{{image.getUrl() }}" class="s-img-switch wp-post-image" alt="blog-img" srcset="{{image.getUrl() }} 670w, {{image.getUrl() }} 300w, {{image.getUrl() }} 600w" sizes="(max-width: 670px) 100vw, 670px" style="display: none;">                                                                                                                                                                                    
                         </div>
-                        <h6 class="cs-tblog__title"><a href="#">{{blog.title}}</a></h6>
+                        <h6 class="cs-tblog__title"><a href="/Blog/{{blog.slug}}">{{blog.title}}</a></h6>
                         <div class="cs-tblog__excerpt cs-tblog__excerpt--grid">
                            <p>{{blog.blogSubTitle}}</p>
                         </div>
-                        <a href="#" class="cs-btn cs-tblog__btn cs-tblog__btn--grid">Read More</a>
+                        <a href="/Blog/{{blog.slug}}" class="cs-btn cs-tblog__btn cs-tblog__btn--grid">Read More</a>
                      </div>
                   </div>
                </div>

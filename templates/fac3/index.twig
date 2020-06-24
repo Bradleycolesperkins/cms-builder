@@ -1,52 +1,35 @@
 {% extends 'template_1/_layout' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+   <link href="/fac3/css/style.css" rel="stylesheet">
+{% endblock %}
+
+{% set topBar = 'no' %}
+
 
 {% block main %}
    <div class="cs-main-wrapp__inner">
       <div class="container padd-only-xs">
-         {% include '/template_1/_components/_full_screen_image_banner'  with {'title': companyInformation.companyTitle,'subtitle': companyInformation.companySlogan,'imageUrl': '/assets/uploads/1588582726_builder-with-tablet-showing-his-colleagues-where-t-8FDG5LC-1-min.jpg'} %}
 
-         {#<div class="row-full-width clearfix"></div>#}
-         {#<div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid bg-grey row-has-fill  padding-lg-110t padding-lg-110b padding-sm-70t padding-sm-70b">#}
-            {#<div class="column_container col-sm-12 ">#}
-               {#<div class="column-inner padding-t-z">#}
-                  {#<div>#}
-                     {#<div class="cs-counter row cs-counter--img-left">#}
-                        {#<div class="col-sm-12 col-md-6">#}
-                           {#<div class="cs-counter__img-wrapp">#}
-                              {#<img src="./template_1/images/image-01.jpg" class="s-img-switch" alt="image">#}
-                           {#</div>#}
-                        {#</div>#}
-                        {#<div class="col-sm-12 col-md-6">#}
-                           {#<div class="cs-counter__wrapp">#}
-                              {#<div class="cs-counter__info">#}
-                                 {#<h3 class="cs-counter__title">FAC3</h3>#}
-                                 {#<div class="cs-counter__desc">#}
-                                    {#<p>#}
-                                       {#FAC3 is the app for trades and services businesses.#}
-                                    {#</p>#}
-                                 {#</div>#}
-                                 {#<div class="cs-counter__numbers">#}
-                                    {#<div class="cs-counter__item">#}
-                                       {#<h3 class="cs-counter__item-number">925</h3>#}
-                                       {#<p class="cs-counter__item-title">Working Hours</p>#}
-                                    {#</div>#}
-                                    {#<div class="cs-counter__item">#}
-                                       {#<h3 class="cs-counter__item-number">15</h3>#}
-                                       {#<p class="cs-counter__item-title">Awards</p>#}
-                                    {#</div>#}
-                                    {#<div class="cs-counter__item">#}
-                                       {#<h3 class="cs-counter__item-number">121</h3>#}
-                                       {#<p class="cs-counter__item-title">Projects Done</p>#}
-                                    {#</div>#}
-                                 {#</div>#}
-                              {#</div>#}
-                           {#</div>#}
-                        {#</div>#}
-                     {#</div>#}
-                  {#</div>#}
-               {#</div>#}
-            {#</div>#}
-         {#</div>#}
+
+         <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="row-fluid row-no-padding">
+            <div class="column_container col-sm-12 ">
+               <div>
+                  <div>
+                     <section class="container-fluid cs-banner no-padd  play cs-banner--fullheight js-fullheight js-parallax-banner-parent">
+                        <div class="js-parallax-banner-item" data-parallax-speed="1">
+                           <video autoplay muted loop id="myVideo">
+                              <source src="/assets/videos/ServiceM8FacebookAdGlobal.mp4" type="video/mp4" style="  position: fixed;right: 0;bottom: 0;min-width: 100%; min-height: 100%;">
+                           </video>
+                        </div>
+                     </section>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
 
 
 
@@ -62,14 +45,14 @@
 
                                   <div class="cs-block__item js-filter-simple-block p_f_95af047">
                                      <div class="cs-block__item-wrapp">
-                                        <div class="cs-portfolio cs-portfolio--services">
+                                        <div class="cs-portfolio cs-portfolio--services background-transparent">
                                           <span class="cs-portfolio__icon cs-portfolio__icon--services">
                                              <img src="/assets/uploads/1588590727_getmorework.png">
                                           </span>
                                            <h6 class="cs-portfolio__title cs-portfolio__title--services">Win more customers</h6>
                                            <div class="cs-portfolio__desc cs-portfolio__desc--services">
                                               <p>
-                                                 With competition in the industry being fiercem winning new business can be difficult. But, with the help of this technology,
+                                                 With competition in the industry being fierce winning new business can be difficult. But, with the help of this technology,
                                                  businesses can send sleek, well-presented digital quotations through ready-made forms and bespoke PDF's, enabling them to respond immediately to enquiries.
                                                  This is why businesses using it have reported an average of 30% more work in the first 3 months!
                                               </p>
@@ -80,7 +63,7 @@
 
                                  <div class="cs-block__item js-filter-simple-block p_f_95af047">
                                     <div class="cs-block__item-wrapp">
-                                       <div class="cs-portfolio cs-portfolio--services">
+                                       <div class="cs-portfolio cs-portfolio--services background-transparent">
                                           <span class="cs-portfolio__icon cs-portfolio__icon--services">
                                               <img src="/assets/uploads/1588590727_getmorework.png">
                                           </span>
@@ -98,14 +81,14 @@
 
                                  <div class="cs-block__item js-filter-simple-block p_f_95af047">
                                     <div class="cs-block__item-wrapp">
-                                       <div class="cs-portfolio cs-portfolio--services">
+                                       <div class="cs-portfolio cs-portfolio--services background-transparent">
                                           <span class="cs-portfolio__icon cs-portfolio__icon--services">
                                               <img src="/assets/uploads/1588590725_getparidfaster.png">
                                           </span>
                                           <h6 class="cs-portfolio__title cs-portfolio__title--services">Faster payments</h6>
                                           <div class="cs-portfolio__desc cs-portfolio__desc--services">
                                              <p>
-                                                Through the system, businesses can manage finances with ease, sending invoices instantly once a job is completed. With a range of cusr=tomisable documents at your disposal,
+                                                Through the system, businesses can manage finances with ease, sending invoices instantly once a job is completed. With a range of customisable documents at your disposal,
                                                 this software can have a hugely positive impact on cashflow.
                                              </p>
                                           </div>
@@ -120,16 +103,38 @@
                   </div>
                </div>
             </div>
+            <div class="column_container col-sm-12 ">
+               <div class="column-inner padding-t-z">
+                  <div>
+                     <div class="container-fluid no-padd cs-parent ">
+                        <div class="cs-parent__content-wr">
+                           <div class="offset-md-3 col-md-6">
+                              <div class="row">
+                                 <div class="col-md-6 text-center">
+                                    <a class="btn btn-2 btn-lg text-white border-none" href="https://book.servicem8.com/request_booking?uuid=a027283e-6c39-40ee-97b9-1b7766c6018b" target="_blank">Start a free trial</a>
+                                 </div>
+                                 <div class="col-md-6 text-center">
+                                    <a class="btn btn-2 btn-lg text-white border-none" href="https://book.servicem8.com/request_booking?uuid=a027283e-6c39-40ee-97b9-1b7766c6018b" target="_blank">Book in a consultation</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+
+
          </div>
 
 
 
 
-
-          {% include '/template_1/_components/_heading_banner' with {'title': 'Services','subtitle': 'What we offer','imageUrl': '/assets/uploads/1588582055_builder-with-tablet-showing-his-colleagues-where-t-8FDG5LC.jpg'} %}
+         <div class="row-full-width clearfix"></div>
 
          <div class="row-full-width clearfix"></div>
-         <div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid bg-grey row-has-fill  padding-lg-110t padding-lg-110b padding-sm-70t padding-sm-70b">
+         <div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid row-has-fill  padding-lg-110t padding-lg-110b padding-sm-70t padding-sm-70b">
             <div class="column_container col-sm-12 ">
                <div class="column-inner">
                   <div>
@@ -138,8 +143,12 @@
                         <div class="column_container col-sm-12">
                            <div class="column-inner">
                               <div>
+                                 <h2 class="text-center">Your Services</h2>
+
+
+
                                  <section class="cs-process  cs-process--img-right">
-                                    <div class="cs-process__img-wrapp">
+                                    <div class="cs-process__img-wrapp curved-border">
                                        <img class="s-img-switch" src="/assets/uploads/1588616909_ServiceM8-4-Invoice.png"  alt="img-work-process">
                                     </div>
                                     <div class="cs-process__info">
@@ -163,8 +172,8 @@
                            <div class="column-inner">
                               <div>
                                  <section class="cs-process  cs-process--img-left">
-                                    <div class="cs-process__img-wrapp">
-                                       <img class="s-img-switch" src="/assets/uploads/1588616800_two-builders-holding-construction-plans-CWDNPLA-min-1.jpg"  alt="img-work-process">
+                                    <div class="cs-process__img-wrapp curved-border">
+                                       <img class="s-img-switch " src="/assets/uploads/1588616800_two-builders-holding-construction-plans-CWDNPLA-min-1.jpg"  alt="img-work-process">
                                     </div>
                                     <div class="cs-process__info">
                                        <h3 class="cs-process__title">Manage your team</h3>
@@ -180,6 +189,15 @@
                            </div>
                         </div>
                      </div>
+                     <div class="row inner row-fluid padding-lg-70t ">
+                        <div class="column_container col-sm-12">
+                           <div class="column-inner">
+                              <div class="text-center">
+                                 <img src="/assets/uploads/1589124843_57d7ef8c3d16a9a554f039b6_certified_partner.jpg" style="max-width: 300px">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
 
                   </div>
                </div>
@@ -188,56 +206,64 @@
 
 
           <div class="row-full-width clearfix"></div>
-          {% include '/template_1/_components/_heading_banner' with {'title': 'Pricing','subtitle': 'Check out our','imageUrl': '/assets/uploads/1588595704_person-paying-pay-through-smartphone-using-nfc-PGDVZZ4-min.jpg'} %}
 
           <div class="row-full-width clearfix"></div>
-          <div class="row row-fluid  padding-lg-65t padding-lg-80b padding-sm-55b">
-            <div class="column_container col-sm-8 col-md-offset-1 col-md-5 col-sm-offset-2  padding-lg-50t">
-              <div class="column-inner padding-t-z">
-                 <div>
-                    <div class="wpb_text_column wpb_content_element ">
-                       <div class="">
-                          <div class="cs-pricing__img-wrapp cs-pricing__img-wrapp--overlay s-back-switch" style="background-image: url(';http://fac3.co.uk/assets/uploads/1588582055_builder-with-tablet-showing-his-colleagues-where-t-8FDG5LC.jpg');">
-                            <img class="s-img-switch" src="/assets/uploads/1588582055_builder-with-tablet-showing-his-colleagues-where-t-8FDG5LC.jpg" alt="" style="display: none;">
-                            <h5 class="cs-pricing__price cs-pricing__price--image">From</h5>
-                            <span class="cs-btn cs-btn--c-custom cs-pricing__btn cs-pricing__btn--image" href="#" target=" _blank">£8/<span></span>mo</a>
-                         </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
+            <div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid bg-grey row-has-fill  padding-lg-110t padding-lg-110b padding-sm-70t padding-sm-70b">
 
-           <div class="column_container col-sm-8 col-md-offset-0 col-md-6 col-sm-offset-2   padding-lg-50t">
-              <div class="column-inner padding-t-z">
-                 <div>
-                    <section class="cs-heading  cs-heading--left cs-heading--c-default cs-heading--modern">
-                       <h3 class="cs-heading__title">Simple, affordable pricing</h3>
-                       <h6 class="cs-heading__subtitle">No hidden fees. No contracts. No Catch</h6>
-                       <div class="cs-heading__content">
-                          <p>Learn more about pricing</p>
-                       </div>
-                    </section>
-                    <div class="row inner row-fluid  padding-lg-20t">
-                       <div class="column_container col-sm-12">
-                          <div class="column-inner">
-                             <div>
-                                <ul>
-                                  <li>14 day free trial</li>
-                                  <li>Free accounting integration</li>
-                                  <li>Unlimited staff/users</li>
-                                  <li>Unlimited storage</li>
-                                  <li>24/7 Support</li>
-                                </ul>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
-           
-        </div>
+               <div class="column_container col-sm-12 ">
+                  <div class="column-inner padding-t-z">
+                     <div>
+                        <h2 class="text-center">Pricing</h2>
+
+                        <div class="row row-fluid  padding-lg-65t padding-lg-80b padding-sm-55b">
+                           <div class="column_container col-sm-8 col-md-offset-1 col-md-5 col-sm-offset-2  padding-lg-50t">
+                              <div class="column-inner padding-t-z">
+                                 <div>
+                                    <div class="wpb_text_column wpb_content_element ">
+                                       <div class="">
+                                          <div class="cs-pricing__img-wrapp cs-pricing__img-wrapp--overlay s-back-switch" style="background-image: url(';http://fac3.co.uk/assets/uploads/1588582055_builder-with-tablet-showing-his-colleagues-where-t-8FDG5LC.jpg');">
+                                             <img class="s-img-switch" src="/assets/uploads/1588582055_builder-with-tablet-showing-his-colleagues-where-t-8FDG5LC.jpg" alt="" style="display: none;">
+                                             <h5 class="cs-pricing__price cs-pricing__price--image">From</h5>
+                                             <a class="cs-btn cs-btn--c-custom cs-pricing__btn cs-pricing__btn--image" href="#" target=" _blank">£8/<span>mo</span></a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="column_container col-sm-8 col-md-offset-0 col-md-6 col-sm-offset-2   padding-lg-50t">
+                              <div class="column-inner padding-t-z">
+                                 <div>
+                                    <section class="cs-heading  cs-heading--left cs-heading--c-default cs-heading--modern">
+                                       <h3 class="cs-heading__title">Simple, affordable pricing</h3>
+                                       <h6 class="cs-heading__subtitle">No hidden fees. No contracts. No Catch</h6>
+                                       <div class="cs-heading__content">
+                                          <p>Learn more about pricing</p>
+                                       </div>
+                                    </section>
+                                    <div class="row inner row-fluid  padding-lg-20t">
+                                       <div class="column_container col-sm-12">
+                                          <div class="column-inner">
+                                             <div>
+                                                <ul>
+                                                   <li>14 day free trial</li>
+                                                   <li>Free accounting integration</li>
+                                                   <li>Unlimited staff/users</li>
+                                                   <li>Unlimited storage</li>
+                                                   <li>24/7 Support</li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
 
          
          <div class="row-full-width clearfix"></div>

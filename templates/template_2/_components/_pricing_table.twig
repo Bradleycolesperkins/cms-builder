@@ -1,0 +1,84 @@
+<!-- Pricing Table Area Start -->
+<div class="brook-pricing-table-area ptb--150 ptb-md--80 ptb-sm--80 bg_color--5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="brook-section-title text-center mb--45">
+                    <h6 class="heading-13 theme-color text-uppercase fw-500">Pricing table</h6>
+                    <div class="bkseparator--25"></div>
+                    <h2 class="heading-40 fw-200">Buy Brook and get access to <br> premium plugins for free.</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for entry in craft.entries.section('prices').all() %}
+
+                <!-- Start Single Pricing Table -->
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="procing-wrap price-style-3 pt--40 move-up wow">
+                        <div class="procing-box">
+                            <div class="header">
+                                <div class="price-area">
+                                    <div class="header-title">
+                                        {% if entry.priceSubtitle %}
+                                            <div class="pricing-feature-mark">{{entry.priceSubtitle}}</div>
+                                        {% endif %}
+                                        <h5 class="title">{{entry.title}}</h5>
+                                    </div>
+                                    <div class="price-wrap d-flex">
+                                        <h3 class="currenct">{{entry.indiviudalPrice}}</h3>
+                                    </div>
+                                    <h6 class="period">{{entry.pricePeriod}}</h6>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <!-- Start Single List -->
+                                <div class="bk-list--2">
+                                    {{entry.priceIncludes}}
+                                    {# <div class="list-header with-ckeck item-available">
+                                        <div class="marker"></div>
+                                        <div class="title-wrap">
+                                            <h6 class="heading heading-h5">5k Searchable messages</h6>
+                                        </div>
+                                    </div>
+                                    <div class="list-header with-ckeck item-available">
+                                        <div class="marker"></div>
+                                        <div class="title-wrap">
+                                            <h6 class="heading heading-h5">10 custom Apps/services</h6>
+                                        </div>
+                                    </div>
+                                    <div class="list-header with-ckeck item-available">
+                                        <div class="marker"></div>
+                                        <div class="title-wrap">
+                                            <h6 class="heading heading-h5">Minimum 3 users, max 10 users</h6>
+                                        </div>
+                                    </div>
+                                    <div class="list-header with-ckeck item-not-available">
+                                        <div class="marker"></div>
+                                        <div class="title-wrap">
+                                            <h6 class="heading heading-h5">1 Voice and video call</h6>
+                                        </div>
+                                    </div> #}
+                                </div>
+                                <!-- End Single List -->
+                            </div>
+                            <div class="footer mt--40">
+                                <a class="brook-btn bk-btn-secondary-border btn-sd-size space-between btn-essential" href="#">{{entry.buttonText}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Pricing Table -->
+
+            {% endfor %}
+        </div>
+        <div class="row mt--50">
+            <div class="col-12">
+                <div class="more-pricing">
+                    <p>Know more about pricing details. <a href="#">Check it now</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pricing Table Area End -->

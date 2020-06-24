@@ -1,0 +1,54 @@
+<!-- Block Start -->
+{% for block in block.all() %}
+    {% switch block.type %}
+
+        {% case "container" %}
+            {% for block in block.containerBlock.all() %}
+                {% include '/template_2/_components/_container' with {'container': block} %}
+            {% endfor %}
+
+
+        {# ANY THING BELOW ADDED SHOULD BE IN THE CONTAINER ALSO #}
+        {% case "columns" %}
+            {% for block in block.columnBlock.all() %}
+                {% include '/template_2/_components/_columns' with {'columns': block} %}
+            {% endfor %}
+
+
+        {% case "callToActionBlock" %}
+            {% for block in block.callToAction.all() %}
+                {% include '/template_2/_components/_call_to_action' with {'call_to_action_block': block} %}
+            {% endfor %}
+
+        {% case "iconBlock" %}
+        {% for block in block.icons.all() %}
+                {% include '/template_2/_components/_icon_boxes' with {'icon_block': block} %}
+            {% endfor %}
+
+        {% case "textBlock" %}
+            {% for block in block.text.all() %}
+                {% include '/template_2/_components/_text' with {'text_block': block} %}
+            {% endfor %}
+
+        {% case "messageBlock" %}
+            {% for block in block.message.all() %}
+                {% include '/template_2/_components/_messages' with {'message_block': block} %}
+            {% endfor %}
+
+        {% case "accordionBlock" %}
+            {% for block in block.accordion.all() %}
+                {% include '/template_2/_components/_accordions' with {'accordion_block': block} %}
+            {% endfor %}
+
+        {% case "sliderBlock" %}
+            {% for block in block.slider.all() %}
+                {% include '/template_2/_components/_sliders' with {'slider_block': block} %}
+            {% endfor %}
+
+        {% default %}
+         {{ dd('DEFAULT BLOCK', block.type) }}
+        {# NO DEFAULT FOR NOW PERHAPS A PROMPT TO SHOW THE USER INCORRECT #}
+
+    {% endswitch %}
+{% endfor %}
+<!-- Block End -->

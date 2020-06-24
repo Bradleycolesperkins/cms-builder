@@ -1,4 +1,17 @@
-{% include '/template_1/_components/_heading_banner' with {'title': 'Portfolio','subtitle': 'Check out our','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+{% if title is not defined %}
+    {% set title = 'Portfolio' %}
+{% endif %}
+{% if altTitle is not defined %}
+    {% set altTitle = title %}
+{% endif %}
+{% if subtitle is not defined %}
+    {% set subtitle = 'Check out our' %}
+{% endif %}
+{% if imageUrl is not defined %}
+    {% set imageUrl = '/assets/uploads/1588510581_heading-01.jpg' %}
+{% endif %}
+
+{% include '/template_1/_components/_heading_banner' with {'title': title,'subtitle': subtitle,'imageUrl': imageUrl} %}
 
 
 <div class="row-full-width clearfix"></div>
@@ -15,15 +28,28 @@
                            <i></i>
                            </a>
                            <div class="cs-filter-content__wrapp">
-                              <h3 class="cs-filter-content__title">{{title|default('Portfolio')}}</h3>
+                              <h3 class="cs-filter-content__title">{{altTitle|default('Portfolio')}}</h3>
                               <div class="cs-filter-content__desc">
-                                 <p>{{about|default('About our portfolio')}}</p>
+                                 <p>{{about|default('About our portfolio')|raw}}</p>
                               </div>
 
                               <ul class="cs-filter-content__list">
                                  <li class="cs-filter-content__item cs-filter-content__item--active js-filter-content-item" data-filter="*">ALL</li>
-                                 {% for tag in craft.tags().site(currentSite.handle).group('portfolio') %}
-                                    <li class="cs-filter-content__item js-filter-content-item" data-filter="p_f_{{ tag.title|replace('/[^a-zA-Z0-9_+]/', '') }}">{{ tag }}</li>
+                                  {% set portfolioItems = craft.entries.section('portfolio').all() %}
+                                  {% set tagTitles = [] %}
+
+                                  {% for tweakEntryTag in portfolioItems %}
+                                      {% set entryTags = craft.tags.relatedTo(tweakEntryTag) %}
+
+                                      {% for tweakEntryTag in entryTags %}
+                                          {% if tweakEntryTag.title not in tagTitles %}
+                                             {% set tagTitles = tagTitles|merge([tweakEntryTag.title]) %}
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endfor %}
+
+                                 {% for tag in tagTitles %}
+                                    <li class="cs-filter-content__item js-filter-content-item" data-filter="p_f_{{ tag|replace('/[^a-zA-Z0-9_+]/', '') }}">{{ tag }}</li>
                                  {% endfor %}
                               </ul>
                            </div>
@@ -43,7 +69,7 @@
                      <div class="cs-block__item js-filter-simple-block {{tweakedEntryTags |join(' ')}} ">
                         <div class="cs-block__item-wrapp">
                            <div class="cs-portfolio cs-portfolio--masonry">
-                              <a class="cs-portfolio__link cs-portfolio__link--masonry cs-portfolio__link--block cs-portfolio__link--parallax cs-portfolio__link--overlay" href="#" target="_self">
+                              <a class="cs-portfolio__link cs-portfolio__link--masonry cs-portfolio__link--block cs-portfolio__link--parallax cs-portfolio__link--overlay" href="/Portfolio/{{entry.slug}}" target="_self">
                                  {% set image = entry.portfolioImage.first() %}
                                  <img width="355" height="281" src="{{image.getUrl() }}" class="s-img-switch wp-post-image" alt="block-img" data-s-hidden="true" data-s-sibling="true" srcset="{{image.getUrl() }} 355w, {{image.getUrl() }} 300w" sizes="(max-width: 355px) 100vw, 355px" />
                                  <div class="cs-portfolio__img cs-portfolio__img--parallax"></div>
@@ -62,7 +88,7 @@
 
                </div>
                <div class="row margin-lg-30t">
-                  <div class="col-xs-12 t-center">
+                  <div class="col-xs-12 col-md-12 col-lg-12 t-center">
                      <a href="/Portfolio">
                         <button class="load-more cs-btn cs-btn--btn">VIEW ALL</button>
                      </a>

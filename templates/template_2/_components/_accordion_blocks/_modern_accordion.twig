@@ -1,0 +1,17 @@
+{% set target = block.accordionTitle|replace('/[^a-zA-Z0-9+]/', '') ~ '-modern-' ~ block.fieldId %}
+<!-- Single Standard Accordion Start -->
+<div class="bk-accordion-style--2" id="accordion{{target}}">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <a href="#" class="acc-btn collapsed" data-toggle="collapse" data-target="#{{target}}" aria-expanded="true" aria-controls="{{target}}">
+                    {{block.accordionTitle}}
+                </a>
+            </h5>
+        </div>
+        <div id="{{target}}" class="collapse" aria-labelledby="{{target}}" data-parent="#accordion{{target}}" style="">
+            <div class="card-body">{{block.accordionContent}}</div>
+        </div>
+    </div>
+</div>
+<!-- Single Standard Accordion End -->

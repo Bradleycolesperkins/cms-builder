@@ -1,0 +1,48 @@
+{% if companyInformation.companyFavicon|length > 0 %}
+   {% set image = companyInformation.companyFavicon.first() %}
+   <link rel="apple-touch-icon" sizes="180x180" href="{{image.getUrl()}}">
+   <link rel="icon" href="{{image.getUrl()}}">
+{% endif %}
+
+{#TITLE#}
+{% if entry.pageTitle is defined and entry.pageTitle|length > 0 %}
+   <title>{{entry.pageTitle}}</title>
+{% else %}
+   <title>{{companyInformation.companyTitle}}</title>
+{% endif %}
+
+{#DESCRIPTION#}
+{% if entry.pageDescription is defined and entry.pageDescription|length > 0 %}
+   <meta name="description" content="{{ entry.pageDescription }}">
+{% endif %}
+
+{#OGTITLE#}
+{% if entry.ogTitle is defined and entry.ogTitle|length > 0 %}
+   <meta property="og:title" content="{{ entry.ogTitle }}">
+{% endif %}
+
+{#OGDESCRIPTION#}
+{% if entry.ogDescription is defined and entry.ogDescription|length > 0 %}
+   <meta property="og:description" content="{{ entry.ogDescription }}">
+{% endif %}
+
+{#OGTYPE#}
+{% if entry.ogType is defined and entry.ogType|length > 0 %}
+   <meta property="og:type" content="{{ entry.ogType }}">
+{% endif %}
+
+{#OGURL#}
+{% if entry.ogUrl is defined and entry.ogUrl|length > 0 %}
+   <meta property="og:url" content="{{ entry.ogUrl }}">
+{% else %}
+   <meta property="og:url" content="{{ craft.app.request.absoluteUrl }}">
+{% endif %}
+
+{#OGURL#}
+{% if entry.ogImage is defined and entry.ogImage|length > 0 %}
+   {% set image = entry.ogImage.first() %}
+   <meta property="og:image" content="{{ siteUrl  }}{{ image.getUrl() }}">
+{% endif %}
+
+
+{% include '/_global/_site_styles' %}

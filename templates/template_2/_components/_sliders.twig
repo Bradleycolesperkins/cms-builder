@@ -1,0 +1,20 @@
+<!-- Sliders Loop Start -->
+
+{% if slider_block %}
+    {% for block in slider_block.sliderBlock.all() %}
+        {% switch block.type %}
+
+            {% case "standardFullPageSlider" %}
+                {% include '/template_2/_components/_slider_blocks/_standard_full_page_slider' with { 'slider' : block} %}
+
+            {% case "caseStudiesSlider" %}
+                {% include '/template_2/_components/_slider_blocks/_case_studies_slider' with { 'slider' : block} %}
+
+            {% default %}
+                {{ dd('SLIDERS', block.type) }}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
+
+<!-- Sliders Loop End -->

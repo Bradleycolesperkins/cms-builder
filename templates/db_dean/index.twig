@@ -1,41 +1,41 @@
-{% extends 'template_1/_layout' %}
+{% extends 'db_dean/_layout' %}
 
 {% block main %}
    <div class="cs-main-wrapp__inner">
       <div class="container padd-only-xs">
-         {% include '/template_1/_components/_full_screen_image_banner'  with {'title': companyInformation.companyTitle,'subtitle': companyInformation.companySlogan,'imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+         {% include '/template_1/_components/_full_screen_image_banner'  with {'title': companyInformation.companySlogan|upper,'subtitle': '','imageUrl': '/assets/uploads/1590426988_DSC00638.jpg'} %}
 
          <div class="row-full-width clearfix"></div>
-         <div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid bg-grey row-has-fill  padding-lg-110t padding-lg-110b padding-sm-70t padding-sm-70b">
-            <div class="column_container col-sm-12 ">
-               <div class="column-inner padding-t-z">
+         <div class="row row-fluid  padding-lg-105t padding-lg-105b padding-sm-70t padding-sm-70b">
+            <div class="column_container col-sm-12 col-md-6 ">
+               <div class="column-inner ">
                   <div>
-                     <div class="cs-counter row cs-counter--img-left">
-                        <div class="col-sm-12 col-md-6">
-                           <div class="cs-counter__img-wrapp">
-                              <img src="./template_1/images/image-01.jpg" class="s-img-switch" alt="image">
-                           </div>
+                     <section class="cs-heading  cs-heading--left cs-heading--c-default cs-heading--modern">
+                        <h2 class="cs-heading__subtitle">DB Dean</h2>
+                        <h5 class="cs-heading__title">
+                           DBDean is a South Wales-based firm that specialises in the design, build and installation of bespoke windows and doors, providing a wealth of services across the UK.
+                        </h5>
+                        <div class="cs-heading__content">
+                           <p>Creating unique, high-quality and aesthetically pleasing windows and doors, we pride ourselves on the work we deliver, creating tailored solutions for our ever-growing list of happy customers.</p>
                         </div>
-                        <div class="col-sm-12 col-md-6">
-                           <div class="cs-counter__wrapp">
-                              <div class="cs-counter__info">
-                                 <h3 class="cs-counter__title">GROW &amp; SUCCEED</h3>
-                                 <div class="cs-counter__desc">
-                                    <p>Erat volutpat. Ut wisi enim nostrud exerci ullam corper suscipit lobortis nisl ut aliquip ex commo do consquatErat volutpat. Ut wisi enim nostrud exerci ullamcorper suscipit lobortis nisl ut aliquip</p>
-                                 </div>
-                                 <div class="cs-counter__numbers">
-                                    <div class="cs-counter__item">
-                                       <h3 class="cs-counter__item-number">925</h3>
-                                       <p class="cs-counter__item-title">Working Hours</p>
-                                    </div>
-                                    <div class="cs-counter__item">
-                                       <h3 class="cs-counter__item-number">15</h3>
-                                       <p class="cs-counter__item-title">Awards</p>
-                                    </div>
-                                    <div class="cs-counter__item">
-                                       <h3 class="cs-counter__item-number">121</h3>
-                                       <p class="cs-counter__item-title">Projects Done</p>
-                                    </div>
+                        <a class="cs-btn   cs-heading__btn" href="/Portfolio" target="/Portfolio"> VIEW WORK </a>
+                     </section>
+                  </div>
+               </div>
+            </div>
+            <div class="column_container col-sm-12 col-md-6  margin-sm-30t">
+               <div class="column-inner ">
+                  <div>
+                     <div class="row inner row-fluid ">
+                        <div class="column_container col-sm-12 col-xs-12">
+                           <div class="column-inner">
+                              <div>
+                                 <div class="wpb_single_image wpb_content_element align_right">
+                                    <figure class=" figure">
+                                       <div class="single_image-wrapper   box_border_grey">
+                                          <img width="400" height="235" src="/assets/uploads/1588841946_rsz_20160610_113046.jpg" class="single_image-img attachment-full" alt=" image" srcset="/assets/uploads/1588841946_rsz_20160610_113046.jpg 235w, /assets/uploads/1588841946_rsz_20160610_113046.jpg 150w, /assets/uploads/1588841946_rsz_20160610_113046.jpg 100w" sizes="(max-width: 235px) 100vw, 235px">
+                                       </div>
+                                    </figure>
                                  </div>
                               </div>
                            </div>
@@ -45,15 +45,16 @@
                </div>
             </div>
          </div>
-         
 
-         {% include '/template_1/_components/_portfolio' %}
-         {% include '/template_1/_components/_services' %}
-         {% include '/template_1/_components/_team' %}
-         {% include '/template_1/_components/_awards' %}
-         {% include '/template_1/_components/_clients' %}
-         {% include '/template_1/_components/_testimonials' %}
-         {% include '/template_1/_components/_blog' %}
+         {% include '/template_1/_components/_services' with {'title': 'WHAT WE DO','subtitle': 'HERE YOU CAN SEE AND ESTIMATE','imageUrl': '/assets/uploads/1588690619_image7.jpg', 'hideLink': true} %}
+
+         {% include '/template_1/_components/_portfolio' with {'title': 'PORTFOLIO','subtitle': 'CHECK OUT OUR','imageUrl': '/assets/uploads/1588690327_image5.jpg'} %}
+
+         {% include '/template_1/_components/_clients' with {'title': 'CLIENTS','subtitle': 'WE HAVE A LONG HISTORY OF HAPPY CLIENTS','imageUrl': '/assets/uploads/1588690523_image3.jpg'} %}
+
+         {% include '/template_1/_components/_testimonials' with {'title': 'TESTIMONIALS','subtitle': 'SOME KIND WORDS FROM OUR CLIENTS','imageUrl': '/assets/uploads/1588690327_image5.jpg'} %}
+
+         {% include '/template_1/_components/_blog' with {'title': 'OUR BLOG','subtitle': 'ARTICLES OF INTEREST','imageUrl': '/assets/uploads/1588690324_image6.jpg'} %}
 
 
 

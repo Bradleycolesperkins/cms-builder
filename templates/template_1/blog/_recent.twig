@@ -1,20 +1,10 @@
 <div class="widget widget_recent_entries">
    <h6 class="widget__title">Recent Posts</h6>
    <ul>
+      {% for blog in craft.entries.section('blog').limit(5).orderBy('postDate desc') %}
       <li>
-         <a href="#">TIME INC. ARCHITECTURA</a>
+         <a href="/Blog/{{blog.slug}}">{{blog.title}}</a>
       </li>
-      <li>
-         <a href="#">HOW WE BUILT BIG YELLOW TUNNEL</a>
-      </li>
-      <li>
-         <a href="#">TOM KRIZMANIC SPEAKS ABOUT NEUTRAL DESIGN</a>
-      </li>
-      <li>
-         <a href="#">CREATURE INTERIOR</a>
-      </li>
-      <li>
-         <a href="#">HOW TO DISCOVER YOURSELF IN 7 SIMPLE STEPS</a>
-      </li>
+      {% endfor %}
    </ul>
 </div>

@@ -4,13 +4,8 @@
       <meta charset="UTF-8">
       <meta name="apple-mobile-web-app-capable" content="yes">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      {% if companyInformation.companyFavicon|length > 0 %}
-      {% set image = companyInformation.companyFavicon.first() %}
-         <link rel="apple-touch-icon" sizes="180x180" href="{{image.getUrl()}}">
-         <link rel="icon" href="{{image.getUrl()}}">
-      {% endif %}
 
-      <title>{{companyInformation.companyTitle}}</title>
+      {% include '/_global/_header_tags' %}
 
       {% block stylesheets %}
          <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
@@ -51,20 +46,22 @@
          </div>
       </div>
       <div class="cs-main-wrapp">
-         <div class="cs-top-header js-top-header">
-            <div class="cs-top-header__content-wr">
-               <ul class="cs-top-header__links">
-                  <li class="cs-top-header__links-item"><a href="contact-me.html">FAQ</a></li>
-                  <li class="cs-top-header__links-item"><a href="contact-us.html">CONTACT</a></li>
-                  <li class="cs-top-header__links-item"><a href="tel:{{ companyInformation.companyContactNumber }}">{{ companyInformation.companyContactNumber }}</a></li>
-               </ul>
-               <div class="cs-top-header__desc">
-                  <p>
-                     MON - FRI: 08:00 - 05:00 PM
-                  </p>
+          {% if topbar is not defined %}
+               <div class="cs-top-header js-top-header">
+                  <div class="cs-top-header__content-wr">
+                     <ul class="cs-top-header__links">
+                        <li class="cs-top-header__links-item"><a href="mailto:{{ companyInformation.companyEmailAddress }}">{{ companyInformation.companyEmailAddress }}</a></li>
+                        <li class="cs-top-header__links-item"><a href="tel:{{ companyInformation.companyContactNumber }}">{{ companyInformation.companyContactNumber }}</a></li>
+                     </ul>
+                     <div class="cs-top-header__desc">
+                        <p>
+                           MON - FRI: 08:00 - 05:00 PM
+                        </p>
+                     </div>
+                  </div>
                </div>
-            </div>
-         </div>
+          {% endif %}
+
          <header class="cs-header js-header  js-sticky-container cs-header--fixed">
             <div class="cs-header__wrapp js-header-height  js-sticky-header">
                <div class="cs-header__content-wr">
@@ -117,52 +114,74 @@
                         </nav>
                         <div class="cs-header__socials">
                            <ul class="cs-socials cs-socials--nav-menu">
-                              <li class="cs-socials__item">
-                                 <a target="_blank" href="#">
-                                 <i aria-hidden="true" class="fa fa-facebook"  ></i>
-                                 </a>
-                              </li>
-                              <li class="cs-socials__item">
-                                 <a target="_blank" href="#">
-                                 <i aria-hidden="true" class="fa fa-twitter"  ></i>
-                                 </a>
-                              </li>
-                              <li class="cs-socials__item">
-                                 <a target="_blank" href="#">
-                                 <i aria-hidden="true" class="fa fa-instagram"  ></i>
-                                 </a>
-                              </li>
-                              <li class="cs-socials__item">
-                                 <a target="_blank" href="#">
-                                 <i aria-hidden="true" class="fa fa-pinterest-p"  ></i>
-                                 </a>
-                              </li>
+                               {% if companySocialMedias.companyFacebook|length > 0 %}
+                                 <li class="cs-socials__item">
+                                    <a target="_blank" href="{{ companySocialMedias.companyFacebook }}">
+                                    <i aria-hidden="true" class="fa fa-facebook"  ></i>
+                                    </a>
+                                 </li>
+                              {% endif %}
+
+                               {% if companySocialMedias.companyInstagram|length > 0 %}
+                                  <li class="cs-socials__item">
+                                     <a target="_blank" href="{{ companySocialMedias.companyInstagram }}">
+                                        <i aria-hidden="true" class="fa fa-instagram"  ></i>
+                                     </a>
+                                  </li>
+                               {% endif %}
+
+                               {% if companySocialMedias.companyTwitter|length > 0 %}
+                                  <li class="cs-socials__item">
+                                     <a target="_blank" href="{{ companySocialMedias.companyTwitter }}">
+                                        <i aria-hidden="true" class="fa fa-twitter"  ></i>
+                                     </a>
+                                  </li>
+                               {% endif %}
+
+                               {% if companySocialMedias.companyYoutube|length > 0 %}
+                                  <li class="cs-socials__item">
+                                     <a target="_blank" href="{{ companySocialMedias.companyYoutube }}">
+                                        <i aria-hidden="true" class="fa fa-youtube"  ></i>
+                                     </a>
+                                  </li>
+                               {% endif %}
                            </ul>
                         </div>
                      </div>
                   </div>
                   <div class="cs-header__nav-btn">
                      <ul class="cs-socials cs-socials--menu">
-                        <li class="cs-socials__item">
-                           <a target="_blank" href="{{ companySocialMedias.companyFacebook }}">
-                           <i aria-hidden="true" class="fa fa-facebook"  ></i>
-                           </a>
-                        </li>
-                        <li class="cs-socials__item">
-                           <a target="_blank" href="{{ companySocialMedias.companyTwitter }}">
-                           <i aria-hidden="true" class="fa fa-twitter"  ></i>
-                           </a>
-                        </li>
-                        <li class="cs-socials__item">
-                           <a target="_blank" href="{{ companySocialMedias.companyInstagram }}">
-                           <i aria-hidden="true" class="fa fa-instagram"  ></i>
-                           </a>
-                        </li>
-                        <li class="cs-socials__item">
-                           <a target="_blank" href="{{ companySocialMedias.companyTwitter }}">
-                           <i aria-hidden="true" class="fa fa-twitter"  ></i>
-                           </a>
-                        </li>
+                         {% if companySocialMedias.companyFacebook|length > 0 %}
+                            <li class="cs-socials__item">
+                               <a target="_blank" href="{{ companySocialMedias.companyFacebook }}">
+                                  <i aria-hidden="true" class="fa fa-facebook"  ></i>
+                               </a>
+                            </li>
+                         {% endif %}
+
+                         {% if companySocialMedias.companyInstagram|length > 0 %}
+                            <li class="cs-socials__item">
+                               <a target="_blank" href="{{ companySocialMedias.companyInstagram }}">
+                                  <i aria-hidden="true" class="fa fa-instagram"  ></i>
+                               </a>
+                            </li>
+                         {% endif %}
+
+                         {% if companySocialMedias.companyTwitter|length > 0 %}
+                            <li class="cs-socials__item">
+                               <a target="_blank" href="{{ companySocialMedias.companyTwitter }}">
+                                  <i aria-hidden="true" class="fa fa-twitter"  ></i>
+                               </a>
+                            </li>
+                         {% endif %}
+
+                         {% if companySocialMedias.companyYoutube|length > 0 %}
+                            <li class="cs-socials__item">
+                               <a target="_blank" href="{{ companySocialMedias.companyYoutube }}">
+                                  <i aria-hidden="true" class="fa fa-youtube"  ></i>
+                               </a>
+                            </li>
+                         {% endif %}
                      </ul>
                      <!-- mobile icon -->
                      <div class="cs-nav-menu js-menu-block">
@@ -190,9 +209,16 @@
                <div class="row cs-footer__align cs-footer__align--full">
                   <div class="col-md-3 col-sm-6">
                      <div class="cs-footer__copyright">
-                        <h4>{{ companyInformation.companyTitle }},<br />
-                           {{ companyInformation.companySlogan }}
-                        </h4>
+                         {% if companyInformation.companyLogoAlternative|length > 0 %}
+                             {% set image = companyInformation.companyLogoAlternative.first() %}
+                              <h4>{{ companyInformation.companyTitle }}</h4>
+                               <img src="{{image.getUrl()}}" srcset="{{image.getUrl()}} 2x" class="image_logo" alt="">
+                         {% else %}
+                             <h4>{{ companyInformation.companyTitle }},<br />
+                             {{ companyInformation.companySlogan }}
+                             </h4>
+                         {% endif %}
+
                      </div>
                   </div>
                   <div class="widget widget--footer col-md-3 col-sm-6 widget_text">
@@ -212,16 +238,27 @@
                   <div class="widget widget--footer col-md-3 col-sm-6 widget_subscribe">
                      <h6 class="widget__title">FOLLOW US</h6>
                      <div class="widget_subscribe">
-                        <div class="widget_subscribe__description"></div>
-                        <ul class="widget_subscribe__social">
-                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-facebook"></a></li>
-                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-twitter"></a></li>
-                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-pinterest-p"></a></li>
-                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-instagram"></a></li>
-                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-dribbble"></a></li>
-                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-google-plus"></a></li>
-                           <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-linkedin"></a></li>
-                        </ul>
+                        <div class="widget_subscribe__description">
+                            {% if companySocialMedias.companyFacebook|length > 0 %}
+                               <iframe src="https://www.facebook.com/plugins/page.php?href={{ companySocialMedias.companyFacebook }}&amp;tabs=timeline&amp;width=340&amp;height=300&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=721572538364579" width="340" height="500" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media" id="facebookiframe"></iframe>
+                            {% else %}
+                               <ul class="widget_subscribe__social">
+                                   {% if companySocialMedias.companyFacebook|length > 0 %}
+                                       <li><a target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="fa fa-facebook"></a></li>
+                                  {% endif %}
+                                   {% if companySocialMedias.companyInstagram|length > 0 %}
+                                       <li><a target="_blank" href="{{ companySocialMedias.companyInstagram }}" class="fa fa-instagram"></a></li>
+                                  {% endif %}
+                                   {% if companySocialMedias.companyTwitter|length > 0 %}
+                                       <li><a target="_blank" href="{{ companySocialMedias.companyTwitter }}" class="fa fa-twitter"></a></li>
+                                  {% endif %}
+                                   {% if companySocialMedias.companyYoutube|length > 0 %}
+                                       <li><a target="_blank" href="{{ companySocialMedias.companyYoutube }}" class="fa fa-youtube"></a></li>
+                                  {% endif %}
+                               </ul>
+                            {% endif %}
+
+                        </div>
                      </div>
                   </div>
                </div>
@@ -254,6 +291,11 @@
          <script src="/template_1/js/comment-reply.min.js?ver=5.1.1"></script>
          <script src="/template_1/js/js_composer_front.min.js?ver=5.5.5"></script>
 
-      {% endblock %}  
+      {% endblock %}
+
+      {% include '/_global/_footer_scripts' %}
+
+      {# ADD COOKIE #}
+      {% hook 'before-body-end' %}
    </body>
 </html>

@@ -1,0 +1,30 @@
+<!--Hero Item start-->
+
+{% if slide.sliderBackground %} 
+    {% set image = slide.sliderBackground.first() %}
+{% else %} 
+    {% set image = '/template_2/img/slider/essential/essential1.jpg' %}
+{% endif %}
+    
+<div class="hero-item bg-image" data-bg="{{image.url}}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!--Hero Content start-->
+                <div class="hero-content-3 left">
+                    {% if slide.sliderTitle %} 
+                        <h3>{{slide.sliderTitle}}</h3>
+                    {% endif %}
+                    {% if slide.sliderSubtitle %} 
+                        <h6>{{slide.sliderSubtitle}}</h6>
+                    {% endif %}
+                    {% if slide.sliderButtonLink %} 
+                        <a class="brook-btn btn-sd-size space-between btn-essential btn" href="{{slide.sliderButtonLink}}">{{slide.sliderButtonText}}</a>
+                    {% endif %}
+                </div>
+                <!--Hero Content end-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--Hero Item end-->

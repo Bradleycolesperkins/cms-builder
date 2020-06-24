@@ -1,0 +1,20 @@
+{% if companySiteLayout.pageLoader.value is same as('on') %}
+	{% if  (companySiteLayout.pageLoaderImageGif | length) > 0 %}
+		{% set image = companySiteLayout.pageLoaderImageGif.first() %}	
+	{% else %}
+		{% set image = '/template_2/img/icons/brook-preloader.gif' %}
+	{% endif %}
+	<!-- Start Preloader  -->
+	<div id="page-preloader" class="page-loading clearfix">
+	    <div class="page-load-inner">
+	        <div class="preloader-wrap">
+	            <div class="wrap-2">
+	                <div class=""> 
+	                	<img src="{{image}}" alt="Brook Preloader">
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- End Preloader  -->
+{% endif %}

@@ -3,19 +3,20 @@
 {% block main %}
    <div class="cs-details cs-details--post">
    <div class="cs-details__thumb">
-   <img src="/assets/images/post-04.jpg" class="s-img-switch" alt="blog-img">
+      {% set image = entry.blogImage.first() %}
+      <img src="{{image.getUrl() }}" class="s-img-switch" alt="blog-img">
    </div>
    <div class="container padd-only-xs">
    <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-md-12 col-lg-12">
          <div class="cs-details__content cs-details__content--post cs-details__content--post-top">
             <div class="row">
-               <div class=" col-md-9">
+               <div class="col-md-9">
                   <!-- Post content -->
                   <div class="cs-post cs-post--post post-4193 post type-post status-publish format-standard has-post-thumbnail hentry category-modern">
                      <h3 class="cs-post__title cs-post__title--post">{{ entry.title }}</h3>
                      <div class="cs-post__content clearfix">
-                        <h5>{{ entry.title }}</h5>
+                        <h5>{{ entry.blogSubTitle }}</h5>
                         <div>
                            {{ entry.blogBody }}
                         </div>
@@ -36,7 +37,7 @@
                               Created                                                        
                            </h6>
                            <p class="cs-post__author-name">
-                              admin                                                            
+                              {{ entry.author.firstName }} {{ entry.author.lastName }}
                            </p>
                         </div>
                         <div class="cs-post__info-block">

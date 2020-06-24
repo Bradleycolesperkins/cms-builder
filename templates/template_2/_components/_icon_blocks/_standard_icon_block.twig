@@ -1,0 +1,20 @@
+{% if block.iconBlockIcon|length %}
+    {% set image = block.iconBlockIcon.first() %}
+{% else %}
+    {% set image = {'url': '/assets/icons/1591641278_yeti.svg'} %}
+{% endif %}
+
+
+<!-- Single Icon Box Start -->
+    <div class="icon-box text-center no-border bg-transparant vibrate-style">
+        <div class="inner">
+            <div class="icon">
+                <img class="icon-img" src="{{image.url}}">
+            </div>
+            <div class="content">
+                <h5 class="heading heading-h5">{{block.iconBlockTitle}}</h5>
+                <p>{{block.iconBlockSubTitle}}</p>
+            </div>
+        </div>
+    </div>
+<!-- Single Icon Box End -->

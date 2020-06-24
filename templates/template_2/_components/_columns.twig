@@ -1,0 +1,90 @@
+<!-- Colu Loop Start -->
+
+{% if column_block %}
+    <div class="row">
+        {% for column in column_block.columnSize.all() %}
+            {% switch column.type.handle %}
+
+
+            {% case "oneTwelve" %}
+                <div class="six-twelve-column col-lg-1 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "twoTwelve" %}
+                <div class="six-twelve-column col-lg-2 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "threeTwelve" %}
+                <div class="six-twelve-column col-lg-3 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "fourTwelve" %}
+                <div class="six-twelve-column col-lg-4 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "fiveTwelve" %}
+                <div class="six-twelve-column col-lg-5 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "sixTwelve" %}
+                <div class="six-twelve-column col-lg-6 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "sevenTwelve" %}
+                <div class="six-twelve-column col-lg-7 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "eightTwelve" %}
+                <div class="six-twelve-column col-lg-8 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "nineTwelve" %}
+                <div class="six-twelve-column col-lg-9 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "tenTwelve" %}
+                <div class="six-twelve-column col-lg-10 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "elevenTwelve" %}
+                <div class="six-twelve-column col-lg-11 col-md-6 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+            {% case "twelveTwelve" %}
+                <div class="six-twelve-column col-lg-12 col-md-12 col-sm-12">
+                    {% for entry in column.block.all() %}
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+                    {% endfor %}
+                </div>
+
+                {% default %}
+                    {{ dd('column', column.type.handle) }}
+
+            {% endswitch %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Accordions Loop End -->

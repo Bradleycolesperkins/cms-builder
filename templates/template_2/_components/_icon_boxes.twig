@@ -1,0 +1,15 @@
+
+{% if icon_block %}
+    {% for block in icon_block.iconBlock.all() %}
+        {% switch block.type %}
+
+            {% case "standardIconBlock" %}
+                {% include '/template_2/_components/_icon_blocks/_standard_icon_block' with { 'block' : block} %}
+            {% case "standardOverlayIconBlock" %}
+                {% include '/template_2/_components/_icon_blocks/_standard_overlay_icon_block' with { 'block' : block} %}
+            {% default %}
+            {# {% include '/template_2/_components/_icon_blocks/_standard_icon_block' with { 'block' : block} %}#}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}

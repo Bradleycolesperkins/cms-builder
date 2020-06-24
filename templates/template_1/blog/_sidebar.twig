@@ -1,9 +1,9 @@
 <div class="coca-sidebar">
    <div class="widget widget_search">
-      <form role="search" method="get" class="cs-form cs-form--white cs-form--md-height cs-form--xs-width">
+      <form role="search" method="get" action="/Blog/Search/" class="cs-form cs-form--white cs-form--md-height cs-form--xs-width">
          <label>
          <span class="screen-reader-text">Search for:</span>
-         <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+         <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="q" />
          </label>
          <input type="submit" class="cs-btn cs-btn--xs-mt" value="Search" />
       </form>
@@ -21,10 +21,23 @@
    </div> #}
    <div class="widget widget_categories">
       <h6 class="widget__title">Categories</h6>
+      {% set categories = craft.entries.section('blog').all() %}
+       {% set tagTitles = [] %}
+
+       {% for tweakEntryTag in categories %}
+           {% set entryTags = craft.tags.relatedTo(tweakEntryTag) %}
+
+           {% for tweakEntryTag in entryTags %}
+               {% if tweakEntryTag.title not in tagTitles %}
+                  {% set tagTitles = tagTitles|merge([tweakEntryTag.title]) %}
+               {% endif %}
+           {% endfor %}
+       {% endfor %}
+      
       <ul>
-         <li class="cat-item cat-item-30"><a href="#" >Concept</a>
-         </li>
-         <li class="cat-item cat-item-34"><a href="#" >Modern</a>
+         {% for tag in tagTitles %}
+            <li class="cat-item cat-item-30"><a href="/Blog/Category/?q={{tag}}" >{{ tag }}</a></li>
+         {% endfor %}
          </li>
       </ul>
    </div>

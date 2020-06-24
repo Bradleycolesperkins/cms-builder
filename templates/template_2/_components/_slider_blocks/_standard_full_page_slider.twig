@@ -1,0 +1,32 @@
+{% if slider %}
+    <!-- Start Hero Nav Slider Area -->
+    <div class="brook-hero-nav-slider-area">
+        <div class="brook-element-carousel slick-arrow-center slick-arrow-rounded lr-0"
+             data-slick-options='{
+                   "slidesToShow": 1,
+                   "slidesToScroll": 1,
+                   "arrows": true,
+                   "infinite": true,
+                   "dots": false,
+                   "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "ion ion-ios-arrow-back" },
+                   "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "ion ion-ios-arrow-forward" }
+                   }'
+        >
+
+            {% for block in slider.slides.all() %}
+                {% for slide in block.sliderSlides.all() %}
+                    {% switch slide.type %}
+
+                        {% case "standardSlider" %}
+                            {% include '/template_2/_components/_slider_blocks/_slides/_standard_slider' with { 'slide' : slide} %}
+                        {% default %}
+                            {{ dd('SLIDE',block  ) }}
+
+                    {% endswitch %}
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+    </div>
+    <!-- End Hero Nav Slider Area -->
+{% endif %}

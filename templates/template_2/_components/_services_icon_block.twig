@@ -1,0 +1,37 @@
+<!-- Service Area Start -->
+<div class="service-area bg_color--5 ptb--150 ptb-md--80 ptb-sm--60">
+    <div class="container">
+        {% include '/template_2/_components/_text_blocks/_50_50_style_1' with {'title': title, 'subtitle': subtitle, 'text': text } %}
+
+        <div class="row mt--100 mt_md--50 mt_sm--30">
+
+            {% for block in icon_block.iconBlock.all() %}
+
+                <!-- Single SVG Icon Box Start -->
+                <div class="col-xl-4 col-lg-6 col-md-6 mb_lg--30 mb_md--30 mb_sm--30">
+                    <div class="single-svg-icon-box">
+
+                        {% if block.iconBlockIcon %} 
+                            {% set image = block.iconBlockIcon.first() %}
+                        {% else %} 
+                            {% set image = '/assets/icons/1591641278_yeti.svg' %}
+                        {% endif %}
+                        <div class="grid-overlay" style="background-image: url(/template_2/img/service/service1.jpg)"></div>
+                        <div class="inner">
+                            {% if image %}
+                                <div class="svg-icon"><img class="svg-icon" src="{{image.url}}"></div>
+                            {% endif %}
+                            <div class="content">
+                                <h5 class="heading heading-h5">{{block.iconBlockTitle}}</h5>
+                                <p>{{block.iconBlockSubTitle}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single SVG Icon Box End -->
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+<!-- Service Area End -->

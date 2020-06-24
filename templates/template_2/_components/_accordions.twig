@@ -1,0 +1,19 @@
+<!-- Accordions Loop Start -->
+
+{% if accordion_block %}
+    {% for block in accordion_block.accordionBlock.all() %}
+        {% switch block.type %}
+
+            {% case "standardAccordionBlock" %}
+                {% include '/template_2/_components/_accordion_blocks/_standard_accordion' with { 'block' : block} %}
+
+            {% case "modernAccordionBlock" %}
+                {% include '/template_2/_components/_accordion_blocks/_modern_accordion' with { 'block' : block} %}
+
+            {% default %}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
+
+<!-- Accordions Loop End -->

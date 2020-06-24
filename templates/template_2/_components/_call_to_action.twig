@@ -1,0 +1,17 @@
+
+{% if call_to_action_block is defined %}
+    {% for block in call_to_action_block.callToActionBlock.all() %}
+        {% switch block.type %}
+
+            {% case "plainCallToAction" %}
+                {% include '/template_2/_components/_call_to_action_blocks/_plain_call_to_action' with {'block': block} %}
+
+            {% case "backgroundCallToAction" %}
+                {% include '/template_2/_components/_call_to_action_blocks/_bg_call_to_action' with {'block': block} %}
+
+            {% default %}
+{#                {% include '/template_2/_components/_call_to_action_blocks/_plain_call_to_action' with {'block': block} %}#}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,16 @@
+{% if entry %}
+
+    {% switch entry.type.handle %}
+        {% case "columnBlocks" %}
+            {% include '/template_2/_components/_columns' with {'column_block': entry} %}
+        {% case "accordionBlocks" %}
+            {% include '/template_2/_components/_accordions' with {'accordion_block': entry} %}
+        {% case "messageBlocks" %}
+            {% include '/template_2/_components/_messages' with {'message_block': entry} %}
+        {% case "iconBlocks" %}
+            {% include '/template_2/_components/_icon_boxes' with {'icon_block': entry} %}
+        {% default %}
+            {{ dd('block entry', entry.type.handle) }}
+    {% endswitch %}
+
+{% endif %}

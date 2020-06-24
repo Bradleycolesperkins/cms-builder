@@ -1,0 +1,20 @@
+<div class="container-area ptb--150 ptb-md--80 ptb-sm--60">
+    <div class="container">
+
+        {% if block.containerBlock %}
+
+            {% for innerBlock in block.containerBlock.all() %}
+                {% switch innerBlock.type %}
+                    {% case "container" %}
+
+                    {% for entry in innerBlock.blocks.all() %}
+
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+
+                    {% endfor %}
+                {% endswitch %}
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</div>

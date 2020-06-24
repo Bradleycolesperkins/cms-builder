@@ -1,0 +1,44 @@
+{#GOOGLE ANALYTICS#}
+{% if companySiteScripts.googleAnalyticsTrackingId is defined and companySiteScripts.googleAnalyticsTrackingId|length > 0 %}
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id={{companySiteScripts.googleAnalyticsTrackingId}}"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{companySiteScripts.googleAnalyticsTrackingId}}');
+   </script>
+
+{% endif %}
+
+
+{#FACEBOOK PIXEL#}
+{% if companySiteScripts.facebookPixelId is defined and companySiteScripts.facebookPixelId|length > 0 %}
+
+   <!-- Facebook Pixel Code -->
+   <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+         n.queue=[];t=b.createElement(e);t.async=!0;
+         t.src=v;s=b.getElementsByTagName(e)[0];
+         s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '{{ companySiteScripts.facebookPixelId }}');
+      fbq('track', 'PageView');
+   </script>
+   <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id={{ companySiteScripts.facebookPixelId }}&ev=PageView&noscript=1"/>
+   </noscript>
+   <!-- End Facebook Pixel Code -->
+
+{% endif %}
+
+{#FACEBOOK PIXEL#}
+{% if companySiteScripts.additionalJavascriptTags is defined and companySiteScripts.additionalJavascriptTags|length > 0 %}
+  {{ companySiteScripts.additionalJavascriptTags|raw }}
+{% endif %}

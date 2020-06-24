@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   {% include '/_global/_header_tags' %}
+
+   {% block stylesheets %}
+      <!-- Plugins -->
+      <link rel="stylesheet" href="/template_2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/template_2/css/revoulation.css">
+      <link rel="stylesheet" href="/template_2/css/plugins.css">
+      <!-- Style Css -->
+      <link rel="stylesheet" href="/template_2/style.css">
+      <!-- Custom Styles -->
+      <link rel="stylesheet" href="/template_2/css/custom.css">
+   {% endblock %}
+
+</head>
+
+<body class="template-color-23 template-font-7 CerebriSans-font">
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<!-- Add your site or application content here -->
+
+{% include '/template_2/_components/_page_loader' %}
+
+<!-- Wrapper -->
+<div id="wrapper" class="wrapper">
+    {% include '/template_2/_components/_header' %}
+
+    {# {% include '/template_2/_components/_toolbar_popup' %}#}
+
+
+    {% block main %}
+    {% endblock %}
+
+
+    <footer id="bk-footer" class="page-footer essential-footer bg_color--3 pl--150 pr--150 pl_lg--30 pr_lg--30 pl_md--30 pr_md--30 pl_sm--5 pr_sm--5">
+        <!-- Start Footer Top Area -->
+        <div class="bk-footer-inner ptb--150 pt_sm--100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget text-var--2">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="/template_2/img/logo/brook-white2.png" alt="brook white">
+                                </a>
+                            </div>
+                            <div class="footer-inner">
+                                <p>Brook is a multi-purpose WordPress theme for big and small-sized businesses. Enjoy
+                                    the theme's original design, functional features & responsive layouts.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1 col-md-6 col-sm-6 col-12 mt_mobile--40">
+                        <div class="footer-widget text-var--2 menu--about">
+                            <h2 class="widgettitle">About us</h2>
+                            <div class="footer-menu">
+                                <ul class="ft-menu-list bk-hover">
+                                    <li><a href="about-us-01.html">About Us</a></li>
+                                    <li><a href="team.html">Team</a></li>
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="services-classic.html">Services</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt_md--40 mt_sm--40 mt_mobile--40">
+                        <div class="footer-widget text-var--2 menu--about">
+                            <h2 class="widgettitle">Other links</h2>
+                            <div class="footer-menu">
+                                <ul class="ft-menu-list bk-hover">
+                                    <li><a href="about-us-01.html">About Us</a></li>
+                                    <li><a href="team.html">Team</a></li>
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="services-classic.html">Services</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt_md--40 mt_sm--40 mt_mobile--40">
+                        <div class="footer-widget text-var--2 menu--about">
+                            <h2 class="widgettitle">Other links</h2>
+                            <div class="footer-menu">
+                                <ul class="ft-menu-list bk-hover">
+                                    <li><a href="about-us-01.html">About Us</a></li>
+                                    <li><a href="team.html">Team</a></li>
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="services-classic.html">Services</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt_md--40 mt_md--40 mt_sm--40">
+                        <div class="footer-widget text-var--2 menu--instagram">
+                            <h2 class="widgettitle">Social</h2>
+                            <div class="social-share social--transparent text-white padding-10">
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start Footer Top Area -->
+    </footer>
+    <!--// Footer -->
+</div>
+
+{% block javascript %}
+    <!-- Js Files -->
+    <script src="/template_2/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="/template_2/js/vendor/jquery.min.js"></script>
+    <script src="/template_2/js/popper.min.js"></script>
+    <script src="/template_2/js/bootstrap.min.js"></script>
+    <script src="/template_2/js/plugins.js"></script>
+    <script src="/template_2/js/main.js"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script src="/template_2/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/template_2/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+    <script src="/template_2/js/revolution.extension.actions.min.js"></script>
+    <script src="/template_2/js/revolution.extension.carousel.min.js"></script>
+    <script src="/template_2/js/revolution.extension.kenburn.min.js"></script>
+    <script src="/template_2/js/revolution.extension.layeranimation.min.js"></script>
+    <script src="/template_2/js/revolution.extension.migration.min.js"></script>
+    <script src="/template_2/js/revolution.extension.navigation.min.js"></script>
+    <script src="/template_2/js/revolution.extension.parallax.min.js"></script>
+    <script src="/template_2/js/revolution.extension.slideanims.min.js"></script>
+    <script src="/template_2/js/revolution.extension.video.min.js"></script>
+    <script src="/template_2/js/revoulation.js"></script>
+    <!--Google Map Active-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGM-62ap9R-huo50hJDn05j3x-mU9151Y"></script>
+    <script>
+    // Start Map 02
+    jQuery(document).ready(function () {
+
+
+        (
+            function ($) {
+                var gmMapDiv = $("#htmap2");
+                if (gmMapDiv.length) {
+
+                    var gmHeight = gmMapDiv.attr("data-height");
+                    var gmWidth = gmMapDiv.attr("data-width");
+                    var gmZoomEnable = gmMapDiv.attr("data-zoom_enable");
+                    var gmZoom = gmMapDiv.attr("data-zoom");
+                    gmMapDiv.width(gmWidth).height(gmHeight);
+                    gmMapDiv.gmap3({
+                        action: "init",
+                        marker: {
+                            values: [{
+                                address: "40.518844, -74.377268",
+                                data: "<div class=\"gmap-marker-wrap\"><h5 class=\"gmap-marker-title\">New Jersey Office<\/h5><div class=\"gmap-marker-content\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\"><\/i> 799-701 Ballantyne Rd<br \/>\nSyracuse, NY 13207<\/div><\/div>",
+                                options: {
+                                    icon: "",
+                                    visible: false,
+                                }
+                            }],
+                            events: {
+                                click: function (marker, event, context) {
+                                    if (context.data == 0) {
+                                        return;
+                                    }
+                                    var map = $(this).gmap3("get");
+                                    infowindow = $(this).gmap3({
+                                        get: {
+                                            name: "infowindow"
+                                        }
+                                    });
+                                    if (infowindow) {
+                                        infowindow.open(map, marker);
+                                        infowindow.setContent(context.data);
+                                    } else {
+                                        $(this).gmap3({
+                                            infowindow: {
+                                                anchor: marker,
+                                                options: {
+                                                    content: context.data
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+
+                        },
+                        overlay: {
+                            values: [{
+                                address: "40.518844, -74.377268",
+                                data: "<div class=\"gmap-marker-wrap\"><h5 class=\"gmap-marker-title\">New Jersey Office<\/h5><div class=\"gmap-marker-content\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\"><\/i> 799-701 Ballantyne Rd<br \/>\nSyracuse, NY 13207<\/div><\/div>",
+                                options: {
+                                    content: '<div><div class="animated-dot">' +
+                                        '<div class="middle-dot"></div>' +
+                                        '<div class="signal"></div>' +
+                                        '<div class="signal2"></div>' + '</div></div>',
+                                }
+                            }],
+                            events: {
+                                click: function (overlay, event, context) {
+                                    if (context.data == 0) {
+                                        return;
+                                    }
+                                    var map = $(this).gmap3("get");
+                                    infowindow = $(this).gmap3({
+                                        get: {
+                                            name: "infowindow"
+                                        }
+                                    });
+                                    if (infowindow) {
+                                        infowindow.open(map, overlay);
+                                        infowindow.setContent(context.data);
+                                    } else {
+                                        $(this).gmap3({
+                                            infowindow: {
+                                                anchor: overlay,
+                                                options: {
+                                                    content: context.data
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        },
+                        map: {
+                            options: {
+                                zoom: parseInt(gmZoom),
+                                zoomControl: true,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                mapTypeControl: false,
+                                scaleControl: false,
+                                scrollwheel: gmZoomEnable == 'enable' ? true : false,
+                                streetViewControl: false,
+                                draggable: true,
+                                styles: [{
+                                    "featureType": "water",
+                                    "elementType": "geometry",
+                                    "stylers": [{
+                                        "color": "#e9e9e9"
+                                    },
+                                        {
+                                            "lightness": 17
+                                        }
+                                    ]
+                                },
+                                    {
+                                        "featureType": "landscape",
+                                        "elementType": "geometry",
+                                        "stylers": [{
+                                            "color": "#f5f5f5"
+                                        },
+                                            {
+                                                "lightness": 20
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "road.highway",
+                                        "elementType": "geometry.fill",
+                                        "stylers": [{
+                                            "color": "#ffffff"
+                                        },
+                                            {
+                                                "lightness": 17
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "road.highway",
+                                        "elementType": "geometry.stroke",
+                                        "stylers": [{
+                                            "color": "#ffffff"
+                                        },
+                                            {
+                                                "lightness": 29
+                                            },
+                                            {
+                                                "weight": 0.2
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "road.arterial",
+                                        "elementType": "geometry",
+                                        "stylers": [{
+                                            "color": "#ffffff"
+                                        },
+                                            {
+                                                "lightness": 18
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "road.local",
+                                        "elementType": "geometry",
+                                        "stylers": [{
+                                            "color": "#ffffff"
+                                        },
+                                            {
+                                                "lightness": 16
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "poi",
+                                        "elementType": "geometry",
+                                        "stylers": [{
+                                            "color": "#f5f5f5"
+                                        },
+                                            {
+                                                "lightness": 21
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "poi.park",
+                                        "elementType": "geometry",
+                                        "stylers": [{
+                                            "color": "#dedede"
+                                        },
+                                            {
+                                                "lightness": 21
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "elementType": "labels.text.stroke",
+                                        "stylers": [{
+                                            "visibility": "on"
+                                        },
+                                            {
+                                                "color": "#ffffff"
+                                            },
+                                            {
+                                                "lightness": 16
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "elementType": "labels.text.fill",
+                                        "stylers": [{
+                                            "saturation": 36
+                                        },
+                                            {
+                                                "color": "#333333"
+                                            },
+                                            {
+                                                "lightness": 40
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "elementType": "labels.icon",
+                                        "stylers": [{
+                                            "visibility": "off"
+                                        }]
+                                    },
+                                    {
+                                        "featureType": "transit",
+                                        "elementType": "geometry",
+                                        "stylers": [{
+                                            "color": "#f2f2f2"
+                                        },
+                                            {
+                                                "lightness": 19
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "administrative",
+                                        "elementType": "geometry.fill",
+                                        "stylers": [{
+                                            "color": "#fefefe"
+                                        },
+                                            {
+                                                "lightness": 20
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "featureType": "administrative",
+                                        "elementType": "geometry.stroke",
+                                        "stylers": [{
+                                            "color": "#fefefe"
+                                        },
+                                            {
+                                                "lightness": 17
+                                            },
+                                            {
+                                                "weight": 1.2
+                                            }
+                                        ]
+                                    }
+                                ],
+
+
+                            }
+                        }
+                    });
+                }
+            }
+        )(jQuery);
+    });
+    </script>
+{% endblock %}
+
+{% include '/_global/_footer_scripts' %}
+
+{# ADD COOKIE #}
+{% hook 'before-body-end' %}
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends '/db_dean/_layout' %}
+
+{% block main %}
+    <div class="cs-details cs-details--post">
+        <div class="cs-details__thumb">
+            {% set image = entry.blogImage.first() %}
+            <img src="{{image.getUrl() }}" class="s-img-switch" alt="blog-img">
+        </div>
+        <div class="container padd-only-xs">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12">
+                    <div class="cs-details__content cs-details__content--post cs-details__content--post-top">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <!-- Post content -->
+                                <div class="cs-post cs-post--post post-4193 post type-post status-publish format-standard has-post-thumbnail hentry category-modern">
+                                    <h3 class="cs-post__title cs-post__title--post">{{ entry.title }}</h3>
+                                    <div class="cs-post__content clearfix">
+                                        <h5>{{ entry.blogSubTitle }}</h5>
+                                        <div>
+                                            {{ entry.blogBody }}
+                                        </div>
+                                        <div class="pixfields_box" >
+                                            <ul class="pixfields_list">
+                                                <li class="pixfield">
+                                                    <strong>Category</strong> :
+                                                </li>
+                                                <li class="pixfield">
+                                                    <strong>Type</strong> : Modern
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="cs-post__info">
+                                        <div class="cs-post__info-block">
+                                            <h6 class="cs-post__info-label">
+                                                Created
+                                            </h6>
+                                            <p class="cs-post__author-name">
+                                                {{ entry.author.firstName }} {{ entry.author.lastName }}
+                                            </p>
+                                        </div>
+                                        <div class="cs-post__info-block">
+                                            <h6 class="cs-post__info-label cs-post__info-label--right">
+                                                Share To
+                                            </h6>
+                                            <button class="cs-post__share-icon fa fa-facebook" data-share="#"></button>
+                                            <button class="cs-post__share-icon fa fa-twitter" data-share="#" title="Tweet this!"></button>
+                                            <button class="cs-post__share-icon fa fa-pinterest-p" data-share="#"></button>
+                                            <button class="cs-post__share-icon fa fa-linkedin" data-share="#" title="Share on LinkedIn"></button>
+                                        </div>
+                                    </div>
+                                    <div class="cs-navigation cs-post__navigation">
+                                        <ul class="cs-navigation__list cs-navigation__list--left">
+                                            <li>
+                                                <a href="#">Prev Page</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- End post content -->
+                            </div>
+                            <div class="col-md-3 margin-sm-50t">
+                                {% include '/template_1/blog/_sidebar' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

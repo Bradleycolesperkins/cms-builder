@@ -1,0 +1,48 @@
+{% if title is not defined %}
+    {% set title = 'BLOG' %}
+{% endif %}
+{% if subtitle is not defined %}
+    {% set subtitle = 'Check out our' %}
+{% endif %}
+{% if imageUrl is not defined %}
+    {% set imageUrl = '/assets/uploads/1588510581_heading-01.jpg' %}
+{% endif %}
+
+{% include '/template_1/_components/_heading_banner' with {'title': title,'subtitle': subtitle,'imageUrl': imageUrl} %}
+
+
+<div class="row-full-width clearfix"></div>
+<div class="row row-fluid  padding-lg-70t padding-lg-100b padding-sm-40b">
+   <div class="column_container col-sm-12 ">
+      <div class="column-inner ">
+         <div>
+            <div data-unique-key="e79581ee1998185d7cb41ab84352b97e" class="js-cs-load-more">
+               <div class=" cs-block cs-block--team js-cs-block--team cs-block--col4 cs-block--gap15  no-footer-content ">
+                  {% for blog in craft.entries.section('blog') %}
+                     <div class="cs-block__item  p_f_cbf5937">
+                        <div class="cs-block__item-wrapp">
+                           <div class="cs-portfolio cs-portfolio--team">
+                              <div class="cs-portfolio__img cs-portfolio__img--team cs-portfolio__img--align-center cs-portfolio__img--overlay cs-portfolio__img--inner-show">
+                                 {% set image = blog.blogImage.first() %}
+                                 <img width="270" height="270" src="{{image.getUrl() }}" class="s-img-switch wp-post-image" alt="" srcset="{{image.getUrl() }} 270w, {{image.getUrl() }} 150w, {{image.getUrl() }} 100w" sizes="(max-width: 270px) 100vw, 270px" />
+                                 <div class="cs-portfolio__overlay cs-portfolio__overlay--dark-md cs-portfolio__overlay--hidden"></div>
+                                 <div class="cs-portfolio__inner cs-portfolio__inner--hidden cs-portfolio__inner--center">
+                                    <h6 class="cs-portfolio__pix cs-portfolio__pix--team">{{blog.employeeRole}}</h6>
+                                    <div class="cs-portfolio__inner cs-portfolio__inner--hidden">
+                                        <a href="/Blog/{{blog.slug}}" class="cs-btn cs-btn--c-custom cs-portfolio__btn" target="_blank">READ MORE</a>                            
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="cs-portfolio__content cs-portfolio__content--team">
+                                 <h5 class="cs-portfolio__title cs-portfolio__title--team cs-portfolio__title--link"><a href="/Blog/{{blog.slug}}" target="_self">{{blog.title}}</a></h5>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

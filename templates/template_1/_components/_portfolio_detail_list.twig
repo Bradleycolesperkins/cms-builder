@@ -48,16 +48,24 @@
                            </div>
                            <div class="cs-pixfields__item">
                               <h6 class="cs-pixfields__title">TYPE</h6>
-                              <p class="cs-pixfields__desc">Bathroom</p>
+                              {% set entryTags = craft.tags.relatedTo(entry) %}
+                              {% set tweakedEntryTags = [] %}
+                              {% for tweakEntryTag in entryTags %}
+                                 {% set tweakedEntryTags = tweakedEntryTags|merge([
+                                    tweakEntryTag.title|replace('/[^a-zA-Z0-9_+]/', '')
+                                 ]) %}
+                              {% endfor %}
+                              <p class="cs-pixfields__desc">{{tweakedEntryTags |join(', ')}}</p>
                               <span class="cs-pixfields__separate"></span>
                            </div>
                         </div>
                         <div class="cs-share margin-lg-80t margin-sm-30t">
                            <h6 class="cs-share__label">SHARE PROJECT</h6>
-                           <button data-share="http://www.facebook.com/sharer.php?u=https://w4.themedemo.co/coca/projects-item/restoration-hardware/&amp;t=RESTORATION HARDWARE" class="cs-share__icon icon fa fa-facebook"></button>
-                           <button data-share="http://twitter.com/home/?status=RESTORATION HARDWARE - https://w4.themedemo.co/coca/projects-item/restoration-hardware/" class="cs-share__icon icon fa fa-twitter"></button>
-                           <button data-share="http://www.linkedin.com/shareArticle?mini=true&amp;title=RESTORATION HARDWARE&amp;url=https://w4.themedemo.co/coca/projects-item/restoration-hardware/" class="cs-share__icon icon fa fa-linkedin"></button>
-                           <button data-share="http://pinterest.com/pin/create/button/?url=https://w4.themedemo.co/coca/projects-item/restoration-hardware/&media=https://w4.themedemo.co/coca/wp-content/uploads/2018/03/restoration-hardware.png" class="cs-share__icon icon fa fa-pinterest-p"></button>
+                            {% set image = entry.portfolioImage.first() %}
+                           <button data-share="http://www.facebook.com/sharer.php?u={{ craft.request.url }}" class="cs-share__icon icon fa fa-facebook"></button>
+                           <button data-share="http://twitter.com/home/?status={{ craft.request.url }}" class="cs-share__icon icon fa fa-twitter"></button>
+                           <button data-share="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ craft.request.url }}" class="cs-share__icon icon fa fa-linkedin"></button>
+                           <button data-share="http://pinterest.com/pin/create/button/?url={{ craft.request.url }}&media={{ craft.request.url }}/{{ image.getUrl() }}" class="cs-share__icon icon fa fa-pinterest-p"></button>
                         </div>
                      </div>
                   </div>

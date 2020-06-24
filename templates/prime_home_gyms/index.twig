@@ -1,0 +1,77 @@
+{% extends 'template_1/_layout' %}
+
+{% block main %}
+   <div class="cs-main-wrapp__inner">
+      <div class="container padd-only-xs">
+         {% include '/template_1/_components/_full_screen_image_banner'  with {'title': companyInformation.companyTitle|upper,'subtitle': companyInformation.companySlogan|upper,'imageUrl': '/assets/uploads/1589640599_header.jpg'} %}
+
+         <div class="row-full-width clearfix"></div>
+         <div class="row row-fluid  padding-lg-105t padding-lg-105b padding-sm-70t padding-sm-70b">
+            <div class="column_container col-sm-12 col-md-12">
+               <div class="column-inner ">
+                  <div>
+                     <section class="cs-heading cs-heading--left cs-heading--c-default cs-heading--modern text-center">
+                        <h3 class="cs-heading__subtitle">Healthier and fitter, all from the comfort of your home.</h3>
+                        <div class="cs-heading__content">
+                           <p>You may be just starting or are a seasoned gym professional, but one thing is certain, you have a space in your home where a gym should be!
+                            We have been fitting out commercial gym spaces for a decade and more recently have moved into the home gym sector due to a spike in demand.
+                            More people are looking to get fitter, faster or more muscular, and so having a space within your home to work out makes perfect sense.
+                            Many of our clients have a good idea of what they want to achieve (don’t worry if you don’t there are plenty that get in touch that are just starting out) and just want expert, professional advice on getting the right combination of exercise equipment at the right price.</p>
+                            <p>Our many years of experience mean that we can help you design and build the perfect space for you to become a better, healthier version of yourself and we take a great deal of pride and job satisfaction from this. It’s always one of the big highlights of the week when an old customer gets in touch to let us know how the new gym is performing and the fantastic results they and their families are getting.
+                            If you are currently looking into creating a gym space please get in touch as we would love to help your realise you dreams and create a stunning bespoke space that’s designed with you in mind!</P>
+                        </div>
+                     </section>
+                  </div>
+               </div>
+            </div>
+            <div class="column_container col-sm-12 col-md-12 margin-sm-30t text-center">
+               <div class="column-inner ">
+                  <div class="d-none">
+                     <div class="row inner row-fluid ">
+                        <div class="column_container col-md-6 col-sm-12 col-xs-12">
+                           <div class="column-inner">
+                              <div>
+                                 <div class="wpb_single_image wpb_content_element align_right">
+                                    <figure class=" figure">
+                                       <div class="single_image-wrapper   box_border_grey">
+                                          <img width="400" height="235" src="/assets/uploads/1588841946_rsz_20160610_113046.jpg" class="single_image-img attachment-full" alt=" image" srcset="/assets/uploads/1588841946_rsz_20160610_113046.jpg 235w, /assets/uploads/1588841946_rsz_20160610_113046.jpg 150w, /assets/uploads/1588841946_rsz_20160610_113046.jpg 100w" sizes="(max-width: 235px) 100vw, 235px">
+                                       </div>
+                                    </figure>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="column_container col-md-6 col-sm-12 col-xs-12">
+                           <div class="column-inner">
+                              <div>
+                                 <div class="wpb_single_image wpb_content_element align_right">
+                                    <figure class=" figure">
+                                       <div class="single_image-wrapper   box_border_grey">
+                                          <img width="400" height="235" src="/assets/uploads/1588841946_rsz_20160610_113046.jpg" class="single_image-img attachment-full" alt=" image" srcset="/assets/uploads/1588841946_rsz_20160610_113046.jpg 235w, /assets/uploads/1588841946_rsz_20160610_113046.jpg 150w, /assets/uploads/1588841946_rsz_20160610_113046.jpg 100w" sizes="(max-width: 235px) 100vw, 235px">
+                                       </div>
+                                    </figure>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         {% include '/template_1/_components/_services' with {'title': 'Our Process','subtitle': 'Here is how we work','imageUrl': '/assets/uploads/1589993991_OurProcessBG.jpg', 'hideLink': 'true'} %}
+
+         {% include '/template_1/_components/_portfolio' with {'title': 'Our Work','subtitle': 'Stunning Gyms','altTitle': 'The Best Sourced Equipment','about': "<p>The gym Equipment we install can vary from domestic to commercial, it would all depend on use. If you were going for a Cardio set up and you would mostly use a running machine, our recommendation would be to get a light commercial runner, it would be a bigger machine plus it would last you a lot longer than a domestic machine. It will cost you more money but if you have the budget it’s well worth it. For dumbbells, kettlebells, plates and bars for home use, mid range quality would be ideal.</p>
+         <p>At the moment a lot of customers are asking us for rig set up's. With a rig you can do all sorts of workouts, from deadlifts to squats pull up's and dips and many more, it can be attached to your wall or floor plus they are a good space saver, we would highly recommend this sort of set up, along with a couple of cardio machines, then your gym is complete.</p>
+        <p>Check out some of our pics of recent installs we have carried and see for yourself, don’t forget to drop us a line for anything to do with Gyms.</p>",'imageUrl': '/assets/uploads/1589993994_OurWorkBG.jpg'} %}
+
+         {% include '/template_1/_components/_clients' with {'title': 'Our Clients','subtitle': 'In Good Company','imageUrl': '/assets/uploads/1589993989_OurClients-BG.jpg'} %}
+
+         {% include '/template_1/_components/_blog2' with {'title': 'Our Blog','subtitle': 'Latest News','imageUrl': '/assets/uploads/1589993986_BlogBG.jpg'} %}
+
+         <div class="row-full-width clearfix"></div>
+      </div>
+   </div>
+{% endblock %}
+   

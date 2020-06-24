@@ -1,0 +1,21 @@
+{% extends '/template_2/_layout' %}
+
+{% block main %}
+       <!-- Page Content -->
+    <main class="page-content">
+        <!-- Start BLog Area -->
+        <div class="blog-creative-area bg_color--5 pt--70 pb--100">
+            <div class="container">
+                <div class="row row--25">
+                    <div class="col-lg-8">
+                        {% include '/template_2/blog/_list' %}
+                    </div>
+                    <div class="col-lg-4 mt_md--50 mt_sm--50">
+                        {% include '/template_2/blog/_sidebar' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End BLog Area -->
+    </main>
+{% endblock %}

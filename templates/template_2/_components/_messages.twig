@@ -1,0 +1,22 @@
+<!-- Message Block Loop Start -->
+
+{% if message_block %}
+    {% for block in message_block.messageBoxBlock.all() %}
+        {% switch block.type %}
+
+        {% case "defaultMessageBox" %}
+            {% include '/template_2/_components/_message_blocks/_default_message_box' with { 'block' : block} %}
+        {% case "successMessageBox" %}
+            {% include '/template_2/_components/_message_blocks/_success_message_box' with { 'block' : block} %}
+        {% case "dangerMessageBox" %}
+            {% include '/template_2/_components/_message_blocks/_danger_message_box' with { 'block' : block} %}
+        {% case "infoMessageBox" %}
+            {% include '/template_2/_components/_message_blocks/_info_message_box' with { 'block' : block} %}
+
+        {% default %}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
+
+<!-- Message Block Loop End -->

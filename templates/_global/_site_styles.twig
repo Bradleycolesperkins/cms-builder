@@ -1,0 +1,115 @@
+{# INCLUDE EXTERNAL CSS FONTS #}
+{% if (
+		(
+			companySiteStyles.headingFontFamily is defined and 
+			companySiteStyles.headingFontFamily|length > 0 and 
+			companySiteStyles.headingFontFamily.value is same as('heroNewRegular')
+		) or (
+			companySiteStyles.bodyFontFamily is defined and 
+			companySiteStyles.bodyFontFamily|length > 0 and 
+			companySiteStyles.bodyFontFamily.value is same as('heroNewRegular')
+		)
+	)
+%}
+	{% includeCssFile "/global/css/Hero-New-Regular.css" %}
+{% endif %}
+
+
+{% if (
+		(
+			companySiteStyles.headingFontFamily is defined and 
+			companySiteStyles.headingFontFamily|length > 0 and 
+			companySiteStyles.headingFontFamily.value is same as('heroNewBold')
+		) or (
+			companySiteStyles.bodyFontFamily is defined and 
+			companySiteStyles.bodyFontFamily|length > 0 and 
+			companySiteStyles.bodyFontFamily.value is same as('heroNewBold')
+		)
+	)
+%}
+	{% includeCssFile "/global/css/Hero-New-Bold.css" %}
+{% endif %}
+
+{% if (
+		(
+			companySiteStyles.headingFontFamily is defined and 
+			companySiteStyles.headingFontFamily|length > 0 and 
+			companySiteStyles.headingFontFamily.value is same as('heroNewMedium')
+		) or (
+			companySiteStyles.bodyFontFamily is defined and 
+			companySiteStyles.bodyFontFamily|length > 0 and 
+			companySiteStyles.bodyFontFamily.value is same as('heroNewMedium')
+		)
+	)
+%}
+	{% includeCssFile "/global/css/Hero-New-Medium.css" %}
+{% endif %}
+
+{% if (
+		(
+			companySiteStyles.headingFontFamily is defined and 
+			companySiteStyles.headingFontFamily|length > 0 and 
+			companySiteStyles.headingFontFamily.value is same as('woodfordBourneRegular')
+		) or (
+			companySiteStyles.bodyFontFamily is defined and 
+			companySiteStyles.bodyFontFamily|length > 0 and 
+			companySiteStyles.bodyFontFamily.value is same as('woodfordBourneRegular')
+		)
+	)
+%}
+	{% includeCssFile "/global/css/Woodford-Bourne.css" %}
+{% endif %}
+
+
+
+{% css %}
+
+	{# primaryColour #}
+	{% if companySiteStyles.primaryColour is defined and companySiteStyles.primaryColour|length > 0 %}
+		.primary-color {
+	        color: {{ companySiteStyles.primaryColour }};
+	    }
+	    .primary-background {
+	        background-color: {{ companySiteStyles.primaryColour }};
+	    }
+	{% endif %}
+
+	{# secondaryColour #}
+	{% if companySiteStyles.secondaryColour is defined and companySiteStyles.secondaryColour|length > 0 %}
+		.secondary-color {
+	        color: {{ companySiteStyles.secondaryColour }};
+	    }
+	    .secondary-background {
+	        background-color: {{ companySiteStyles.secondaryColour }};
+	    }
+	{% endif %}
+	
+	{# backgroundColour #}
+	{% if companySiteStyles.backgroundColour is defined and companySiteStyles.backgroundColour|length > 0 %}
+		.background-colour {
+	        background-color: {{ companySiteStyles.backgroundColour }};
+	    }
+	{% endif %}
+
+
+	{# bodyFontFamily #}
+	{% if companySiteStyles.bodyFontFamily is defined and companySiteStyles.bodyFontFamily|length > 0 %}
+
+		body {
+		  font-family: "{{ companySiteStyles.bodyFontFamily.label }}" !important;
+		}
+	{% endif %}
+
+	{# headingFontFamily #}
+	{% if companySiteStyles.headingFontFamily is defined and companySiteStyles.headingFontFamily|length > 0 %}
+
+
+		h1, h2, h3, h4, h5, h6 {
+		    font-family: "{{ companySiteStyles.headingFontFamily.label }}" !important;
+		}
+	{% endif %}
+
+
+
+    
+{% endcss %}

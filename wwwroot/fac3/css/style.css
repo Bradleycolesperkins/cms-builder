@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Hero New Medium';
+    src: url('/assets/fonts/HeroNew/Hero New Medium.woff');
+}
+
+@font-face {
+    font-family: 'Hero New Regular';
+    src: url('/assets/fonts/HeroNew/Hero New Regular.woff');
+}
+
+@font-face {
+    font-family: 'Hero New Bold';
+    src: url('/assets/fonts/HeroNew/Hero New Bold.woff');
+}
+
+.btn-2 {
+    background-image: linear-gradient(to right, #96ce7f 0%, #72bb5f 51%, #519e48 100%);
+}
+
+.background-transparent {
+    background-color: transparent;
+}
+.border-none {
+    border: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Hero New Bold' !important;
+}
+body, p {
+    font-family: 'Hero New Regular';
+}
+
+.cs-process__content p {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Hero New Regular';
+    line-height: normal;
+}
+
+.curved-border {
+    border-radius: 10px;
+    overflow: hidden;
+}

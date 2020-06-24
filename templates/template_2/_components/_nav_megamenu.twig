@@ -1,0 +1,67 @@
+<nav class="page_nav">
+    {% set menu = craft.entries.section('headerNavigation') %}
+    {% set colMegaMenu = 3 %}
+    <ul class="mainmenu">
+        {% nav link in menu %}
+            
+            {% if link.level is same as('1')%}
+              {% if link.hasDescendants() is same as(false) %}
+                {% if link.relatedEntry|length %}
+                  <li class="menu-item lavel-{{link.level}}">
+                    <a href="{{ link.relatedEntry[0].url }}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% else %}
+                  <li class="menu-item lavel-{{link.level}}">
+                    <a href="{{ link.customUrl }}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% endif %}
+              {% endif %}
+
+            {% elseif link.level is same as(2) and link.hasDescendants() is same as(false) %}
+              <div class="col-lg-{{colMegaMenu}}">
+                <ul class="mega__list">
+                  <li class="mega--title">{{ link.title }}</li>
+                </ul>
+              </div>
+
+            {% elseif link.level is same as(3) %}
+              {% if link.relatedEntry|length %}
+                  <li class="">
+                    <a href="{{ link.relatedEntry[0].url }}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% else %}
+                  <li class="">
+                    <a href="{{ link.customUrl }}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% endif %}
+            {% endif %}
+
+            {% ifchildren %}
+              {% if link.level is same as('1') %}
+                <li class="lavel-{{link.level}} with--drop slide--megamenu">
+                  <a href="#"><span>{{ link.title }}</span></a>
+                   <div class="mega__width--fullscreen">
+                     <div class="container">
+                        <div class="row">
+                          <!-- Start Single List -->
+
+                          
+              {% elseif link.level is same as(2) and link.hasDescendants() is same as(true) %}
+                <div class="col-lg-{{colMegaMenu}}">
+                  <ul class="mega__list">
+                    <li class="mega--title">{{ link.title }}</li>
+                          {% endif %}
+                          {% children %}
+                          {% if link.level is same as('1') %}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                {% elseif link.level is same as(2)  and link.hasDescendants() is same as(true) %}
+                  </ul>
+                </div>
+                {% endif %}
+            {% endifchildren %}
+      {% endnav %}
+    </ul>
+</nav>

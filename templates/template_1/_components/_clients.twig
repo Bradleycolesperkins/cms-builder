@@ -1,4 +1,14 @@
-{% include '/template_1/_components/_heading_banner' with {'title': 'CLIENTS','subtitle': 'With whom we work with','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+{% if title is not defined %}
+    {% set title = 'CLIENTS' %}
+{% endif %}
+{% if subtitle is not defined %}
+    {% set subtitle = 'Check out our' %}
+{% endif %}
+{% if imageUrl is not defined %}
+    {% set imageUrl = '/assets/uploads/1588510581_heading-01.jpg' %}
+{% endif %}
+
+{% include '/template_1/_components/_heading_banner' with {'title': title,'subtitle': subtitle,'imageUrl': imageUrl} %}
 
 <div class="row-full-width clearfix"></div>
 <div class="row row-fluid  padding-lg-70t padding-lg-115b padding-sm-70b">

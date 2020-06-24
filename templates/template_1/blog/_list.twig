@@ -1,69 +1,38 @@
-{% extends 'template_1/_layout' %}
+<div id="tab-1" class="row cs-blog__outer js-cs-load-more-block tab-content current">
+   {% paginate craft.entries.section('blog').limit(8) as pageInfo, pageEntries %}
 
-{% block main %}
-   
-   <div class="cs-blog cs-blog--padd">
-      <div class="container padd-only-xs">
-         <div class="row">
-            <div class="col-xs-12">
-               <section class="cs-heading cs-heading--left cs-heading--c-default cs-heading--modern cs-heading--blog">
-                  <h6 class="cs-heading__subtitle">BLOG</h6>
-                  <h3 class="cs-heading__title">Find new information</h3>
-               </section>
+   {% for blog in pageEntries %}
+
+
+      <div class="post-4193 post type-post status-publish format-standard has-post-thumbnail hentry category-modern cs-tblog cs-tblog--grid col-lg-6 col-md-6 col-sm-6 col-xs-12 js-filter-simple-block">
+      <div class="cs-tblog__wrapp cs-tblog__wrapp--grid">
+         <div class="cs-tblog__content cs-tblog__content--grid">
+            <div class="cs-tblog__info cs-tblog__info--grid">
+{#               <p class="cs-tblog__info-item">3 Comments</p>#}
+               <p class="cs-tblog__info-item">{{blog.postDate|date('Y-m-d')}}</p>
             </div>
-         </div>
-      </div>
-      <div class="container padd-only-xs">
-         <div class="row">
-            <div class="col-xs-12">
-               <div class="cs-blog__content ">
-                  <div class="row">
-                     <div class=" col-md-9 js-cs-load-more blog-content" data-unique-key="blog-posts">
-                        <div id="tab-1" class="row cs-blog__outer js-cs-load-more-block tab-content current">
-                           {% for blog in craft.entries.section('blog').limit(8).all() %}
-                           
-                           <div class="post-4193 post type-post status-publish format-standard has-post-thumbnail hentry category-modern cs-tblog cs-tblog--grid col-sm-6 col-xs-12 js-filter-simple-block">
-                              <div class="cs-tblog__wrapp cs-tblog__wrapp--grid">
-                                 <div class="cs-tblog__content cs-tblog__content--grid">
-                                    <div class="cs-tblog__info cs-tblog__info--grid">
-                                       <p class="cs-tblog__info-item">3 Comments</p>
-                                       <p class="cs-tblog__info-item">{{blog.postDate|date('Y-m-d')}}</p>
-                                    </div>
-                                    
-                                    {% set image = blog.blogImage.first() %}
-                                   <div class="cs-tblog__img cs-tblog__img--grid s-back-switch" style="background-image: url('{{image.getUrl() }}');">
-                                       <img width="670" height="529" src="{{image.getUrl() }}" class="s-img-switch wp-post-image" alt="blog-img" srcset="{{image.getUrl() }} 670w, {{image.getUrl() }} 300w, {{image.getUrl() }} 600w" sizes="(max-width: 670px) 100vw, 670px" style="display: none;">                                                                                                                                                                                    
-                                    </div>
-                                    <h6 class="cs-tblog__title">
-                                       <a href="/blog/{{blog.slug}}">{{blog.title}}</a>
-                                    </h6>
-                                    <div class="cs-tblog__excerpt cs-tblog__excerpt--grid">
-                                       <p>{{blog.blogSubTitle}}</p>
-                                    </div>
-                                    <a href="/blog/{{blog.slug}}" class="cs-btn cs-tblog__btn cs-tblog__btn--grid">Read More</a>
-                                 </div>
-                              </div>
-                           </div>
 
-                           {% endfor %}
-                        </div>
-
-                        <div class="cs-pager cs-blog__pager tabs-blog">
-                           <ul class="tabs">
-                              <li class="prev-post tab-link current" data-tab="tab-1">Prev Page</li>
-                              <li class="next-post tab-link" data-tab="tab-2">Next Page</li>
-                           </ul>
-                        </div>
-                     </div>
-                     <div class="col-md-3 margin-sm-50t">
-                        {% include '/template_1/blog/_sidebar' %}
-                     </div>
-                  </div>
-               </div>
+            {% set image = blog.blogImage.first() %}
+           <div class="cs-tblog__img cs-tblog__img--grid s-back-switch" style="background-image: url('{{image.getUrl() }}');">
+               <img width="670" height="529" src="{{image.getUrl() }}" class="s-img-switch wp-post-image" alt="blog-img" srcset="{{image.getUrl() }} 670w, {{image.getUrl() }} 300w, {{image.getUrl() }} 600w" sizes="(max-width: 670px) 100vw, 670px" style="display: none;">
             </div>
+            <h6 class="cs-tblog__title">
+               <a href="/blog/{{blog.slug}}">{{blog.title}}</a>
+            </h6>
+            <div class="cs-tblog__excerpt cs-tblog__excerpt--grid">
+               <p>{{blog.blogSubTitle}}</p>
+            </div>
+            <a href="/blog/{{blog.slug}}" class="cs-btn cs-tblog__btn cs-tblog__btn--grid">Read More</a>
          </div>
       </div>
    </div>
 
-{% endblock %}
-   
+   {% endfor %}
+</div>
+
+<div class="cs-pager cs-blog__pager tabs-blog">
+   <ul class="tabs">
+      {% if pageInfo.prevUrl %}<a href="{{ pageInfo.prevUrl }}"><li class="prev-post tab-link current" data-tab="tab-1">Prev Page</li></a>{% endif %}
+      {% if pageInfo.nextUrl %}<a href="{{ pageInfo.nextUrl }}"><li class="next-post tab-link" data-tab="tab-2">Next Page</li></a>{% endif %}
+   </ul>
+</div>

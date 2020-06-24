@@ -1,0 +1,65 @@
+<!-- Start Popup Menu -->
+<div class="popup-mobile-manu popup-mobile-visiable">
+    <div class="inner">
+        <div class="mobileheader">
+            <div class="logo">
+                <a href="/">
+                    {% if companyInformation.companyLogo|length > 0 %}
+                        {% set image = companyInformation.companyLogo.first() %}
+                        <img src="{{image.getUrl()}}" alt="Multipurpose">
+                    {% endif %}
+                </a>
+            </div>
+            <a class="mobile-close" href="#"></a>
+        </div>
+        <div class="menu-content">
+            <ul class="menulist object-custom-menu">
+
+                
+                {% set menu = craft.entries.section('headerNavigation') %}
+                
+                {% nav link in menu %}
+                    
+                    {% if link.hasDescendants() is same as(false) %}
+                      {% if link.relatedEntry|length %}
+                        <li class="---{{ link.level }}">
+                          <a href="{{ link.relatedEntry[0].url }}"><span>{{ link.title }}</span></a>
+                        </li>
+                      {% else %}
+                        <li class="---{{ link.level }}">
+                          <a href="{{ link.customUrl }}"><span>{{ link.title }}</span></a>
+                        </li>
+                      {% endif %}
+                    {% endif %}
+
+                    {% ifchildren %}
+                        {% if link.level is same as('1') %}
+                            <li class="has-mega-menu">
+                            <a href="#"><span>{{ link.title }}</span></a>
+                                <ul class="object-submenu">
+                        {% elseif link.level is same as(2) %}
+                            {% if link.relatedEntry|length %}
+                                <li class="title">
+                                    <a href="{{ link.relatedEntry[0].url }}"><span>{{ link.title }}</span></a>
+                                </li>
+                            {% else %}
+                                <li class="title">
+                                    <a href="{{ link.customUrl }}"><span>{{ link.title }}</span></a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                          {% children %}
+
+                          {% if link.level is same as('1') %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endifchildren %}
+
+              {% endnav %}
+             
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Popup Menu -->

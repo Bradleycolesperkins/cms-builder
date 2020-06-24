@@ -1,16 +1,125 @@
-{% extends 'template_1/_layout' %}
+{% extends 'db_dean/_layout' %}
+
+{% set formHandle = craft.app.request.segment(3) %}
+{% set isSuccess  = craft.app.request.segment(4) == "success" %}
 
 {% block main %}
    <div class="cs-main-wrapp__inner">
       <div class="container padd-only-xs">
-         {% include '/template_1/_components/_title_image_banner'  with {'title': 'CONTACT','imageUrl': '/assets/uploads/1588510581_heading-01.jpg'} %}
+         {% include '/template_1/_components/_title_image_banner'  with {'title': 'CONTACT','imageUrl': '/assets/uploads/1590420447_20190917_180139.jpg'} %}
 
 
 
 
+         {# <div class="row-full-width clearfix"></div>
 
+         <div class="container">
+            {% if isSuccess %}
+               <div class="alert alert-success" role="alert">
+                  <p class="lead">
+                     Form submitted successfully!
+                  </p>
+               </div>
+            {% endif %}
+
+            {% include "contact-form-templates/bootstrap/_form" with { formHandle: 'dBDeanContactForm' } %}
+         </div> #}
          
          <div class="row-full-width clearfix"></div>
+         <div data-vc-full-width="true" data-vc-full-width-init="false" class="row row-fluid cs-half-bg  padding-lg-105t padding-lg-75b padding-sm-70t padding-sm-50b">
+            <div class="wpb_column column_container col-sm-8 col-md-offset-0 col-md-6 col-sm-offset-2 ">
+               <div class="column-inner ">
+                  <div>
+                     <div class="row inner row-fluid ">
+                        <div class="wpb_column column_container col-sm-12 col-md-11">
+                           <div class="column-inner">
+                              <div>
+                                 <section class="cs-heading  cs-heading--left cs-heading--c-default cs-heading--modern">
+                                    <h6 class="cs-heading__subtitle">CONTACT</h6>
+                                    <h3 class="cs-heading__title">Let’s start a new project.</h3>
+                                    <div class="cs-heading__content">
+                                       <p>Contact us for any enquiries, general information or anything specific. We'll be glad to answer any questions you may have</p>
+                                    </div>
+                                 </section>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row inner row-fluid  margin-lg-25t">
+                        <div class="column_container col-sm-12">
+                           <div class="column-inner">
+                              <div>
+                                 <div class="cs-address  cs-address--simple">
+                                    <div class="cs-address__item ">
+                                       <span class="cs-address__item-icon fa fa-envelope-open"></span>
+                                       <a href="mailto:{ companyInformation.companyEmailAddress }}" class="cs-address__item-link">
+                                          <span class="__cf_email__">{{ companyInformation.companyEmailAddress }}</span>
+                                       </a>
+                                    </div>
+                                    <div class="cs-address__item ">
+                                       <span class="cs-address__item-icon fa fa-phone"></span>
+                                       <a href="tel:+45(0)479253798" class="cs-address__item-link"  >{{ companyInformation.companyContactNumber }}</a>
+                                    </div>
+                                    {% if companySocialMedias.companyFacebook|length > 0 %}
+                                       <div class="cs-address__item ">
+                                          <a target="_blank" href="{{ companySocialMedias.companyFacebook }}">
+                                             <p class="cs-address__item-text"><i class="fa fa-facebook"></i></p>
+                                          </a>
+                                       </div>
+                                     {% endif %}
+                                      {% if companySocialMedias.companyInstagram|length > 0 %}
+                                          <div class="cs-address__item ">
+                                             <a target="_blank" href="{{ companySocialMedias.companyInstagram }}">
+                                                <p class="cs-address__item-text"><i class="fa fa-instagram"></i></p>
+                                             </a>
+                                          </div>
+                                     {% endif %}
+                                      {% if companySocialMedias.companyTwitter|length > 0 %}
+                                          <div class="cs-address__item ">
+                                             <a target="_blank" href="{{ companySocialMedias.companyTwitter }}">
+                                                <p class="cs-address__item-text"><i class="fa fa-twitter"></i></p>
+                                             </a>
+                                          </div>
+                                     {% endif %}
+                                      {% if companySocialMedias.companyYoutube|length > 0 %}
+                                          <div class="cs-address__item ">
+                                             <a target="_blank" href="{{ companySocialMedias.companyYoutube }}">
+                                                <p class="cs-address__item-text"><i class="fa fa-youtube"></i></p>
+                                             </a>
+                                          </div>
+                                     {% endif %}
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="wpb_column column_container col-sm-8 col-md-offset-0 col-md-6 col-sm-offset-2  margin-sm-30t">
+               <div class="column-inner ">
+                  <div>
+                     <div class="row inner row-fluid ">
+                        <div class="column_container col-sm-12 col-md-offset-1 col-md-11">
+                           <div class="column-inner">
+                              <div>
+                                 <div class="wpb_text_column wpb_content_element " >
+                                    <div>
+                                       <div role="form" class="wpcf7" id="wpcf7-f5338-p118-o1" lang="en-US" dir="ltr">
+                                          <div class="screen-reader-response"></div>
+                                          {% include "template_1/_components/_contact_form" with { formHandle: 'dBDeanContactForm' } %}
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
       </div>
    </div>
 {% endblock %}
