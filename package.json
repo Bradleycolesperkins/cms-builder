@@ -1,0 +1,21 @@
+{
+  "name": "yeti-media-cms",
+  "version": "1.0.0",
+  "description": "CMS System for Yeti Media",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w -r .\\wwwroot\\template_2\\scss\\ -o .\\wwwroot\\template_2\\"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/yetimediagroup/yeti-media-cms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/yetimediagroup/yeti-media-cms#readme"
+}
