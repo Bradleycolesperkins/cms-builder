@@ -1,0 +1,17 @@
+<!-- Testimonials Loop Start -->
+
+{% if testimonial_block %}
+    {% for block in testimonial_block.testimonialBlock.all() %}
+        {% switch block.type %}
+
+            {% case "fullPageTestimonalBackgroundSlider" %}
+                {% include '/template_2/_components/_testimonial_blocks/_full_page_testimonal_background_slider' with { 'testimonial' : block} %}
+
+            {% default %}
+                {{ dd('TESTIMONIALS', block.type) }}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
+
+<!-- Testimonials Loop End -->

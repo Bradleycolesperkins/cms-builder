@@ -45,7 +45,13 @@
                 {% include '/template_2/_components/_sliders' with {'slider_block': block} %}
             {% endfor %}
 
-        {% default %}
+        {% case "testimonialBlock" %}
+            {% for block in block.testimonial.all() %}
+                {% include '/template_2/_components/_testimonials' with {'testimonial_block': block} %}
+            {% endfor %}
+
+
+    {% default %}
          {{ dd('DEFAULT BLOCK', block.type) }}
         {# NO DEFAULT FOR NOW PERHAPS A PROMPT TO SHOW THE USER INCORRECT #}
 
