@@ -9,6 +9,8 @@
                 {% include '/template_2/_components/_text_blocks/_title_text_block' with { 'block' : block} %}
             {% case "subBlockTitleDescription" %}
                 {% include '/template_2/_components/_text_blocks/_title_with_descriptions_text_block' with { 'block' : block} %}
+            {% case "whiteBannerText" %}
+                {% include '/template_2/_components/_text_blocks/_white_banner_text' with { 'block' : block} %}
             {% default %}
                 {{ dd('text entry', block.type.handle) }}
 

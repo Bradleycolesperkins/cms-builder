@@ -14,6 +14,10 @@
                 {% include '/template_2/_components/_columns' with {'columns': block} %}
             {% endfor %}
 
+        {% case "bannerBlock" %}
+            {% for block in block.banner.all() %}
+                {% include '/template_2/_components/_banners' with {'banner_block': block} %}
+            {% endfor %}
 
         {% case "callToActionBlock" %}
             {% for block in block.callToAction.all() %}
@@ -27,7 +31,7 @@
 
         {% case "textBlock" %}
             {% for block in block.text.all() %}
-                {% include '/template_2/_components/_text' with {'text_block': block} %}
+                {% include '/template_2/_components/_text_blocks' with {'text_block': block} %}
             {% endfor %}
 
         {% case "messageBlock" %}

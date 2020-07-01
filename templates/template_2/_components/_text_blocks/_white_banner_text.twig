@@ -1,0 +1,13 @@
+<div class="breadcaump-inner text-center">
+        {% if block.textBlockTitle %}
+                <h6 class="heading heading-h6 text-white">{{ block.textBlockTitle }}</h6>
+                <div class="bkseparator--30"></div>
+        {% endif %}
+        {% if block.textBlockSubtitle %}
+                <h1 class="heading heading-h1 text-white line-height-1 font-80">{{ block.textBlockSubtitle }}</h1>
+                <div class="bkseparator--30"></div>
+        {% endif %}
+        {% if block.textBlockSnippet %}
+                <h5 class="heading heading-h5 text-white line-height-1-95">{{ block.textBlockSnippet }}</h5>
+        {% endif %}
+</div>

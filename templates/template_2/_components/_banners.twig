@@ -1,0 +1,14 @@
+
+{% if banner_block is defined %}
+    {% for block in banner_block.bannerBlock.all() %}
+        {% switch block.type %}
+
+            {% case "fullWidthBackgroundWithOverlay" %}
+                {% include '/template_2/_components/_banner_blocks/_full_width_background_with_overlay' with {'block': block} %}
+
+
+            {% default %}
+                {{ dd('BANNER BLOCK', block.type) }}
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
