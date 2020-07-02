@@ -20,7 +20,22 @@
             {% elseif link.level is same as(2) and link.hasDescendants() is same as(false) %}
               <div class="col-lg-{{colMegaMenu}}">
                 <ul class="mega__list">
-                  <li class="mega--title">{{ link.title }}</li>
+
+                    {% if link.relatedEntry|length %}
+                    <a href="{{ link.relatedEntry[0].url }}">
+                        {% elseif link.customUrl|length %}
+                        <a href="{{ link.customUrl }}">
+                            {% endif %}
+
+                            <li class="mega--title">{{ link.title }}</li>
+
+                            {% if link.relatedEntry|length %}
+                        </a>
+                        {% elseif link.customUrl|length %}
+                    </a>
+                    {% endif %}
+
+
                 </ul>
               </div>
 
@@ -39,7 +54,15 @@
             {% ifchildren %}
               {% if link.level is same as('1') %}
                 <li class="lavel-{{link.level}} with--drop slide--megamenu">
-                  <a href="#"><span>{{ link.title }}</span></a>
+                    {% if link.relatedEntry|length %}
+                        <a href="{{ link.relatedEntry[0].url }}">
+                    {% elseif link.relatedEntry|length %}
+                        <a href="{{ link.customUrl }}">
+                    {% else %}
+                        <a href="#">
+                    {% endif %}
+                    <span>{{ link.title }}</span>
+                  </a>
                    <div class="mega__width--fullscreen">
                      <div class="container">
                         <div class="row">
@@ -49,7 +72,22 @@
               {% elseif link.level is same as(2) and link.hasDescendants() is same as(true) %}
                 <div class="col-lg-{{colMegaMenu}}">
                   <ul class="mega__list">
-                    <li class="mega--title">{{ link.title }}</li>
+
+                      {% if link.relatedEntry|length %}
+                      <a href="{{ link.relatedEntry[0].url }}">
+                          {% elseif link.customUrl|length %}
+                          <a href="{{ link.customUrl }}">
+                              {% endif %}
+
+                              <li class="mega--title">{{ link.title }}</li>
+
+                              {% if link.relatedEntry|length %}
+                          </a>
+                          {% elseif link.customUrl|length %}
+                      </a>
+                      {% endif %}
+
+
                           {% endif %}
                           {% children %}
                           {% if link.level is same as('1') %}
