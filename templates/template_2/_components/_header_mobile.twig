@@ -35,7 +35,15 @@
                     {% ifchildren %}
                         {% if link.level is same as('1') %}
                             <li class="has-mega-menu">
-                            <a href="#"><span>{{ link.title }}</span></a>
+                            {% if link.relatedEntry|length %}
+                                <a href="{{ link.relatedEntry[0].url }}">
+                            {% elseif link.relatedEntry|length %}
+                                <a href="{{ link.customUrl }}">
+                            {% else %}
+                                <a href="#">
+                            {% endif %}
+                                <span>{{ link.title }}</span>
+                            </a>
                                 <ul class="object-submenu">
                         {% elseif link.level is same as(2) %}
                             {% if link.relatedEntry|length %}
