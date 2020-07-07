@@ -5,12 +5,16 @@
 
             {% case "standardTextSubtitleParagraph" %}
                 {% include '/template_2/_components/_text_blocks/_standard_text_subtitle_paragraph' with { 'block' : block} %}
+            {% case "plainTextSubtitleParagraph" %}
+                {% include '/template_2/_components/_text_blocks/_plain_text_subtitle_paragraph' with { 'block' : block} %}
             {% case "blockTitles" %}
                 {% include '/template_2/_components/_text_blocks/_title_text_block' with { 'block' : block} %}
             {% case "subBlockTitleDescription" %}
                 {% include '/template_2/_components/_text_blocks/_title_with_descriptions_text_block' with { 'block' : block} %}
             {% case "whiteBannerText" %}
                 {% include '/template_2/_components/_text_blocks/_white_banner_text' with { 'block' : block} %}
+            {% case "largeTitle" %}
+                {% include '/template_2/_components/_text_blocks/_large_title' with { 'block' : block} %}
             {% default %}
                 {{ dd('text entry', block.type.handle) }}
 
