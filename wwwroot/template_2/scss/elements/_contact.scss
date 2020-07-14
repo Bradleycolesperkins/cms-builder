@@ -318,8 +318,11 @@ Contact Form Style 01
 /* ========================
     Contact
 ============================*/
-
+.contact-modern.colour-white * {
+    color: #fff !important;
+}
 .contact-form {
+    button,
     input {
         color: #777;
         border-color: #eee;
@@ -331,7 +334,7 @@ Contact Form Style 01
         padding: 3px 20px;
         height: 62px;
 
-        &[type="submit"] {
+        &[type="submit"], {
             padding: 0 41px;
             height: 55px;
             line-height: 53px;

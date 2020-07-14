@@ -10690,6 +10690,10 @@ Contact Form Style 01
 /* ========================
     Contact
 ============================*/
+.contact-modern.colour-white * {
+  color: #fff !important; }
+
+.contact-form button,
 .contact-form input {
   color: #777;
   border-color: #eee;
@@ -10700,6 +10704,7 @@ Contact Form Style 01
   border-radius: 0;
   padding: 3px 20px;
   height: 62px; }
+  .contact-form button[type="submit"],
   .contact-form input[type="submit"] {
     padding: 0 41px;
     height: 55px;
@@ -10713,10 +10718,12 @@ Contact Form Style 01
     border-radius: 6px;
     -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
+    .contact-form button[type="submit"]:hover,
     .contact-form input[type="submit"]:hover {
       -webkit-transform: translateY(-3px);
       -ms-transform: translateY(-3px);
       transform: translateY(-3px); }
+  .contact-form button:focus,
   .contact-form input:focus {
     border-color: #0038E3;
     background-color: #fff; }

@@ -1,0 +1,13 @@
+
+{% if form_block %}
+    {% for block in form_block.formBlock.all() %}
+        {% switch block.type %}
+
+        {% case "simpleForm" %}
+            {% include '/template_2/_components/_form_blocks/_simple_form' with { 'formHandle' : block.form.handle } %}
+        {% default %}
+            {{ dd('Form entry', block.type.handle) }}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}

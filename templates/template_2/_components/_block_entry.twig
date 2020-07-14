@@ -1,6 +1,8 @@
 {% if entry %}
 
     {% switch entry.type.handle %}
+        {% case "containerBlocks" %}
+            {% include '/template_2/_components/_container' with {'block': entry} %}
         {% case "columnBlocks" %}
             {% include '/template_2/_components/_columns' with {'column_block': entry} %}
         {% case "accordionBlocks" %}
@@ -17,6 +19,8 @@
             {% include '/template_2/_components/_image_blocks' with {'image_block': entry} %}
         {% case "processStepBlocks" %}
             {% include '/template_2/_components/_process_step_blocks' with {'process_step_block': entry} %}
+        {% case "formBlocks" %}
+            {% include '/template_2/_components/_form_blocks' with {'form_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}
