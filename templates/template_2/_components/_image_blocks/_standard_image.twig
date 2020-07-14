@@ -1,0 +1,6 @@
+  {% if block.image|length > 0 %}
+      {% set imageUrl = block.image.first().getUrl() %}
+  {% else %}
+      {% set imageUrl = '/img/bg/bg-image-16.jpg' %}
+  {% endif %}
+ <img src="{{ imageUrl }}"  alt="{{ block.imageAltTag  }}">

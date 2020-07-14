@@ -1,0 +1,15 @@
+
+{% if process_step_block %}
+    <div class="bk-gradation mt--60 mt_sm--5">
+        {% for block in process_step_block.processStepBlock.all() %}
+            {% switch block.type %}
+
+            {% case "circularProcessSteps" %}
+                {% include '/template_2/_components/_process_step_blocks/_circular_process_steps' with { 'block' : block} %}
+            {% default %}
+                {{ dd('process_step entry', block.type.handle) }}
+
+            {% endswitch %}
+        {% endfor %}
+    </div>
+{% endif %}

@@ -13,6 +13,10 @@
             {% include '/template_2/_components/_sliders' with {'slider_block': entry} %}
         {% case "textBlocks" %}
             {% include '/template_2/_components/_text_blocks' with {'text_block': entry} %}
+        {% case "imageBlocks" %}
+            {% include '/template_2/_components/_image_blocks' with {'image_block': entry} %}
+        {% case "processStepBlocks" %}
+            {% include '/template_2/_components/_process_step_blocks' with {'process_step_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}

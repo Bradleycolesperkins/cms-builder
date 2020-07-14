@@ -11,7 +11,7 @@
         {# ANY THING BELOW ADDED SHOULD BE IN THE CONTAINER ALSO #}
         {% case "columns" %}
             {% for block in block.columnBlock.all() %}
-                {% include '/template_2/_components/_columns' with {'columns': block} %}
+                {% include '/template_2/_components/_columns' with {'column_block': block} %}
             {% endfor %}
 
         {% case "bannerBlock" %}
@@ -54,7 +54,15 @@
                 {% include '/template_2/_components/_testimonials' with {'testimonial_block': block} %}
             {% endfor %}
 
+        {% case "imageBlock" %}
+            {% for block in block.image.all() %}
+                {% include '/template_2/_components/_image_blocks' with {'image_block': block} %}
+            {% endfor %}
 
+        {% case "processStepBlock" %}
+            {% for block in block.testimonial.all() %}
+                {% include '/template_2/_components/_process_step_blocks' with {'process_step_block': block} %}
+            {% endfor %}
     {% default %}
          {{ dd('DEFAULT BLOCK', block.type) }}
         {# NO DEFAULT FOR NOW PERHAPS A PROMPT TO SHOW THE USER INCORRECT #}
