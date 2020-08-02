@@ -1,0 +1,4 @@
+{% if block.centerImage  and block.centerImage == "yes"  %} margin: 0 auto; {% endif %}
+{% if block.fullWidth and block.fullWidth == "yes"  %} width:100%; {% endif %}
+{% if block.maxWidth > 0 %} max-width:{{ block.maxWidth }}px; {% endif %}
+{% if block.minWidth > 0 %} min-width:{{ block.minWidth }}px; {% endif %}

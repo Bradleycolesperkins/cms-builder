@@ -1,5 +1,9 @@
 
 {% if image_block %}
+    <div style="
+        {% include '/template_2/_components/_extras/_element_extras' with { 'block' : image_block} %}
+        {% include '/template_2/_components/_extras/_image_extras' with { 'block' : image_block} %}
+    ">
     {% for block in image_block.imageBlock.all() %}
         {% switch block.type %}
 
@@ -10,4 +14,5 @@
 
         {% endswitch %}
     {% endfor %}
+    </div>
 {% endif %}

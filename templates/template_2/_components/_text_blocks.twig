@@ -1,23 +1,39 @@
 
 {% if text_block %}
-    {% for block in text_block.textBlock.all() %}
-        {% switch block.type %}
+    <div  style="
+            {% include '/template_2/_components/_extras/_element_extras' with { 'block' : text_block} %}
+            {% include '/template_2/_components/_extras/_element_colour_extras' with { 'block' : text_block} %}
+        ">
+        {% for block in text_block.textBlock.all() %}
+            {% switch block.type %}
+                {% case "h1Title" %}
+                    {% include '/template_2/_components/_text_blocks/_h1_title' with { 'block' : block} %}
+                {% case "h2Title" %}
+                    {% include '/template_2/_components/_text_blocks/_h2_title' with { 'block' : block} %}
+                {% case "h3Title" %}
+                    {% include '/template_2/_components/_text_blocks/_h3_title' with { 'block' : block} %}
+                {% case "h4Title" %}
+                    {% include '/template_2/_components/_text_blocks/_h4_title' with { 'block' : block} %}
+                {% case "h5Title" %}
+                    {% include '/template_2/_components/_text_blocks/_h5_title' with { 'block' : block} %}
+                {% case "paragraph" %}
+                    {% include '/template_2/_components/_text_blocks/_paragraph' with { 'block' : block} %}
+                {% case "standardTextSubtitleParagraph" %}
+                    {% include '/template_2/_components/_text_blocks/_standard_text_subtitle_paragraph' with { 'block' : block} %}
+                {% case "plainTextSubtitleParagraph" %}
+                    {% include '/template_2/_components/_text_blocks/_plain_text_subtitle_paragraph' with { 'block' : block} %}
+                {% case "blockTitles" %}
+                    {% include '/template_2/_components/_text_blocks/_title_text_block' with { 'block' : block} %}
+                {% case "subBlockTitleDescription" %}
+                    {% include '/template_2/_components/_text_blocks/_title_with_descriptions_text_block' with { 'block' : block} %}
+                {% case "whiteBannerText" %}
+                    {% include '/template_2/_components/_text_blocks/_white_banner_text' with { 'block' : block} %}
+                {% case "largeTitle" %}
+                    {% include '/template_2/_components/_text_blocks/_large_title' with { 'block' : block} %}
+                {% default %}
+                    {{ dd('text entry', block.type.handle) }}
 
-            {% case "standardTextSubtitleParagraph" %}
-                {% include '/template_2/_components/_text_blocks/_standard_text_subtitle_paragraph' with { 'block' : block} %}
-            {% case "plainTextSubtitleParagraph" %}
-                {% include '/template_2/_components/_text_blocks/_plain_text_subtitle_paragraph' with { 'block' : block} %}
-            {% case "blockTitles" %}
-                {% include '/template_2/_components/_text_blocks/_title_text_block' with { 'block' : block} %}
-            {% case "subBlockTitleDescription" %}
-                {% include '/template_2/_components/_text_blocks/_title_with_descriptions_text_block' with { 'block' : block} %}
-            {% case "whiteBannerText" %}
-                {% include '/template_2/_components/_text_blocks/_white_banner_text' with { 'block' : block} %}
-            {% case "largeTitle" %}
-                {% include '/template_2/_components/_text_blocks/_large_title' with { 'block' : block} %}
-            {% default %}
-                {{ dd('text entry', block.type.handle) }}
-
-        {% endswitch %}
-    {% endfor %}
+            {% endswitch %}
+        {% endfor %}
+    </div>
 {% endif %}

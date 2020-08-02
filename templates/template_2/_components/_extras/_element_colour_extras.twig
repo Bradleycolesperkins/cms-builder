@@ -1,0 +1,17 @@
+{% if block.textColour %}
+
+    {% switch block.textColour %}
+        {% case "black" %}
+            color:#000 !important;
+        {% case "white" %}
+            color:#fff !important;
+        {% case "primaryColour" %}
+            color:{{ companySiteStyles.primaryColour }} !important;
+        {% case "secondaryColour" %}
+            color:{{ companySiteStyles.secondaryColour }} !important;
+        {% case "backgroundColour" %}
+            color:{{ companySiteStyles.backgroundColour }} !important;
+    {% default %}
+
+    {% endswitch %}
+{% endif %}

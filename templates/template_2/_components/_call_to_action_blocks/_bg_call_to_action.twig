@@ -1,5 +1,6 @@
 <!-- Start Call To Action -->
-<div class="brook-call-to-action bg_image--61 ptb--120 ptb-md--80 ptb-sm--60" style="background-image:url({{block.callToActionBackground}})">
+{% set image = block.callToActionBackground.first() %}
+<div class="brook-call-to-action bg_image--61 ptb--120 ptb-md--80 ptb-sm--60" style="background-image:url({{image.getUrl() }})">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12 col-12">

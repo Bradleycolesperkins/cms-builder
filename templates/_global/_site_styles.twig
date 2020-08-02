@@ -66,12 +66,22 @@
 
 	{# primaryColour #}
 	{% if companySiteStyles.primaryColour is defined and companySiteStyles.primaryColour|length > 0 %}
-		.primary-color {
+		.primary-color,
+		body.template-color-23 .theme-color,
+		body.template-color-23 .bl-sidebar.category .category-list li a:hover,
+		body.template-color-23 .blog-grid .post-content .post-inner h4.heading a:hover,
+		body.template-color-23 .bl-sidebar.search button span {
 	        color: {{ companySiteStyles.primaryColour }};
 	    }
-	    .primary-background {
+	    .primary-background,
+		body.template-color-23 .portfolio.portfolio_style--1 .port-overlay-info,
+		body.template-color-23 .bl-sidebar.search button:hover,
+		body.template-color-23 .post-nav-lisnt .nav-item a:hover {
 	        background-color: {{ companySiteStyles.primaryColour }};
 	    }
+		body.template-color-23 .basic-thick-line-theme-4 {
+			border-color: {{ companySiteStyles.primaryColour }};
+		}
 	{% endif %}
 
 	{# secondaryColour #}

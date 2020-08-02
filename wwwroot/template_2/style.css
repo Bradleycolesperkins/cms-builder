@@ -534,8 +534,7 @@ h6,
 .h5,
 .h6 {
   font-family: "louis_george_caferegular";
-  line-height: 1.3;
-  color: #222222; }
+  line-height: 1.3; }
 
 h1,
 .h1 {
@@ -15630,6 +15629,71 @@ Typography Area
 .brook-heading .spacing {
   height: 40px; }
 
+.heading-custom {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0em;
+  line-height: 1.23;
+  margin: 0; }
+  .heading-custom.letter-spacing-3 {
+    letter-spacing: 3px; }
+  .heading-custom.heading-font {
+    font-family: "louis_george_caferegular"; }
+  .heading-custom.bk-hover a {
+    color: #222222; }
+  .heading-custom.playfair-font {
+    font-family: "Playfair Display", serif; }
+  .heading-custom.secondary-font {
+    font-family: "Montserrat", sans-serif; }
+  .heading-custom.roboto-font {
+    font-family: "Roboto", sans-serif; }
+  .heading-custom.font-reenie {
+    font-family: 'Reenie Beanie', cursive; }
+  .heading-custom.font-blod {
+    font-weight: 700; }
+  .heading-custom.font-medium {
+    font-weight: 500; }
+  .heading-custom.font-400 {
+    font-weight: 400; }
+  .heading-custom.text-white {
+    color: #ffffff; }
+  .heading-custom.theme-color {
+    color: #0038E3; }
+  .heading-custom.body-color {
+    color: #333333; }
+  .heading-custom.yellow-color-2 {
+    color: #F8A440; }
+  .heading-custom.pink {
+    color: #F12C6E; }
+  .heading-custom.brown-color {
+    color: #CE8F4F; }
+  .heading-custom.third-color {
+    color: #99E5E8; }
+  .heading-custom.red-color-2 {
+    color: #F23E20; }
+  .heading-custom.lineheight-1-58 {
+    line-height: 1.58; }
+  .heading-custom.lineheight-1-44 {
+    line-height: 1.44; }
+  .heading-custom.line-height-1-42 {
+    line-height: 1.42; }
+  .heading-custom.line-height-1-62 {
+    line-height: 1.62; }
+  .heading-custom.line-height-1-95 {
+    line-height: 1.95; }
+  .heading-custom.line-height-1 {
+    line-height: 1; }
+  .heading-custom.line-height-1-5 {
+    line-height: 1.5; }
+  .heading-custom.line-height-1-2 {
+    line-height: 1.2; }
+  .heading-custom.line-height-1-25 {
+    line-height: 1.25; }
+  .heading-custom.line-height-1-88 {
+    line-height: 1.88; }
+  .heading-custom.line-height-1-39 {
+    line-height: 1.39; }
+
 .heading {
   color: #222222;
   font-family: "Poppins", sans-serif;
@@ -22259,7 +22323,7 @@ header.br_header.header-default.vertical-slide-portfolio {
         padding-bottom: 15px;
         width: 170px;
         height: auto;
-        max-height: 90px;
+        max-height: 85px;
         max-width: 100%; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
           .header-default .header__wrapper .header-left .logo a img {

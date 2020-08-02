@@ -11,8 +11,8 @@ Typography Area
 
 
 
-.heading{
-    color: $heading-color;
+
+@mixin heading-default {
     font-family: $body-font;
     font-weight: 600;
     letter-spacing: 0em;
@@ -46,7 +46,7 @@ Typography Area
     &.font-reenie{
         font-family: 'Reenie Beanie', cursive;
     }
-    
+
     &.font-blod{
         font-weight: 700;
     }
@@ -75,7 +75,7 @@ Typography Area
     &.pink{
         color: $pink;
     }
-    
+
     &.brown-color{
         color: $brown;
     }
@@ -94,7 +94,7 @@ Typography Area
     &.line-height-1-42 {
         line-height: 1.42;
     }
-    
+
     &.line-height-1-62 {
         line-height: 1.62;
     }
@@ -126,6 +126,17 @@ Typography Area
     }
 
 }
+
+
+.heading-custom {
+    @include heading-default;
+}
+
+.heading {
+    color: $heading-color;
+    @include heading-default;
+}
+
 .heading-13{
     font-size: 13px;
     margin-bottom: 0;

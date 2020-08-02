@@ -39,80 +39,16 @@
     {% endblock %}
 
 
-    <footer id="bk-footer" class="page-footer essential-footer bg_color--3 pl--150 pr--150 pl_lg--30 pr_lg--30 pl_md--30 pr_md--30 pl_sm--5 pr_sm--5">
+    <footer id="bk-footer" class="page-footer essential-footer primary-background pl--150 pr--150 pl_lg--30 pr_lg--30 pl_md--30 pr_md--30 pl_sm--5 pr_sm--5">
         <!-- Start Footer Top Area -->
         <div class="bk-footer-inner ptb--150 pt_sm--100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="footer-widget text-var--2">
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="/template_2/img/logo/brook-white2.png" alt="brook white">
-                                </a>
-                            </div>
-                            <div class="footer-inner">
-                                <p>Brook is a multi-purpose WordPress theme for big and small-sized businesses. Enjoy
-                                    the theme's original design, functional features & responsive layouts.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 offset-lg-1 col-md-6 col-sm-6 col-12 mt_mobile--40">
-                        <div class="footer-widget text-var--2 menu--about">
-                            <h2 class="widgettitle">About us</h2>
-                            <div class="footer-menu">
-                                <ul class="ft-menu-list bk-hover">
-                                    <li><a href="about-us-01.html">About Us</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="services-classic.html">Services</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt_md--40 mt_sm--40 mt_mobile--40">
-                        <div class="footer-widget text-var--2 menu--about">
-                            <h2 class="widgettitle">Other links</h2>
-                            <div class="footer-menu">
-                                <ul class="ft-menu-list bk-hover">
-                                    <li><a href="about-us-01.html">About Us</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="services-classic.html">Services</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt_md--40 mt_sm--40 mt_mobile--40">
-                        <div class="footer-widget text-var--2 menu--about">
-                            <h2 class="widgettitle">Other links</h2>
-                            <div class="footer-menu">
-                                <ul class="ft-menu-list bk-hover">
-                                    <li><a href="about-us-01.html">About Us</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="services-classic.html">Services</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt_md--40 mt_md--40 mt_sm--40">
-                        <div class="footer-widget text-var--2 menu--instagram">
-                            <h2 class="widgettitle">Social</h2>
-                            <div class="social-share social--transparent text-white padding-10">
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-dribbble"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% set entries = craft.entries.section('footerBlocks') %}
+            {% for footerEntry in entries.all() %}
+                {% if footerEntry.blockSelection %}
+                    {% include '/template_2/_components/_blocks' with {'block': footerEntry.blockSelection} %}
+                {% endif %}
+            {% endfor %}
+
         </div>
         <!-- Start Footer Top Area -->
     </footer>
