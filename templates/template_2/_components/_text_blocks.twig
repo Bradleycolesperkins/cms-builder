@@ -30,6 +30,8 @@
                     {% include '/template_2/_components/_text_blocks/_white_banner_text' with { 'block' : block} %}
                 {% case "largeTitle" %}
                     {% include '/template_2/_components/_text_blocks/_large_title' with { 'block' : block} %}
+                {% case "typedText" %}
+                    {% include '/template_2/_components/_text_blocks/_typed_text' with { 'block' : block} %}
                 {% default %}
                     {{ dd('text entry', block.type.handle) }}
 
