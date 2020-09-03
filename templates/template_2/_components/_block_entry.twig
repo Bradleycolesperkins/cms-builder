@@ -21,6 +21,8 @@
             {% include '/template_2/_components/_process_step_blocks' with {'process_step_block': entry} %}
         {% case "formBlocks" %}
             {% include '/template_2/_components/_form_blocks' with {'form_block': entry} %}
+        {% case "callToActionBlocks" %}
+            {% include '/template_2/_components/_call_to_action' with {'call_to_action_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}
