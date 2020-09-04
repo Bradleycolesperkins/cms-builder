@@ -58,10 +58,17 @@
             {% for block in block.image.all() %}
                 {% include '/template_2/_components/_image_blocks' with {'image_block': block} %}
             {% endfor %}
-
         {% case "processStepBlock" %}
             {% for block in block.testimonial.all() %}
                 {% include '/template_2/_components/_process_step_blocks' with {'process_step_block': block} %}
+            {% endfor %}
+        {% case "componentBlock" %}
+            {% for block in block.componentBlock.all() %}
+                {% include '/template_2/_components/_component_blocks' with {'component_block': block} %}
+            {% endfor %}
+        {% case "buttonBlock" %}
+            {% for block in block.button.all() %}
+                {% include '/template_2/_components/_button_blocks' with {'button_block': block} %}
             {% endfor %}
     {% default %}
          {{ dd('DEFAULT BLOCK', block.type) }}

@@ -1,5 +1,11 @@
-
-{% paginate craft.entries.section('blog').limit(8) as pageInfo, pageEntries %}
+ {% if craft.request.getParam('q') is not null %}
+     {% paginate craft.entries.section('blog').search({
+         query: craft.request.getQuery('q'),
+         subLeft: true,
+     }).limit(8) as pageInfo, pageEntries %}
+ {% else %}
+     {% paginate craft.entries.section('blog').limit(8) as pageInfo, pageEntries %}
+ {% endif %}
 
 {% for blog in pageEntries %}
     {% include '/template_2/blog/_single_blog' with {'blog' : blog} %}

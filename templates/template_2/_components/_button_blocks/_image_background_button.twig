@@ -1,0 +1,21 @@
+{% if button.buttonBackgroundImage|length > 0 %}
+    {% set imageUrl = block.buttonBackgroundImage.first().getUrl() %}
+
+    {% set myCss %}
+        .image_background_button_{{ block.id}} {
+            background-image: url({{ imageUrl }});
+        }
+    {% endset %}
+
+    {% includeCss myCss %}
+{% endif %}
+
+<button class="brook-btn
+{% if button.buttonTextColour %} btn-text-{{ button.buttonTextColour }} {% endif %}
+{% if button.buttonBackgroundImage|length > 0 %} image_background_button_{{ block.id}} {% endif %}
+{% if button.buttonSize %} {{ button.buttonSize.value }} {% endif %}
+{% if button.buttonShadow.value == 'no' %} with-no-shadow {% endif %}
+{% if button.buttonShape %} btn-{{ button.buttonShape.value }} {% endif %}
+{% if button.buttonBorder.value == 'yes' %} btn-border-{{ button.buttonTextColour }} {% endif %}
+"
+>{{ text | nl2br }}</button>

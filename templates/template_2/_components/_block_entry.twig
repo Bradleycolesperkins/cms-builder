@@ -23,6 +23,10 @@
             {% include '/template_2/_components/_form_blocks' with {'form_block': entry} %}
         {% case "callToActionBlocks" %}
             {% include '/template_2/_components/_call_to_action' with {'call_to_action_block': entry} %}
+        {% case "componentBlocks" %}
+            {% include '/template_2/_components/_component_blocks' with {'component_block': entry} %}
+        {% case "buttonBlocks" %}
+            {% include '/template_2/_components/_button_blocks' with {'button_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}

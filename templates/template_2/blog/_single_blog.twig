@@ -1,0 +1,35 @@
+<!-- Start Single Blog -->
+<div class="standard-list-single wow move-up">
+    <div class="blog-grid blog-standard-list">
+        <div class="post-thumb">
+            <a href="/blog/{{blog.slug}}">
+                {% set image = blog.blogImage.first() %}
+                <img src="{{ image.getUrl() }}" alt="{{ image.imageAltTag  }}">
+            </a>
+        </div>
+        <div class="post-content">
+            <div class="post-inner">
+                <h4 class="heading heading-h4">
+                    <a href="/blog/{{blog.slug}}">{{blog.title}}</a>
+                </h4>
+                <div class="post-meta">
+                    <div class="post-date">{{blog.postDate|date('Y-m-d')}}</div>
+                    {% set entryTags = craft.tags.relatedTo(blog) %}
+                    {% set tweakedEntryTags = [] %}
+                    {% for tweakEntryTag in entryTags %}
+                        {% set tweakedEntryTags = tweakedEntryTags|merge([tweakEntryTag.title]) %}
+                    {% endfor %}
+                    {% for tag in tweakedEntryTags %}
+                        <div class="post-category"><a href="/Blog/Category/?q={{tag}}">{{ tag }}</a></div>
+                    {% endfor %}
+                </div>
+                <div class="desc">
+                    <p class="bk_pra">
+                        {{ blog.blogBody|length > 250 ? blog.blogBody|slice(0, 250)|striptags ~ '...' : blog.blogBody|striptags  }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Single Blog -->

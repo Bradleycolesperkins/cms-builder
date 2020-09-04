@@ -70,18 +70,53 @@
 		body.template-color-23 .theme-color,
 		body.template-color-23 .bl-sidebar.category .category-list li a:hover,
 		body.template-color-23 .blog-grid .post-content .post-inner h4.heading a:hover,
-		body.template-color-23 .bl-sidebar.search button span {
+		body.template-color-23 .bl-sidebar.search button span,
+		.blog-grid .post-content .post-inner .post-meta .post-category a:hover,
+		body.template-color-23 .blog-grid .post-inner .post-meta .post-category:hover a,
+		button.brook-btn.btn-text-primaryColour {
 	        color: {{ companySiteStyles.primaryColour }};
 	    }
 	    .primary-background,
 		body.template-color-23 .portfolio.portfolio_style--1 .port-overlay-info,
 		body.template-color-23 .bl-sidebar.search button:hover,
-		body.template-color-23 .post-nav-lisnt .nav-item a:hover {
+		body.template-color-23 .post-nav-lisnt .nav-item a:hover,
+		body.template-color-23 .blog-grid .post-content::before,
+		button.brook-btn.btn-bg-primaryColour,
+		button.brook-btn.btn-bg-primaryColour:active {
 	        background-color: {{ companySiteStyles.primaryColour }};
 	    }
+		button.brook-btn.btn-border-primaryColour,
 		body.template-color-23 .basic-thick-line-theme-4 {
 			border-color: {{ companySiteStyles.primaryColour }};
 		}
+		button.brook-btn.btn-border-secondaryColour
+		button.brook-btn.btn-border-secondaryColour:active {
+			border-color: {{ companySiteStyles.secondaryColour }};
+		}
+
+
+		body.template-color-23 .btn-essential:hover
+		body.template-color-23 .btn-essential:active {
+			background-color: {{ companySiteStyles.primaryColour }} !important;
+		}
+		body.template-color-23 .btn-essential:hover
+		body.template-color-23 .btn-essential:active {
+			border-color: {{ companySiteStyles.primaryColour }} !important;
+		}
+		button.brook-btn.btn-text-secondaryColour {
+			color: {{ companySiteStyles.secondaryColour }};
+		}
+		button.brook-btn.btn-bg-secondaryColour {
+			background-color: {{ companySiteStyles.secondaryColour }};
+		}
+		button.brook-btn.btn-text-backgroundColour {
+			color: {{ companySiteStyles.backgroundColour }};
+		}
+		button.brook-btn.btn-bg-backgroundColour {
+			background-color: {{ companySiteStyles.backgroundColour }};
+		}
+
+
 	{% endif %}
 
 	{# secondaryColour #}

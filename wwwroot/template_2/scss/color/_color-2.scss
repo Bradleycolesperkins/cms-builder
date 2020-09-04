@@ -167,12 +167,12 @@
             background: nth($colorList, $i);
           }
           .slider-business .video-btn a .video-icon.secondary-color{
-            background: nth($colorList, $i) !important;
+            background: nth($colorList, $i);
           }
 
           a.brook-btn.bk-btn-yellow, button.brook-btn.bk-btn-yellow {
             background: nth($colorList, $i);
-            color: #fff !important;
+            color: #fff;
           }
         a.bk-btn.theme-btn, button.bk-btn.theme-btn {
             background-color: nth($colorList, $i);
@@ -373,7 +373,7 @@
               }
           
               &:hover {
-                color: nth($colorList, $i) !important;
+                color: nth($colorList, $i);
               }
             }
           
@@ -491,13 +491,13 @@
         // Essential Button
         .btn-essential{
             &:hover{
-                background: nth($colorList, $i) !important;
-                border-color: nth($colorList, $i) !important;
+                background: nth($colorList, $i);
+                border-color: nth($colorList, $i);
                 color: #fff;
             }
         }
         .red-border{
-            border-color: nth($colorList, $i) !important;
+            border-color: nth($colorList, $i);
         }
         // Slider Arrow Color
         .slick-arrow-center{
@@ -515,7 +515,7 @@
             .svg-icon{
                 svg{
                     *{
-                        stroke: nth($colorList, $i) !important;
+                        stroke: nth($colorList, $i);
                     }
                 }
             }
@@ -523,7 +523,7 @@
                 .svg-icon{
                     svg{
                         *{
-                            stroke: #fff !important;
+                            stroke: #fff;
                         }
                     }
                 } 
@@ -989,7 +989,7 @@
             .slick-center {
                 .testimonial_style--1{
                     &.bg-dark{
-                        background: nth($colorList, $i) !important;
+                        background: nth($colorList, $i);
                     }
                 }
             }
@@ -1084,7 +1084,7 @@ body.template-color-5 .bg_color--13 .single-motive-speach .icon i{
     color: #fff;
 }
 body.template-color-25 .single-svg-icon-box .svg-icon svg *{
-    stroke: #fff !important;
+    stroke: #fff;
 }
 
 

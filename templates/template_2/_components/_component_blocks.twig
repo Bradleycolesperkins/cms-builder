@@ -1,0 +1,13 @@
+
+{% if component_block %}
+    {% for block in component_block.component.all() %}
+        {% switch block.type %}
+
+        {% case "classicBlogList" %}
+            {% include '/template_2/_components/_component_blocks/_classic_blog_list' with { 'block' : block} %}
+        {% default %}
+            {{ dd('Component entry', block.type.handle) }}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}

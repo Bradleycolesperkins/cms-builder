@@ -1,0 +1,18 @@
+{#block#}
+{#text#}
+
+{#button.buttonTextColour#}
+{#button.buttonBackgroundColour#}
+{#button.buttonSize#}
+{#button.buttonShadow#}
+{#button.buttonShape#}
+{#button.buttonBorder#}
+<button class="brook-btn
+{% if button.buttonTextColour %} btn-text-{{ button.buttonTextColour }} {% endif %}
+{% if button.buttonBackgroundColour %} btn-bg-{{ button.buttonBackgroundColour }} {% endif %}
+{% if button.buttonSize %} {{ button.buttonSize.value }} {% endif %}
+{% if button.buttonShadow.value == 'no' %} with-no-shadow {% endif %}
+{% if button.buttonShape %} btn-{{ button.buttonShape.value }} {% endif %}
+{% if button.buttonBorder.value == 'yes' %} btn-border-{{ button.buttonTextColour }} {% endif %}
+"
+>{{ text | nl2br }}</button>

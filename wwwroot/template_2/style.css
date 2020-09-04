@@ -1,4 +1,5 @@
 /*====================
+    >>> NPM RUN SCSS
 	Version: 1.0
 ======================*/
 /**************************************************************
@@ -8295,27 +8296,23 @@ button.brook-btn {
     border-radius: 500px; }
   a.brook-btn.btn-xs-size,
   button.brook-btn.btn-xs-size {
-    padding: 0 20px;
-    height: 40px;
-    line-height: 40px;
+    padding: 10px 20px;
+    min-height: 40px;
     font-size: 13px; }
   a.brook-btn.btn-sm-size,
   button.brook-btn.btn-sm-size {
-    padding: 0 30px;
-    height: 48px;
-    line-height: 48px;
+    padding: 15px 30px;
+    min-height: 48px;
     font-size: 14px; }
   a.brook-btn.btn-sd-size,
   button.brook-btn.btn-sd-size {
-    padding: 0 36px;
-    height: 55px;
-    line-height: 55px;
+    padding: 18px 36px;
+    min-height: 55px;
     font-size: 14px; }
   a.brook-btn.btn-lg-size,
   button.brook-btn.btn-lg-size {
-    padding: 0 40px;
-    height: 62px;
-    line-height: 62px;
+    padding: 20px 40px;
+    min-height: 62px;
     font-size: 16px; }
   a.brook-btn:hover,
   button.brook-btn:hover {
@@ -8412,8 +8409,8 @@ a.moredetails-btn {
   box-shadow: none !important;
   margin: 0 !important; }
   .btn-essential:hover {
-    background: #68AE4A !important;
-    border-color: #68AE4A !important;
+    background: #68AE4A;
+    border-color: #68AE4A;
     color: #fff !important;
     transform: translateY(0px) !important; }
 
@@ -8629,6 +8626,53 @@ a.moredetails-btn {
   .video h4 {
     font-size: 22px;
     line-height: 32px; } }
+
+button.brook-btn.btn-bg-transparent {
+  background-color: transparent; }
+
+button.brook-btn.btn-bg-black {
+  background-color: black; }
+
+button.brook-btn.btn-bg-white {
+  background-color: white; }
+
+button.brook-btn.btn-border-transparent:active,
+button.brook-btn.btn-border-transparent {
+  border-color: transparent; }
+
+button.brook-btn.btn-border-black:active,
+button.brook-btn.btn-border-black {
+  border-color: black; }
+
+button.brook-btn.btn-border-white:active,
+button.brook-btn.btn-border-white {
+  border-color: white; }
+
+button.brook-btn.btn-text-transparent {
+  color: transparent; }
+
+button.brook-btn.btn-text-black {
+  color: black; }
+
+button.brook-btn.btn-text-white {
+  color: white; }
+
+button.brook-btn[class*='image_background_button_'] {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+button.brook-btn[class*='btn-border-'] {
+  border-width: 1px; }
+
+button.brook-btn.btn-border-transparent {
+  color: transparent; }
+
+button.brook-btn.btn-border-black {
+  color: black; }
+
+button.brook-btn.btn-border-white {
+  color: white; }
 
 /*==========================
  * Section Title
@@ -25621,11 +25665,11 @@ body.template-color-1 .testimonial--horizontal--active .swiper-pagination-custom
   background: #0038E3; }
 
 body.template-color-1 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #0038E3 !important; }
+  background: #0038E3; }
 
 body.template-color-1 a.brook-btn.bk-btn-yellow, body.template-color-1 button.brook-btn.bk-btn-yellow {
   background: #0038E3;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-1 a.bk-btn.theme-btn, body.template-color-1 button.bk-btn.theme-btn {
   background-color: #0038E3; }
@@ -25751,7 +25795,7 @@ body.template-color-1 .team-heading .heading-right button i {
   color: #0038E3; }
 
 body.template-color-1 .team-heading .heading-right button:hover {
-  color: #0038E3 !important; }
+  color: #0038E3; }
 
 body.template-color-1 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #0038E3; }
@@ -25792,22 +25836,22 @@ body.template-color-1 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-1 .btn-essential:hover {
-  background: #0038E3 !important;
-  border-color: #0038E3 !important;
+  background: #0038E3;
+  border-color: #0038E3;
   color: #fff; }
 
 body.template-color-1 .red-border {
-  border-color: #0038E3 !important; }
+  border-color: #0038E3; }
 
 body.template-color-1 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #0038E3;
   color: #fff; }
 
 body.template-color-1 .single-svg-icon-box .svg-icon svg * {
-  stroke: #0038E3 !important; }
+  stroke: #0038E3; }
 
 body.template-color-1 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-1 .menu-price {
   color: #0038E3; }
@@ -25975,7 +26019,7 @@ body.template-color-1 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #0038E3; }
 
 body.template-color-1 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #0038E3 !important; }
+  background: #0038E3; }
 
 body.template-color-1 .basic-modern-dots .dot {
   background-color: #0038E3; }
@@ -26066,11 +26110,11 @@ body.template-color-2 .testimonial--horizontal--active .swiper-pagination-custom
   background: #FE378C; }
 
 body.template-color-2 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #FE378C !important; }
+  background: #FE378C; }
 
 body.template-color-2 a.brook-btn.bk-btn-yellow, body.template-color-2 button.brook-btn.bk-btn-yellow {
   background: #FE378C;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-2 a.bk-btn.theme-btn, body.template-color-2 button.bk-btn.theme-btn {
   background-color: #FE378C; }
@@ -26196,7 +26240,7 @@ body.template-color-2 .team-heading .heading-right button i {
   color: #FE378C; }
 
 body.template-color-2 .team-heading .heading-right button:hover {
-  color: #FE378C !important; }
+  color: #FE378C; }
 
 body.template-color-2 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #FE378C; }
@@ -26237,22 +26281,22 @@ body.template-color-2 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-2 .btn-essential:hover {
-  background: #FE378C !important;
-  border-color: #FE378C !important;
+  background: #FE378C;
+  border-color: #FE378C;
   color: #fff; }
 
 body.template-color-2 .red-border {
-  border-color: #FE378C !important; }
+  border-color: #FE378C; }
 
 body.template-color-2 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #FE378C;
   color: #fff; }
 
 body.template-color-2 .single-svg-icon-box .svg-icon svg * {
-  stroke: #FE378C !important; }
+  stroke: #FE378C; }
 
 body.template-color-2 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-2 .menu-price {
   color: #FE378C; }
@@ -26420,7 +26464,7 @@ body.template-color-2 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #FE378C; }
 
 body.template-color-2 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #FE378C !important; }
+  background: #FE378C; }
 
 body.template-color-2 .basic-modern-dots .dot {
   background-color: #FE378C; }
@@ -26511,11 +26555,11 @@ body.template-color-3 .testimonial--horizontal--active .swiper-pagination-custom
   background: #F0263F; }
 
 body.template-color-3 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F0263F !important; }
+  background: #F0263F; }
 
 body.template-color-3 a.brook-btn.bk-btn-yellow, body.template-color-3 button.brook-btn.bk-btn-yellow {
   background: #F0263F;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-3 a.bk-btn.theme-btn, body.template-color-3 button.bk-btn.theme-btn {
   background-color: #F0263F; }
@@ -26641,7 +26685,7 @@ body.template-color-3 .team-heading .heading-right button i {
   color: #F0263F; }
 
 body.template-color-3 .team-heading .heading-right button:hover {
-  color: #F0263F !important; }
+  color: #F0263F; }
 
 body.template-color-3 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F0263F; }
@@ -26682,22 +26726,22 @@ body.template-color-3 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-3 .btn-essential:hover {
-  background: #F0263F !important;
-  border-color: #F0263F !important;
+  background: #F0263F;
+  border-color: #F0263F;
   color: #fff; }
 
 body.template-color-3 .red-border {
-  border-color: #F0263F !important; }
+  border-color: #F0263F; }
 
 body.template-color-3 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F0263F;
   color: #fff; }
 
 body.template-color-3 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F0263F !important; }
+  stroke: #F0263F; }
 
 body.template-color-3 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-3 .menu-price {
   color: #F0263F; }
@@ -26865,7 +26909,7 @@ body.template-color-3 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #F0263F; }
 
 body.template-color-3 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F0263F !important; }
+  background: #F0263F; }
 
 body.template-color-3 .basic-modern-dots .dot {
   background-color: #F0263F; }
@@ -26956,11 +27000,11 @@ body.template-color-4 .testimonial--horizontal--active .swiper-pagination-custom
   background: #FCB72B; }
 
 body.template-color-4 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #FCB72B !important; }
+  background: #FCB72B; }
 
 body.template-color-4 a.brook-btn.bk-btn-yellow, body.template-color-4 button.brook-btn.bk-btn-yellow {
   background: #FCB72B;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-4 a.bk-btn.theme-btn, body.template-color-4 button.bk-btn.theme-btn {
   background-color: #FCB72B; }
@@ -27086,7 +27130,7 @@ body.template-color-4 .team-heading .heading-right button i {
   color: #FCB72B; }
 
 body.template-color-4 .team-heading .heading-right button:hover {
-  color: #FCB72B !important; }
+  color: #FCB72B; }
 
 body.template-color-4 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #FCB72B; }
@@ -27127,22 +27171,22 @@ body.template-color-4 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-4 .btn-essential:hover {
-  background: #FCB72B !important;
-  border-color: #FCB72B !important;
+  background: #FCB72B;
+  border-color: #FCB72B;
   color: #fff; }
 
 body.template-color-4 .red-border {
-  border-color: #FCB72B !important; }
+  border-color: #FCB72B; }
 
 body.template-color-4 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #FCB72B;
   color: #fff; }
 
 body.template-color-4 .single-svg-icon-box .svg-icon svg * {
-  stroke: #FCB72B !important; }
+  stroke: #FCB72B; }
 
 body.template-color-4 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-4 .menu-price {
   color: #FCB72B; }
@@ -27310,7 +27354,7 @@ body.template-color-4 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #FCB72B; }
 
 body.template-color-4 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #FCB72B !important; }
+  background: #FCB72B; }
 
 body.template-color-4 .basic-modern-dots .dot {
   background-color: #FCB72B; }
@@ -27401,11 +27445,11 @@ body.template-color-5 .testimonial--horizontal--active .swiper-pagination-custom
   background: #F8A440; }
 
 body.template-color-5 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F8A440 !important; }
+  background: #F8A440; }
 
 body.template-color-5 a.brook-btn.bk-btn-yellow, body.template-color-5 button.brook-btn.bk-btn-yellow {
   background: #F8A440;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-5 a.bk-btn.theme-btn, body.template-color-5 button.bk-btn.theme-btn {
   background-color: #F8A440; }
@@ -27531,7 +27575,7 @@ body.template-color-5 .team-heading .heading-right button i {
   color: #F8A440; }
 
 body.template-color-5 .team-heading .heading-right button:hover {
-  color: #F8A440 !important; }
+  color: #F8A440; }
 
 body.template-color-5 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F8A440; }
@@ -27572,22 +27616,22 @@ body.template-color-5 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-5 .btn-essential:hover {
-  background: #F8A440 !important;
-  border-color: #F8A440 !important;
+  background: #F8A440;
+  border-color: #F8A440;
   color: #fff; }
 
 body.template-color-5 .red-border {
-  border-color: #F8A440 !important; }
+  border-color: #F8A440; }
 
 body.template-color-5 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F8A440;
   color: #fff; }
 
 body.template-color-5 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F8A440 !important; }
+  stroke: #F8A440; }
 
 body.template-color-5 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-5 .menu-price {
   color: #F8A440; }
@@ -27755,7 +27799,7 @@ body.template-color-5 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #F8A440; }
 
 body.template-color-5 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F8A440 !important; }
+  background: #F8A440; }
 
 body.template-color-5 .basic-modern-dots .dot {
   background-color: #F8A440; }
@@ -27846,11 +27890,11 @@ body.template-color-6 .testimonial--horizontal--active .swiper-pagination-custom
   background: #F05874; }
 
 body.template-color-6 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F05874 !important; }
+  background: #F05874; }
 
 body.template-color-6 a.brook-btn.bk-btn-yellow, body.template-color-6 button.brook-btn.bk-btn-yellow {
   background: #F05874;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-6 a.bk-btn.theme-btn, body.template-color-6 button.bk-btn.theme-btn {
   background-color: #F05874; }
@@ -27976,7 +28020,7 @@ body.template-color-6 .team-heading .heading-right button i {
   color: #F05874; }
 
 body.template-color-6 .team-heading .heading-right button:hover {
-  color: #F05874 !important; }
+  color: #F05874; }
 
 body.template-color-6 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F05874; }
@@ -28017,22 +28061,22 @@ body.template-color-6 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-6 .btn-essential:hover {
-  background: #F05874 !important;
-  border-color: #F05874 !important;
+  background: #F05874;
+  border-color: #F05874;
   color: #fff; }
 
 body.template-color-6 .red-border {
-  border-color: #F05874 !important; }
+  border-color: #F05874; }
 
 body.template-color-6 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F05874;
   color: #fff; }
 
 body.template-color-6 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F05874 !important; }
+  stroke: #F05874; }
 
 body.template-color-6 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-6 .menu-price {
   color: #F05874; }
@@ -28200,7 +28244,7 @@ body.template-color-6 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #F05874; }
 
 body.template-color-6 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F05874 !important; }
+  background: #F05874; }
 
 body.template-color-6 .basic-modern-dots .dot {
   background-color: #F05874; }
@@ -28291,11 +28335,11 @@ body.template-color-7 .testimonial--horizontal--active .swiper-pagination-custom
   background: #99E5E8; }
 
 body.template-color-7 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #99E5E8 !important; }
+  background: #99E5E8; }
 
 body.template-color-7 a.brook-btn.bk-btn-yellow, body.template-color-7 button.brook-btn.bk-btn-yellow {
   background: #99E5E8;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-7 a.bk-btn.theme-btn, body.template-color-7 button.bk-btn.theme-btn {
   background-color: #99E5E8; }
@@ -28421,7 +28465,7 @@ body.template-color-7 .team-heading .heading-right button i {
   color: #99E5E8; }
 
 body.template-color-7 .team-heading .heading-right button:hover {
-  color: #99E5E8 !important; }
+  color: #99E5E8; }
 
 body.template-color-7 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #99E5E8; }
@@ -28462,22 +28506,22 @@ body.template-color-7 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-7 .btn-essential:hover {
-  background: #99E5E8 !important;
-  border-color: #99E5E8 !important;
+  background: #99E5E8;
+  border-color: #99E5E8;
   color: #fff; }
 
 body.template-color-7 .red-border {
-  border-color: #99E5E8 !important; }
+  border-color: #99E5E8; }
 
 body.template-color-7 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #99E5E8;
   color: #fff; }
 
 body.template-color-7 .single-svg-icon-box .svg-icon svg * {
-  stroke: #99E5E8 !important; }
+  stroke: #99E5E8; }
 
 body.template-color-7 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-7 .menu-price {
   color: #99E5E8; }
@@ -28645,7 +28689,7 @@ body.template-color-7 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #99E5E8; }
 
 body.template-color-7 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #99E5E8 !important; }
+  background: #99E5E8; }
 
 body.template-color-7 .basic-modern-dots .dot {
   background-color: #99E5E8; }
@@ -28736,11 +28780,11 @@ body.template-color-8 .testimonial--horizontal--active .swiper-pagination-custom
   background: #82CECF; }
 
 body.template-color-8 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #82CECF !important; }
+  background: #82CECF; }
 
 body.template-color-8 a.brook-btn.bk-btn-yellow, body.template-color-8 button.brook-btn.bk-btn-yellow {
   background: #82CECF;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-8 a.bk-btn.theme-btn, body.template-color-8 button.bk-btn.theme-btn {
   background-color: #82CECF; }
@@ -28866,7 +28910,7 @@ body.template-color-8 .team-heading .heading-right button i {
   color: #82CECF; }
 
 body.template-color-8 .team-heading .heading-right button:hover {
-  color: #82CECF !important; }
+  color: #82CECF; }
 
 body.template-color-8 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #82CECF; }
@@ -28907,22 +28951,22 @@ body.template-color-8 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-8 .btn-essential:hover {
-  background: #82CECF !important;
-  border-color: #82CECF !important;
+  background: #82CECF;
+  border-color: #82CECF;
   color: #fff; }
 
 body.template-color-8 .red-border {
-  border-color: #82CECF !important; }
+  border-color: #82CECF; }
 
 body.template-color-8 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #82CECF;
   color: #fff; }
 
 body.template-color-8 .single-svg-icon-box .svg-icon svg * {
-  stroke: #82CECF !important; }
+  stroke: #82CECF; }
 
 body.template-color-8 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-8 .menu-price {
   color: #82CECF; }
@@ -29090,7 +29134,7 @@ body.template-color-8 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #82CECF; }
 
 body.template-color-8 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #82CECF !important; }
+  background: #82CECF; }
 
 body.template-color-8 .basic-modern-dots .dot {
   background-color: #82CECF; }
@@ -29181,11 +29225,11 @@ body.template-color-9 .testimonial--horizontal--active .swiper-pagination-custom
   background: #F0263F; }
 
 body.template-color-9 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F0263F !important; }
+  background: #F0263F; }
 
 body.template-color-9 a.brook-btn.bk-btn-yellow, body.template-color-9 button.brook-btn.bk-btn-yellow {
   background: #F0263F;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-9 a.bk-btn.theme-btn, body.template-color-9 button.bk-btn.theme-btn {
   background-color: #F0263F; }
@@ -29311,7 +29355,7 @@ body.template-color-9 .team-heading .heading-right button i {
   color: #F0263F; }
 
 body.template-color-9 .team-heading .heading-right button:hover {
-  color: #F0263F !important; }
+  color: #F0263F; }
 
 body.template-color-9 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F0263F; }
@@ -29352,22 +29396,22 @@ body.template-color-9 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-9 .btn-essential:hover {
-  background: #F0263F !important;
-  border-color: #F0263F !important;
+  background: #F0263F;
+  border-color: #F0263F;
   color: #fff; }
 
 body.template-color-9 .red-border {
-  border-color: #F0263F !important; }
+  border-color: #F0263F; }
 
 body.template-color-9 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F0263F;
   color: #fff; }
 
 body.template-color-9 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F0263F !important; }
+  stroke: #F0263F; }
 
 body.template-color-9 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-9 .menu-price {
   color: #F0263F; }
@@ -29535,7 +29579,7 @@ body.template-color-9 .ht-pricing-list-view thead tr th.pricing-header .feature-
   background: #F0263F; }
 
 body.template-color-9 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F0263F !important; }
+  background: #F0263F; }
 
 body.template-color-9 .basic-modern-dots .dot {
   background-color: #F0263F; }
@@ -29626,11 +29670,11 @@ body.template-color-10 .testimonial--horizontal--active .swiper-pagination-custo
   background: #19d2a8; }
 
 body.template-color-10 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #19d2a8 !important; }
+  background: #19d2a8; }
 
 body.template-color-10 a.brook-btn.bk-btn-yellow, body.template-color-10 button.brook-btn.bk-btn-yellow {
   background: #19d2a8;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-10 a.bk-btn.theme-btn, body.template-color-10 button.bk-btn.theme-btn {
   background-color: #19d2a8; }
@@ -29756,7 +29800,7 @@ body.template-color-10 .team-heading .heading-right button i {
   color: #19d2a8; }
 
 body.template-color-10 .team-heading .heading-right button:hover {
-  color: #19d2a8 !important; }
+  color: #19d2a8; }
 
 body.template-color-10 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #19d2a8; }
@@ -29797,22 +29841,22 @@ body.template-color-10 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-10 .btn-essential:hover {
-  background: #19d2a8 !important;
-  border-color: #19d2a8 !important;
+  background: #19d2a8;
+  border-color: #19d2a8;
   color: #fff; }
 
 body.template-color-10 .red-border {
-  border-color: #19d2a8 !important; }
+  border-color: #19d2a8; }
 
 body.template-color-10 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #19d2a8;
   color: #fff; }
 
 body.template-color-10 .single-svg-icon-box .svg-icon svg * {
-  stroke: #19d2a8 !important; }
+  stroke: #19d2a8; }
 
 body.template-color-10 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-10 .menu-price {
   color: #19d2a8; }
@@ -29980,7 +30024,7 @@ body.template-color-10 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #19d2a8; }
 
 body.template-color-10 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #19d2a8 !important; }
+  background: #19d2a8; }
 
 body.template-color-10 .basic-modern-dots .dot {
   background-color: #19d2a8; }
@@ -30071,11 +30115,11 @@ body.template-color-11 .testimonial--horizontal--active .swiper-pagination-custo
   background: #0069FF; }
 
 body.template-color-11 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #0069FF !important; }
+  background: #0069FF; }
 
 body.template-color-11 a.brook-btn.bk-btn-yellow, body.template-color-11 button.brook-btn.bk-btn-yellow {
   background: #0069FF;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-11 a.bk-btn.theme-btn, body.template-color-11 button.bk-btn.theme-btn {
   background-color: #0069FF; }
@@ -30201,7 +30245,7 @@ body.template-color-11 .team-heading .heading-right button i {
   color: #0069FF; }
 
 body.template-color-11 .team-heading .heading-right button:hover {
-  color: #0069FF !important; }
+  color: #0069FF; }
 
 body.template-color-11 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #0069FF; }
@@ -30242,22 +30286,22 @@ body.template-color-11 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-11 .btn-essential:hover {
-  background: #0069FF !important;
-  border-color: #0069FF !important;
+  background: #0069FF;
+  border-color: #0069FF;
   color: #fff; }
 
 body.template-color-11 .red-border {
-  border-color: #0069FF !important; }
+  border-color: #0069FF; }
 
 body.template-color-11 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #0069FF;
   color: #fff; }
 
 body.template-color-11 .single-svg-icon-box .svg-icon svg * {
-  stroke: #0069FF !important; }
+  stroke: #0069FF; }
 
 body.template-color-11 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-11 .menu-price {
   color: #0069FF; }
@@ -30425,7 +30469,7 @@ body.template-color-11 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #0069FF; }
 
 body.template-color-11 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #0069FF !important; }
+  background: #0069FF; }
 
 body.template-color-11 .basic-modern-dots .dot {
   background-color: #0069FF; }
@@ -30516,11 +30560,11 @@ body.template-color-12 .testimonial--horizontal--active .swiper-pagination-custo
   background: #F1C078; }
 
 body.template-color-12 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F1C078 !important; }
+  background: #F1C078; }
 
 body.template-color-12 a.brook-btn.bk-btn-yellow, body.template-color-12 button.brook-btn.bk-btn-yellow {
   background: #F1C078;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-12 a.bk-btn.theme-btn, body.template-color-12 button.bk-btn.theme-btn {
   background-color: #F1C078; }
@@ -30646,7 +30690,7 @@ body.template-color-12 .team-heading .heading-right button i {
   color: #F1C078; }
 
 body.template-color-12 .team-heading .heading-right button:hover {
-  color: #F1C078 !important; }
+  color: #F1C078; }
 
 body.template-color-12 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F1C078; }
@@ -30687,22 +30731,22 @@ body.template-color-12 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-12 .btn-essential:hover {
-  background: #F1C078 !important;
-  border-color: #F1C078 !important;
+  background: #F1C078;
+  border-color: #F1C078;
   color: #fff; }
 
 body.template-color-12 .red-border {
-  border-color: #F1C078 !important; }
+  border-color: #F1C078; }
 
 body.template-color-12 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F1C078;
   color: #fff; }
 
 body.template-color-12 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F1C078 !important; }
+  stroke: #F1C078; }
 
 body.template-color-12 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-12 .menu-price {
   color: #F1C078; }
@@ -30870,7 +30914,7 @@ body.template-color-12 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #F1C078; }
 
 body.template-color-12 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F1C078 !important; }
+  background: #F1C078; }
 
 body.template-color-12 .basic-modern-dots .dot {
   background-color: #F1C078; }
@@ -30961,11 +31005,11 @@ body.template-color-13 .testimonial--horizontal--active .swiper-pagination-custo
   background: #CAC0B3; }
 
 body.template-color-13 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #CAC0B3 !important; }
+  background: #CAC0B3; }
 
 body.template-color-13 a.brook-btn.bk-btn-yellow, body.template-color-13 button.brook-btn.bk-btn-yellow {
   background: #CAC0B3;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-13 a.bk-btn.theme-btn, body.template-color-13 button.bk-btn.theme-btn {
   background-color: #CAC0B3; }
@@ -31091,7 +31135,7 @@ body.template-color-13 .team-heading .heading-right button i {
   color: #CAC0B3; }
 
 body.template-color-13 .team-heading .heading-right button:hover {
-  color: #CAC0B3 !important; }
+  color: #CAC0B3; }
 
 body.template-color-13 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #CAC0B3; }
@@ -31132,22 +31176,22 @@ body.template-color-13 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-13 .btn-essential:hover {
-  background: #CAC0B3 !important;
-  border-color: #CAC0B3 !important;
+  background: #CAC0B3;
+  border-color: #CAC0B3;
   color: #fff; }
 
 body.template-color-13 .red-border {
-  border-color: #CAC0B3 !important; }
+  border-color: #CAC0B3; }
 
 body.template-color-13 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #CAC0B3;
   color: #fff; }
 
 body.template-color-13 .single-svg-icon-box .svg-icon svg * {
-  stroke: #CAC0B3 !important; }
+  stroke: #CAC0B3; }
 
 body.template-color-13 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-13 .menu-price {
   color: #CAC0B3; }
@@ -31315,7 +31359,7 @@ body.template-color-13 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #CAC0B3; }
 
 body.template-color-13 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #CAC0B3 !important; }
+  background: #CAC0B3; }
 
 body.template-color-13 .basic-modern-dots .dot {
   background-color: #CAC0B3; }
@@ -31406,11 +31450,11 @@ body.template-color-14 .testimonial--horizontal--active .swiper-pagination-custo
   background: #F55D4E; }
 
 body.template-color-14 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F55D4E !important; }
+  background: #F55D4E; }
 
 body.template-color-14 a.brook-btn.bk-btn-yellow, body.template-color-14 button.brook-btn.bk-btn-yellow {
   background: #F55D4E;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-14 a.bk-btn.theme-btn, body.template-color-14 button.bk-btn.theme-btn {
   background-color: #F55D4E; }
@@ -31536,7 +31580,7 @@ body.template-color-14 .team-heading .heading-right button i {
   color: #F55D4E; }
 
 body.template-color-14 .team-heading .heading-right button:hover {
-  color: #F55D4E !important; }
+  color: #F55D4E; }
 
 body.template-color-14 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F55D4E; }
@@ -31577,22 +31621,22 @@ body.template-color-14 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-14 .btn-essential:hover {
-  background: #F55D4E !important;
-  border-color: #F55D4E !important;
+  background: #F55D4E;
+  border-color: #F55D4E;
   color: #fff; }
 
 body.template-color-14 .red-border {
-  border-color: #F55D4E !important; }
+  border-color: #F55D4E; }
 
 body.template-color-14 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F55D4E;
   color: #fff; }
 
 body.template-color-14 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F55D4E !important; }
+  stroke: #F55D4E; }
 
 body.template-color-14 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-14 .menu-price {
   color: #F55D4E; }
@@ -31760,7 +31804,7 @@ body.template-color-14 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #F55D4E; }
 
 body.template-color-14 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F55D4E !important; }
+  background: #F55D4E; }
 
 body.template-color-14 .basic-modern-dots .dot {
   background-color: #F55D4E; }
@@ -31851,11 +31895,11 @@ body.template-color-15 .testimonial--horizontal--active .swiper-pagination-custo
   background: #AC61EE; }
 
 body.template-color-15 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #AC61EE !important; }
+  background: #AC61EE; }
 
 body.template-color-15 a.brook-btn.bk-btn-yellow, body.template-color-15 button.brook-btn.bk-btn-yellow {
   background: #AC61EE;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-15 a.bk-btn.theme-btn, body.template-color-15 button.bk-btn.theme-btn {
   background-color: #AC61EE; }
@@ -31981,7 +32025,7 @@ body.template-color-15 .team-heading .heading-right button i {
   color: #AC61EE; }
 
 body.template-color-15 .team-heading .heading-right button:hover {
-  color: #AC61EE !important; }
+  color: #AC61EE; }
 
 body.template-color-15 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #AC61EE; }
@@ -32022,22 +32066,22 @@ body.template-color-15 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-15 .btn-essential:hover {
-  background: #AC61EE !important;
-  border-color: #AC61EE !important;
+  background: #AC61EE;
+  border-color: #AC61EE;
   color: #fff; }
 
 body.template-color-15 .red-border {
-  border-color: #AC61EE !important; }
+  border-color: #AC61EE; }
 
 body.template-color-15 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #AC61EE;
   color: #fff; }
 
 body.template-color-15 .single-svg-icon-box .svg-icon svg * {
-  stroke: #AC61EE !important; }
+  stroke: #AC61EE; }
 
 body.template-color-15 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-15 .menu-price {
   color: #AC61EE; }
@@ -32205,7 +32249,7 @@ body.template-color-15 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #AC61EE; }
 
 body.template-color-15 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #AC61EE !important; }
+  background: #AC61EE; }
 
 body.template-color-15 .basic-modern-dots .dot {
   background-color: #AC61EE; }
@@ -32296,11 +32340,11 @@ body.template-color-16 .testimonial--horizontal--active .swiper-pagination-custo
   background: #F5A623; }
 
 body.template-color-16 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F5A623 !important; }
+  background: #F5A623; }
 
 body.template-color-16 a.brook-btn.bk-btn-yellow, body.template-color-16 button.brook-btn.bk-btn-yellow {
   background: #F5A623;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-16 a.bk-btn.theme-btn, body.template-color-16 button.bk-btn.theme-btn {
   background-color: #F5A623; }
@@ -32426,7 +32470,7 @@ body.template-color-16 .team-heading .heading-right button i {
   color: #F5A623; }
 
 body.template-color-16 .team-heading .heading-right button:hover {
-  color: #F5A623 !important; }
+  color: #F5A623; }
 
 body.template-color-16 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F5A623; }
@@ -32467,22 +32511,22 @@ body.template-color-16 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-16 .btn-essential:hover {
-  background: #F5A623 !important;
-  border-color: #F5A623 !important;
+  background: #F5A623;
+  border-color: #F5A623;
   color: #fff; }
 
 body.template-color-16 .red-border {
-  border-color: #F5A623 !important; }
+  border-color: #F5A623; }
 
 body.template-color-16 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F5A623;
   color: #fff; }
 
 body.template-color-16 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F5A623 !important; }
+  stroke: #F5A623; }
 
 body.template-color-16 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-16 .menu-price {
   color: #F5A623; }
@@ -32650,7 +32694,7 @@ body.template-color-16 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #F5A623; }
 
 body.template-color-16 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F5A623 !important; }
+  background: #F5A623; }
 
 body.template-color-16 .basic-modern-dots .dot {
   background-color: #F5A623; }
@@ -32741,11 +32785,11 @@ body.template-color-17 .testimonial--horizontal--active .swiper-pagination-custo
   background: #B013FE; }
 
 body.template-color-17 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #B013FE !important; }
+  background: #B013FE; }
 
 body.template-color-17 a.brook-btn.bk-btn-yellow, body.template-color-17 button.brook-btn.bk-btn-yellow {
   background: #B013FE;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-17 a.bk-btn.theme-btn, body.template-color-17 button.bk-btn.theme-btn {
   background-color: #B013FE; }
@@ -32871,7 +32915,7 @@ body.template-color-17 .team-heading .heading-right button i {
   color: #B013FE; }
 
 body.template-color-17 .team-heading .heading-right button:hover {
-  color: #B013FE !important; }
+  color: #B013FE; }
 
 body.template-color-17 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #B013FE; }
@@ -32912,22 +32956,22 @@ body.template-color-17 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-17 .btn-essential:hover {
-  background: #B013FE !important;
-  border-color: #B013FE !important;
+  background: #B013FE;
+  border-color: #B013FE;
   color: #fff; }
 
 body.template-color-17 .red-border {
-  border-color: #B013FE !important; }
+  border-color: #B013FE; }
 
 body.template-color-17 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #B013FE;
   color: #fff; }
 
 body.template-color-17 .single-svg-icon-box .svg-icon svg * {
-  stroke: #B013FE !important; }
+  stroke: #B013FE; }
 
 body.template-color-17 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-17 .menu-price {
   color: #B013FE; }
@@ -33095,7 +33139,7 @@ body.template-color-17 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #B013FE; }
 
 body.template-color-17 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #B013FE !important; }
+  background: #B013FE; }
 
 body.template-color-17 .basic-modern-dots .dot {
   background-color: #B013FE; }
@@ -33186,11 +33230,11 @@ body.template-color-18 .testimonial--horizontal--active .swiper-pagination-custo
   background: #899664; }
 
 body.template-color-18 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #899664 !important; }
+  background: #899664; }
 
 body.template-color-18 a.brook-btn.bk-btn-yellow, body.template-color-18 button.brook-btn.bk-btn-yellow {
   background: #899664;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-18 a.bk-btn.theme-btn, body.template-color-18 button.bk-btn.theme-btn {
   background-color: #899664; }
@@ -33316,7 +33360,7 @@ body.template-color-18 .team-heading .heading-right button i {
   color: #899664; }
 
 body.template-color-18 .team-heading .heading-right button:hover {
-  color: #899664 !important; }
+  color: #899664; }
 
 body.template-color-18 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #899664; }
@@ -33357,22 +33401,22 @@ body.template-color-18 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-18 .btn-essential:hover {
-  background: #899664 !important;
-  border-color: #899664 !important;
+  background: #899664;
+  border-color: #899664;
   color: #fff; }
 
 body.template-color-18 .red-border {
-  border-color: #899664 !important; }
+  border-color: #899664; }
 
 body.template-color-18 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #899664;
   color: #fff; }
 
 body.template-color-18 .single-svg-icon-box .svg-icon svg * {
-  stroke: #899664 !important; }
+  stroke: #899664; }
 
 body.template-color-18 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-18 .menu-price {
   color: #899664; }
@@ -33540,7 +33584,7 @@ body.template-color-18 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #899664; }
 
 body.template-color-18 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #899664 !important; }
+  background: #899664; }
 
 body.template-color-18 .basic-modern-dots .dot {
   background-color: #899664; }
@@ -33631,11 +33675,11 @@ body.template-color-19 .testimonial--horizontal--active .swiper-pagination-custo
   background: #F12C6E; }
 
 body.template-color-19 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F12C6E !important; }
+  background: #F12C6E; }
 
 body.template-color-19 a.brook-btn.bk-btn-yellow, body.template-color-19 button.brook-btn.bk-btn-yellow {
   background: #F12C6E;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-19 a.bk-btn.theme-btn, body.template-color-19 button.bk-btn.theme-btn {
   background-color: #F12C6E; }
@@ -33761,7 +33805,7 @@ body.template-color-19 .team-heading .heading-right button i {
   color: #F12C6E; }
 
 body.template-color-19 .team-heading .heading-right button:hover {
-  color: #F12C6E !important; }
+  color: #F12C6E; }
 
 body.template-color-19 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F12C6E; }
@@ -33802,22 +33846,22 @@ body.template-color-19 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-19 .btn-essential:hover {
-  background: #F12C6E !important;
-  border-color: #F12C6E !important;
+  background: #F12C6E;
+  border-color: #F12C6E;
   color: #fff; }
 
 body.template-color-19 .red-border {
-  border-color: #F12C6E !important; }
+  border-color: #F12C6E; }
 
 body.template-color-19 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F12C6E;
   color: #fff; }
 
 body.template-color-19 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F12C6E !important; }
+  stroke: #F12C6E; }
 
 body.template-color-19 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-19 .menu-price {
   color: #F12C6E; }
@@ -33985,7 +34029,7 @@ body.template-color-19 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #F12C6E; }
 
 body.template-color-19 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F12C6E !important; }
+  background: #F12C6E; }
 
 body.template-color-19 .basic-modern-dots .dot {
   background-color: #F12C6E; }
@@ -34076,11 +34120,11 @@ body.template-color-20 .testimonial--horizontal--active .swiper-pagination-custo
   background: #CE8F4F; }
 
 body.template-color-20 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #CE8F4F !important; }
+  background: #CE8F4F; }
 
 body.template-color-20 a.brook-btn.bk-btn-yellow, body.template-color-20 button.brook-btn.bk-btn-yellow {
   background: #CE8F4F;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-20 a.bk-btn.theme-btn, body.template-color-20 button.bk-btn.theme-btn {
   background-color: #CE8F4F; }
@@ -34206,7 +34250,7 @@ body.template-color-20 .team-heading .heading-right button i {
   color: #CE8F4F; }
 
 body.template-color-20 .team-heading .heading-right button:hover {
-  color: #CE8F4F !important; }
+  color: #CE8F4F; }
 
 body.template-color-20 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #CE8F4F; }
@@ -34247,22 +34291,22 @@ body.template-color-20 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-20 .btn-essential:hover {
-  background: #CE8F4F !important;
-  border-color: #CE8F4F !important;
+  background: #CE8F4F;
+  border-color: #CE8F4F;
   color: #fff; }
 
 body.template-color-20 .red-border {
-  border-color: #CE8F4F !important; }
+  border-color: #CE8F4F; }
 
 body.template-color-20 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #CE8F4F;
   color: #fff; }
 
 body.template-color-20 .single-svg-icon-box .svg-icon svg * {
-  stroke: #CE8F4F !important; }
+  stroke: #CE8F4F; }
 
 body.template-color-20 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-20 .menu-price {
   color: #CE8F4F; }
@@ -34430,7 +34474,7 @@ body.template-color-20 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #CE8F4F; }
 
 body.template-color-20 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #CE8F4F !important; }
+  background: #CE8F4F; }
 
 body.template-color-20 .basic-modern-dots .dot {
   background-color: #CE8F4F; }
@@ -34521,11 +34565,11 @@ body.template-color-21 .testimonial--horizontal--active .swiper-pagination-custo
   background: #FB6031; }
 
 body.template-color-21 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #FB6031 !important; }
+  background: #FB6031; }
 
 body.template-color-21 a.brook-btn.bk-btn-yellow, body.template-color-21 button.brook-btn.bk-btn-yellow {
   background: #FB6031;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-21 a.bk-btn.theme-btn, body.template-color-21 button.bk-btn.theme-btn {
   background-color: #FB6031; }
@@ -34651,7 +34695,7 @@ body.template-color-21 .team-heading .heading-right button i {
   color: #FB6031; }
 
 body.template-color-21 .team-heading .heading-right button:hover {
-  color: #FB6031 !important; }
+  color: #FB6031; }
 
 body.template-color-21 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #FB6031; }
@@ -34692,22 +34736,22 @@ body.template-color-21 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-21 .btn-essential:hover {
-  background: #FB6031 !important;
-  border-color: #FB6031 !important;
+  background: #FB6031;
+  border-color: #FB6031;
   color: #fff; }
 
 body.template-color-21 .red-border {
-  border-color: #FB6031 !important; }
+  border-color: #FB6031; }
 
 body.template-color-21 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #FB6031;
   color: #fff; }
 
 body.template-color-21 .single-svg-icon-box .svg-icon svg * {
-  stroke: #FB6031 !important; }
+  stroke: #FB6031; }
 
 body.template-color-21 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-21 .menu-price {
   color: #FB6031; }
@@ -34875,7 +34919,7 @@ body.template-color-21 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #FB6031; }
 
 body.template-color-21 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #FB6031 !important; }
+  background: #FB6031; }
 
 body.template-color-21 .basic-modern-dots .dot {
   background-color: #FB6031; }
@@ -34966,11 +35010,11 @@ body.template-color-22 .testimonial--horizontal--active .swiper-pagination-custo
   background: #A810E0; }
 
 body.template-color-22 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #A810E0 !important; }
+  background: #A810E0; }
 
 body.template-color-22 a.brook-btn.bk-btn-yellow, body.template-color-22 button.brook-btn.bk-btn-yellow {
   background: #A810E0;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-22 a.bk-btn.theme-btn, body.template-color-22 button.bk-btn.theme-btn {
   background-color: #A810E0; }
@@ -35096,7 +35140,7 @@ body.template-color-22 .team-heading .heading-right button i {
   color: #A810E0; }
 
 body.template-color-22 .team-heading .heading-right button:hover {
-  color: #A810E0 !important; }
+  color: #A810E0; }
 
 body.template-color-22 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #A810E0; }
@@ -35137,22 +35181,22 @@ body.template-color-22 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-22 .btn-essential:hover {
-  background: #A810E0 !important;
-  border-color: #A810E0 !important;
+  background: #A810E0;
+  border-color: #A810E0;
   color: #fff; }
 
 body.template-color-22 .red-border {
-  border-color: #A810E0 !important; }
+  border-color: #A810E0; }
 
 body.template-color-22 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #A810E0;
   color: #fff; }
 
 body.template-color-22 .single-svg-icon-box .svg-icon svg * {
-  stroke: #A810E0 !important; }
+  stroke: #A810E0; }
 
 body.template-color-22 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-22 .menu-price {
   color: #A810E0; }
@@ -35320,7 +35364,7 @@ body.template-color-22 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #A810E0; }
 
 body.template-color-22 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #A810E0 !important; }
+  background: #A810E0; }
 
 body.template-color-22 .basic-modern-dots .dot {
   background-color: #A810E0; }
@@ -35411,11 +35455,11 @@ body.template-color-23 .testimonial--horizontal--active .swiper-pagination-custo
   background: #68AE4A; }
 
 body.template-color-23 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #68AE4A !important; }
+  background: #68AE4A; }
 
 body.template-color-23 a.brook-btn.bk-btn-yellow, body.template-color-23 button.brook-btn.bk-btn-yellow {
   background: #68AE4A;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-23 a.bk-btn.theme-btn, body.template-color-23 button.bk-btn.theme-btn {
   background-color: #68AE4A; }
@@ -35541,7 +35585,7 @@ body.template-color-23 .team-heading .heading-right button i {
   color: #68AE4A; }
 
 body.template-color-23 .team-heading .heading-right button:hover {
-  color: #68AE4A !important; }
+  color: #68AE4A; }
 
 body.template-color-23 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #68AE4A; }
@@ -35582,22 +35626,22 @@ body.template-color-23 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-23 .btn-essential:hover {
-  background: #68AE4A !important;
-  border-color: #68AE4A !important;
+  background: #68AE4A;
+  border-color: #68AE4A;
   color: #fff; }
 
 body.template-color-23 .red-border {
-  border-color: #68AE4A !important; }
+  border-color: #68AE4A; }
 
 body.template-color-23 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #68AE4A;
   color: #fff; }
 
 body.template-color-23 .single-svg-icon-box .svg-icon svg * {
-  stroke: #68AE4A !important; }
+  stroke: #68AE4A; }
 
 body.template-color-23 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-23 .menu-price {
   color: #68AE4A; }
@@ -35765,7 +35809,7 @@ body.template-color-23 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #68AE4A; }
 
 body.template-color-23 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #68AE4A !important; }
+  background: #68AE4A; }
 
 body.template-color-23 .basic-modern-dots .dot {
   background-color: #68AE4A; }
@@ -35856,11 +35900,11 @@ body.template-color-24 .testimonial--horizontal--active .swiper-pagination-custo
   background: #BC9464; }
 
 body.template-color-24 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #BC9464 !important; }
+  background: #BC9464; }
 
 body.template-color-24 a.brook-btn.bk-btn-yellow, body.template-color-24 button.brook-btn.bk-btn-yellow {
   background: #BC9464;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-24 a.bk-btn.theme-btn, body.template-color-24 button.bk-btn.theme-btn {
   background-color: #BC9464; }
@@ -35986,7 +36030,7 @@ body.template-color-24 .team-heading .heading-right button i {
   color: #BC9464; }
 
 body.template-color-24 .team-heading .heading-right button:hover {
-  color: #BC9464 !important; }
+  color: #BC9464; }
 
 body.template-color-24 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #BC9464; }
@@ -36027,22 +36071,22 @@ body.template-color-24 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-24 .btn-essential:hover {
-  background: #BC9464 !important;
-  border-color: #BC9464 !important;
+  background: #BC9464;
+  border-color: #BC9464;
   color: #fff; }
 
 body.template-color-24 .red-border {
-  border-color: #BC9464 !important; }
+  border-color: #BC9464; }
 
 body.template-color-24 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #BC9464;
   color: #fff; }
 
 body.template-color-24 .single-svg-icon-box .svg-icon svg * {
-  stroke: #BC9464 !important; }
+  stroke: #BC9464; }
 
 body.template-color-24 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-24 .menu-price {
   color: #BC9464; }
@@ -36210,7 +36254,7 @@ body.template-color-24 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #BC9464; }
 
 body.template-color-24 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #BC9464 !important; }
+  background: #BC9464; }
 
 body.template-color-24 .basic-modern-dots .dot {
   background-color: #BC9464; }
@@ -36301,11 +36345,11 @@ body.template-color-25 .testimonial--horizontal--active .swiper-pagination-custo
   background: #9F3939; }
 
 body.template-color-25 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #9F3939 !important; }
+  background: #9F3939; }
 
 body.template-color-25 a.brook-btn.bk-btn-yellow, body.template-color-25 button.brook-btn.bk-btn-yellow {
   background: #9F3939;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-25 a.bk-btn.theme-btn, body.template-color-25 button.bk-btn.theme-btn {
   background-color: #9F3939; }
@@ -36431,7 +36475,7 @@ body.template-color-25 .team-heading .heading-right button i {
   color: #9F3939; }
 
 body.template-color-25 .team-heading .heading-right button:hover {
-  color: #9F3939 !important; }
+  color: #9F3939; }
 
 body.template-color-25 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #9F3939; }
@@ -36472,22 +36516,22 @@ body.template-color-25 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-25 .btn-essential:hover {
-  background: #9F3939 !important;
-  border-color: #9F3939 !important;
+  background: #9F3939;
+  border-color: #9F3939;
   color: #fff; }
 
 body.template-color-25 .red-border {
-  border-color: #9F3939 !important; }
+  border-color: #9F3939; }
 
 body.template-color-25 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #9F3939;
   color: #fff; }
 
 body.template-color-25 .single-svg-icon-box .svg-icon svg * {
-  stroke: #9F3939 !important; }
+  stroke: #9F3939; }
 
 body.template-color-25 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-25 .menu-price {
   color: #9F3939; }
@@ -36655,7 +36699,7 @@ body.template-color-25 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #9F3939; }
 
 body.template-color-25 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #9F3939 !important; }
+  background: #9F3939; }
 
 body.template-color-25 .basic-modern-dots .dot {
   background-color: #9F3939; }
@@ -36746,11 +36790,11 @@ body.template-color-26 .testimonial--horizontal--active .swiper-pagination-custo
   background: #7BA100; }
 
 body.template-color-26 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #7BA100 !important; }
+  background: #7BA100; }
 
 body.template-color-26 a.brook-btn.bk-btn-yellow, body.template-color-26 button.brook-btn.bk-btn-yellow {
   background: #7BA100;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-26 a.bk-btn.theme-btn, body.template-color-26 button.bk-btn.theme-btn {
   background-color: #7BA100; }
@@ -36876,7 +36920,7 @@ body.template-color-26 .team-heading .heading-right button i {
   color: #7BA100; }
 
 body.template-color-26 .team-heading .heading-right button:hover {
-  color: #7BA100 !important; }
+  color: #7BA100; }
 
 body.template-color-26 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #7BA100; }
@@ -36917,22 +36961,22 @@ body.template-color-26 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-26 .btn-essential:hover {
-  background: #7BA100 !important;
-  border-color: #7BA100 !important;
+  background: #7BA100;
+  border-color: #7BA100;
   color: #fff; }
 
 body.template-color-26 .red-border {
-  border-color: #7BA100 !important; }
+  border-color: #7BA100; }
 
 body.template-color-26 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #7BA100;
   color: #fff; }
 
 body.template-color-26 .single-svg-icon-box .svg-icon svg * {
-  stroke: #7BA100 !important; }
+  stroke: #7BA100; }
 
 body.template-color-26 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-26 .menu-price {
   color: #7BA100; }
@@ -37100,7 +37144,7 @@ body.template-color-26 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #7BA100; }
 
 body.template-color-26 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #7BA100 !important; }
+  background: #7BA100; }
 
 body.template-color-26 .basic-modern-dots .dot {
   background-color: #7BA100; }
@@ -37191,11 +37235,11 @@ body.template-color-27 .testimonial--horizontal--active .swiper-pagination-custo
   background: #14359E; }
 
 body.template-color-27 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #14359E !important; }
+  background: #14359E; }
 
 body.template-color-27 a.brook-btn.bk-btn-yellow, body.template-color-27 button.brook-btn.bk-btn-yellow {
   background: #14359E;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-27 a.bk-btn.theme-btn, body.template-color-27 button.bk-btn.theme-btn {
   background-color: #14359E; }
@@ -37321,7 +37365,7 @@ body.template-color-27 .team-heading .heading-right button i {
   color: #14359E; }
 
 body.template-color-27 .team-heading .heading-right button:hover {
-  color: #14359E !important; }
+  color: #14359E; }
 
 body.template-color-27 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #14359E; }
@@ -37362,22 +37406,22 @@ body.template-color-27 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-27 .btn-essential:hover {
-  background: #14359E !important;
-  border-color: #14359E !important;
+  background: #14359E;
+  border-color: #14359E;
   color: #fff; }
 
 body.template-color-27 .red-border {
-  border-color: #14359E !important; }
+  border-color: #14359E; }
 
 body.template-color-27 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #14359E;
   color: #fff; }
 
 body.template-color-27 .single-svg-icon-box .svg-icon svg * {
-  stroke: #14359E !important; }
+  stroke: #14359E; }
 
 body.template-color-27 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-27 .menu-price {
   color: #14359E; }
@@ -37545,7 +37589,7 @@ body.template-color-27 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #14359E; }
 
 body.template-color-27 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #14359E !important; }
+  background: #14359E; }
 
 body.template-color-27 .basic-modern-dots .dot {
   background-color: #14359E; }
@@ -37636,11 +37680,11 @@ body.template-color-28 .testimonial--horizontal--active .swiper-pagination-custo
   background: #CC327B; }
 
 body.template-color-28 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #CC327B !important; }
+  background: #CC327B; }
 
 body.template-color-28 a.brook-btn.bk-btn-yellow, body.template-color-28 button.brook-btn.bk-btn-yellow {
   background: #CC327B;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-28 a.bk-btn.theme-btn, body.template-color-28 button.bk-btn.theme-btn {
   background-color: #CC327B; }
@@ -37766,7 +37810,7 @@ body.template-color-28 .team-heading .heading-right button i {
   color: #CC327B; }
 
 body.template-color-28 .team-heading .heading-right button:hover {
-  color: #CC327B !important; }
+  color: #CC327B; }
 
 body.template-color-28 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #CC327B; }
@@ -37807,22 +37851,22 @@ body.template-color-28 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-28 .btn-essential:hover {
-  background: #CC327B !important;
-  border-color: #CC327B !important;
+  background: #CC327B;
+  border-color: #CC327B;
   color: #fff; }
 
 body.template-color-28 .red-border {
-  border-color: #CC327B !important; }
+  border-color: #CC327B; }
 
 body.template-color-28 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #CC327B;
   color: #fff; }
 
 body.template-color-28 .single-svg-icon-box .svg-icon svg * {
-  stroke: #CC327B !important; }
+  stroke: #CC327B; }
 
 body.template-color-28 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-28 .menu-price {
   color: #CC327B; }
@@ -37990,7 +38034,7 @@ body.template-color-28 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #CC327B; }
 
 body.template-color-28 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #CC327B !important; }
+  background: #CC327B; }
 
 body.template-color-28 .basic-modern-dots .dot {
   background-color: #CC327B; }
@@ -38081,11 +38125,11 @@ body.template-color-29 .testimonial--horizontal--active .swiper-pagination-custo
   background: #E23636; }
 
 body.template-color-29 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #E23636 !important; }
+  background: #E23636; }
 
 body.template-color-29 a.brook-btn.bk-btn-yellow, body.template-color-29 button.brook-btn.bk-btn-yellow {
   background: #E23636;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-29 a.bk-btn.theme-btn, body.template-color-29 button.bk-btn.theme-btn {
   background-color: #E23636; }
@@ -38211,7 +38255,7 @@ body.template-color-29 .team-heading .heading-right button i {
   color: #E23636; }
 
 body.template-color-29 .team-heading .heading-right button:hover {
-  color: #E23636 !important; }
+  color: #E23636; }
 
 body.template-color-29 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #E23636; }
@@ -38252,22 +38296,22 @@ body.template-color-29 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-29 .btn-essential:hover {
-  background: #E23636 !important;
-  border-color: #E23636 !important;
+  background: #E23636;
+  border-color: #E23636;
   color: #fff; }
 
 body.template-color-29 .red-border {
-  border-color: #E23636 !important; }
+  border-color: #E23636; }
 
 body.template-color-29 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #E23636;
   color: #fff; }
 
 body.template-color-29 .single-svg-icon-box .svg-icon svg * {
-  stroke: #E23636 !important; }
+  stroke: #E23636; }
 
 body.template-color-29 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-29 .menu-price {
   color: #E23636; }
@@ -38435,7 +38479,7 @@ body.template-color-29 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #E23636; }
 
 body.template-color-29 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #E23636 !important; }
+  background: #E23636; }
 
 body.template-color-29 .basic-modern-dots .dot {
   background-color: #E23636; }
@@ -38526,11 +38570,11 @@ body.template-color-30 .testimonial--horizontal--active .swiper-pagination-custo
   background: #FB6031; }
 
 body.template-color-30 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #FB6031 !important; }
+  background: #FB6031; }
 
 body.template-color-30 a.brook-btn.bk-btn-yellow, body.template-color-30 button.brook-btn.bk-btn-yellow {
   background: #FB6031;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-30 a.bk-btn.theme-btn, body.template-color-30 button.bk-btn.theme-btn {
   background-color: #FB6031; }
@@ -38656,7 +38700,7 @@ body.template-color-30 .team-heading .heading-right button i {
   color: #FB6031; }
 
 body.template-color-30 .team-heading .heading-right button:hover {
-  color: #FB6031 !important; }
+  color: #FB6031; }
 
 body.template-color-30 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #FB6031; }
@@ -38697,22 +38741,22 @@ body.template-color-30 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-30 .btn-essential:hover {
-  background: #FB6031 !important;
-  border-color: #FB6031 !important;
+  background: #FB6031;
+  border-color: #FB6031;
   color: #fff; }
 
 body.template-color-30 .red-border {
-  border-color: #FB6031 !important; }
+  border-color: #FB6031; }
 
 body.template-color-30 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #FB6031;
   color: #fff; }
 
 body.template-color-30 .single-svg-icon-box .svg-icon svg * {
-  stroke: #FB6031 !important; }
+  stroke: #FB6031; }
 
 body.template-color-30 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-30 .menu-price {
   color: #FB6031; }
@@ -38880,7 +38924,7 @@ body.template-color-30 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #FB6031; }
 
 body.template-color-30 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #FB6031 !important; }
+  background: #FB6031; }
 
 body.template-color-30 .basic-modern-dots .dot {
   background-color: #FB6031; }
@@ -38971,11 +39015,11 @@ body.template-color-31 .testimonial--horizontal--active .swiper-pagination-custo
   background: #906032; }
 
 body.template-color-31 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #906032 !important; }
+  background: #906032; }
 
 body.template-color-31 a.brook-btn.bk-btn-yellow, body.template-color-31 button.brook-btn.bk-btn-yellow {
   background: #906032;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-31 a.bk-btn.theme-btn, body.template-color-31 button.bk-btn.theme-btn {
   background-color: #906032; }
@@ -39101,7 +39145,7 @@ body.template-color-31 .team-heading .heading-right button i {
   color: #906032; }
 
 body.template-color-31 .team-heading .heading-right button:hover {
-  color: #906032 !important; }
+  color: #906032; }
 
 body.template-color-31 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #906032; }
@@ -39142,22 +39186,22 @@ body.template-color-31 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-31 .btn-essential:hover {
-  background: #906032 !important;
-  border-color: #906032 !important;
+  background: #906032;
+  border-color: #906032;
   color: #fff; }
 
 body.template-color-31 .red-border {
-  border-color: #906032 !important; }
+  border-color: #906032; }
 
 body.template-color-31 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #906032;
   color: #fff; }
 
 body.template-color-31 .single-svg-icon-box .svg-icon svg * {
-  stroke: #906032 !important; }
+  stroke: #906032; }
 
 body.template-color-31 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-31 .menu-price {
   color: #906032; }
@@ -39325,7 +39369,7 @@ body.template-color-31 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #906032; }
 
 body.template-color-31 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #906032 !important; }
+  background: #906032; }
 
 body.template-color-31 .basic-modern-dots .dot {
   background-color: #906032; }
@@ -39416,11 +39460,11 @@ body.template-color-32 .testimonial--horizontal--active .swiper-pagination-custo
   background: #EC5B4B; }
 
 body.template-color-32 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #EC5B4B !important; }
+  background: #EC5B4B; }
 
 body.template-color-32 a.brook-btn.bk-btn-yellow, body.template-color-32 button.brook-btn.bk-btn-yellow {
   background: #EC5B4B;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-32 a.bk-btn.theme-btn, body.template-color-32 button.bk-btn.theme-btn {
   background-color: #EC5B4B; }
@@ -39546,7 +39590,7 @@ body.template-color-32 .team-heading .heading-right button i {
   color: #EC5B4B; }
 
 body.template-color-32 .team-heading .heading-right button:hover {
-  color: #EC5B4B !important; }
+  color: #EC5B4B; }
 
 body.template-color-32 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #EC5B4B; }
@@ -39587,22 +39631,22 @@ body.template-color-32 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-32 .btn-essential:hover {
-  background: #EC5B4B !important;
-  border-color: #EC5B4B !important;
+  background: #EC5B4B;
+  border-color: #EC5B4B;
   color: #fff; }
 
 body.template-color-32 .red-border {
-  border-color: #EC5B4B !important; }
+  border-color: #EC5B4B; }
 
 body.template-color-32 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #EC5B4B;
   color: #fff; }
 
 body.template-color-32 .single-svg-icon-box .svg-icon svg * {
-  stroke: #EC5B4B !important; }
+  stroke: #EC5B4B; }
 
 body.template-color-32 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-32 .menu-price {
   color: #EC5B4B; }
@@ -39770,7 +39814,7 @@ body.template-color-32 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #EC5B4B; }
 
 body.template-color-32 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #EC5B4B !important; }
+  background: #EC5B4B; }
 
 body.template-color-32 .basic-modern-dots .dot {
   background-color: #EC5B4B; }
@@ -39861,11 +39905,11 @@ body.template-color-33 .testimonial--horizontal--active .swiper-pagination-custo
   background: #C1B538; }
 
 body.template-color-33 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #C1B538 !important; }
+  background: #C1B538; }
 
 body.template-color-33 a.brook-btn.bk-btn-yellow, body.template-color-33 button.brook-btn.bk-btn-yellow {
   background: #C1B538;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-33 a.bk-btn.theme-btn, body.template-color-33 button.bk-btn.theme-btn {
   background-color: #C1B538; }
@@ -39991,7 +40035,7 @@ body.template-color-33 .team-heading .heading-right button i {
   color: #C1B538; }
 
 body.template-color-33 .team-heading .heading-right button:hover {
-  color: #C1B538 !important; }
+  color: #C1B538; }
 
 body.template-color-33 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #C1B538; }
@@ -40032,22 +40076,22 @@ body.template-color-33 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-33 .btn-essential:hover {
-  background: #C1B538 !important;
-  border-color: #C1B538 !important;
+  background: #C1B538;
+  border-color: #C1B538;
   color: #fff; }
 
 body.template-color-33 .red-border {
-  border-color: #C1B538 !important; }
+  border-color: #C1B538; }
 
 body.template-color-33 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #C1B538;
   color: #fff; }
 
 body.template-color-33 .single-svg-icon-box .svg-icon svg * {
-  stroke: #C1B538 !important; }
+  stroke: #C1B538; }
 
 body.template-color-33 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-33 .menu-price {
   color: #C1B538; }
@@ -40215,7 +40259,7 @@ body.template-color-33 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #C1B538; }
 
 body.template-color-33 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #C1B538 !important; }
+  background: #C1B538; }
 
 body.template-color-33 .basic-modern-dots .dot {
   background-color: #C1B538; }
@@ -40306,11 +40350,11 @@ body.template-color-34 .testimonial--horizontal--active .swiper-pagination-custo
   background: #126CDC; }
 
 body.template-color-34 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #126CDC !important; }
+  background: #126CDC; }
 
 body.template-color-34 a.brook-btn.bk-btn-yellow, body.template-color-34 button.brook-btn.bk-btn-yellow {
   background: #126CDC;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-34 a.bk-btn.theme-btn, body.template-color-34 button.bk-btn.theme-btn {
   background-color: #126CDC; }
@@ -40436,7 +40480,7 @@ body.template-color-34 .team-heading .heading-right button i {
   color: #126CDC; }
 
 body.template-color-34 .team-heading .heading-right button:hover {
-  color: #126CDC !important; }
+  color: #126CDC; }
 
 body.template-color-34 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #126CDC; }
@@ -40477,22 +40521,22 @@ body.template-color-34 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-34 .btn-essential:hover {
-  background: #126CDC !important;
-  border-color: #126CDC !important;
+  background: #126CDC;
+  border-color: #126CDC;
   color: #fff; }
 
 body.template-color-34 .red-border {
-  border-color: #126CDC !important; }
+  border-color: #126CDC; }
 
 body.template-color-34 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #126CDC;
   color: #fff; }
 
 body.template-color-34 .single-svg-icon-box .svg-icon svg * {
-  stroke: #126CDC !important; }
+  stroke: #126CDC; }
 
 body.template-color-34 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-34 .menu-price {
   color: #126CDC; }
@@ -40660,7 +40704,7 @@ body.template-color-34 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #126CDC; }
 
 body.template-color-34 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #126CDC !important; }
+  background: #126CDC; }
 
 body.template-color-34 .basic-modern-dots .dot {
   background-color: #126CDC; }
@@ -40751,11 +40795,11 @@ body.template-color-35 .testimonial--horizontal--active .swiper-pagination-custo
   background: #F50809; }
 
 body.template-color-35 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #F50809 !important; }
+  background: #F50809; }
 
 body.template-color-35 a.brook-btn.bk-btn-yellow, body.template-color-35 button.brook-btn.bk-btn-yellow {
   background: #F50809;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-35 a.bk-btn.theme-btn, body.template-color-35 button.bk-btn.theme-btn {
   background-color: #F50809; }
@@ -40881,7 +40925,7 @@ body.template-color-35 .team-heading .heading-right button i {
   color: #F50809; }
 
 body.template-color-35 .team-heading .heading-right button:hover {
-  color: #F50809 !important; }
+  color: #F50809; }
 
 body.template-color-35 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #F50809; }
@@ -40922,22 +40966,22 @@ body.template-color-35 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-35 .btn-essential:hover {
-  background: #F50809 !important;
-  border-color: #F50809 !important;
+  background: #F50809;
+  border-color: #F50809;
   color: #fff; }
 
 body.template-color-35 .red-border {
-  border-color: #F50809 !important; }
+  border-color: #F50809; }
 
 body.template-color-35 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #F50809;
   color: #fff; }
 
 body.template-color-35 .single-svg-icon-box .svg-icon svg * {
-  stroke: #F50809 !important; }
+  stroke: #F50809; }
 
 body.template-color-35 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-35 .menu-price {
   color: #F50809; }
@@ -41105,7 +41149,7 @@ body.template-color-35 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #F50809; }
 
 body.template-color-35 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #F50809 !important; }
+  background: #F50809; }
 
 body.template-color-35 .basic-modern-dots .dot {
   background-color: #F50809; }
@@ -41196,11 +41240,11 @@ body.template-color-36 .testimonial--horizontal--active .swiper-pagination-custo
   background: #4BE472; }
 
 body.template-color-36 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #4BE472 !important; }
+  background: #4BE472; }
 
 body.template-color-36 a.brook-btn.bk-btn-yellow, body.template-color-36 button.brook-btn.bk-btn-yellow {
   background: #4BE472;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-36 a.bk-btn.theme-btn, body.template-color-36 button.bk-btn.theme-btn {
   background-color: #4BE472; }
@@ -41326,7 +41370,7 @@ body.template-color-36 .team-heading .heading-right button i {
   color: #4BE472; }
 
 body.template-color-36 .team-heading .heading-right button:hover {
-  color: #4BE472 !important; }
+  color: #4BE472; }
 
 body.template-color-36 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #4BE472; }
@@ -41367,22 +41411,22 @@ body.template-color-36 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-36 .btn-essential:hover {
-  background: #4BE472 !important;
-  border-color: #4BE472 !important;
+  background: #4BE472;
+  border-color: #4BE472;
   color: #fff; }
 
 body.template-color-36 .red-border {
-  border-color: #4BE472 !important; }
+  border-color: #4BE472; }
 
 body.template-color-36 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #4BE472;
   color: #fff; }
 
 body.template-color-36 .single-svg-icon-box .svg-icon svg * {
-  stroke: #4BE472 !important; }
+  stroke: #4BE472; }
 
 body.template-color-36 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-36 .menu-price {
   color: #4BE472; }
@@ -41550,7 +41594,7 @@ body.template-color-36 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #4BE472; }
 
 body.template-color-36 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #4BE472 !important; }
+  background: #4BE472; }
 
 body.template-color-36 .basic-modern-dots .dot {
   background-color: #4BE472; }
@@ -41641,11 +41685,11 @@ body.template-color-37 .testimonial--horizontal--active .swiper-pagination-custo
   background: #DA9D55; }
 
 body.template-color-37 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #DA9D55 !important; }
+  background: #DA9D55; }
 
 body.template-color-37 a.brook-btn.bk-btn-yellow, body.template-color-37 button.brook-btn.bk-btn-yellow {
   background: #DA9D55;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-37 a.bk-btn.theme-btn, body.template-color-37 button.bk-btn.theme-btn {
   background-color: #DA9D55; }
@@ -41771,7 +41815,7 @@ body.template-color-37 .team-heading .heading-right button i {
   color: #DA9D55; }
 
 body.template-color-37 .team-heading .heading-right button:hover {
-  color: #DA9D55 !important; }
+  color: #DA9D55; }
 
 body.template-color-37 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #DA9D55; }
@@ -41812,22 +41856,22 @@ body.template-color-37 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-37 .btn-essential:hover {
-  background: #DA9D55 !important;
-  border-color: #DA9D55 !important;
+  background: #DA9D55;
+  border-color: #DA9D55;
   color: #fff; }
 
 body.template-color-37 .red-border {
-  border-color: #DA9D55 !important; }
+  border-color: #DA9D55; }
 
 body.template-color-37 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #DA9D55;
   color: #fff; }
 
 body.template-color-37 .single-svg-icon-box .svg-icon svg * {
-  stroke: #DA9D55 !important; }
+  stroke: #DA9D55; }
 
 body.template-color-37 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-37 .menu-price {
   color: #DA9D55; }
@@ -41995,7 +42039,7 @@ body.template-color-37 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #DA9D55; }
 
 body.template-color-37 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #DA9D55 !important; }
+  background: #DA9D55; }
 
 body.template-color-37 .basic-modern-dots .dot {
   background-color: #DA9D55; }
@@ -42086,11 +42130,11 @@ body.template-color-38 .testimonial--horizontal--active .swiper-pagination-custo
   background: #3264F5; }
 
 body.template-color-38 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #3264F5 !important; }
+  background: #3264F5; }
 
 body.template-color-38 a.brook-btn.bk-btn-yellow, body.template-color-38 button.brook-btn.bk-btn-yellow {
   background: #3264F5;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-38 a.bk-btn.theme-btn, body.template-color-38 button.bk-btn.theme-btn {
   background-color: #3264F5; }
@@ -42216,7 +42260,7 @@ body.template-color-38 .team-heading .heading-right button i {
   color: #3264F5; }
 
 body.template-color-38 .team-heading .heading-right button:hover {
-  color: #3264F5 !important; }
+  color: #3264F5; }
 
 body.template-color-38 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #3264F5; }
@@ -42257,22 +42301,22 @@ body.template-color-38 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-38 .btn-essential:hover {
-  background: #3264F5 !important;
-  border-color: #3264F5 !important;
+  background: #3264F5;
+  border-color: #3264F5;
   color: #fff; }
 
 body.template-color-38 .red-border {
-  border-color: #3264F5 !important; }
+  border-color: #3264F5; }
 
 body.template-color-38 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #3264F5;
   color: #fff; }
 
 body.template-color-38 .single-svg-icon-box .svg-icon svg * {
-  stroke: #3264F5 !important; }
+  stroke: #3264F5; }
 
 body.template-color-38 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-38 .menu-price {
   color: #3264F5; }
@@ -42440,7 +42484,7 @@ body.template-color-38 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #3264F5; }
 
 body.template-color-38 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #3264F5 !important; }
+  background: #3264F5; }
 
 body.template-color-38 .basic-modern-dots .dot {
   background-color: #3264F5; }
@@ -42531,11 +42575,11 @@ body.template-color-39 .testimonial--horizontal--active .swiper-pagination-custo
   background: #FFC851; }
 
 body.template-color-39 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #FFC851 !important; }
+  background: #FFC851; }
 
 body.template-color-39 a.brook-btn.bk-btn-yellow, body.template-color-39 button.brook-btn.bk-btn-yellow {
   background: #FFC851;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-39 a.bk-btn.theme-btn, body.template-color-39 button.bk-btn.theme-btn {
   background-color: #FFC851; }
@@ -42661,7 +42705,7 @@ body.template-color-39 .team-heading .heading-right button i {
   color: #FFC851; }
 
 body.template-color-39 .team-heading .heading-right button:hover {
-  color: #FFC851 !important; }
+  color: #FFC851; }
 
 body.template-color-39 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #FFC851; }
@@ -42702,22 +42746,22 @@ body.template-color-39 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-39 .btn-essential:hover {
-  background: #FFC851 !important;
-  border-color: #FFC851 !important;
+  background: #FFC851;
+  border-color: #FFC851;
   color: #fff; }
 
 body.template-color-39 .red-border {
-  border-color: #FFC851 !important; }
+  border-color: #FFC851; }
 
 body.template-color-39 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #FFC851;
   color: #fff; }
 
 body.template-color-39 .single-svg-icon-box .svg-icon svg * {
-  stroke: #FFC851 !important; }
+  stroke: #FFC851; }
 
 body.template-color-39 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-39 .menu-price {
   color: #FFC851; }
@@ -42885,7 +42929,7 @@ body.template-color-39 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #FFC851; }
 
 body.template-color-39 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #FFC851 !important; }
+  background: #FFC851; }
 
 body.template-color-39 .basic-modern-dots .dot {
   background-color: #FFC851; }
@@ -42976,11 +43020,11 @@ body.template-color-40 .testimonial--horizontal--active .swiper-pagination-custo
   background: #C4DCFA; }
 
 body.template-color-40 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #C4DCFA !important; }
+  background: #C4DCFA; }
 
 body.template-color-40 a.brook-btn.bk-btn-yellow, body.template-color-40 button.brook-btn.bk-btn-yellow {
   background: #C4DCFA;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-40 a.bk-btn.theme-btn, body.template-color-40 button.bk-btn.theme-btn {
   background-color: #C4DCFA; }
@@ -43106,7 +43150,7 @@ body.template-color-40 .team-heading .heading-right button i {
   color: #C4DCFA; }
 
 body.template-color-40 .team-heading .heading-right button:hover {
-  color: #C4DCFA !important; }
+  color: #C4DCFA; }
 
 body.template-color-40 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #C4DCFA; }
@@ -43147,22 +43191,22 @@ body.template-color-40 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-40 .btn-essential:hover {
-  background: #C4DCFA !important;
-  border-color: #C4DCFA !important;
+  background: #C4DCFA;
+  border-color: #C4DCFA;
   color: #fff; }
 
 body.template-color-40 .red-border {
-  border-color: #C4DCFA !important; }
+  border-color: #C4DCFA; }
 
 body.template-color-40 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #C4DCFA;
   color: #fff; }
 
 body.template-color-40 .single-svg-icon-box .svg-icon svg * {
-  stroke: #C4DCFA !important; }
+  stroke: #C4DCFA; }
 
 body.template-color-40 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-40 .menu-price {
   color: #C4DCFA; }
@@ -43330,7 +43374,7 @@ body.template-color-40 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #C4DCFA; }
 
 body.template-color-40 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #C4DCFA !important; }
+  background: #C4DCFA; }
 
 body.template-color-40 .basic-modern-dots .dot {
   background-color: #C4DCFA; }
@@ -43421,11 +43465,11 @@ body.template-color-41 .testimonial--horizontal--active .swiper-pagination-custo
   background: #7F48B0; }
 
 body.template-color-41 .slider-business .video-btn a .video-icon.secondary-color {
-  background: #7F48B0 !important; }
+  background: #7F48B0; }
 
 body.template-color-41 a.brook-btn.bk-btn-yellow, body.template-color-41 button.brook-btn.bk-btn-yellow {
   background: #7F48B0;
-  color: #fff !important; }
+  color: #fff; }
 
 body.template-color-41 a.bk-btn.theme-btn, body.template-color-41 button.bk-btn.theme-btn {
   background-color: #7F48B0; }
@@ -43551,7 +43595,7 @@ body.template-color-41 .team-heading .heading-right button i {
   color: #7F48B0; }
 
 body.template-color-41 .team-heading .heading-right button:hover {
-  color: #7F48B0 !important; }
+  color: #7F48B0; }
 
 body.template-color-41 .has-center-content .has-centerinner .content h1.heading::before {
   background-color: #7F48B0; }
@@ -43592,22 +43636,22 @@ body.template-color-41 button.brook-btn.bk-btn-theme {
   color: #fff; }
 
 body.template-color-41 .btn-essential:hover {
-  background: #7F48B0 !important;
-  border-color: #7F48B0 !important;
+  background: #7F48B0;
+  border-color: #7F48B0;
   color: #fff; }
 
 body.template-color-41 .red-border {
-  border-color: #7F48B0 !important; }
+  border-color: #7F48B0; }
 
 body.template-color-41 .slick-arrow-center.slick-arrow-rounded .slick-btn:hover {
   background-color: #7F48B0;
   color: #fff; }
 
 body.template-color-41 .single-svg-icon-box .svg-icon svg * {
-  stroke: #7F48B0 !important; }
+  stroke: #7F48B0; }
 
 body.template-color-41 .single-svg-icon-box:hover .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 body.template-color-41 .menu-price {
   color: #7F48B0; }
@@ -43775,7 +43819,7 @@ body.template-color-41 .ht-pricing-list-view thead tr th.pricing-header .feature
   background: #7F48B0; }
 
 body.template-color-41 .testimonial-color-variation .slick-center .testimonial_style--1.bg-dark {
-  background: #7F48B0 !important; }
+  background: #7F48B0; }
 
 body.template-color-41 .basic-modern-dots .dot {
   background-color: #7F48B0; }
@@ -43811,7 +43855,7 @@ body.template-color-5 .bg_color--13 .single-motive-speach .icon i {
   color: #fff; }
 
 body.template-color-25 .single-svg-icon-box .svg-icon svg * {
-  stroke: #fff !important; }
+  stroke: #fff; }
 
 /* ======================
 Font Variation 

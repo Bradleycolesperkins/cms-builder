@@ -1,0 +1,47 @@
+
+{% set count = 0 %}
+{% set blogs = craft.entries.section('blog').limit(block.blogLimit).all() %}
+
+
+{% set lg = ceil( 12 / block.blogPerRow ) %}
+{% set md = lg * 2 %}
+
+{% for blog in blogs %}
+    {% if count ==  0 or loop.first %}
+        <div class="row justify-content-center">
+    {% endif %}
+        <div class="col-lg-{{lg}} col-md-{{md}} col-sm-12 col-12 move-up wow mt--30  animate" style="visibility: visible; opacity: 0;">
+            <div class="blog-grid">
+                <div class="post-thumb">
+                    <a href="/Blog/{{blog.slug}}">
+                        {% set image = blog.blogImage.first() %}
+                        <img src="{{image.getUrl() }}" alt="{{image.imageAltTag }}">
+                    </a>
+                </div>
+                <div class="post-content">
+                    <div class="post-inner">
+                        <h5 class="heading heading-h5"><a href="/">{{ blog.title }}</a></h5>
+                        <div class="post-meta">
+                            <div class="post-date">{{blog.postDate|date('Y-m-d')}}</div>
+                            <div class="post-category">
+                                {% set entryTags = craft.tags.relatedTo(blog) %}
+                                {% set tweakedEntryTags = [] %}
+                                {% for tweakEntryTag in entryTags %}
+                                    {% set tweakedEntryTags = tweakedEntryTags|merge([tweakEntryTag.title]) %}
+                                {% endfor %}
+                                {% for tag in tweakedEntryTags %}
+                                    <a href="/Blog/Category/?q={{tag}}">{{ tag }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% if count == ( block.blogPerRow - 1) or loop.last %}
+        </div>
+        {% set count = 0 %}
+    {% else %}
+        {% set count = count + 1 %}
+    {% endif %}
+{% endfor %}
