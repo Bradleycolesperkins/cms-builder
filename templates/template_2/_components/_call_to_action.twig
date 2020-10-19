@@ -5,11 +5,14 @@
 
             {% case "plainCallToAction" %}
                 {% include '/template_2/_components/_call_to_action_blocks/_plain_call_to_action' with {'block': block} %}
-
+            {% case "plainCallToActionWithBlock" %}
+                {% include '/template_2/_components/_call_to_action_blocks/_plain_call_to_action_with_block' with {'block': block} %}
             {% case "backgroundCallToAction" %}
                 {% include '/template_2/_components/_call_to_action_blocks/_bg_call_to_action' with {'block': block} %}
 
+
             {% default %}
+            {{ dd('CALL TO ACTION', block.type) }}
 {#                {% include '/template_2/_components/_call_to_action_blocks/_plain_call_to_action' with {'block': block} %}#}
 
         {% endswitch %}

@@ -1,3 +1,7 @@
 {% if block.textBlockParagraph %}
-    <p>{{ block.textBlockParagraph }}</p>
+    <p class="
+        {% if block.customClass %}
+            {{ block.customClass }}
+        {% endif %}
+    ">{{ block.textBlockParagraph |nl2br }}</p>
 {% endif %}

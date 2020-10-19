@@ -1,0 +1,471 @@
+{% set entrySlug = craft.request.getParam('registrationNumber') %}
+{% set entryMilage = craft.request.getParam('entryMileage') %}
+
+
+{% if(entrySlug) %}
+
+    {% set api = 'B631AF59-C985-4889-85C6-80793C81D52C' %}
+{#    {% set api = '5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}#}
+    {% set packageName = 'ValuationData' %}
+    {% set vrm = entrySlug|replace({' ': ''}) %}
+{#    {% set vrm = 'KM12AKK' %}#}
+    {% set url = '/api/datapackage/'~packageName~'?v=2&api_nullitems=1&key_vrm='~vrm~'&auth_apikey='~api %}
+    {% if entryMilage %}
+        {% set entryMilage = entryMilage|replace('/[^0-9+]/', '') %}
+        {% set url = url~'&key_mileage='~entryMilage %}
+    {% endif %}
+
+
+
+    {% set client = {
+        base_uri : 'https://uk1.ukvehicledata.co.uk',
+        timeout : 10
+    } %}
+
+    {#        {% set options = {#}
+    {#            auth : ['username', 'password'],#}
+    {#            form_params : {#}
+    {#                url : 'https://www.google.co.uk'#}
+    {#            }#}
+    {#        } %}#}
+
+    {% set options = {} %}
+
+    {% set request = fetch(client, 'GET', url, options, false) %}
+
+    {% if(request.statusCode == 200) %}
+        {% set data = request.body | json_decode() %}
+        {#  GET IMAGE NOW  #}
+        {#    {% set url = '/api/datapackage/CustomVehicleAndImageData?v=2&api_nullitems=1&key_VRM='+vrm+'&auth_apikey='+api %}#}
+
+
+    {% endif %}
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Start Form Area -->
+                <div class="contact-form">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                {% if(request.statusCode == 200) %}
+                                    <div class="row">
+                                        <!-- Cart Total -->
+                                        <div class="col-12 mb--60">
+                                            <h4 class="checkout-title">Car Details</h4>
+                                            <div class="checkout-cart-total">
+                                                {% if ( craft.request.getPost('MakeModel') ) %}
+                                                    <h4>{{ craft.request.getPost('MakeModel') }}</h4>
+                                                {% endif %}
+
+                                                {% set imageUrl = craft.request.getPost('imageUrl') %}
+                                                {% if ( imageUrl ) %}
+                                                    <div style="padding-bottom: 15px;padding-top: 15px;margin-bottom: 15px;border-bottom: 1px solid #999999;border-top: 1px solid #999999;">
+                                                        <img src="{{ imageUrl }}" style="width: 100%;">
+                                                    </div>
+                                                {% endif %}
+                                                <ul>
+                                                    {% if ( craft.request.getPost('Range') )  %}
+                                                        <li>Range <span>{{ craft.request.getPost('Range') }}</span></li>
+                                                    {% endif %}
+
+                                                    {% if ( craft.request.getPost('FuelType') )%}
+                                                        <li>Fuel Type <span>{{ craft.request.getPost('FuelType') }}</span></li>
+                                                    {% endif %}
+
+                                                    {% if ( craft.request.getPost('Colour') ) %}
+                                                        <li>Colour <span>{{ craft.request.getPost('Colour') }}</span></li>
+                                                    {% endif %}
+
+                                                    {% if ( craft.request.getPost('YearOfManufacture') ) %}
+                                                        <li>Year <span>{{ craft.request.getPost('YearOfManufacture') }}</span></li>
+                                                    {% endif %}
+
+                                                    {% if ( craft.request.getPost('DoorPlanLiteral') ) %}
+                                                        <li>Doors <span>{{ craft.request.getPost('DoorPlanLiteral') }}</span></li>
+                                                    {% elseif ( craft.request.getPost('NumberOfDoors') ) %}
+                                                        <li>Doors <span>{{ craft.request.getPost('NumberOfDoors') }}</span></li>
+                                                    {% endif %}
+
+                                                    {% if ( craft.request.getPost('TransmissionType') ) %}
+                                                        <li>Transmission <span>{{ craft.request.getPost('TransmissionType') }}</span></li>
+                                                    {% elseif ( craft.request.getPost('Transmission') ) %}
+                                                        <li>Transmission <span>{{ craft.request.getPost('Transmission') }}</span></li>
+                                                    {% endif %}
+
+                                                    {% if ( craft.request.getPost('Model') ) %}
+                                                        <li>Model <span>{{ craft.request.getPost('Model') }}</span></li>
+                                                    {% endif %}
+
+                                                    {% if ( craft.request.getPost('BodyStyle') ) %}
+                                                        <li>Body <span>{{ craft.request.getPost('BodyStyle') }}</span></li>
+                                                    {% endif %}
+                                                </ul>
+                                                <p>Registration Number<span>{{ entrySlug }}</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="row">
+                                        <!-- Cart Total -->
+                                        <div class="col-12 mb--60">
+                                            <h4 class="checkout-title">Car Details</h4>
+                                            <div class="checkout-cart-total">
+                                                <h2>Car Not Found</h2>
+                                                <p>We were unable to locate a car with the registation number: </p>
+                                                <h4>Please try again, or submit the form</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-7 mb--20">
+                                <!-- Billing Address -->
+                                <div id="billing-form" class="mb--40">
+                                    <h4 class="checkout-title">Your Quoted Price</h4>
+
+                                    {% if(request.statusCode == 200 and data['Response']['DataItems']) %}
+                                        {% if( data['Response']['DataItems']['ValuationList'] ) %}
+                                            {% if( data['Response']['DataItems']['ValuationList']['TradeAverage'] ) %}
+                                                {% set apiPrice = data['Response']['DataItems']['ValuationList']['TradeAverage'] %}
+                                            {% elseif( data['Response']['DataItems']['ValuationList']['TradePoor'] ) %}
+                                                {% set apiPrice = data['Response']['DataItems']['ValuationList']['TradePoor'] %}
+                                            {% endif %}
+                                            {#{% set apiPrice = apiPrice * 1.10  %}#}
+                                            <div class="single-product-details-side" style="margin: 0px;width: 100% !important;max-width: 100%;">
+                                                <div class="product-details">
+                                                    block entry" <div class="inner">
+
+
+                                                        <div class="price">
+                                                            <h1 class="theme-color">£{{ apiPrice|number_format(2, '.', ',') }}<p></p></h1>
+                                                            {% if( data['Response']['DataItems']['Mileage'] ) %}
+                                                                <h3 class="theme-color">Price shown based on {{ data['Response']['DataItems']['Mileage'] }} Miles<p></p></h3>
+                                                            {% endif %}
+                                                        </div>
+
+                                                        <div class="description">
+                                                            <p class="bk_pra">
+                                                                This valuation will be guaranteed for 7 days from today, after this 7 day period you would need to do a fresh valuation. We will be in touch to arrange a date and time to bring your vehicle to us so that we can inspect it. If you would like to discuss any aspect of the quote or our service please feel free to get in touch via telephone on 029 2075 7991 or email info@skybuyscars.com.
+                                                            </p>
+                                                        </div>
+                                                        <div class="quenty-container" style="">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
+                                                                    <div class="plans-about">
+                                                                        <h6 class="heading heading-h6 theme-color">Important information</h6>
+                                                                        <!-- Start Single List -->
+                                                                        <div class="bk-list--2 mt--25 move-up wow  animate" style="visibility: visible; opacity: 0; animation-name: moveVertical;">
+                                                                            <div class="list-header with-ckeck">
+                                                                                <div class="marker"></div>
+                                                                                <div class="title-wrap">
+                                                                                    <h6 class="heading heading-h5">The Important Bits</h6>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="list-header with-ckeck">
+                                                                                <div class="marker"></div>
+                                                                                <div class="title-wrap">
+                                                                                    <h6 class="heading heading-h5">We base the valuation  of all vehicles as being in A1 condition and reserve the right to not proceed (or adjust our valuation) if the vehicle is not in that condition.</h6>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="list-header with-ckeck">
+                                                                                <div class="marker"></div>
+                                                                                <div class="title-wrap">
+                                                                                    <h6 class="heading heading-h5">We only guarantee the quoted price for 7 days.</h6>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End Single List -->
+                                                                    </div>
+                                                                </div><div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
+                                                                    <div class="plans-about">
+                                                                        <h6 class="heading heading-h6 theme-color">We have assumed...
+                                                                        </h6>
+                                                                        <!-- Start Single List -->
+                                                                        <div class="bk-list--2 mt--25 move-up wow  animate" style="visibility: visible; opacity: 0; animation-name: moveVertical;">
+                                                                            <div class="list-header with-ckeck">
+                                                                                <div class="marker"></div>
+                                                                                <div class="title-wrap">
+                                                                                    <h6 class="heading heading-h5">There is no damage including on exterior and interior or mechanical.</h6>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="list-header with-ckeck">
+                                                                                <div class="marker"></div>
+                                                                                <div class="title-wrap">
+                                                                                    <h6 class="heading heading-h5">The car is a runner (we consider non runners but the price is obviously effected).</h6>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="list-header with-ckeck">
+                                                                                <div class="marker"></div>
+                                                                                <div class="title-wrap">
+                                                                                    <h6 class="heading heading-h5">The car is not an insurance write off and hasn’t been damaged in an accident.</h6>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="list-header with-ckeck">
+                                                                                <div class="marker"></div>
+                                                                                <div class="title-wrap">
+                                                                                    <h6 class="heading heading-h5">It has two sets of keys.</h6>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End Single List -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        {% endif %}
+                                    {% endif %}
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="hidden">
+
+
+        {% set form = craft.freeform.form("skyBuyCarsSubmission", {
+            submitClass: "",
+            returnUrl: "{{ siteUrl }}contact-form-templates/bootstrap/{{ form.handle }}/{% if submission %}submissions/{{ submission.id }}/{% endif %}success",
+            submissionToken: submissionToken|default(null),
+        }) %}
+        {% if form %}
+            {{ form.renderTag }}
+                {% for row in form %}
+                    {% for field in row %}
+                        {% set width = (12 / (row|length)) %}
+                        {% set isCheckbox = field.type in ["checkbox","mailing_list"] %}
+                        {% set columnClass = "form-group" %}
+                        {% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+                        {% set columnClass = columnClass ~ " col-sm-" ~ width ~ " col-xs-12" %}
+                        {% set class = "form-control" ~ (field.hasErrors ? " is-invalid") %}
+                        {% if field.type == "file" %}
+                            {% set class = "form-control-file" ~ (field.hasErrors ? " is-invalid") %}
+                        {% elseif field.type == "signature" %}
+                            {% set class = "btn btn-light" %}
+                        {% elseif field.type == "table" %}
+                            {% set class = "table" %}
+                        {% elseif isCheckbox %}
+                            {% set class = "checkbox" %}
+                        {% endif %}
+
+                        {% set labelClass = (field.required ? " required" : "") %}
+                        {% set errorClass = "invalid-feedback" %}
+                        {% set instructionClass = "form-text text-muted" %}
+
+
+                        {% if field.type == "submit" %}
+                            {% set columnClass = columnClass ~ " submit-align-" ~ field.position %}
+                        {% endif %}
+                        {% if field.type == "checkbox_group" %}
+                            {{ field.renderLabel({
+                                labelClass: labelClass,
+                                instructionsClass: instructionClass,
+                                errorClass: errorClass,
+                            }) }}
+                            {{ field.oneLine ? "<div>"|raw }}
+                            {% for index, option in field.options %}
+                                <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                    <input type="checkbox"
+                                           name="{{ field.handle }}[]"
+                                           value="{{ option.value }}"
+                                           id="{{ field.idAttribute }}-{{ index }}"
+                                           class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                            {{ option.checked ? "checked" : "" }}
+                                    />
+
+                                    <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                        {{ option.label|t|raw }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            {{ field.oneLine ? "</div>"|raw }}
+                            {{ field.renderInstructions() }}
+                            {{ field.renderErrors({ errorClass: errorClass }) }}
+                        {% elseif field.type == "radio_group" %}
+                            {{ field.renderLabel({
+                                labelClass: labelClass,
+                                instructionsClass: instructionClass,
+                                errorClass: errorClass,
+                            }) }}
+                            {{ field.oneLine ? "<div>"|raw }}
+                            {% for index, option in field.options %}
+                                <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                    <input type="radio"
+                                           name="{{ field.handle }}"
+                                           value="{{ option.value }}"
+                                           id="{{ field.idAttribute }}-{{ index }}"
+                                           class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                            {{ option.checked ? "checked" : "" }}
+                                    />
+                                    <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                        {{ option.label|t|raw }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            {{ field.oneLine ? "</div>"|raw }}
+                            {{ field.renderInstructions() }}
+                            {{ field.renderErrors() }}
+                        {% elseif field.type == "dynamic_recipients" and (field.showAsRadio or field.showAsCheckboxes) %}
+                            {{ field.renderLabel({
+                                labelClass: labelClass,
+                                instructionsClass: instructionClass,
+                                errorClass: errorClass,
+                            }) }}
+                            {{ field.oneLine ? "<div>"|raw }}
+                            {% for index, option in field.options %}
+                                <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                    <input type="{{ field.showAsRadio ? "radio" : "checkbox" }}"
+                                           name="{{ field.handle }}[]"
+                                           value="{{ loop.index0 }}"
+                                           class="form-check-input"
+                                           id="{{ field.idAttribute }}-{{ index }}"
+                                            {{ option.checked ? "checked" : "" }}
+                                    />
+
+                                    <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                        {{ option.label|t|raw }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            {{ field.oneLine ? "</div>"|raw }}
+                            {{ field.renderInstructions() }}
+                            {{ field.renderErrors() }}
+                        {% elseif field.type in ["checkbox", "mailing_list"] %}
+                            <div class="form-check">
+                                {{ field.renderInput({ class: class ~ " form-check-input" ~ (field.hasErrors ? " is-invalid") }) }}
+                                {{ field.renderLabel({ labelClass: "form-check-label" ~ (field.hasErrors ? " is-invalid") ~ (field.required ? " required") }) }}
+                                {{ field.renderErrors({ errorClass: errorClass }) }}
+                            </div>
+                        {% elseif field.type == "submit" %}
+                            <div class="cs-form-submit cs-form-submit--center">
+                                {{ field.render({ class: "" }) }}
+                            </div>
+                        {% elseif field.type == "table" %}
+                            {{ field.render({
+                                class: class,
+                                labelClass: labelClass,
+                                instructionsClass: instructionClass,
+                                instructionsBelowField: true,
+                                errorClass: errorClass,
+                                addButtonLabel: "Add +",
+                                addButtonClass: "btn btn-sm btn-primary",
+                                removeButtonLabel: "x",
+                                removeButtonClass: "btn btn-sm btn-danger",
+                                tableTextInputClass: "form-control",
+                                tableSelectInputClass: "form-control",
+                                tableCheckboxInputClass: "form-check-input"
+                            }) }}
+                        {% else %}
+
+                            {% if field.handle == "fullName" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: craft.request.getPost('name')
+                                }) }}
+                            {% elseif field.handle == "cellPhone" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: craft.request.getPost('phone')
+                                }) }}
+                            {% elseif field.handle == "email" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: craft.request.getPost('email')
+                                }) }}
+                            {% elseif field.handle == "mileage" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: craft.request.getParam('entryMileage')
+                                }) }}
+                            {% elseif field.handle == "RegistrationNumber" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: craft.request.getParam('registrationNumber')
+                                }) }}
+                            {% elseif field.handle == "vehicleRegistration" %}
+                                {% set class = "hidden" %}
+                                {% set jsonData = data|json_encode() %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue:jsonData
+                                }) }}
+                            {% elseif field.handle == "smmtDetails" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: craft.request.getPost('vehicleData')
+                                }) }}
+                            {% else %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                }) }}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {{ form.renderClosingTag }}
+        {% endif %}
+
+    </div>
+
+    {% js %}
+        document.getElementById("skyBuyCarsSubmissionSubmit").click();
+    {% endjs %}
+
+{% endif %}

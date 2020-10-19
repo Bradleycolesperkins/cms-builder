@@ -1,0 +1,515 @@
+{% set entrySlug = craft.request.getParam('registration') %}
+
+{% set api = '5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}
+{% set packageName = 'VehicleData' %}
+{% set vrm = 'KM14AKK' %}
+{#        {% set url = '/api/datapackage/'+packageName+'?v=2&api_nullitems=1&key_vrm='+vrm+'&auth_apikey='+api %}#}
+
+{% set url = '/api/datapackage/VehicleData?v=2&api_nullitems=1&key_vrm=KM14AKK&auth_apikey=5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}
+
+
+{% set client = {
+    base_uri : 'https://uk1.ukvehicledata.co.uk',
+    timeout : 10
+} %}
+
+{#        {% set options = {#}
+{#            auth : ['username', 'password'],#}
+{#            form_params : {#}
+{#                url : 'https://www.google.co.uk'#}
+{#            }#}
+{#        } %}#}
+
+{% set options = {} %}
+
+{% set request = fetch(client, 'GET', url, options, false) %}
+
+{% if(request.statusCode == 200) %}
+    {% set data = request.body | json_decode() %}
+    {#  GET IMAGE NOW  #}
+{#    {% set url = '/api/datapackage/VehicleImageData?v=2&api_nullitems=1&key_VRM='+vrm+'&auth_apikey='+api %}#}
+    {% set url = '/api/datapackage/VehicleImageData?v=2&api_nullitems=1&auth_apikey=5432e5f8-f3a4-4251-b0bc-01bfd135fad2&key_VRM=KM12AKK' %}
+    {% set imageRequest = fetch(client, 'GET', url, options, false) %}
+    {% if(imageRequest.statusCode == 200) %}
+        {% set imageData = imageRequest.body | json_decode() %}
+
+        {% if (imageData['Response']['DataItems']) %}
+            {% if (imageData['Response']['DataItems']['VehicleImages']) %}
+                {% set image  = imageData['Response']['DataItems']['VehicleImages']['ImageDetailsList']  %}
+                {% if image[0] %}
+                    {% set imageDetails  = image[0]  %}
+                    {% if imageDetails['ImageUrl'] %}
+                        {% set imageUrl  = imageDetails['ImageUrl']  %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% set vehicleRegistration = '' %}
+    {% if (data['Response']['DataItems']) %}
+        {% if (data['Response']['DataItems']['VehicleRegistration']) %}
+            {% set loop  = data['Response']['DataItems']['VehicleRegistration']  %}
+            {% for key, item in loop %}
+                {% set vehicleRegistration = vehicleRegistration ~ key ~ ': ' ~ item ~ ', ' %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+
+
+    {% set smmtDetails = '' %}
+    {% if (data['Response']['DataItems']) %}
+        {% if (data['Response']['DataItems']['SmmtDetails']) %}
+            {% set loop  = data['Response']['DataItems']['SmmtDetails']  %}
+            {% for key, item in loop %}
+                {% set smmtDetails = smmtDetails ~ key ~ ': ' ~ item ~ ', '  %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+{% endif %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% set formHandle = 'skyBuyQuotePageForm' %}
+
+            <!-- Start Form Area -->
+            <div class="contact-form">
+                {% set form = craft.freeform.form(formHandle, {
+                    submitClass: "",
+                    returnUrl: "{{ siteUrl }}contact-form-templates/bootstrap/{{ form.handle }}/{% if submission %}submissions/{{ submission.id }}/{% endif %}success",
+                    submissionToken: submissionToken|default(null),
+                }) %}
+
+                {% if form %}
+
+
+                        {# Display a tip for built-in AJAX and multi-page users #}
+                    {% if form.ajaxEnabled and form.pages|length > 1 %}
+                        <div class="alert alert-warning">
+                            <h5 class="alert-heading">Please note...</h5>
+                            <p class="mb-0">
+                                You currently have built-in AJAX enabled for this form. Freeform does not currently work with AJAX and multi-page forms.
+                                Submitting to the next page for this form will not work at this time.
+                            </p>
+                        </div>
+                    {% endif %}
+
+                        {# Display a tip for forms with submit limit setting enabled #}
+                    {% if form.limitFormSubmissions %}
+                        <div class="alert alert-warning">
+                            <h5 class="alert-heading">Please note...</h5>
+                            <p class="mb-0">
+                                You currently have a the user submit limit setting enabled (<i>{% if form.limitFormSubmissions == "ip_cookie" %}IP/Cookie combo{% else %}Cookie only{% endif %}</i>) for this form.
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    {{ form.renderTag }}
+
+                    <script>
+                        var form = document.querySelector('[data-id="{{ form.anchor }}"]');
+                        if (form) {
+                            form.addEventListener("freeform-ready", function (event) {
+                                var freeform = event.target.freeform;
+
+                                freeform.setOption("errorClassBanner", ["alert", "alert-danger", "errors"]);
+                                freeform.setOption("errorClassList", ["help-block", "errors", "invalid-feedback"]);
+                                freeform.setOption("errorClassField", ["is-invalid", "has-error"]);
+                                freeform.setOption("successClassBanner", ["alert", "alert-success", "form-success"]);
+                            })
+
+                            form.addEventListener("freeform-stripe-styling", function (event) {
+                                event.detail.base = {
+                                    fontSize: "16px",
+                                    fontFamily: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"",
+                                }
+                            })
+                        }
+                    </script>
+
+
+                    <div class="row">
+                        <div class="col-lg-5">
+                            {% if(request.statusCode == 200) %}
+                                <div class="row">
+                                    <!-- Cart Total -->
+                                    <div class="col-12 mb--60">
+                                        <h4 class="checkout-title">Car Details</h4>
+                                        <div class="checkout-cart-total">
+                                            {% if ( data['Response']['DataItems']['VehicleRegistration']['MakeModel'] ) %}
+                                                <h4>{{ data['Response']['DataItems']['VehicleRegistration']['MakeModel'] }}</h4>
+                                            {% endif %}
+                                            {% if imageUrl %}
+                                                <div style="padding-bottom: 15px;padding-top: 15px;margin-bottom: 15px;border-bottom: 1px solid #999999;border-top: 1px solid #999999;">
+                                                    <img src="{{ imageUrl }}" style="width: 100%;">
+                                                </div>
+                                            {% endif %}
+                                            <ul>
+                                                {% if ( data['Response']['DataItems']['SmmtDetails']['Range'])  %}
+                                                    <li>Range <span>{{ data['Response']['DataItems']['SmmtDetails']['Range'] }}</span></li>
+                                                {% endif %}
+
+                                                {% if ( data['Response']['DataItems']['SmmtDetails']['FuelType'] ) %}
+                                                    <li>Fuel Type <span>{{  data['Response']['DataItems']['SmmtDetails']['FuelType'] }}</span></li>
+                                                {% endif %}
+
+                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['Colour']) %}
+                                                    <li>Colour <span>{{  data['Response']['DataItems']['VehicleRegistration']['Colour'] }}</span></li>
+                                                {% endif %}
+
+                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['YearOfManufacture']) %}
+                                                    <li>Year <span>{{  data['Response']['DataItems']['VehicleRegistration']['YearOfManufacture'] }}</span></li>
+                                                {% endif %}
+
+                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['DoorPlanLiteral']) %}
+                                                    <li>Doors <span>{{  data['Response']['DataItems']['VehicleRegistration']['DoorPlanLiteral'] }}</span></li>
+                                                {% elseif ( data['Response']['DataItems']['SmmtDetails']['NumberOfDoors']) %}
+                                                    <li>Doors <span>{{  data['Response']['DataItems']['SmmtDetails']['NumberOfDoors'] }}</span></li>
+                                                {% endif %}
+
+                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['TransmissionType']) %}
+                                                    <li>Transmission <span>{{  data['Response']['DataItems']['VehicleRegistration']['TransmissionType'] }}</span></li>
+                                                {% elseif ( data['Response']['DataItems']['SmmtDetails']['Transmission']) %}
+                                                    <li>Transmission <span>{{  data['Response']['DataItems']['SmmtDetails']['Transmission'] }}</span></li>
+                                                {% endif %}
+
+                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['Model']) %}
+                                                    <li>Model <span>{{  data['Response']['DataItems']['VehicleRegistration']['Model'] }}</span></li>
+                                                {% endif %}
+
+                                                {% if ( data['Response']['DataItems']['SmmtDetails']['BodyStyle']) %}
+                                                    <li>Body <span>{{  data['Response']['DataItems']['SmmtDetails']['BodyStyle'] }}</span></li>
+                                                {% endif %}
+                                            </ul>
+                                            <p>Registration Number<span>{{ entrySlug }}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    <!-- Cart Total -->
+                                    <div class="col-12 mb--60">
+                                        <h4 class="checkout-title">Car Details</h4>
+                                        <div class="checkout-cart-total">
+                                            <h2>Car Not Found</h2>
+                                            <p>We were unable to locate a car with the registation number: </p>
+                                            <h4>Please try again, or submit the form</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    <div class="col-lg-7 mb--20">
+                        <!-- Billing Address -->
+                        <div id="billing-form" class="mb--40">
+                            <h4 class="checkout-title">Your Details</h4>
+
+                            {% if form.pages|length > 1 %}
+                                <ul class="nav nav-tabs">
+                                    {% for page in form.pages %}
+                                        <li class="nav-item">
+                                            <span class="nav-link{{ form.currentPage.index == page.index ? ' font-weight-bold active' : ' disabled' }}">{{ page.label }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% if form.hasErrors %}
+                                <div class="alert alert-danger">
+                                    {{ "Error! Please review the form and try submitting again."|t('freeform') }}
+                                    {% if form.errors|length %}
+                                        <ul class="mb-0">
+                                            {% for error in form.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% for row in form %}
+                            <div class="row {{ form.customAttributes.rowClass }}">
+                                {% for field in row %}
+
+
+
+
+                                        {% set width = (12 / (row|length)) %}
+                                        {% set isCheckbox = field.type in ["checkbox","mailing_list"] %}
+                                        {% set columnClass = "form-group" %}
+                                        {% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+                                        {% set columnClass = columnClass ~ " col-sm-" ~ width ~ " col-xs-12" %}
+                                        {% set class = "form-control" ~ (field.hasErrors ? " is-invalid") %}
+                                        {% if field.type == "file" %}
+                                            {% set class = "form-control-file" ~ (field.hasErrors ? " is-invalid") %}
+                                        {% elseif field.type == "signature" %}
+                                            {% set class = "btn btn-light" %}
+                                        {% elseif field.type == "table" %}
+                                            {% set class = "table" %}
+                                        {% elseif isCheckbox %}
+                                            {% set class = "checkbox" %}
+                                        {% endif %}
+
+                                        {% set labelClass = (field.required ? " required" : "") %}
+                                        {% set errorClass = "invalid-feedback" %}
+                                        {% set instructionClass = "form-text text-muted" %}
+
+
+                                        {% if field.type == "submit" %}
+                                            {% set columnClass = columnClass ~ " submit-align-" ~ field.position %}
+                                        {% endif %}
+
+                                        <div class="{{ columnClass }}"{{ field.rulesHtmlData }}>
+                                            {% if field.type == "checkbox_group" %}
+
+                                                {{ field.renderLabel({
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    errorClass: errorClass,
+                                                }) }}
+
+                                                {{ field.oneLine ? "<div>"|raw }}
+
+                                                {% for index, option in field.options %}
+                                                    <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                                        <input type="checkbox"
+                                                               name="{{ field.handle }}[]"
+                                                               value="{{ option.value }}"
+                                                               id="{{ field.idAttribute }}-{{ index }}"
+                                                               class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                                                {{ option.checked ? "checked" : "" }}
+                                                        />
+
+                                                        <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                                            {{ option.label|t|raw }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+
+                                                {{ field.oneLine ? "</div>"|raw }}
+
+                                                {{ field.renderInstructions() }}
+                                                {{ field.renderErrors({ errorClass: errorClass }) }}
+
+                                            {% elseif field.type == "radio_group" %}
+
+                                                {{ field.renderLabel({
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    errorClass: errorClass,
+                                                }) }}
+
+                                                {{ field.oneLine ? "<div>"|raw }}
+
+                                                {% for index, option in field.options %}
+                                                    <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                                        <input type="radio"
+                                                               name="{{ field.handle }}"
+                                                               value="{{ option.value }}"
+                                                               id="{{ field.idAttribute }}-{{ index }}"
+                                                               class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                                                {{ option.checked ? "checked" : "" }}
+                                                        />
+                                                        <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                                            {{ option.label|t|raw }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+
+                                                {{ field.oneLine ? "</div>"|raw }}
+
+                                                {{ field.renderInstructions() }}
+                                                {{ field.renderErrors() }}
+
+                                            {% elseif field.type == "dynamic_recipients" and (field.showAsRadio or field.showAsCheckboxes) %}
+
+                                                {{ field.renderLabel({
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    errorClass: errorClass,
+                                                }) }}
+
+                                                {{ field.oneLine ? "<div>"|raw }}
+
+                                                {% for index, option in field.options %}
+                                                    <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                                        <input type="{{ field.showAsRadio ? "radio" : "checkbox" }}"
+                                                               name="{{ field.handle }}[]"
+                                                               value="{{ loop.index0 }}"
+                                                               class="form-check-input"
+                                                               id="{{ field.idAttribute }}-{{ index }}"
+                                                                {{ option.checked ? "checked" : "" }}
+                                                        />
+
+                                                        <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                                            {{ option.label|t|raw }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+
+                                                {{ field.oneLine ? "</div>"|raw }}
+
+                                                {{ field.renderInstructions() }}
+                                                {{ field.renderErrors() }}
+
+                                            {% elseif field.type in ["checkbox", "mailing_list"] %}
+
+                                                <div class="form-check">
+                                                    {{ field.renderInput({ class: class ~ " form-check-input" ~ (field.hasErrors ? " is-invalid") }) }}
+                                                    {{ field.renderLabel({ labelClass: "form-check-label" ~ (field.hasErrors ? " is-invalid") ~ (field.required ? " required") }) }}
+                                                    {{ field.renderErrors({ errorClass: errorClass }) }}
+                                                </div>
+
+                                            {% elseif field.type == "submit" %}
+
+                                                <div class="cs-form-submit cs-form-submit--center">
+                                                    {{ field.render({ class: "" }) }}
+                                                </div>
+
+                                            {% elseif field.type == "table" %}
+
+                                                {{ field.render({
+                                                    class: class,
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    instructionsBelowField: true,
+                                                    errorClass: errorClass,
+                                                    addButtonLabel: "Add +",
+                                                    addButtonClass: "btn btn-sm btn-primary",
+                                                    removeButtonLabel: "x",
+                                                    removeButtonClass: "btn btn-sm btn-danger",
+                                                    tableTextInputClass: "form-control",
+                                                    tableSelectInputClass: "form-control",
+                                                    tableCheckboxInputClass: "form-check-input"
+                                                }) }}
+
+                                            {% elseif field.type == "cc_details" %}
+
+                                                {# FOR FREEFORM PAYMENTS #}
+
+                                                {{ field.renderLabel({
+                                                    labelClass: (field.required ? " required" : ""),
+                                                    instructionsClass: "help-block",
+                                                    errorClass: "help-block",
+                                                }) }}
+
+                                                {% for layoutRow in field.layoutRows %}
+                                                    <div class="row {{ form.customAttributes.rowClass }}">
+                                                        {% for layoutField in layoutRow %}
+                                                            {% set layoutWidth = (12 / (layoutRow|length)) %}
+                                                            {% set columnClass = columnClass|replace(' col-sm-' ~ width) %}
+                                                            {% set columnClass = columnClass ~ " col-sm-" ~ layoutWidth %}
+                                                            <div class="{{ columnClass }}">
+                                                                {{ layoutField.render({
+                                                                    class: isCheckbox ? "checkbox" : "form-control",
+                                                                    instructionsClass: "help-block",
+                                                                    instructionsBelowField: true,
+                                                                    labelClass: (layoutField.required ? " required" : ""),
+                                                                    errorClass: "help-block",
+                                                                }) }}
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endfor %}
+
+                                                {{ field.renderInput({
+                                                    instructionsClass: "help-block",
+                                                    instructionsBelowField: true,
+                                                    labelClass: (field.required ? " required" : ""),
+                                                    errorClass: "help-block",
+                                                }) }}
+
+                                                {{ field.renderInstructions }}
+                                                {{ field.renderErrors }}
+
+                                            {% else %}
+
+                                                {% if field.handle == "registrationNumber" %}
+                                                    {% set class = "hidden" %}
+
+                                                    {{ field.render({
+                                                    class: class,
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    instructionsBelowField: true,
+                                                    errorClass: errorClass,
+                                                    overrideValue: entrySlug
+                                                }) }}
+                                                {% elseif field.handle == "vehicleRegistration" %}
+                                                    {% set class = "hidden" %}
+
+                                                    {{ field.render({
+                                                        class: class,
+                                                        labelClass: labelClass,
+                                                        instructionsClass: instructionClass,
+                                                        instructionsBelowField: true,
+                                                        errorClass: errorClass,
+                                                        overrideValue: vehicleRegistration
+                                                    }) }}
+                                                {% elseif field.handle == "smmtDetails" %}
+                                                    {% set class = "hidden" %}
+
+                                                    {{ field.render({
+                                                        class: class,
+                                                        labelClass: labelClass,
+                                                        instructionsClass: instructionClass,
+                                                        instructionsBelowField: true,
+                                                        errorClass: errorClass,
+                                                        overrideValue: smmtDetails
+                                                    }) }}
+                                                {% else %}
+                                                    {{ field.render({
+                                                        class: class,
+                                                        labelClass: labelClass,
+                                                        instructionsClass: instructionClass,
+                                                        instructionsBelowField: true,
+                                                        errorClass: errorClass,
+                                                    }) }}
+                                                {% endif %}
+
+
+
+                                            {% endif %}
+                                        </div>
+
+
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                        {% if form.pages|length > 1 %}
+                    {% set currentPageCount = (form.currentPage.index + 1) %}
+                    {% set progressBar = (currentPageCount / form.pages|length) * 100 %}
+                    <div class="progress" style="height: 20px;">
+                        <div class="progress-bar" role="progressbar" style="width: {{ progressBar|number_format(2, '.') }}%" aria-valuenow="{{ progressBar|number_format(2, '.') }}" aria-valuemin="0" aria-valuemax="100">{{ progressBar|number_format(0) }}%</div>
+                    </div>
+                <br /><br />
+                {% endif %}
+
+                    {{ form.renderClosingTag }}
+
+                {% else %}
+                    <div class="alert alert-danger">
+                        <p class="lead">
+                            Form with the handle '{{ formHandle }}' does not exist
+                        </p>
+                    </div>
+                {% endif %}
+                <!-- End Form Area -->
+            </div>
+        </div>
+    </div>
+</div>

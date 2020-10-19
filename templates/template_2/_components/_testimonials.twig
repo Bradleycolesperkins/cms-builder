@@ -6,9 +6,11 @@
 
             {% case "fullPageTestimonalBackgroundSlider" %}
                 {% include '/template_2/_components/_testimonial_blocks/_full_page_testimonal_background_slider' with { 'testimonial' : block} %}
+            {% case "fullPageColouredBgTestimonalSlider" %}
+                {% include '/template_2/_components/_testimonial_blocks/_full_page_coloured_background_testimonal_slider' with { 'testimonial' : block} %}
 
             {% default %}
-                {{ dd('TESTIMONIALS', block.type) }}
+                {{ dd('_TESTIMONIALS', block.type) }}
 
         {% endswitch %}
     {% endfor %}

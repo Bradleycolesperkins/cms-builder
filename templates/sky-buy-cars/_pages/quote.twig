@@ -1,0 +1,43 @@
+{% extends 'template_2/_layout' %}
+
+{% block main %}
+    <!-- Page Conttent -->
+    <main class="page-content">
+        {% set entrySlug = craft.app.request.getSegment(2) %}
+        >> {{ entrySlug }} << <br>
+
+        {% set api = '5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}
+        {% set packageName = 'VehicleData' %}
+        {% set vrm = 'KM14AKK' %}
+{#        {% set url = '/api/datapackage/'+packageName+'?v=2&api_nullitems=1&key_vrm='+vrm+'&auth_apikey='+api %}#}
+
+        {% set url = '/api/datapackage/VehicleData?v=2&api_nullitems=1&key_vrm=KM14AKK&auth_apikey=5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}
+
+
+        {% set client = {
+            base_uri : 'https://uk1.ukvehicledata.co.uk',
+            timeout : 10
+        } %}
+
+{#        {% set options = {#}
+{#            auth : ['username', 'password'],#}
+{#            form_params : {#}
+{#                url : 'https://www.google.co.uk'#}
+{#            }#}
+{#        } %}#}
+
+        {% set options = {} %}
+
+        {% set request = fetch(client, 'GET', url, options, false) %}
+
+        {% if(request.statusCode == 200) %}
+            <pre>
+                {{ dd(request.body | json_decode) }}
+            </pre>
+        {% else %}
+            <h1>API Unavailable</h1>
+        {% endif %}
+
+    </main>
+{% endblock %}
+   

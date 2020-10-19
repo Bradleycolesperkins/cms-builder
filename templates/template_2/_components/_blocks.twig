@@ -70,6 +70,12 @@
             {% for block in block.button.all() %}
                 {% include '/template_2/_components/_button_blocks' with {'button_block': block} %}
             {% endfor %}
+        {% case "TwigTemplate" %}
+            {% include '/template_2/_components/_template_block' with {'block': block} %}
+        {% case "templateBlock" %}
+            {{ dd(block) }}
+            {% include '/template_2/_components/_template_block' with {'block': block} %}
+
     {% default %}
          {{ dd('DEFAULT BLOCK', block.type) }}
         {# NO DEFAULT FOR NOW PERHAPS A PROMPT TO SHOW THE USER INCORRECT #}

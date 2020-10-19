@@ -3,7 +3,10 @@
     <div  style="
             {% include '/template_2/_components/_extras/_element_extras' with { 'block' : text_block} %}
             {% include '/template_2/_components/_extras/_element_colour_extras' with { 'block' : text_block} %}
-        ">
+        "
+          class="{% include '/template_2/_components/_extras/_element_extra_class' with { 'block' : text_block} %}"
+          id="{% include '/template_2/_components/_extras/_element_extra_id' with { 'block' : text_block} %}"
+    >
         {% for block in text_block.textBlock.all() %}
             {% switch block.type %}
                 {% case "h1Title" %}

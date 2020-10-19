@@ -1,3 +1,7 @@
 {% if block.textBlockTitle %}
-    <h3 class="heading-custom">{{ block.textBlockTitle }}</h3>
+    <h3 class="heading-custom
+        {% if block.customClass %}
+            {{ block.customClass }}
+        {% endif %}
+    ">{{ block.textBlockTitle |nl2br }}</h3>
 {% endif %}

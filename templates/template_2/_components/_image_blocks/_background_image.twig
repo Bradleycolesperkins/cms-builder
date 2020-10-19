@@ -1,0 +1,36 @@
+{% if block.image|length > 0 %}
+  {% set imageUrl = block.image.first().getUrl() %}
+{% else %}
+  {% set imageUrl = '/img/bg/bg-image-16.jpg' %}
+{% endif %}
+
+{% set bgImageCss %}
+  .bg_image_{{ block.id}} {
+      background-image: url({{ imageUrl }});
+      position: relative;
+  }
+{% endset %}
+
+{% includeCss bgImageCss %}
+
+<div class="bg_image_{{ block.id }}
+    {% include '/template_2/_components/_extras/_element_extra_class' with { 'block' : image_block} %}"
+     id="{% include '/template_2/_components/_extras/_element_extra_id' with { 'block' : image_block} %}"
+
+     style="{% include '/template_2/_components/_extras/_element_extras' with { 'block' : image_block} %}
+     {% include '/template_2/_components/_extras/_image_extras' with { 'block' : image_block} %}"
+
+    {% if block.whiteOverlay %}
+        data-white-overlay="{{ block.whiteOverlay }}"
+    {% endif %}
+    {% if block.blackOverlay %}
+        data-black-overlay="{{ block.whiteOverlay }}"
+    {% endif %}
+
+>
+    {% if block.blockEntry %}
+        {% for entry in block.blockEntry.all() %}
+            {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
+        {% endfor %}
+    {% endif %}
+</div>

@@ -1,0 +1,17 @@
+<!-- Sliders Loop Start -->
+
+{% if counter_block %}
+    {% for block in counter_block.counter.all() %}
+        {% switch block.type %}
+
+            {% case "simpleCounter" %}
+                {% include '/template_2/_components/_counter_blocks/_simple_counter' with { 'counter' : block} %}
+
+            {% default %}
+                {{ dd('COUNTERS', block.type) }}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
+
+<!-- Sliders Loop End -->

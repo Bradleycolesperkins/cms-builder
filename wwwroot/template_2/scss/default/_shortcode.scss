@@ -1222,6 +1222,42 @@ Padding Top Bottom
 .heading-font {
     font-family: $heading-font;
 }
+.full-width {
+    &.text-center {
+        * {
+            width: 100% !important;
+            text-align: center !important;
+            max-width: 100% !important;
+        }
+    }
+}
+
+.mw-heading-child {
+    *.heading {
+        max-width: 100% !important;
+    }
+}
+
+.ml-child-0 {
+    *:not(.cd-words-wrapper) {
+        margin-left: 0 !important;
+    }
+}
+.mr-child-0 {
+    *:not(.cd-words-wrapper) {
+        margin-right: 0 !important;
+    }
+}
+
+.text-center {
+    &.text-center-im {
+        *:not(.cd-words-wrapper) {
+            //width: 100% !important;
+            text-align: center !important;
+            //max-width: 100% !important;
+        }
+    }
+}
 
 /* Height and width */
 .fullscreen {

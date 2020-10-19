@@ -1,0 +1,17 @@
+<!-- Sliders Loop Start -->
+
+{% if carousel_block %}
+    {% for block in carousel_block.carousel.all() %}
+        {% switch block.type %}
+
+            {% case "justImages" %}
+                {% include '/template_2/_components/_carousel_blocks/_just_images_carousel' with { 'carousel' : block} %}
+
+            {% default %}
+                {{ dd('CAROUSELS', block.type) }}
+
+        {% endswitch %}
+    {% endfor %}
+{% endif %}
+
+<!-- Sliders Loop End -->

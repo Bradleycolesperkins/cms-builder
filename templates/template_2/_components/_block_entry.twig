@@ -27,6 +27,12 @@
             {% include '/template_2/_components/_component_blocks' with {'component_block': entry} %}
         {% case "buttonBlocks" %}
             {% include '/template_2/_components/_button_blocks' with {'button_block': entry} %}
+        {% case "TwigTemplate" %}
+            {% include '/template_2/_components/_template_block' with {'block': entry} %}
+        {% case "carouselBlocks" %}
+            {% include '/template_2/_components/_carousel_blocks' with {'carousel_block': entry} %}
+        {% case "counterBlocks" %}
+            {% include '/template_2/_components/_counter_blocks' with {'counter_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}

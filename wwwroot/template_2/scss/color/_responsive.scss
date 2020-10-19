@@ -142,7 +142,7 @@
         font-size: 36px;
     }
     .revolution-slider-area .inner h1.heading br ,
-    h3.heading-h3 br,
+    h3.heading-h3:not(.clip) br,
     .single-vertical-slide .slide-inner .info h2.heading br {
         display: none;
     }

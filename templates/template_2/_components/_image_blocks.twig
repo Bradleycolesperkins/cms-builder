@@ -1,18 +1,22 @@
 
 {% if image_block %}
-    <div style="
-        {% include '/template_2/_components/_extras/_element_extras' with { 'block' : image_block} %}
-        {% include '/template_2/_components/_extras/_image_extras' with { 'block' : image_block} %}
-    ">
+
     {% for block in image_block.imageBlock.all() %}
         {% switch block.type %}
 
         {% case "standardImage" %}
-            {% include '/template_2/_components/_image_blocks/_standard_image' with { 'block' : block} %}
-        {% default %}
+            <div style="
+                {% include '/template_2/_components/_extras/_element_extras' with { 'block' : image_block} %}
+                {% include '/template_2/_components/_extras/_image_extras' with { 'block' : image_block} %}
+                    ">
+                {% include '/template_2/_components/_image_blocks/_standard_image' with { 'block' : block} %}
+            </div>
+
+            {% case "backgroundImage" %}
+                {% include '/template_2/_components/_image_blocks/_background_image' with { 'block' : block, 'image_block' : image_block} %}
+            {% default %}
             {{ dd('image entry', block.type.handle) }}
 
         {% endswitch %}
     {% endfor %}
-    </div>
 {% endif %}

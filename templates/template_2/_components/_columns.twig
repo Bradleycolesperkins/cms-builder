@@ -1,7 +1,9 @@
 <!-- Colu Loop Start -->
 
 {% if column_block %}
-    <div class="row">
+    <div class="row {% include '/template_2/_components/_extras/_element_extra_class' with { 'block' : column_block} %}"
+         id="{% include '/template_2/_components/_extras/_element_extra_id' with { 'block' : column_block} %}"
+    >
         {% for column in column_block.columnSize.all() %}
             {% switch column.type.handle %}
 

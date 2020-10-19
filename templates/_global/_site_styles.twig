@@ -67,6 +67,7 @@
 	{# primaryColour #}
 	{% if companySiteStyles.primaryColour is defined and companySiteStyles.primaryColour|length > 0 %}
 		.primary-color,
+		body.template-color-23 .testimonial_style--1 .content .testimonial-quote span,
 		body.template-color-23 .theme-color,
 		body.template-color-23 .bl-sidebar.category .category-list li a:hover,
 		body.template-color-23 .blog-grid .post-content .post-inner h4.heading a:hover,
@@ -82,7 +83,8 @@
 		body.template-color-23 .post-nav-lisnt .nav-item a:hover,
 		body.template-color-23 .blog-grid .post-content::before,
 		button.brook-btn.btn-bg-primaryColour,
-		button.brook-btn.btn-bg-primaryColour:active {
+		button.brook-btn.btn-bg-primaryColour:active,
+		body.template-color-23 .bk-gradation .item-grid.custom-color--2 .dot-wrap .dot {
 	        background-color: {{ companySiteStyles.primaryColour }};
 	    }
 		button.brook-btn.btn-border-primaryColour,
@@ -95,6 +97,7 @@
 		}
 
 
+		body.template-color-23 .testimonial_style--1:hover,
 		body.template-color-23 .btn-essential:hover
 		body.template-color-23 .btn-essential:active {
 			background-color: {{ companySiteStyles.primaryColour }} !important;
@@ -103,6 +106,7 @@
 		body.template-color-23 .btn-essential:active {
 			border-color: {{ companySiteStyles.primaryColour }} !important;
 		}
+		body.template-color-23 .testimonial_style--1:hover .content .testimonial-quote span,
 		button.brook-btn.btn-text-secondaryColour {
 			color: {{ companySiteStyles.secondaryColour }};
 		}

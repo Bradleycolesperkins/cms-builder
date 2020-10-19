@@ -1,0 +1,14 @@
+{% if counter %}
+    <!-- Start Single Counter -->
+    <div class="brook-counter text-center">
+        <div class="icon">
+            {% set image = counter.icon.first() %}
+            <img src="{{image.getUrl()}}" alt="{{image.imageAltTag }}">
+        </div>
+        <div class="content">
+            <span class="count">{{ counter.number }}</span>
+            <h6 class="heading heading-h6">{{ counter.counterTitle }}</h6>
+        </div>
+    </div>
+    <!-- End Single Counter -->
+{% endif %}

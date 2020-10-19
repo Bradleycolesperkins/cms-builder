@@ -1,7 +1,7 @@
 <div class="typed-text">
     <div class="content">
         <h3 class="heading heading-h3 cd-headline clip is-full-width move-up wow">
-            {{ block.textBefore }}
+            {{ block.textBefore | nl2br }}
             <span class="cd-words-wrapper theme-color
             {% if block.typedTextFontDifferent.value == 'yes' %}text-variation-play{% endif %}
             ">
@@ -11,9 +11,9 @@
                     {% else %}
                         <b>
                     {% endif %}
-                    {{ text.text }}</b>
+                    {{ text.text | nl2br }}</b>
                 {% endfor %}
             </span>
-            {{ block.textAfter  }}</h3>
+            {{ block.textAfter | nl2br  }}</h3>
     </div>
 </div>

@@ -1,0 +1,53 @@
+{% if carousel %}
+    {% if carousel.slidesToShow %}
+        {% set slidesToShow = carousel.slidesToShow %}
+    {% else %}
+        {% set slidesToShow = 3 %}
+    {% endif %}
+    {% if carousel.slidesToScroll %}
+        {% set slidesToScroll = carousel.slidesToScroll %}
+    {% else %}
+        {% set slidesToScroll = 3 %}
+    {% endif %}
+    <!-- Start Carousel Slider -->
+
+    <div class="bk-carousel-slider bg_color--1 ptb--150 slick-arrow-hover ptb-md--80 ptb-sm--60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="brook-element-carousel slick-arrow-center" data-slick-options='{
+                                "spaceBetween": 15,
+                                "slidesToShow": {{ slidesToShow }},
+                                "slidesToScroll": {{ slidesToScroll }},
+                                "arrows": true,
+                                "infinite": true,
+                                "dots": false,
+                                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
+                                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
+                            }'
+                         data-slick-responsive='[
+                            {"breakpoint":991, "settings": {"slidesToShow": 2}},
+                            {"breakpoint":690, "settings": {"slidesToShow": 2}},
+                            {"breakpoint":590, "settings": {"slidesToShow": 1}}
+                            ]'>
+
+
+                        {% for image in carousel.images.all() %}
+                            <!-- Start Single Carousel -->
+                            <div class="carousle-slider text-center">
+                                <div class="thumb">
+                                    <img src="{{image.getUrl() }}" alt="{{image.imageAltTag }}">
+                                </div>
+                            </div>
+                            <!-- End Single Carousel -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Carousel Slider -->
+{% endif %}

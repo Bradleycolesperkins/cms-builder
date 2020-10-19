@@ -1,0 +1,4 @@
+{% if block %}
+    {% set templateUrl = '/template_2/_components/_template_blocks/'~block.slug  %}
+    {% include templateUrl with {'block': block} %}
+{% endif %}

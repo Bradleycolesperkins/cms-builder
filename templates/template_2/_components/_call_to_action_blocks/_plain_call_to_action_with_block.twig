@@ -1,0 +1,18 @@
+    <!-- Start Call To Action -->
+<div class="brook-call-to-action bg_color--24 ptb--40 primary-background">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-6 col-12">
+                <div class="call-content essential-cta-content text-center text-sm-left">
+                    <h3 class="text-white wow move-up">{{block.callToActionTitle}}</h3>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                {% if block.callToActionBlock %}
+                    {% include '/template_2/_components/_blocks' with {'block':  block.callToActionBlock } %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Call To Action -->

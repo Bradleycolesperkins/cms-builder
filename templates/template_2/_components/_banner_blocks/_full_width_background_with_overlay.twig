@@ -1,4 +1,31 @@
 {% if block %}
+    {% if block.paddingAbove %}
+        {% set bannerCss %}
+            .customBanner_{{ block.id}} {
+                padding-top: {{ block.paddingAbove }}px
+            }
+        {% endset %}
+        {% includeCss bannerCss %}
+    {% endif %}
+    {% if block.paddingBelow %}
+        {% set bannerCss2 %}
+            .customBanner_{{ block.id}} {
+                padding-bottom: {{ block.paddingAbove }}px
+            }
+        {% endset %}
+        {% includeCss bannerCss2 %}
+    {% endif %}
+
+    {% if not block.paddingAbove and not block.paddingBelow %}
+        {% set customClasses = "ptb--270 pt_md--190 pb_md--100 pt_sm--190 pb_sm--100" %}
+    {% else %}
+        {% set customClasses = "customBanner_"~block.id %}
+    {% endif %}
+
+
+
+
+
     {% set opacity = (block.backgroundColourOpacity / 100) %}
 
     {% if block.backgroundImage|length > 0 %}
@@ -28,7 +55,7 @@
     {% includeCss myCss %}
 
     <!-- Start Hero Nav Slider Area -->
-    <div class="brook-breadcaump-area bg_image--16 ptb--270 pt_md--190 pb_md--100 pt_sm--190 pb_sm--100 breadcaump-title-bar banner_{{ block.id }}" >
+    <div class="brook-breadcaump-area {{ customClasses}} bg_image--16  breadcaump-title-bar banner_{{ block.id }}" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -36,7 +63,17 @@
                         {% if block.textBlock %}
 
                             {% for block in block.textBlock.all() %}
-                                {% include '/template_2/_components/_text_blocks' with {'text_block': block} %}
+
+                                {% switch block.type %}
+                                    {% case "textBlocks" %}
+                                        {% include '/template_2/_components/_text_blocks' with {'text_block': block} %}
+                                    {% case "containerBlocks" %}
+                                        {% include '/template_2/_components/_container' with {'container': block} %}
+
+                                {% default %}
+                                    {{ dd('FULL WIDTH BLOCK', block.type) }}
+                                {% endswitch %}
+
                             {% endfor %}
                         {% endif %}
                     </div>
