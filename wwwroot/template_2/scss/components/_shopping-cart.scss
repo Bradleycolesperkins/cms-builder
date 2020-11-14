@@ -211,38 +211,38 @@
     font-size:22px
 }
 @media(min-width:360px){
-    .vehicle-lookup .vrm::-webkit-input-placeholder{
-        font-size:22px
+    .vehicle-lookup .vrm::-webkit-input-placeholder {
+        font-size:16px !important;
     }
-    .vehicle-lookup .vrm::-moz-placeholder{
-        font-size:22px
+    .vehicle-lookup .vrm::-moz-placeholder {
+        font-size:16px !important;
     }
-    .vehicle-lookup .vrm:-ms-input-placeholder{
-        font-size:22px
+    .vehicle-lookup .vrm::-ms-input-placeholder {
+        font-size:16px !important;
     }
-    .vehicle-lookup .vrm::-ms-input-placeholder{
-        font-size:22px
+    .vehicle-lookup .vrm::-ms-input-placeholder {
+        font-size:16px !important;
     }
-    .vehicle-lookup .vrm::placeholder{
-        font-size:22px
+    .vehicle-lookup .vrm::placeholder {
+        font-size:16px !important;
     }
 }
 @media(min-width:576px){
-    .vehicle-lookup .vrm::-webkit-input-placeholder{
-        font-size:22px
-    }
-    .vehicle-lookup .vrm::-moz-placeholder{
-        font-size:22px
-    }
-    .vehicle-lookup .vrm:-ms-input-placeholder{
-        font-size:22px
-    }
-    .vehicle-lookup .vrm::-ms-input-placeholder{
-        font-size:22px
-    }
-    .vehicle-lookup .vrm::placeholder{
-        font-size:22px
-    }
+        .vehicle-lookup .vrm::-webkit-input-placeholder {
+            font-size:22px !important;
+        }
+        .vehicle-lookup .vrm::-moz-placeholder {
+            font-size:22px !important;
+        }
+        .vehicle-lookup .vrm::-ms-input-placeholder {
+            font-size:22px !important;
+        }
+        .vehicle-lookup .vrm::-ms-input-placeholder {
+            font-size:22px !important;
+        }
+        .vehicle-lookup .vrm::placeholder {
+            font-size:22px !important;
+        }
 }
 .vehicle-lookup .vrm.large-fonts{
     padding-left:16px;

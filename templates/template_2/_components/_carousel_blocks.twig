@@ -6,6 +6,8 @@
 
             {% case "justImages" %}
                 {% include '/template_2/_components/_carousel_blocks/_just_images_carousel' with { 'carousel' : block} %}
+            {% case "linkedimages" %}
+                {% include '/template_2/_components/_carousel_blocks/_carousel_images_with_links' with { 'carousel' : block} %}
 
             {% default %}
                 {{ dd('CAROUSELS', block.type) }}

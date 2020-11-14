@@ -15473,27 +15473,27 @@ Breadcaump Area
 
 @media (min-width: 360px) {
   .vehicle-lookup .vrm::-webkit-input-placeholder {
-    font-size: 22px; }
+    font-size: 16px !important; }
   .vehicle-lookup .vrm::-moz-placeholder {
-    font-size: 22px; }
-  .vehicle-lookup .vrm:-ms-input-placeholder {
-    font-size: 22px; }
+    font-size: 16px !important; }
   .vehicle-lookup .vrm::-ms-input-placeholder {
-    font-size: 22px; }
+    font-size: 16px !important; }
+  .vehicle-lookup .vrm::-ms-input-placeholder {
+    font-size: 16px !important; }
   .vehicle-lookup .vrm::placeholder {
-    font-size: 22px; } }
+    font-size: 16px !important; } }
 
 @media (min-width: 576px) {
   .vehicle-lookup .vrm::-webkit-input-placeholder {
-    font-size: 22px; }
+    font-size: 22px !important; }
   .vehicle-lookup .vrm::-moz-placeholder {
-    font-size: 22px; }
-  .vehicle-lookup .vrm:-ms-input-placeholder {
-    font-size: 22px; }
+    font-size: 22px !important; }
   .vehicle-lookup .vrm::-ms-input-placeholder {
-    font-size: 22px; }
+    font-size: 22px !important; }
+  .vehicle-lookup .vrm::-ms-input-placeholder {
+    font-size: 22px !important; }
   .vehicle-lookup .vrm::placeholder {
-    font-size: 22px; } }
+    font-size: 22px !important; } }
 
 .vehicle-lookup .vrm.large-fonts {
   padding-left: 16px;
@@ -26185,6 +26185,40 @@ Extra Footer
     @media only screen and (max-width: 767px) {
       .page-extra-footer .page-right-text p.bk_pra.heading-font {
         transform: rotate(0deg); } }
+
+.footer-subscribe-form label {
+  display: none; }
+
+.footer-subscribe-form .row .col-sm-6 {
+  padding: 0px; }
+
+.footer-subscribe-form button {
+  border: 0px;
+  border-radius: 0px !important; }
+
+.footer-subscribe-form input {
+  height: 55px;
+  border: 0px !important; }
+
+.footer-top-bar {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #33404d; }
+
+.footer-bottom-bar {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #33404d;
+  display: flex; }
+  .footer-bottom-bar > div {
+    width: 33.333%; }
+  .footer-bottom-bar .first-child {
+    text-align: left; }
+  .footer-bottom-bar .last-child {
+    text-align: right; }
+    .footer-bottom-bar .last-child > div {
+      float: right;
+      padding-left: 15px; }
 
 /*================================
 	Color Variation

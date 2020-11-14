@@ -14,5 +14,8 @@
 {% if button.buttonShadow.value == 'no' %} with-no-shadow {% endif %}
 {% if button.buttonShape %} btn-{{ button.buttonShape.value }} {% endif %}
 {% if button.buttonBorder.value == 'yes' %} btn-border-{{ button.buttonTextColour }} {% endif %}
-"
+
+{{ block.elementClass }}"
+id="{{ block.elementId }}"
+style="{% include '/template_2/_components/_extras/_element_extras' with { 'block' : block} %}"
 >{{ text | nl2br }}</button>

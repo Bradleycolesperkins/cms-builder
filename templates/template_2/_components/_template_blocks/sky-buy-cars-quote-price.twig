@@ -134,12 +134,10 @@
                                             {% elseif( data['Response']['DataItems']['ValuationList']['TradePoor'] ) %}
                                                 {% set apiPrice = data['Response']['DataItems']['ValuationList']['TradePoor'] %}
                                             {% endif %}
-                                            {#{% set apiPrice = apiPrice * 1.10  %}#}
+                                            {% set apiPrice = apiPrice * 1.06  %}
                                             <div class="single-product-details-side" style="margin: 0px;width: 100% !important;max-width: 100%;">
                                                 <div class="product-details">
-                                                    block entry" <div class="inner">
-
-
+                                                    <div class="inner">
                                                         <div class="price">
                                                             <h1 class="theme-color">£{{ apiPrice|number_format(2, '.', ',') }}<p></p></h1>
                                                             {% if( data['Response']['DataItems']['Mileage'] ) %}
@@ -152,7 +150,14 @@
                                                                 This valuation will be guaranteed for 7 days from today, after this 7 day period you would need to do a fresh valuation. We will be in touch to arrange a date and time to bring your vehicle to us so that we can inspect it. If you would like to discuss any aspect of the quote or our service please feel free to get in touch via telephone on 029 2075 7991 or email info@skybuyscars.com.
                                                             </p>
                                                         </div>
-                                                        <div class="quenty-container" style="">
+                                                        <div class="quenty-container" style="margin: 0;padding: 0;border-bottom: 0px">
+                                                            <!-- Calendly inline widget begin -->
+                                                            <div class="calendly-inline-widget" data-url="https://calendly.com/sky-buys-cars?primary_color=2e58a4" style="min-width:320px;height:630px;"></div>
+                                                            <!-- Calendly inline widget end -->
+                                                            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+                                                        </div>
+
+                                                        <div class="quenty-container" style="margin: 0;border-bottom: 0px">
                                                             <div class="row">
                                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
                                                                     <div class="plans-about">
@@ -396,6 +401,16 @@
                                     errorClass: errorClass,
                                     overrideValue: craft.request.getPost('phone')
                                 }) }}
+                            {% elseif field.handle == "zipCode" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: craft.request.getPost('zipCode')
+                                }) }}
                             {% elseif field.handle == "email" %}
                                 {% set class = "hidden" %}
                                 {{ field.render({
@@ -446,6 +461,16 @@
                                     instructionsBelowField: true,
                                     errorClass: errorClass,
                                     overrideValue: craft.request.getPost('vehicleData')
+                                }) }}
+                            {% elseif field.handle == "priceQuoted" %}
+                                {% set class = "hidden" %}
+                                {{ field.render({
+                                    class: class,
+                                    labelClass: labelClass,
+                                    instructionsClass: instructionClass,
+                                    instructionsBelowField: true,
+                                    errorClass: errorClass,
+                                    overrideValue: apiPrice
                                 }) }}
                             {% else %}
                                 {{ field.render({

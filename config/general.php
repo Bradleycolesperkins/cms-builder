@@ -51,4 +51,5 @@ return [
         // Set this to `false` to prevent administrative changes from being made on production
         'allowAdminChanges' => true,
     ],
+    'extraAllowedFileExtensions' => 'ico',
 ];

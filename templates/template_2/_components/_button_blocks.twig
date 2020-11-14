@@ -8,9 +8,9 @@
         {% for block in button_block.buttonStyle.all() %}
             {% switch block.type.handle %}
                 {% case "standardButton" %}
-                    {% include '/template_2/_components/_button_blocks/_standard_button' with { 'button' : block, 'text' : button_block.buttonTextContent} %}
+                    {% include '/template_2/_components/_button_blocks/_standard_button' with { 'button' : block, 'block' : button_block, 'text' : button_block.buttonTextContent} %}
                 {% case "imageBackgroundButton" %}
-                    {% include '/template_2/_components/_button_blocks/_image_background_button' with { 'button' : block, 'text' : button_block.buttonTextContent} %}
+                    {% include '/template_2/_components/_button_blocks/_image_background_button' with { 'button' : block, 'block' : button_block, 'text' : button_block.buttonTextContent} %}
                 {% default %}
                     {{ dd('Button Block entry', block.type.handle) }}
             {% endswitch %}

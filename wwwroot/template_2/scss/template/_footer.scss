@@ -433,9 +433,51 @@ Extra Footer
 }
 
 
+.footer-subscribe-form {
+    label {
+        display: none;
+    }
+     .row {
+         .col-sm-6 {
+             padding: 0px;
+         }
+     }
+    button {
+        border: 0px;
+        border-radius: 0px !important;
+    }
+    input {
+        height: 55px;
+        border: 0px !important;
+    }
+}
+.footer-top-bar {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #33404d;
+}
 
+.footer-bottom-bar {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #33404d;
+    display: flex;
+    &>div {
+        width: 33.333%;
+    }
 
+    .first-child {
+        text-align: left;
+    }
 
+    .last-child {
+        text-align: right;
+        &>div {
+            float: right;
+            padding-left: 15px;
+        }
+    }
+}
 
 
 

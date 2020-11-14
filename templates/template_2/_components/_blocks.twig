@@ -4,7 +4,7 @@
 
         {% case "container" %}
             {% for block in block.containerBlock.all() %}
-                {% include '/template_2/_components/_container' with {'container': block} %}
+                {% include '/template_2/_components/_container' with {'block': block} %}
             {% endfor %}
 
 

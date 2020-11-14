@@ -1,36 +1,53 @@
 {% if block.containerBlock %}
+    <div class="container-block {{ block.elementClass }}" id="{{ block.elementId }}" style="
+        {% include '/template_2/_components/_extras/_element_extras' with { 'block' : block} %}
+        ">
 
-    {% for innerBlock in block.containerBlock.all() %}
-        {% switch innerBlock.type %}
+        {% for innerBlock in block.containerBlock.all() %}
+            {% switch innerBlock.type %}
             {% case "container" %}
                 {% for entry in innerBlock.blocks.all() %}
-                    <div class="container-area ptb--40 ptb-md--40">
-                        <div class="container {{ block.elementClass }}" id="{{ block.elementId }}" style="
-                            {% include '/template_2/_components/_extras/_element_extras' with { 'block' : block} %}
-                        ">
-                            {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
-                        </div>
+                    <div class="container ptb--40 ptb-md--40">
+                        {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
                     </div>
                 {% endfor %}
             {% case "div" %}
                 {% for entry in innerBlock.blocks.all() %}
-                    <div class="div {{ block.elementClass }}" id="{{ block.elementId }}" style="
-                    {% if block.elementMarginTop > 0 %} margin-top:{{ block.elementMarginTop }}px; {% endif %}
-                    {% if block.elementMarginBottom > 0 %} margin-bottom:{{ block.elementMarginBottom }}px; {% endif %}
-                    {% if block.elementMarginLeft > 0 %} margin-left:{{ block.elementMarginLeft }}px; {% endif %}
-                    {% if block.elementMarginRight > 0 %} margin-right:{{ block.elementMarginRight }}px; {% endif %}
-                    {% if block.elementPaddingTop > 0 %} padding-top:{{ block.elementPaddingTop }}px; {% endif %}
-                    {% if block.elementPaddingBottom > 0 %} padding-bottom:{{ block.elementPaddingBottom }}px; {% endif %}
-                    {% if block.elementPaddingLeft > 0 %} padding-left:{{ block.elementPaddingLeft }}px; {% endif %}
-                    {% if block.elementPaddingRight > 0 %} padding-right:{{ block.elementPaddingRight }}px; {% endif %}
-                            ">
+                    <div class="div">
                         {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
                     </div>
                 {% endfor %}
             {% default %}
                 {{ dd('CONTAINER BLOCK!', innerBlock.type) }}
 
-        {% endswitch %}
-    {% endfor %}
+            {% endswitch %}
+        {% endfor %}
+
+    </div>
 {% endif %}
 
+
+{#{% if container %}#}
+{#    <div class="container-block#}
+{#        {{ container.elementClass }}#}
+{#        {% for innerBlock in container.containerBlock.all() %}#}
+{#            {% switch innerBlock.type %}#}
+{#            {% case "container" %}#}
+{#                container ptb--40 ptb-md--40#}
+{#            {% case "div" %}#}
+{#                div#}
+{#            {% default %}#}
+{#                {{ dd('CONTAINER BLOCK!', innerBlock.type) }}#}
+{#            {% endswitch %}#}
+{#        {% endfor %}#}
+{#        "#}
+{#         id="{{ container.elementId }}"#}
+{#         style="{% include '/template_2/_components/_extras/_element_extras' with { 'block' : container} %}"#}
+{#    >#}
+{#        {% for innerBlock in container.containerBlock.all() %}#}
+{#            {% for entry in innerBlock.blocks.all() %}#}
+{#                {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}#}
+{#            {% endfor %}#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endif %}#}
