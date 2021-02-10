@@ -24,6 +24,19 @@
     }
 }
 
+.service-block-full-heights {
+    .container {
+        .row {
+            .container-block {
+                height: 100%;
+                .div  {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
 .single-svg-icon-box {
     .icon{
         img.icon-img {
@@ -35,7 +48,14 @@
 
 }
 
+@media (max-width: 992px) {
+    .icon-box {
+        margin-bottom: 30px;
+    }
+}
+
 .icon-box{
+    
     img.icon-img {
         max-width: 75px;
         max-height: 75px;

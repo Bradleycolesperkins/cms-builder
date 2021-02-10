@@ -1,0 +1,21 @@
+{% if gallery_block %}
+
+    <div class="gallery-wrapper gallery-grid" id="animated-thumbnials">
+        {% for galleryImage in entry.galleryImages.all() %}
+
+            <!-- Start Single Gallery -->
+            <a class="gallery" href="{{galleryImage.getUrl()}}">
+                <div class="thumb">
+                    <img src="{{galleryImage.getUrl()}}" alt="{{ galleryImage.imageAltTag  }}">
+                </div>
+                <div class="hover-overlay">
+                    <div class="inner">
+                        <span class="ion ion-android-add"></span>
+                    </div>
+                </div>
+            </a>
+            <!-- End Single Gallery -->
+
+        {% endfor %}
+    </div>
+{% endif %}

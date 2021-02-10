@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="apple-mobile-web-app-capable" content="yes">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all" />
 
-   {% include '/_global/_header_tags' %}
+
+    {% include '/_global/_header_tags' %}
 
    {% block stylesheets %}
       <!-- Plugins -->
@@ -30,29 +32,31 @@
 
 <!-- Wrapper -->
 <div id="wrapper" class="wrapper">
-    {% include '/template_2/_components/_header' %}
-
-    {# {% include '/template_2/_components/_toolbar_popup' %}#}
-
+    {% if companySiteLayout.headerBar != "no" %}
+        {% include '/template_2/_components/_header' %}
+        {# {% include '/template_2/_components/_toolbar_popup' %}#}
+    {% endif %}
 
     {% block main %}
     {% endblock %}
 
+    {% if companySiteLayout.footer != "no" %}
+        <footer id="bk-footer" class="page-footer essential-footer primary-background">
+            <!-- Start Footer Top Area -->
+            <div class="bk-footer-inner ptb--50 pt_sm--25">
+                {% set entries = craft.entries.section('footerBlocks') %}
+                {% for footerEntry in entries.all() %}
+                    {% if footerEntry.blockSelection %}
+                        {% include '/template_2/_components/_blocks' with {'block': footerEntry.blockSelection} %}
+                    {% endif %}
+                {% endfor %}
 
-    <footer id="bk-footer" class="page-footer essential-footer primary-background">
-        <!-- Start Footer Top Area -->
-        <div class="bk-footer-inner ptb--50 pt_sm--25">
-            {% set entries = craft.entries.section('footerBlocks') %}
-            {% for footerEntry in entries.all() %}
-                {% if footerEntry.blockSelection %}
-                    {% include '/template_2/_components/_blocks' with {'block': footerEntry.blockSelection} %}
-                {% endif %}
-            {% endfor %}
+            </div>
+            <!-- Start Footer Top Area -->
+        </footer>
+        <!--// Footer -->
+    {% endif %}
 
-        </div>
-        <!-- Start Footer Top Area -->
-    </footer>
-    <!--// Footer -->
 </div>
 
 {% block javascript %}

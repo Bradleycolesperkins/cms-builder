@@ -1,0 +1,24 @@
+<div class="header-social-medias d-sm-none d-md-block d-lg-block">
+    <div class="social-share social--transparent primary-color">
+        {% if companySocialMedias.companyFacebook|length > 0 %}
+            <a class="primary-color" target="_blank" href="{{ companySocialMedias.companyFacebook }}" class="link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+        {% endif %}
+        {% if companySocialMedias.companyInstagram|length > 0 %}
+            <a class="primary-color" target="_blank" href="{{ companySocialMedias.companyInstagram }}" class="link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        {% endif %}
+        {% if companySocialMedias.companyTwitter|length > 0 %}
+            <a class="primary-color" target="_blank" href="{{ companySocialMedias.companyTwitter }}" class="link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+        {% endif %}
+        {% if companySocialMedias.companyYoutube|length > 0 %}
+            <a class="primary-color" target="_blank" href="{{ companySocialMedias.companyYoutube }}" class="link" aria-label="Youtube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        {% endif %}
+    </div>
+</div>

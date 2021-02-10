@@ -10,7 +10,36 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: coca
 Tags: custom-colors, featured-images, sticky-post
 */
+.cs-header:not(.cs-header--scroll-menu) .cs-header__wrapp {
+    background: rgba(35, 37, 45,0.75);
+}
+.theme-color {
+    color: #23252d;
+}
+.hero-content-3.left {
+    text-align: center !important;
+}
 
+.hero-content-3 a.brook-btn {
+    padding: 18px 36px;
+    min-height: 55px;
+    font-size: 14px !important;
+    background-color: #29333d !important;
+    width: auto !important;
+    max-width: initial;
+    max-height: none;
+    line-height: normal !important;
+    color: #fff !important;
+    border: 0px !important;
+}
+@media screen and (min-width: 1200px) {
+    .cs-block__item-wrapp .cs-portfolio--services {
+        min-height: 525px !important;
+    }
+}
+.smaller-margin-tmp>.mb--45 {
+    margin-bottom: 10px !important;
+}
 .bg-grey {
     background-color: #eef1f2 !important;
 }

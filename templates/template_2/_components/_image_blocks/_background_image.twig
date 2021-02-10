@@ -8,6 +8,9 @@
   .bg_image_{{ block.id}} {
       background-image: url({{ imageUrl }});
       position: relative;
+        background-size: {{ block.backgroundSize }};
+        background-position: {{ block.backgroundPosition }};
+        background-repeat: {{ block.backgroundRepeat }};
   }
 {% endset %}
 

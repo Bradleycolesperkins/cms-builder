@@ -1,73 +1,5 @@
 {% set entrySlug = craft.request.getParam('registrationNumber') %}
 
-{#{% set api = '5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}#}
-{% set api = 'B631AF59-C985-4889-85C6-80793C81D52C' %}
-{% set packageName = 'CustomVehicleAndImageData' %}
-{#{% set vrm = 'KM14AKK' %}#}
-{% set vrm = entrySlug|replace({' ': ''}) %}
-
-{% set url = '/api/datapackage/'~packageName~'?v=2&api_nullitems=1&key_vrm='~vrm~'&auth_apikey='~api %}
-{#{% set url = '/api/datapackage/CustomVehicleAndImageData?v=2&api_nullitems=1&key_vrm=KM14AKK&auth_apikey=5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}#}
-
-
-{% set client = {
-    base_uri : 'https://uk1.ukvehicledata.co.uk',
-    timeout : 10
-} %}
-
-{#        {% set options = {#}
-{#            auth : ['username', 'password'],#}
-{#            form_params : {#}
-{#                url : 'https://www.google.co.uk'#}
-{#            }#}
-{#        } %}#}
-
-{% set options = {} %}
-
-{% set request = fetch(client, 'GET', url, options, false) %}
-
-{% if(request.statusCode == 200) %}
-    {% set data = request.body | json_decode() %}
-    {#  GET IMAGE NOW  #}
-    {#    {% set url = '/api/datapackage/CustomVehicleAndImageData?v=2&api_nullitems=1&key_VRM='+vrm+'&auth_apikey='+api %}#}
-
-    {% if (data['Response']['DataItems']) %}
-        {% if (data['Response']['DataItems']['VehicleImages']) %}
-            {% set image  = data['Response']['DataItems']['VehicleImages']['ImageDetailsList']  %}
-            {% if image[0] %}
-                {% set imageDetails  = image[0]  %}
-                {% if imageDetails['ImageUrl'] %}
-                    {% set imageUrl  = imageDetails['ImageUrl']  %}
-                {% endif %}
-            {% endif %}
-        {% endif %}
-    {% endif %}
-
-    {% set vehicleRegistration = '' %}
-    {% if (data['Response']['DataItems']) %}
-        {% if (data['Response']['DataItems']['VehicleRegistration']) %}
-            {% set loop  = data['Response']['DataItems']['VehicleRegistration']  %}
-            {% for key, item in loop %}
-                {% set vehicleRegistration = vehicleRegistration ~ key ~ ': ' ~ item ~ ', ' %}
-            {% endfor %}
-        {% endif %}
-    {% endif %}
-
-
-
-    {% set smmtDetails = '' %}
-    {% if (data['Response']['DataItems']) %}
-        {% if (data['Response']['DataItems']['SmmtDetails']) %}
-            {% set loop  = data['Response']['DataItems']['SmmtDetails']  %}
-            {% for key, item in loop %}
-                {% set smmtDetails = smmtDetails ~ key ~ ': ' ~ item ~ ', '  %}
-            {% endfor %}
-        {% endif %}
-    {% endif %}
-
-{% endif %}
-
-
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -79,89 +11,7 @@
                     {{ csrfInput() }}
 
                     <div class="row">
-                        <div class="col-lg-5">
-                            {% if(request.statusCode == 200 and data['Response']['DataItems']) %}
-                                <div class="row">
-                                    <!-- Cart Total -->
-                                    <div class="col-12 mb--60">
-                                        <h4 class="checkout-title">Car Details</h4>
-                                        <div class="checkout-cart-total">
-                                            {% if ( data['Response']['DataItems']['VehicleRegistration']['MakeModel'] ) %}
-                                                <h4>{{ data['Response']['DataItems']['VehicleRegistration']['MakeModel'] }}</h4>
-                                                <input class="form-control hidden" name="MakeModel" type="hidden" value="{{ data['Response']['DataItems']['VehicleRegistration']['MakeModel'] }}">
-                                            {% endif %}
-                                            {% if imageUrl %}
-                                                <div style="padding-bottom: 15px;padding-top: 15px;margin-bottom: 15px;border-bottom: 1px solid #999999;border-top: 1px solid #999999;">
-                                                    <img src="{{ imageUrl }}" style="width: 100%;">
-                                                    <input class="form-control hidden" name="imageUrl" type="hidden" value="{{ imageUrl }}">
-                                                </div>
-                                            {% endif %}
-                                            <ul>
-                                                {% if ( data['Response']['DataItems']['SmmtDetails']['Range'] )  %}
-                                                    <li>Range <span>{{ data['Response']['DataItems']['SmmtDetails']['Range'] }}</span></li>
-                                                    <input class="form-control hidden" name="Range" type="hidden" value="{{ data['Response']['DataItems']['SmmtDetails']['Range'] }}">
-                                                {% endif %}
-
-                                                {% if ( data['Response']['DataItems']['SmmtDetails']['FuelType'] ) %}
-                                                    <li>Fuel Type <span>{{  data['Response']['DataItems']['SmmtDetails']['FuelType'] }}</span></li>
-                                                    <input class="form-control hidden" name="FuelType" type="hidden" value="{{  data['Response']['DataItems']['SmmtDetails']['FuelType'] }}">
-                                                {% endif %}
-
-                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['Colour']) %}
-                                                    <li>Colour <span>{{  data['Response']['DataItems']['VehicleRegistration']['Colour'] }}</span></li>
-                                                    <input class="form-control hidden" name="Colour" type="hidden" value="{{  data['Response']['DataItems']['VehicleRegistration']['Colour'] }}">
-                                                {% endif %}
-
-                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['YearOfManufacture']) %}
-                                                    <li>Year <span>{{  data['Response']['DataItems']['VehicleRegistration']['YearOfManufacture'] }}</span></li>
-                                                    <input class="form-control hidden" name="YearOfManufacture" type="hidden" value="{{  data['Response']['DataItems']['VehicleRegistration']['YearOfManufacture'] }}">
-                                                {% endif %}
-
-                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['DoorPlanLiteral']) %}
-                                                    <li>Doors <span>{{  data['Response']['DataItems']['VehicleRegistration']['DoorPlanLiteral'] }}</span></li>
-                                                    <input class="form-control hidden" name="DoorPlanLiteral" type="hidden" value="{{  data['Response']['DataItems']['VehicleRegistration']['DoorPlanLiteral'] }}">
-                                                {% elseif ( data['Response']['DataItems']['SmmtDetails']['NumberOfDoors']) %}
-                                                    <li>Doors <span>{{  data['Response']['DataItems']['SmmtDetails']['NumberOfDoors'] }}</span></li>
-                                                    <input class="form-control hidden" name="NumberOfDoors" type="hidden" value="{{  data['Response']['DataItems']['SmmtDetails']['NumberOfDoors'] }}">
-                                                {% endif %}
-
-                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['TransmissionType']) %}
-                                                    <li>Transmission <span>{{  data['Response']['DataItems']['VehicleRegistration']['TransmissionType'] }}</span></li>
-                                                    <input class="form-control hidden" name="TransmissionType" type="hidden" value="{{  data['Response']['DataItems']['VehicleRegistration']['TransmissionType'] }}">
-                                                {% elseif ( data['Response']['DataItems']['SmmtDetails']['Transmission']) %}
-                                                    <li>Transmission <span>{{  data['Response']['DataItems']['SmmtDetails']['Transmission'] }}</span></li>
-                                                    <input class="form-control hidden" name="Transmission" type="hidden" value="{{  data['Response']['DataItems']['SmmtDetails']['Transmission'] }}">
-                                                {% endif %}
-
-                                                {% if ( data['Response']['DataItems']['VehicleRegistration']['Model']) %}
-                                                    <li>Model <span>{{  data['Response']['DataItems']['VehicleRegistration']['Model'] }}</span></li>
-                                                    <input class="form-control hidden" name="Model" type="hidden" value="{{  data['Response']['DataItems']['VehicleRegistration']['Model'] }}">
-                                                {% endif %}
-
-                                                {% if ( data['Response']['DataItems']['SmmtDetails']['BodyStyle']) %}
-                                                    <li>Body <span>{{  data['Response']['DataItems']['SmmtDetails']['BodyStyle'] }}</span></li>
-                                                    <input class="form-control hidden" name="BodyStyle" type="hidden" value="{{  data['Response']['DataItems']['SmmtDetails']['BodyStyle'] }}">
-                                                {% endif %}
-                                            </ul>
-                                            <p>Registration Number<span>{{ entrySlug }}</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% else %}
-                                <div class="row">
-                                    <!-- Cart Total -->
-                                    <div class="col-12 mb--60">
-                                        <h4 class="checkout-title">Car Details</h4>
-                                        <div class="checkout-cart-total">
-                                            <h2>Car Not Found</h2>
-                                            <p>We were unable to locate a car with the registation number: </p>
-                                            <h4>Please try again, or submit the form</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="col-lg-7 mb--20">
+                        <div class="col-lg-10 mb--20 offset-md-1">
                             <!-- Billing Address -->
                             <div id="billing-form" class="mb--40">
                                 <h4 class="checkout-title">Your Details</h4>
@@ -191,10 +41,30 @@
                                 </div>
                                 <div class="row ">
                                     <div class="form-group col-sm-12 col-xs-12">
-                                        <label for="form-input-phone" class="required">Contact Number *</label>
-                                        <input required class="form-control " name="phone" type="text" id="form-input-phone" placeholder="Phone Number">
+                                        <label for="form-input-phone" class="required">Contact Number * <span id="phone-number-validation" style="font-weight:bold;margin-top: 0px;display: block;font-family: 'Hero New Regular' !important;color: red;margin-left: 20px;float: right;"></span></label>
+                                        <input required class="form-control " name="phone" min="11" minlength="11"  type="text" id="form-input-phone" placeholder="Contact Number">
                                     </div>
                                 </div>
+                                {% includeJsFile "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" %}
+                                {% set myJs %}
+                                var minLength = 10;
+                                var maxLength = 13;
+                                $("#form-input-phone").on("keydown keyup change", function(){
+                                    var value = $(this).val();
+                                    if (value.length < minLength){
+                                        $("#phone-number-validation").text("Contact Number is too short");
+                                        $('button[type="submit"]').prop('disabled', true);
+                                    } else if (value.length > maxLength){
+                                        $("#phone-number-validation").text("Contact Number is too long");
+                                        $('button[type="submit"]').prop('disabled', true);
+                                    } else {
+                                        $("#phone-number-validation").text("");
+                                        $('button[type="submit"]').prop('disabled', false);
+                                    }
+                                });
+                                {% endset %}
+
+                                {% includeJs myJs %}
                                 <div class="row ">
                                     <div class="form-group col-sm-12 col-xs-12 submit-align-center">
                                         <div class="cs-form-submit cs-form-submit--center">
@@ -203,7 +73,6 @@
                                     </div>
                                 </div>
                                 <input class="form-control hidden" name="registrationNumber" type="hidden" value="{{ entrySlug }}">
-                                <textarea class="hidden" name="vehicleData" id="form-input-smmtDetails" rows="2">{{ data|json_encode() }}</textarea>
                             </div>
                         </div>
                     </div>

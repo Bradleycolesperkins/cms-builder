@@ -1,0 +1,28 @@
+<div class="container-fluid primary-background top-menu-bar">
+    <div class="row">
+        <div class="col-12">
+            <div class="header__wrapper mr--0">
+                <!-- Header Left -->
+                <div class="header-left2">
+                    <ul>
+                        <li class="text-white">
+                            <i class="fa fa-phone"></i>
+                            <a class="text-white" href="tel:{{ companyInformation.companyContactNumber }}">{{ companyInformation.companyContactNumber }}</a>
+                        </li>
+                        <li class="text-white">
+                            <i class="fa fa-envelope"></i>
+                            <a class="text-white" href="mailto:{{ companyInformation.companyEmailAddress }}">{{ companyInformation.companyEmailAddress }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Mainmenu Wrap -->
+                <div class="mainmenu-wrapper d-none d-lg-block">
+                </div>
+                <!-- Header Right -->
+                <div class="header-right">
+                    <span class="text-white"><i class="fa fa-map-marker"></i>{{ companyInformation.companyAddress }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

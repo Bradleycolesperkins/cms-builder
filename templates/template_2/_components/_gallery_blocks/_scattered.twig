@@ -1,0 +1,22 @@
+{% if gallery_block %}
+    <div class="gallery-wrapper" id="npgallery2">
+        {% for galleryImage in entry.galleryImages.all() %}
+
+            <!-- Start Single Gallery -->
+            <div class="single-grid">
+                <a class="gallery " href="{{galleryImage.getUrl()}}">
+                    <div class="thumb">
+                        <img src="{{galleryImage.getUrl()}}" alt="{{ galleryImage.imageAltTag  }}">
+                    </div>
+                    <div class="hover-overlay">
+                        <div class="inner">
+                            <span class="ion ion-android-add"></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Single Gallery -->
+
+        {% endfor %}
+    </div>
+{% endif %}

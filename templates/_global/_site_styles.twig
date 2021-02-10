@@ -85,7 +85,12 @@
 		button.brook-btn.btn-bg-primaryColour,
 		button.brook-btn.btn-bg-primaryColour:active,
 		body.template-color-23 .bk-gradation .item-grid.custom-color--2 .dot-wrap .dot,
-		body.template-color-23 .social-icon.icon-solid-rounded li a:hover{
+		body.template-color-23 .slick-dots-bottom .slick-dots li.slick-active button,
+		body.template-color-23 .social-icon.icon-solid-rounded li a:hover,
+		body.template-color-23 .gallery .hover-overlay,
+		.contact-form button:focus,
+		.contact-form button[type="submit"],
+		.contact-form input[type="submit"]{
 	        background-color: {{ companySiteStyles.primaryColour }};
 	    }
 		button.brook-btn.btn-border-primaryColour,
@@ -93,7 +98,9 @@
 			border-color: {{ companySiteStyles.primaryColour }};
 		}
 		button.brook-btn.btn-border-secondaryColour
-		button.brook-btn.btn-border-secondaryColour:active {
+		button.brook-btn.btn-border-secondaryColour:active,
+		.contact-form button[type="submit"],
+		.contact-form input[type="submit"]{
 			border-color: {{ companySiteStyles.secondaryColour }};
 		}
 

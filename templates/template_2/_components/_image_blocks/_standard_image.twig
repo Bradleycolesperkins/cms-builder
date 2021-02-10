@@ -4,4 +4,6 @@
       {% set imageUrl = '/img/bg/bg-image-16.jpg' %}
   {% endif %}
 
- <img src="{{ imageUrl }}"  alt="{{ block.image.imageAltTag  }}" >
+ <img src="{{ imageUrl }}"  alt="{{ block.image.imageAltTag  }}"
+      style="{% include '/template_2/_components/_extras/_image_extras' with { 'block' : image_block} %}"
+ >

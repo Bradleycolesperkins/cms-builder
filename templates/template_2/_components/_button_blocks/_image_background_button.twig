@@ -1,5 +1,5 @@
 {% if button.buttonBackgroundImage|length > 0 %}
-    {% set imageUrl = block.buttonBackgroundImage.first().getUrl() %}
+    {% set imageUrl = button.buttonBackgroundImage.first().getUrl() %}
 
     {% set myCss %}
         .image_background_button_{{ block.id}} {

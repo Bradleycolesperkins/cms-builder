@@ -529,7 +529,7 @@ Testimonial Area
                     color: #222222;
 
                     @media #{$sm-layout} {
-                        font-size: 22px;
+                        font-size: 16px;
                     }
                 }
                 
@@ -644,6 +644,9 @@ Testimonial Area
 
 
 .testimonial_style--4{
+    h3 {
+        color: rgba(255, 255, 255, 0.6);
+    }
 
     .content{
         width: 780px;

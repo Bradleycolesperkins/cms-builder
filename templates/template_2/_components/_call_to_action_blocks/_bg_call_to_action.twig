@@ -7,10 +7,12 @@
                 <div class="call-content vertical-call-toaction text-center essential-cta">
                     <h3 class="text-white wow move-up">{{block.callToActionTitle}}</h3>
                     <p class="text-white wow move-up">{{block.callToActionSubtitle}}</p>
-                    <div class="spacing"></div>
-                    <div class="call-btn text-center wow move-up">
-                        <a class="brook-btn text-white primary-background text-theme btn-sd-size" href="{{block.callToActionLink}}">{{block.callToActionButtonText}}</a>
-                    </div>
+                    {% if block.callToActionLink is not empty or block.callToActionButtonText is not empty  %}
+                        <div class="spacing"></div>
+                        <div class="call-btn text-center wow move-up">
+                            <a class="brook-btn text-white primary-background text-theme btn-sd-size" href="{{block.callToActionLink}}">{{block.callToActionButtonText}}</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

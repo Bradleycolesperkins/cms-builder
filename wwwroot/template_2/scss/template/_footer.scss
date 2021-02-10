@@ -480,5 +480,29 @@ Extra Footer
 }
 
 
+@media (max-width: 768px) {
+    .footer-bottom-bar {
+        display: block;
+        &>div {
+            width: 100% !important;
+            text-align: center;
+            margin: 0 auto;
+
+            .first-child,
+            .last-child {
+                width: 100% !important;
+                text-align: center;
+                margin: 0 auto;
+                &>div {
+                    float: none;
+                    padding-left: 0;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+
 
 

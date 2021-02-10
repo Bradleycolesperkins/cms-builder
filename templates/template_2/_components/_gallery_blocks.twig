@@ -1,0 +1,23 @@
+<!-- Sliders Loop Start -->
+
+{% if gallery_block %}
+    {% switch gallery_block.galleryStyle.value %}
+
+        {% case "rectangleGrid" %}
+            {% include '/template_2/_components/_gallery_blocks/_rectangle_grid' with { 'gallery_block' : gallery_block} %}
+        {% case "squareGrid" %}
+            {% include '/template_2/_components/_gallery_blocks/_square_grid' with { 'gallery_block' : gallery_block} %}
+        {% case "masonry" %}
+            {% include '/template_2/_components/_gallery_blocks/_masonry' with { 'gallery_block' : gallery_block} %}
+        {% case "largeMasonry" %}
+            {% include '/template_2/_components/_gallery_blocks/_large_masonry' with { 'gallery_block' : gallery_block} %}
+        {% case "scattered" %}
+            {% include '/template_2/_components/_gallery_blocks/_scattered' with { 'gallery_block' : gallery_block} %}
+
+        {% default %}
+            {{ dd('GALLERY BLOCK', gallery_block.galleryStyle.value) }}
+
+    {% endswitch %}
+{% endif %}
+
+<!-- Sliders Loop End -->

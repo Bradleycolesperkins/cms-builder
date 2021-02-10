@@ -14,16 +14,18 @@
         >
 
             {% for block in slider.slides.all() %}
-                {% for slide in block.sliderSlides.all() %}
-                    {% switch slide.type %}
+                {% if block.sliderSlides %}
+                    {% for slide in block.sliderSlides.all() %}
+                        {% switch slide.type %}
 
-                        {% case "standardSlider" %}
-                            {% include '/template_2/_components/_slider_blocks/_slides/_standard_slider' with { 'slide' : slide} %}
-                        {% default %}
-                            {{ dd('SLIDE',block  ) }}
+                            {% case "standardSlider" %}
+                                {% include '/template_2/_components/_slider_blocks/_slides/_standard_slider' with { 'slide' : slide} %}
+                            {% default %}
+                                {{ dd('SLIDE',block  ) }}
 
-                    {% endswitch %}
-                {% endfor %}
+                        {% endswitch %}
+                    {% endfor %}
+                {% endif %}
             {% endfor %}
 
         </div>

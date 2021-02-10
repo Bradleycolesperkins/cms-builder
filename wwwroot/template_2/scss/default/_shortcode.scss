@@ -1197,6 +1197,14 @@ Padding Top Bottom
 
 
 
+/* min heights */
+
+@for $i from 0 through 100 {
+    .min-height-#{5 * $i} {min-height: 5px *$i;}
+}
+
+
+
 
 
 

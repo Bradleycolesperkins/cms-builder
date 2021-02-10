@@ -3,47 +3,6 @@
 
 
 {% if(entrySlug) %}
-
-    {% set api = 'B631AF59-C985-4889-85C6-80793C81D52C' %}
-{#    {% set api = '5432e5f8-f3a4-4251-b0bc-01bfd135fad2' %}#}
-    {% set packageName = 'ValuationData' %}
-    {% set vrm = entrySlug|replace({' ': ''}) %}
-{#    {% set vrm = 'KM12AKK' %}#}
-    {% set url = '/api/datapackage/'~packageName~'?v=2&api_nullitems=1&key_vrm='~vrm~'&auth_apikey='~api %}
-    {% if entryMilage %}
-        {% set entryMilage = entryMilage|replace('/[^0-9+]/', '') %}
-        {% set url = url~'&key_mileage='~entryMilage %}
-    {% endif %}
-
-
-
-    {% set client = {
-        base_uri : 'https://uk1.ukvehicledata.co.uk',
-        timeout : 10
-    } %}
-
-    {#        {% set options = {#}
-    {#            auth : ['username', 'password'],#}
-    {#            form_params : {#}
-    {#                url : 'https://www.google.co.uk'#}
-    {#            }#}
-    {#        } %}#}
-
-    {% set options = {} %}
-
-    {% set request = fetch(client, 'GET', url, options, false) %}
-
-    {% if(request.statusCode == 200) %}
-        {% set data = request.body | json_decode() %}
-        {#  GET IMAGE NOW  #}
-        {#    {% set url = '/api/datapackage/CustomVehicleAndImageData?v=2&api_nullitems=1&key_VRM='+vrm+'&auth_apikey='+api %}#}
-
-
-    {% endif %}
-
-
-
-
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -51,188 +10,115 @@
                 <div class="contact-form">
                         <div class="row">
                             <div class="col-lg-5">
-                                {% if(request.statusCode == 200) %}
-                                    <div class="row">
-                                        <!-- Cart Total -->
-                                        <div class="col-12 mb--60">
-                                            <h4 class="checkout-title">Car Details</h4>
-                                            <div class="checkout-cart-total">
-                                                {% if ( craft.request.getPost('MakeModel') ) %}
-                                                    <h4>{{ craft.request.getPost('MakeModel') }}</h4>
-                                                {% endif %}
-
-                                                {% set imageUrl = craft.request.getPost('imageUrl') %}
-                                                {% if ( imageUrl ) %}
-                                                    <div style="padding-bottom: 15px;padding-top: 15px;margin-bottom: 15px;border-bottom: 1px solid #999999;border-top: 1px solid #999999;">
-                                                        <img src="{{ imageUrl }}" style="width: 100%;">
-                                                    </div>
-                                                {% endif %}
-                                                <ul>
-                                                    {% if ( craft.request.getPost('Range') )  %}
-                                                        <li>Range <span>{{ craft.request.getPost('Range') }}</span></li>
-                                                    {% endif %}
-
-                                                    {% if ( craft.request.getPost('FuelType') )%}
-                                                        <li>Fuel Type <span>{{ craft.request.getPost('FuelType') }}</span></li>
-                                                    {% endif %}
-
-                                                    {% if ( craft.request.getPost('Colour') ) %}
-                                                        <li>Colour <span>{{ craft.request.getPost('Colour') }}</span></li>
-                                                    {% endif %}
-
-                                                    {% if ( craft.request.getPost('YearOfManufacture') ) %}
-                                                        <li>Year <span>{{ craft.request.getPost('YearOfManufacture') }}</span></li>
-                                                    {% endif %}
-
-                                                    {% if ( craft.request.getPost('DoorPlanLiteral') ) %}
-                                                        <li>Doors <span>{{ craft.request.getPost('DoorPlanLiteral') }}</span></li>
-                                                    {% elseif ( craft.request.getPost('NumberOfDoors') ) %}
-                                                        <li>Doors <span>{{ craft.request.getPost('NumberOfDoors') }}</span></li>
-                                                    {% endif %}
-
-                                                    {% if ( craft.request.getPost('TransmissionType') ) %}
-                                                        <li>Transmission <span>{{ craft.request.getPost('TransmissionType') }}</span></li>
-                                                    {% elseif ( craft.request.getPost('Transmission') ) %}
-                                                        <li>Transmission <span>{{ craft.request.getPost('Transmission') }}</span></li>
-                                                    {% endif %}
-
-                                                    {% if ( craft.request.getPost('Model') ) %}
-                                                        <li>Model <span>{{ craft.request.getPost('Model') }}</span></li>
-                                                    {% endif %}
-
-                                                    {% if ( craft.request.getPost('BodyStyle') ) %}
-                                                        <li>Body <span>{{ craft.request.getPost('BodyStyle') }}</span></li>
-                                                    {% endif %}
-                                                </ul>
-                                                <p>Registration Number<span>{{ entrySlug }}</span></p>
-                                            </div>
+                                <div class="row">
+                                    <!-- Cart Total -->
+                                    <div class="col-12 mb--60">
+                                        <h4 class="checkout-title">What's Next?</h4>
+                                        <div class="checkout-cart-total">
+                                            <h2>Your Details Are Currently Being Processed</h2>
+                                            <p>We will do a full analysis of the car details you have provided and we will be in touch with an accurate valuation.</p>
                                         </div>
                                     </div>
-                                {% else %}
-                                    <div class="row">
-                                        <!-- Cart Total -->
-                                        <div class="col-12 mb--60">
-                                            <h4 class="checkout-title">Car Details</h4>
-                                            <div class="checkout-cart-total">
-                                                <h2>Car Not Found</h2>
-                                                <p>We were unable to locate a car with the registation number: </p>
-                                                <h4>Please try again, or submit the form</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
+                                </div>
                             </div>
                             <div class="col-lg-7 mb--20">
                                 <!-- Billing Address -->
                                 <div id="billing-form" class="mb--40">
-                                    <h4 class="checkout-title">Your Quoted Price</h4>
+                                    <h4 class="checkout-title">Schedule an appointment</h4>
+                                    <div class="single-product-details-side" style="margin: 0px;width: 100% !important;max-width: 100%;">
+                                        <div class="product-details">
+                                            <div class="inner">
+{#                                                <div class="price">#}
+{#                                                    <h1 class="theme-color">£{{ apiPrice|number_format(2, '.', ',') }}<p></p></h1>#}
+{#                                                    {% if( data['Response']['DataItems']['Mileage'] ) %}#}
+{#                                                        <h3 class="theme-color">Price shown based on {{ data['Response']['DataItems']['Mileage'] }} Miles<p></p></h3>#}
+{#                                                    {% endif %}#}
+{#                                                    <h6 class="theme-color">*This would be the MAXIMUM we would give you for your car.<p></p></h6>#}
+{#                                                </div>#}
 
-                                    {% if(request.statusCode == 200 and data['Response']['DataItems']) %}
-                                        {% if( data['Response']['DataItems']['ValuationList'] ) %}
-                                            {% if( data['Response']['DataItems']['ValuationList']['TradeAverage'] ) %}
-                                                {% set apiPrice = data['Response']['DataItems']['ValuationList']['TradeAverage'] %}
-                                            {% elseif( data['Response']['DataItems']['ValuationList']['TradePoor'] ) %}
-                                                {% set apiPrice = data['Response']['DataItems']['ValuationList']['TradePoor'] %}
-                                            {% endif %}
-                                            {% set apiPrice = apiPrice * 1.06  %}
-                                            <div class="single-product-details-side" style="margin: 0px;width: 100% !important;max-width: 100%;">
-                                                <div class="product-details">
-                                                    <div class="inner">
-                                                        <div class="price">
-                                                            <h1 class="theme-color">£{{ apiPrice|number_format(2, '.', ',') }}<p></p></h1>
-                                                            {% if( data['Response']['DataItems']['Mileage'] ) %}
-                                                                <h3 class="theme-color">Price shown based on {{ data['Response']['DataItems']['Mileage'] }} Miles<p></p></h3>
-                                                            {% endif %}
-                                                        </div>
+                                                <div class="quenty-container" style="margin: 0;padding: 0;border-bottom: 0px">
+                                                    <!-- Calendly inline widget begin -->
+                                                    <div class="calendly-inline-widget" data-url="https://calendly.com/sky-buys-cars?primary_color=2e58a4" style="min-width:320px;height:630px;"></div>
+                                                    <!-- Calendly inline widget end -->
+                                                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+                                                </div>
 
-                                                        <div class="description">
-                                                            <p class="bk_pra">
-                                                                This valuation will be guaranteed for 7 days from today, after this 7 day period you would need to do a fresh valuation. We will be in touch to arrange a date and time to bring your vehicle to us so that we can inspect it. If you would like to discuss any aspect of the quote or our service please feel free to get in touch via telephone on 029 2075 7991 or email info@skybuyscars.com.
-                                                            </p>
-                                                        </div>
-                                                        <div class="quenty-container" style="margin: 0;padding: 0;border-bottom: 0px">
-                                                            <!-- Calendly inline widget begin -->
-                                                            <div class="calendly-inline-widget" data-url="https://calendly.com/sky-buys-cars?primary_color=2e58a4" style="min-width:320px;height:630px;"></div>
-                                                            <!-- Calendly inline widget end -->
-                                                            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
-                                                        </div>
+                                                <div class="description">
+                                                    <p class="bk_pra">
+                                                        The valuation will give you will be guaranteed for 7 days from the day it is provided, after this 7 day period you would need to do a fresh valuation. We will be in touch to arrange a date and time to bring your vehicle to us so that we can inspect it. If you would like to discuss any aspect of the quote or our service please feel free to get in touch via telephone on 029 2075 7991 or email info@skybuyscars.com.
+                                                    </p>
+                                                </div>
 
-                                                        <div class="quenty-container" style="margin: 0;border-bottom: 0px">
-                                                            <div class="row">
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
-                                                                    <div class="plans-about">
-                                                                        <h6 class="heading heading-h6 theme-color">Important information</h6>
-                                                                        <!-- Start Single List -->
-                                                                        <div class="bk-list--2 mt--25 move-up wow  animate" style="visibility: visible; opacity: 0; animation-name: moveVertical;">
-                                                                            <div class="list-header with-ckeck">
-                                                                                <div class="marker"></div>
-                                                                                <div class="title-wrap">
-                                                                                    <h6 class="heading heading-h5">The Important Bits</h6>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="list-header with-ckeck">
-                                                                                <div class="marker"></div>
-                                                                                <div class="title-wrap">
-                                                                                    <h6 class="heading heading-h5">We base the valuation  of all vehicles as being in A1 condition and reserve the right to not proceed (or adjust our valuation) if the vehicle is not in that condition.</h6>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="list-header with-ckeck">
-                                                                                <div class="marker"></div>
-                                                                                <div class="title-wrap">
-                                                                                    <h6 class="heading heading-h5">We only guarantee the quoted price for 7 days.</h6>
-                                                                                </div>
-                                                                            </div>
+                                                <div class="quenty-container" style="margin: 0;border-bottom: 0px">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
+                                                            <div class="plans-about">
+                                                                <h6 class="heading heading-h6 theme-color">Important information</h6>
+                                                                <!-- Start Single List -->
+                                                                <div class="bk-list--2 mt--25 move-up wow  animate" style="visibility: visible; opacity: 0; animation-name: moveVertical;">
+                                                                    <div class="list-header with-ckeck">
+                                                                        <div class="marker"></div>
+                                                                        <div class="title-wrap">
+                                                                            <h6 class="heading heading-h5">The Important Bits</h6>
                                                                         </div>
-                                                                        <!-- End Single List -->
                                                                     </div>
-                                                                </div><div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
-                                                                    <div class="plans-about">
-                                                                        <h6 class="heading heading-h6 theme-color">We have assumed...
-                                                                        </h6>
-                                                                        <!-- Start Single List -->
-                                                                        <div class="bk-list--2 mt--25 move-up wow  animate" style="visibility: visible; opacity: 0; animation-name: moveVertical;">
-                                                                            <div class="list-header with-ckeck">
-                                                                                <div class="marker"></div>
-                                                                                <div class="title-wrap">
-                                                                                    <h6 class="heading heading-h5">There is no damage including on exterior and interior or mechanical.</h6>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="list-header with-ckeck">
-                                                                                <div class="marker"></div>
-                                                                                <div class="title-wrap">
-                                                                                    <h6 class="heading heading-h5">The car is a runner (we consider non runners but the price is obviously effected).</h6>
-                                                                                </div>
-                                                                            </div>
 
-                                                                            <div class="list-header with-ckeck">
-                                                                                <div class="marker"></div>
-                                                                                <div class="title-wrap">
-                                                                                    <h6 class="heading heading-h5">The car is not an insurance write off and hasn’t been damaged in an accident.</h6>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="list-header with-ckeck">
-                                                                                <div class="marker"></div>
-                                                                                <div class="title-wrap">
-                                                                                    <h6 class="heading heading-h5">It has two sets of keys.</h6>
-                                                                                </div>
-                                                                            </div>
+                                                                    <div class="list-header with-ckeck">
+                                                                        <div class="marker"></div>
+                                                                        <div class="title-wrap">
+                                                                            <h6 class="heading heading-h5">We base the valuation  of all vehicles as being in A1 condition and reserve the right to not proceed (or adjust our valuation) if the vehicle is not in that condition.</h6>
                                                                         </div>
-                                                                        <!-- End Single List -->
+                                                                    </div>
+
+                                                                    <div class="list-header with-ckeck">
+                                                                        <div class="marker"></div>
+                                                                        <div class="title-wrap">
+                                                                            <h6 class="heading heading-h5">We only guarantee the quoted price for 7 days.</h6>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                                <!-- End Single List -->
+                                                            </div>
+                                                        </div><div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
+                                                            <div class="plans-about">
+                                                                <h6 class="heading heading-h6 theme-color">We have assumed...
+                                                                </h6>
+                                                                <!-- Start Single List -->
+                                                                <div class="bk-list--2 mt--25 move-up wow  animate" style="visibility: visible; opacity: 0; animation-name: moveVertical;">
+                                                                    <div class="list-header with-ckeck">
+                                                                        <div class="marker"></div>
+                                                                        <div class="title-wrap">
+                                                                            <h6 class="heading heading-h5">There is no damage including on exterior and interior or mechanical.</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="list-header with-ckeck">
+                                                                        <div class="marker"></div>
+                                                                        <div class="title-wrap">
+                                                                            <h6 class="heading heading-h5">The car is a runner (we consider non runners but the price is obviously effected).</h6>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="list-header with-ckeck">
+                                                                        <div class="marker"></div>
+                                                                        <div class="title-wrap">
+                                                                            <h6 class="heading heading-h5">The car is not an insurance write off and hasn’t been damaged in an accident.</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="list-header with-ckeck">
+                                                                        <div class="marker"></div>
+                                                                        <div class="title-wrap">
+                                                                            <h6 class="heading heading-h5">It has two sets of keys.</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- End Single List -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
-                                        {% endif %}
-                                    {% endif %}
-
-
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -440,37 +326,6 @@
                                     instructionsBelowField: true,
                                     errorClass: errorClass,
                                     overrideValue: craft.request.getParam('registrationNumber')
-                                }) }}
-                            {% elseif field.handle == "vehicleRegistration" %}
-                                {% set class = "hidden" %}
-                                {% set jsonData = data|json_encode() %}
-                                {{ field.render({
-                                    class: class,
-                                    labelClass: labelClass,
-                                    instructionsClass: instructionClass,
-                                    instructionsBelowField: true,
-                                    errorClass: errorClass,
-                                    overrideValue:jsonData
-                                }) }}
-                            {% elseif field.handle == "smmtDetails" %}
-                                {% set class = "hidden" %}
-                                {{ field.render({
-                                    class: class,
-                                    labelClass: labelClass,
-                                    instructionsClass: instructionClass,
-                                    instructionsBelowField: true,
-                                    errorClass: errorClass,
-                                    overrideValue: craft.request.getPost('vehicleData')
-                                }) }}
-                            {% elseif field.handle == "priceQuoted" %}
-                                {% set class = "hidden" %}
-                                {{ field.render({
-                                    class: class,
-                                    labelClass: labelClass,
-                                    instructionsClass: instructionClass,
-                                    instructionsBelowField: true,
-                                    errorClass: errorClass,
-                                    overrideValue: apiPrice
                                 }) }}
                             {% else %}
                                 {{ field.render({

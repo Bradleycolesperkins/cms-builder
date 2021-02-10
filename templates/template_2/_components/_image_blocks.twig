@@ -9,7 +9,7 @@
                 {% include '/template_2/_components/_extras/_element_extras' with { 'block' : image_block} %}
                 {% include '/template_2/_components/_extras/_image_extras' with { 'block' : image_block} %}
                     ">
-                {% include '/template_2/_components/_image_blocks/_standard_image' with { 'block' : block} %}
+                {% include '/template_2/_components/_image_blocks/_standard_image' with { 'block' : block, 'image_block' : image_block} %}
             </div>
 
             {% case "backgroundImage" %}

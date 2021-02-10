@@ -1,0 +1,15 @@
+{% extends 'template_1/_layout' %}
+{% includeCssFile "/template_2/style.css" %}
+{% includeCssFile "/db_dean/css/style.css?ver=1.1.2" %}
+
+{% block main %}
+   <div class="cs-main-wrapp__inner">
+      {% if entry.blockSelection %}
+         {% include '/template_2/_components/_blocks' with {'block': entry.blockSelection} %}
+      {% endif %}
+   </div>
+{% endblock %}
+
+{% includeJsFile "/template_2/js/plugins.js" %}
+{% includeJsFile "/template_2/js/main.js" %}
+

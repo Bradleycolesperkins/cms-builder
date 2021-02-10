@@ -2,7 +2,9 @@
     Social Area 
 ----------------------------*/
 
-
+.header-social-medias .social-share a {
+    color: inherit !important;
+}
 .social-share {
     &.padding-10{
         a{

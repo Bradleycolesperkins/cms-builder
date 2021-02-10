@@ -1,0 +1,27 @@
+<!-- Start Portfolio Area -->
+<div class="brook-portfolio-area ptb--100 ptb-md--80 ptb-sm--60 bg_color--1">
+    <div class="container">
+        <div class="row">
+
+            {% for entry in craft.entries.section('caseStudies').all() %}
+                <!-- Start Single Portfolio -->
+                <div class="col-lg-4 col-sm-6 col-12 move-up wow">
+                    <div class="portfolio portfolio_style--1 mt--30">
+                        <div class="thumb">
+                            {% set image = entry.caseStudiesMainImage.first() %}
+                            <img src="{{image.getUrl()}}" alt="{{ image.imageAltTag  }}">
+                        </div>
+                        <div class="port-overlay-info">
+                            <div class="hover-action">
+                                <h3 class="post-overlay-title"><a href="/case-studies/{{entry.slug}}">{{ entry.title }}</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Portfolio -->
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- End Portfolio Area -->

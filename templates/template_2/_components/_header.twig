@@ -1,5 +1,9 @@
 <!-- Header -->
 <header class="br_header header-default bg_color--23 border-bottom black-logo--version haeder-fixed-width haeder-fixed-150 headroom--sticky header-mega-menu clearfix">
+    {% if companySiteLayout.topMenuBar == "on" %}
+        {% include '/template_2/_components/_header/_top_menu_bar' %}
+    {% endif %}
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -21,7 +25,11 @@
                         {% include '/template_2/_components/_nav_megamenu' %}
                     </div>
                     <!-- Header Right -->
-                    <div class="header-right">lavel-1 with--drop slide--megamenu
+                    <div class="header-right">
+                        {% if companySiteLayout.headerSocialMedias == "yes" %}
+                            {% include '/template_2/_components/_header/_header_bar_social_media_icons' %}
+                            {# {% include '/template_2/_components/_toolbar_popup' %}#}
+                        {% endif %}
 
                         {# {% include '/template_2/_components/_header_shopping_cart' %} #}
                         {# {% include '/template_2/_components/_header_search' %} #}

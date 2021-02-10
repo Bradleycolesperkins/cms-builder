@@ -1,0 +1,24 @@
+<!-- Start Gallery Area -->
+<div class="masonry-activation">
+    <div class="gallery-wrapper masonry-wrap row clearfix" id="animated-thumbnials3">
+
+        {% for galleryImage in entry.galleryImages.all() %}
+            <!-- Start Single Masonry Gallery -->
+            <a class="masonary-item col-lg-4" href="{{galleryImage.getUrl()}}">
+                <div class="gallery">
+                    <div class="thumb">
+                        <img src="{{galleryImage.getUrl()}}" alt="{{ galleryImage.imageAltTag  }}">
+                    </div>
+                    <div class="hover-overlay">
+                        <div class="inner">
+                            <span class="ion ion-android-add"></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- End Single Masonry Gallery -->
+        {% endfor %}
+
+    </div>
+</div>
+<!-- End Gallery Area -->

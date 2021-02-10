@@ -1,0 +1,39 @@
+{% if gallery_block %}
+    {% set alt = "left" %}
+    <div class="gallery-wrapper gallery-grid" id="animated-thumbnials4">
+        {% for galleryImage in entry.galleryImages.all() %}
+
+            {% if loop.index0 is divisible by(6) or ( ( loop.index0 + 2)  is divisible by(6) ) %}
+
+                <!-- Start Single Large Masonry  Gallery -->
+                <a class="gallery grid-width-2 grid-height-2 " href="{{galleryImage.getUrl()}}">
+                    <div class="thumb">
+                        <img src="{{galleryImage.getUrl()}}" alt="{{ galleryImage.imageAltTag  }}">
+                    </div>
+                    <div class="hover-overlay">
+                        <div class="inner">
+                            <span class="ion ion-android-add"></span>
+                        </div>
+                    </div>
+                </a>
+                <!-- End Single Large Masonry Gallery -->
+
+
+            {% else %}
+                <!-- Start Single Large Masonry  Gallery -->
+                <a class="gallery " href="{{galleryImage.getUrl()}}">
+                    <div class="thumb">
+                        <img src="{{galleryImage.getUrl()}}" alt="{{ galleryImage.imageAltTag  }}">
+                    </div>
+                    <div class="hover-overlay">
+                        <div class="inner">
+                            <span class="ion ion-android-add"></span>
+                        </div>
+                    </div>
+                </a>
+                <!-- End Single Large Masonry Gallery -->
+            {% endif %}
+
+        {% endfor %}
+    </div>
+{% endif %}
