@@ -26,12 +26,47 @@ Shop Sidebar
         }
     }
 }
+.thumbnail.letting-station-thumbnail {
+    max-height: 150px;
+    overflow: hidden;
+    .product-badges {
+        top: 15px !important;
+        right: 15px !important;
+    }
+}
 
 
 
 
 // Start Sidebar Area
+@media (max-width: 575px) {
+    .shop-details {
+        display: block !important;
+        overflow: auto;
 
+
+        .properties-found {
+            display: block;
+            width: 100%;
+        }
+        .shop-sorting,
+        .shop-style {
+            float: left;
+        }
+
+        .shop-sorting {
+            width: 75%;
+            display: block !important;
+        }
+        .shop-style {
+            width: 25%;
+            &>div.text-center {
+                text-align: right !important;
+            }
+        }
+    }
+
+}
 
 .shop-sidebar-container{
     padding-left: 15px;
@@ -69,6 +104,12 @@ Shop Sidebar
         font-weight: 600;
         line-height: 1.23;
         color: $heading-color;
+
+        .filterByPrice {
+            float: right;
+            font-size: small;
+            padding-top: 5px;
+        }
     }
 
     // Search
@@ -294,6 +335,10 @@ Shop Sidebar
 
 .content-shopby {
     margin-top: 32px;
+    .price_filter {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
 }
 
 .price--output input {

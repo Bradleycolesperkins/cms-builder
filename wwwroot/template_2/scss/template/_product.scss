@@ -42,6 +42,41 @@
     }
 }
 
+.shop-details {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    padding-bottom: 15px;
+
+    .properties-found {
+        line-height: 50px;
+    }
+
+    .shop-sorting {
+        flex: 1;
+        display: flex;
+        .sort-by {
+            display: inline;
+            width: auto;
+            flex: 1;
+            text-align: right;
+            padding-right: 10px;
+            padding-top: 10px;
+        }
+        select {
+            max-width: 160px;
+            margin-right: 20px;
+        }
+    }
+
+
+    .shop-style {
+        .sort-by {
+            display: inline;
+            width: auto;
+        }
+    }
+}
+
 .product {
     .product-thumbnail {
         margin-bottom: 28px;
@@ -89,6 +124,45 @@
                 display: -webkit-flex;
                 display: -ms-flexbox;
                 display: flex;
+
+                .itemtype {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    margin: 0 2px;
+                    min-height: 0;
+                    min-width: 0;
+                    border-radius: 10px 10px 10px 0;
+                    color: #fff;
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 11px;
+                    line-height: 1.44;
+                    text-transform: uppercase;
+                    background: #13239e;
+                    padding: 4px 8px;
+                    color: #fff;
+                }
+                .itemstatus{
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    margin: 0 2px;
+                    min-height: 0;
+                    min-width: 0;
+                    border-radius: 10px 10px 10px 0;
+                    color: #fff;
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 11px;
+                    line-height: 1.44;
+                    text-transform: uppercase;
+                    background: #b41e28;
+                    padding: 4px 8px;
+                    color: #fff;
+                }
 
                 .onsale {
                     position: relative;

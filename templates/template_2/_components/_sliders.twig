@@ -10,6 +10,9 @@
             {% case "caseStudiesSlider" %}
                 {% include '/template_2/_components/_slider_blocks/_case_studies_slider' with { 'slider' : block} %}
 
+            {% case "revolutionSlider" %}
+                {% include '/template_2/_components/_slider_blocks/_revolution_slider' with { 'slider' : block} %}
+
             {% default %}
                 {{ dd('SLIDERS', block.type) }}
 

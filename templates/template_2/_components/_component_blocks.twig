@@ -5,6 +5,8 @@
 
         {% case "classicBlogList" %}
             {% include '/template_2/_components/_component_blocks/_classic_blog_list' with { 'block' : block} %}
+        {% case "orderedBlogList" %}
+            {% include '/template_2/_components/_component_blocks/_ordered_blog_list' with { 'block' : block} %}
         {% case "socialIcons" %}
             {% include '/template_2/_components/_component_blocks/_social_icons' with { 'block' : block} %}
         {% default %}

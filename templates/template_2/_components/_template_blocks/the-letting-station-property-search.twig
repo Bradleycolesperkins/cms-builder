@@ -1,0 +1,382 @@
+{% set keyword = craft.request.getParam('keyword') %}
+{% set minPrice = craft.request.getParam('min-price') %}
+{% set maxPrice = craft.request.getParam('max-price') %}
+{% set location = craft.request.getParam('location') %}
+{% set status = craft.request.getParam('status') %}
+{% set bedrooms = craft.request.getParam('bedrooms') %}
+{% set bathrooms = craft.request.getParam('bathrooms') %}
+{% set viewType = craft.request.getParam('viewType') %}
+{% set sortBy = craft.request.getParam('sortBy') %}
+{% set viewType = craft.request.getParam('viewType') %}
+
+
+{% if(minPrice == "") %}
+    {% set minPrice = 0 %}
+{% endif %}
+
+{% if(maxPrice == "") %}
+    {% if status == "For Sale"%}
+        {% set maxPrice = 1500000 %}
+    {% elseif status == "Lettings"%}
+        {% set maxPrice = 15000 %}
+    {% else %}
+        {% set maxPrice = 1500000 %}
+    {% endif %}
+{% endif %}
+
+{% if(minPrice > maxPrice) %}
+    {% set minPrice = 0 %}
+{% endif %}
+
+{% if(sortBy == "") %}
+    {% set sortBy = "default" %}
+{% endif %}
+
+{% set url = '/api/property-search?keyword='~keyword~'&minPrice='~minPrice~'&maxPrice='~maxPrice~'&location='~location~'&status='~status~'&bedrooms='~bedrooms~'&bathrooms='~bathrooms~'&viewType='~viewType~'&sortBy='~sortBy~'&viewType='~viewType~'' %}
+{% set client = {
+    base_uri : 'https://pm-premier-api.azurewebsites.net',
+    timeout : 10
+} %}
+
+
+
+{% set options = {} %}
+
+{% set request = fetch(client, 'GET', url, options, false) %}
+
+{% if(request.statusCode == 200) %}
+    {% set data = request.body | json_decode() %}
+{% endif %}
+
+
+{% includeJsFile "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" %}
+{% set myJs %}
+    $(document).on('change', '#sortBy', function(e) {
+        $('#sortByVal').val($(this).val());
+        $('#propertySearchForm').submit();
+    });
+{% endset %}
+
+{% includeJs myJs %}
+
+
+<div class="row pl--15">
+    <div class="col-lg-5 col-xl-4">
+        <form id="propertySearchForm">
+            <input type="hidden" id="sortByVal" name="sortBy" value="{{ sortBy }}">
+            <!-- Start Sidebar Area -->
+            <div class="shop-sidebar-container">
+                <div class="shop-sidebar-wrapper">
+                    <!-- Start Single Widget -->
+                    <div class="shop-sidebar search">
+                        <h5 class="widget-title">Search</h5>
+                        <div class="search-box">
+                            <input name="keyword" type="text" value="{{ keyword }}" placeholder="Enter keyword…">
+                        </div>
+                    </div>
+                    <!-- End Single Widget -->
+                    <!-- Start Single Widget -->
+                    <div class="shop-sidebar related-product-inner mt--30 wow">
+                        <h5 class="widget-title">Filter by price <span class="filterByPrice">£<span id="minAmountSpan"></span>-<span id="maxAmountSpan"></span></span></h5>
+                        <div class="content-shopby">
+                            <div class="price_filter s-filter clear">
+                                <input type="hidden" name="min-price" id="minPrice" value="{{ minPrice }}" readonly>
+                                <input type="hidden" name="max-price" id="maxPrice" value="{{ maxPrice }}" readonly>
+                                <div id="slider-range2"></div>
+                                {% includeJsFile "https://code.jquery.com/ui/1.12.1/jquery-ui.js" %}
+
+                                {% set mySliderJs %}
+                                    $( function() {
+                                        var minAmountSpan = $('#minAmountSpan');
+                                        var maxAmountSpan = $('#maxAmountSpan');
+
+                                        {% if status == "Lettings"%}
+                                            var max = 15000;
+                                        {% else %}
+                                            var max = 1500000;
+                                        {% endif %}
+
+                                        var minPrice = {{ minPrice }}
+                                        var maxPrice = {{ maxPrice }}
+                                        // update span when loaded
+                                        minAmountSpan.html(minPrice);
+                                        maxAmountSpan.html(maxPrice);
+
+
+                                        $(document).on('change', '#status', function(e) {
+                                                if($(this).val() === 'Lettings'){
+                                                    max = 15000;
+                                                } else {
+                                                    max = 1500000;
+                                                    maxPrice = max; // set to max otherwise you could search for houses under 15,000
+                                                }
+                                                if(maxPrice > max){
+                                                    maxPrice = max;
+                                                }
+                                                if(minPrice > max){
+                                                    minPrice = 0;
+                                                }
+                                                sliderCreator();
+                                            });
+                                        sliderCreator();
+
+                                        function sliderCreator() {
+                                            $( "#slider-range2" ).slider({
+                                                range: true,
+                                                min: 0,
+                                                max: max,
+                                                values: [ minPrice, maxPrice ],
+                                                slide: function( event, ui ) {
+                                                    $( "#minPrice" ).val( ui.values[ 0 ] );
+                                                    $( "#maxPrice" ).val( ui.values[ 1 ] );
+                                                    minAmountSpan.html(ui.values[ 0 ].toLocaleString());
+                                                    maxAmountSpan.html(ui.values[ 1 ].toLocaleString());
+                                                }
+                                            });
+
+                                            $( "#minPrice" ).val( $( "#slider-range2" ).slider( "values", 0 ) );
+                                            $( "#maxPrice" ).val( $( "#slider-range2" ).slider( "values", 1 ) );
+                                            minAmountSpan.html($( "#slider-range2" ).slider( "values", 0 ).toLocaleString());
+                                            maxAmountSpan.html($( "#slider-range2" ).slider( "values", 1 ).toLocaleString());
+                                        }
+                                    } );
+                                {% endset %}
+
+                                {% includeJs mySliderJs %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Widget -->
+
+                    <div class="shop-sidebar search mt--30 ">
+                        <h5 class="widget-title">Location</h5>
+                        <select name="location" class="nice-select">
+                            <option value="" {% if location == ""%}selected{% endif %}>Select Location</option>
+                            <option value="Cardiff" {% if location == "Cardiff"%}selected{% endif %}>Cardiff</option>
+                            <option value="Newport" {% if location == "Newport"%}selected{% endif %}>Newport</option>
+                            <option value="Swansea" {% if location == "Swansea"%}selected{% endif %}>Swansea</option>
+                            <option value="Port Talbot" {% if location == "Port Talbot"%}selected{% endif %}>Port Talbot</option>
+                            <option value="Bridgend" {% if location == "Bridgend"%}selected{% endif %}>Bridgend</option>
+                        </select>
+                    </div>
+
+                    <div class="shop-sidebar search mt--30 ">
+                        <h5 class="widget-title">Status</h5>
+                        <select name="status" id="status" class="nice-select">
+                            <option value="" {% if status == ""%}selected{% endif %}>Select Status</option>
+                            <option value="For Sale" {% if status == "For Sale"%}selected{% endif %}>For Sale</option>
+                            <option value="Lettings" {% if status == "Lettings"%}selected{% endif %}>Lettings</option>
+                        </select>
+                    </div>
+
+                    <div class="shop-sidebar search">
+                        <div class="row">
+                            <div class="col-md-6 mt--30 ">
+                                <h5 class="widget-title">Min Bedrooms</h5>
+                                <select name="bedrooms" class="nice-select">
+                                    <option value="any" {% if bedrooms == "any" or bedrooms == "" %}selected{% endif %}>Any</option>
+                                    {% for i in 1..12 %}
+                                        <option value="{{ i }}" {% if bedrooms|number_format == i %}selected{% endif %}>{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-6 mt--30 ">
+                                <h5 class="widget-title">Min Bathrooms</h5>
+                                <select name="bathrooms" class="nice-select">
+                                    <option value="any" {% if bathrooms == "any" or bathrooms == "" %}selected{% endif %}>Any</option>
+                                    {% for i in 1..12 %}
+                                        <option value="{{ i }}" {% if bathrooms|number_format == i %}selected{% endif %}>{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Single Widget -->
+                    <button type="submit" class="mt--30 brook-btn btn-text-white  btn-bg-secondaryColour  btn-sd-size   btn-rectangle w-100">Search</button>
+                </div>
+            </div>
+            <!-- End Sidebar Area -->
+        </form>
+    </div>
+    <div class="col-lg-7 col-xl-8">
+        <div class="shop-details">
+            <span class="properties-found">
+                {{ data | length }} Properties found
+            </span>
+            <div class="shop-sorting">
+                <span class="sort-by">Sort By: </span>
+                <select id="sortBy" class="nice-select">
+                    <option value="default" {% if sortBy == "default" %}selected{% endif %}
+                    >Default Order</option>
+                    <option value="price-asc" {% if sortBy == "price-asc" %}selected{% endif %}
+                    >Price Low To High</option>
+                    <option value="price-desc" {% if sortBy == "price-desc" %}selected{% endif %}
+                    >Price High To Low</option>
+                    <option value="date-asc"{% if sortBy == "date-asc" %}selected{% endif %}
+                    >Date Old To New</option>
+                    <option value="date-desc"{% if sortBy == "date-desc" %}selected{% endif %}
+                    >Date New To Old</option>
+                </select>
+            </div>
+            <div class="shop-style">
+                <div class="brook-pagination-wrapper text-center">
+                    <ul class="brook-pagination">
+                        <li class="active"><a href="#"><i class="fa fa-th"></i></a></li>
+{#                        <li><a href="#"><i class="fa fa-list"></i></a></li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Shop Minimal Product -->
+        <div class="shop-minimal-product">
+            <div class="row row--25">
+
+                {% for property in data %}
+
+                <!-- Start Single Product -->
+                <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 col-12">
+                    <div class="product mt--30">
+                        <a href="/property/{{ property['propertyID'] }}">
+                            <div class="product-thumbnail">
+                                <div class="thumbnail letting-station-thumbnail">
+                                    <div class="product-main-image">
+                                        <img src="{{ property['property_images'][0]['imageURL'] }}" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-hover-image">
+                                        <img src="{{ property['property_images'][1]['imageURL'] }}" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-badges">
+                                        {% if property['propertyType'] is defined and not null %}
+                                            <div class="itemtype">
+                                                {% switch property['propertyType'] %}
+                                                {% case '1' %}
+                                                    House
+                                                {% case '2' %}
+                                                    Flat/Apartment
+                                                {% case '3' %}
+                                                    Bunglaow
+                                                {% default %}
+                                                    Other
+                                                {% endswitch %}
+                                            </div>
+                                        {% endif %}
+                                        {% if property['availability'] is defined and not null %}
+                                            <div class="itemstatus">
+                                                {% switch property['availability'] %}
+                                                {% case '1' %}
+                                                    On Hold
+                                                {% case '2' %}
+                                                    {% if property['availability'] is not null and property['department'] == "Lettings" %}
+                                                        To Let
+                                                    {% else %}
+                                                        For Sale
+                                                    {% endif %}
+                                                {% case '3' %}
+                                                    {% if property['availability'] is not null and property['department'] == "Lettings" %}
+                                                        {#References Pending#}
+                                                        Let Agreed
+                                                    {% else %}
+                                                        Under Offer
+                                                    {% endif %}
+                                                {% case '4' %}
+                                                    {% if property['availability'] is not null and property['department'] == "Lettings" %}
+                                                        Let Agreed
+                                                    {% else %}
+                                                        Sold STC
+                                                    {% endif %}
+                                                {% case '5' %}
+                                                    {% if property['availability'] is not null and property['department'] == "Lettings" %}
+                                                        Let {#  #}
+                                                    {% else %}
+                                                        Sold
+                                                    {% endif %}
+                                                {% case '6' %}
+                                                    {% if property['availability'] is not null and property['department'] == "Lettings" %}
+                                                        Withdrawn
+                                                    {% else %}
+                                                    {% endif %}
+                                                {% case '7' %}
+                                                    Withdrawn
+                                                {% default %}
+                                                    Other
+                                                {% endswitch %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {#<div class="product-action">#}
+                                {#    <ul class="action-list text-center tooltip-layout">#}
+                                {#        <li class="single-action addto-cart">#}
+                                {#            <a href="cart.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Cart">#}
+                                {#                <i class="fas fa-shopping-bag"></i>#}
+                                {#            </a>#}
+                                {#        </li>#}
+                                {#        <li class="single-action wishlist">#}
+                                {#            <a href="wishlist.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Wishlist">#}
+                                {#                <i class="far fa-heart"></i>#}
+                                {#            </a>#}
+                                {#        </li>#}
+                                {#    </ul>#}
+                                {#</div>#}
+                            </div>
+                            <div class="product-info">
+                            <h5 class="heading heading-h5">
+                                {{ property['propertyBedrooms'] }} Bedroom
+                                {% switch property['propertyType'] %}
+                                {% case '1' %}
+                                    House
+                                {% case '2' %}
+                                    Flat/Apartment
+                                {% case '3' %}
+                                    Bunglaow
+                                {% endswitch %}
+                            </h5>
+                            <h6 class="heading heading-h6">
+                                {{ property['displayAddress'] }}, {{ property['addressPostcode'] }}
+                            </h6>
+                            {#<p>{{ property['mainSummary'] }}</p>#}
+                            {#<ul class="rating">#}
+                            {#    <li><i class="fas fa-star"></i></li>#}
+                            {#    <li><i class="fas fa-star"></i></li>#}
+                            {#    <li><i class="fas fa-star"></i></li>#}
+                            {#    <li><i class="fas fa-star"></i></li>#}
+                            {#    <li><i class="fas fa-star"></i></li>#}
+                            {#</ul>#}
+                            <div class="price">
+                                <span>
+                                    {% if property['department'] == "Lettings" %}
+                                        £{{ property['rent']|number_format(0, '', ',') }}
+                                        <span class="new-price"> Per Month</span>
+                                    {% else %}
+                                        £{{ property['price']|number_format(0, '', ',') }}
+                                    {% endif %}
+                                </span>
+                                {#<span class="new-price">$58.00</span>#}
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- End Single Product -->
+                {% endfor %}
+
+                <!-- Start Pagenation Area -->
+                <!--
+                <div class="col-lg-12">
+                    <div class="brook-pagination-wrapper text-center pt--80">
+                        <ul class="brook-pagination">
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                -->
+                <!-- End Pagenation Area -->
+            </div>
+        </div>
+        <!-- End Shop Minimal Product -->
+    </div>
+</div>

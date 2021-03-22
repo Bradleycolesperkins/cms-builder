@@ -1,0 +1,31 @@
+{% if slider %}
+
+    <div class="slider-revoluation">
+        <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-authentic-studio"
+             data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
+            <!-- START REVOLUTION SLIDER 5.4.7 fullwidth mode -->
+            <div id="rev_slider_8_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.7">
+                <ul>
+                    {% for block in slider.slides.all() %}
+                        {% if block.sliderSlides %}
+                            {% for slide in block.sliderSlides.all() %}
+                                {% switch slide.type %}
+
+                                {% case "revolutionSlider" %}
+                                    {% include '/template_2/_components/_slider_blocks/_slides/_revolution_slider' with { 'slide' : slide } %}
+                                {% default %}
+                                    {{ dd(' REVOLUTION SLIDER, Needs To Be Revolution Slides',block  ) }}
+
+                                {% endswitch %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+            </div>
+        </div>
+        <!-- END REVOLUTION SLIDER -->
+    </div>
+
+{% endif %}
+

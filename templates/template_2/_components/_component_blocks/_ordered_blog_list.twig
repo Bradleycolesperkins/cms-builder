@@ -1,0 +1,43 @@
+
+{% set count = 0 %}
+{% set blogs = craft.entries.section('blog').limit(block.blogLimit).all() %}
+
+<div class="row justify-content-center">
+    {% for blog in blogs %}
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 move-up wow mt--30  animate" style="visibility: visible; opacity: 0;">
+            <div class="blog-grid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="post-thumb">
+                            <a href="/Blog/{{blog.slug}}">
+                                {% set image = blog.blogImage.first() %}
+                                <img src="{{image.getUrl() }}" alt="{{image.imageAltTag }}">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="post-content post-content-list">
+                            <div class="post-inner">
+                                <h5 class="heading heading-h5"><a href="/">{{ blog.title }}</a></h5>
+                                <div class="post-meta">
+                                    <div class="post-date">{{blog.postDate|date('Y-m-d')}}</div>
+                                    <div class="post-category">
+                                        {% set entryTags = craft.tags.relatedTo(blog) %}
+                                        {% set tweakedEntryTags = [] %}
+                                        {% for tweakEntryTag in entryTags %}
+                                            {% set tweakedEntryTags = tweakedEntryTags|merge([tweakEntryTag.title]) %}
+                                        {% endfor %}
+                                        {% for tag in tweakedEntryTags %}
+                                            <a href="/Blog/Category/?q={{tag}}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+

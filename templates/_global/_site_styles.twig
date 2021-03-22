@@ -61,6 +61,51 @@
 {% endif %}
 
 
+{% if (
+	(
+	companySiteStyles.headingFontFamily is defined and
+	companySiteStyles.headingFontFamily|length > 0 and
+	companySiteStyles.headingFontFamily.value is same as('alongSans')
+	) or (
+	companySiteStyles.bodyFontFamily is defined and
+	companySiteStyles.bodyFontFamily|length > 0 and
+	companySiteStyles.bodyFontFamily.value is same as('alongSans')
+	)
+	)
+%}
+	{% includeCssFile "/global/css/Along-Sans.css" %}
+{% endif %}
+
+{% if (
+	(
+	companySiteStyles.headingFontFamily is defined and
+	companySiteStyles.headingFontFamily|length > 0 and
+	companySiteStyles.headingFontFamily.value is same as('alongSansMedium')
+	) or (
+	companySiteStyles.bodyFontFamily is defined and
+	companySiteStyles.bodyFontFamily|length > 0 and
+	companySiteStyles.bodyFontFamily.value is same as('alongSansMedium')
+	)
+	)
+%}
+	{% includeCssFile "/global/css/Along-Sans-Medium.css" %}
+{% endif %}
+
+{% if (
+	(
+	companySiteStyles.headingFontFamily is defined and
+	companySiteStyles.headingFontFamily|length > 0 and
+	companySiteStyles.headingFontFamily.value is same as('alongSansSemiBold')
+	) or (
+	companySiteStyles.bodyFontFamily is defined and
+	companySiteStyles.bodyFontFamily|length > 0 and
+	companySiteStyles.bodyFontFamily.value is same as('alongSansSemiBold')
+	)
+	)
+%}
+	{% includeCssFile "/global/css/Along-Sans-Semi-Bold.css" %}
+{% endif %}
+
 
 {% css %}
 
@@ -90,11 +135,13 @@
 		body.template-color-23 .gallery .hover-overlay,
 		.contact-form button:focus,
 		.contact-form button[type="submit"],
-		.contact-form input[type="submit"]{
+		.contact-form input[type="submit"],
+		body.template-color-23 .brook-pagination-wrapper .brook-pagination li.active a{
 	        background-color: {{ companySiteStyles.primaryColour }};
 	    }
 		button.brook-btn.btn-border-primaryColour,
-		body.template-color-23 .basic-thick-line-theme-4 {
+		body.template-color-23 .basic-thick-line-theme-4,
+		body.template-color-23 .brook-pagination-wrapper .brook-pagination li a {
 			border-color: {{ companySiteStyles.primaryColour }};
 		}
 		button.brook-btn.btn-border-secondaryColour
