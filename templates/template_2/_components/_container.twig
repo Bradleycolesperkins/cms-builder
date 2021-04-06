@@ -1,6 +1,7 @@
 {% if block.containerBlock %}
     <div class="container-block {{ block.elementClass }}" id="{{ block.elementId }}" style="
         {% include '/template_2/_components/_extras/_element_extras' with { 'block' : block} %}
+        {% include '/template_2/_components/_extras/_background_extras' with { 'block' : block} %}
         ">
 
         {% for innerBlock in block.containerBlock.all() %}
@@ -13,9 +14,7 @@
                 {% endfor %}
             {% case "div" %}
                 {% for entry in innerBlock.blocks.all() %}
-                    <div class="div"
-                         id="{% include '/template_2/_components/_extras/_element_extra_id' with { 'block' : text_block} %}"
-                    >
+                    <div class="div">
                         {% include '/template_2/_components/_block_entry' with { 'entry' : entry } %}
                     </div>
                 {% endfor %}

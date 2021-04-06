@@ -1,51 +1,114 @@
 <!-- Header -->
-<header class="br_header header-default bg_color--23 border-bottom black-logo--version haeder-fixed-width haeder-fixed-150 headroom--sticky header-mega-menu clearfix">
+<header class="br_header split_header header-default bg_color--23 border-bottom black-logo--version haeder-fixed-width haeder-fixed-150 headroom--sticky header-mega-menu clearfix">
     {% if companySiteLayout.topMenuBar == "on" %}
         {% include '/template_2/_components/_header/_top_menu_bar' %}
     {% endif %}
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="header__wrapper mr--0">
-                    <!-- Header Left -->
-                    <div class="header-left">
-                        <div class="logo">
-                            <a href="/">
-                                {% if companyInformation.companyLogo|length > 0 %}
-                                    {% set image = companyInformation.companyLogo.first() %}
-                                    <img src="{{image.getUrl()}}" alt="Company Logo Images">
-                                {% endif %}
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Mainmenu Wrap -->
-                    <div class="mainmenu-wrapper d-none d-lg-block">
-                        {# {% include '/template_2/_components/_nav_dropdown' %} #}
-                        {% include '/template_2/_components/_nav_megamenu' %}
-                    </div>
-                    <!-- Header Right -->
-                    <div class="header-right">
-                        {% if companySiteLayout.headerSocialMedias == "yes" %}
-                            {% include '/template_2/_components/_header/_header_bar_social_media_icons' %}
-                            {# {% include '/template_2/_components/_toolbar_popup' %}#}
-                        {% endif %}
 
-                        {# {% include '/template_2/_components/_header_shopping_cart' %} #}
-                        {# {% include '/template_2/_components/_header_search' %} #}
-                        
-                        <!-- Start Hamberger -->
-                        <div class="manu-hamber popup-mobile-click d-block d-lg-none black-version d-block d-xl-none">
-                            <div>
-                                <i></i>
+    {% if companySiteLayout.headerStyle == "centredLogo" %}
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__digital--broadcast centered-logo-and-content">
+                        {% set menu = craft.entries.section('headerNavigation') %}
+                        {% set colMegaMenu = 3 %}
+                        {% set parentMenus = 0 %}
+                        {% nav link in menu %}
+                            {% if link.level is same as('1') %}
+                                {% set parentMenus = parentMenus + 1 %}
+                            {% endif %}
+                        {% endnav %}
+                        {% set halfAmount = ( parentMenus / 2 )  %}
+                        {% set leftAmount = ceil( halfAmount )  %}
+
+                        <!-- Header Left -->
+                        <div class="header-left  d-none d-lg-block">
+                            <nav class="page_nav nav">
+                                <ul class="mainmenu bk-menu d-flex bk-hover">
+                                    {% include '/template_2/_components/_menus/_nav_megamenu_split_left'  with { 'leftamount' : leftAmount, 'menu' : menu}  %}
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Header Center -->
+                        <div class="header-center">
+                            <div class="branding">
+                                <a href="/">
+                                    {% if companyInformation.companyLogo|length > 0 %}
+                                        {% set image = companyInformation.companyLogo.first() %}
+                                        <img src="{{image.getUrl()}}" alt="Company Logo Images">
+                                    {% endif %}
+                                </a>
                             </div>
                         </div>
-                        <!-- End Hamberger -->
+
+                        <!-- Header Right -->
+                        <div class="header-right">
+                            <nav class="page_nav nav  d-none d-lg-block">
+                                <ul class="mainmenu bk-menu d-flex bk-hover">
+                                    {% include '/template_2/_components/_menus/_nav_megamenu_split_right'  with { 'leftamount' : leftAmount, 'menu' : menu}  %}
+                                </ul>
+                            </nav>
+
+                            <!-- Start Hamburger-->
+                            <div class="manu-hamber popup-mobile-click d-block d-lg-none black-version d-block d-xl-none">
+                                <div>
+                                    <i></i>
+                                </div>
+                            </div>
+                            <!-- End Hamburger-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% else %}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__wrapper mr--0">
+                        <!-- Header Left -->
+                        <div class="header-left">
+                            <div class="logo">
+                                <a href="/">
+                                    {% if companyInformation.companyLogo|length > 0 %}
+                                        {% set image = companyInformation.companyLogo.first() %}
+                                        <img src="{{image.getUrl()}}" alt="Company Logo Images">
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Mainmenu Wrap -->
+                        <div class="mainmenu-wrapper d-none d-lg-block">
+                            {# {% include '/template_2/_components/_nav_dropdown' %} #}
+                            {% include '/template_2/_components/_nav_megamenu' %}
+                        </div>
+                        <!-- Header Right -->
+                        <div class="header-right">
+                            {% if companySiteLayout.headerSocialMedias == "yes" %}
+                                {% include '/template_2/_components/_header/_header_bar_social_media_icons' %}
+                                {# {% include '/template_2/_components/_toolbar_popup' %}#}
+                            {% endif %}
+
+                            {# {% include '/template_2/_components/_header_shopping_cart' %} #}
+                            {# {% include '/template_2/_components/_header_search' %} #}
+
+                            <!-- Start Hamberger -->
+                            <div class="manu-hamber popup-mobile-click d-block d-lg-none black-version d-block d-xl-none">
+                                <div>
+                                    <i></i>
+                                </div>
+                            </div>
+                            <!-- End Hamberger -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 </header>
 <!--// Header -->
 

@@ -1,0 +1,111 @@
+
+
+{% set count = 1 %}
+{% nav link in menu %}
+
+
+        {% if link.level is same as('1')%}
+            {% if link.hasDescendants() is same as(false) %}
+                {% if count > leftAmount  %}
+                    {% if link.relatedEntry|length %}
+                        <li class="menu-item lavel-{{link.level}}">
+                            <a href="{{ link.relatedEntry[0].url }}"><span>{{ link.title }}</span></a>
+                        </li>
+                    {% else %}
+                        <li class="menu-item lavel-{{link.level}}">
+                            <a href="{{ link.customUrl }}"><span>{{ link.title }}</span></a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+                {% set count = count + 1 %}
+            {% endif %}
+
+        {% elseif link.level is same as(2) and link.hasDescendants() is same as(false) %}
+        {% if count > leftAmount  %}
+            <div class="col-lg-{{colMegaMenu}}">
+                <ul class="mega__list">
+
+                    {% if link.relatedEntry|length %}
+                    <a href="{{ link.relatedEntry[0].url }}">
+                        {% elseif link.customUrl|length %}
+                        <a href="{{ link.customUrl }}">
+                            {% endif %}
+                            <li class="mega--title">{{ link.title }}</li>
+                            {% if link.relatedEntry|length %}
+                        </a>
+                        {% elseif link.customUrl|length %}
+                    </a>
+                    {% endif %}
+                </ul>
+            </div>
+
+        {% endif %}
+        {% elseif link.level is same as(3) %}
+                {% if count > leftAmount  %}
+
+            {% if link.relatedEntry|length %}
+                <li class="">
+                    <a href="{{ link.relatedEntry[0].url }}"><span>{{ link.title }}</span></a>
+                </li>
+            {% else %}
+                <li class="">
+                    <a href="{{ link.customUrl }}"><span>{{ link.title }}</span></a>
+                </li>
+            {% endif %}
+                    {% endif %}
+
+        {% endif %}
+
+{% ifchildren %}
+{% if count > leftAmount  %}
+{% if link.level is same as('1') %}
+<li class="lavel-{{link.level}} with--drop slide--megamenu">
+    {% if link.relatedEntry|length %}
+        <a href="{{ link.relatedEntry[0].url }}">
+    {% elseif link.relatedEntry|length %}
+        <a href="{{ link.customUrl }}">
+     {% else %}
+        <a href="#">
+    {% endif %}
+        <span>{{ link.title }}</span>
+    </a>
+    <div class="mega__width--fullscreen">
+        <div class="container">
+            <div class="row">
+{% elseif link.level is same as(2) and link.hasDescendants() is same as(true) %}
+    <div class="col-lg-{{colMegaMenu}}">
+        <ul class="mega__list">
+
+            {% if link.relatedEntry|length %}
+                <a href="{{ link.relatedEntry[0].url }}">
+            {% elseif link.customUrl|length %}
+                <a href="{{ link.customUrl }}">
+            {% endif %}
+
+            <li class="mega--title">{{ link.title }}</li>
+                {% if link.relatedEntry|length %}
+                    </a>
+                {% elseif link.customUrl|length %}
+                    </a>
+                {% endif %}
+
+
+{% endif %}
+
+{% endif %}
+{% children %}
+{% if count > leftAmount  %}
+{% if link.level is same as('1') %}
+                        </div>
+                    </div>
+                </div>
+</li>
+{% elseif link.level is same as(2)  and link.hasDescendants() is same as(true) %}
+</ul>
+</div>
+{% endif %}
+
+{% endif %}
+{% endifchildren %}
+
+{% endnav %}

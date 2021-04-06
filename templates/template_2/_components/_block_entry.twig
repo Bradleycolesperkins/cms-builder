@@ -35,6 +35,8 @@
             {% include '/template_2/_components/_counter_blocks' with {'counter_block': entry} %}
         {% case "galleryBlock" %}
             {% include '/template_2/_components/_gallery_blocks' with {'gallery_block': entry} %}
+        {% case "testimonialBlocks" %}
+            {% include '/template_2/_components/_testimonials' with {'testimonial_block': entry} %}
         {% default %}
             {{ dd('block entry', entry.type.handle) }}
     {% endswitch %}

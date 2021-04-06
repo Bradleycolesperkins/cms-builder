@@ -1,0 +1,20 @@
+
+{% if team_member %}
+    <div  style="
+            {% include '/template_2/_components/_extras/_element_extras' with { 'block' : text_block} %}
+            {% include '/template_2/_components/_extras/_element_colour_extras' with { 'block' : text_block} %}
+        "
+          class="{% include '/template_2/_components/_extras/_element_extra_class' with { 'block' : text_block} %}"
+          id="{% include '/template_2/_components/_extras/_element_extra_id' with { 'block' : text_block} %}"
+    >
+        {% for block in team_member.TeamMember.all() %}
+            {% switch block.type %}
+                {% case "h1Title" %}
+                    {% include '/template_2/_components/_team_member/_photo_slider' with { 'block' : block} %}
+                {% default %}
+                    {{ dd('team member', block.type.handle) }}
+
+            {% endswitch %}
+        {% endfor %}
+    </div>
+{% endif %}

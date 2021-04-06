@@ -241,12 +241,16 @@
                         <a href="/property/{{ property['propertyID'] }}">
                             <div class="product-thumbnail">
                                 <div class="thumbnail letting-station-thumbnail">
+                                    {% if property['property_images'][0] is defined and not null %}
                                     <div class="product-main-image">
                                         <img src="{{ property['property_images'][0]['imageURL'] }}" alt="Multipurpose">
                                     </div>
+                                    {% endif %}
+                                    {% if property['property_images'][1] is defined and not null %}
                                     <div class="product-hover-image">
                                         <img src="{{ property['property_images'][1]['imageURL'] }}" alt="Multipurpose">
                                     </div>
+                                    {% endif %}
                                     <div class="product-badges">
                                         {% if property['propertyType'] is defined and not null %}
                                             <div class="itemtype">

@@ -2,6 +2,31 @@
  * Header
 =========================================*/
 
+@media only screen and (max-width: 575px) {
+    .split_header {
+        .header__digital--broadcast .header-center {
+            justify-content: center !important
+        }
+    }
+}
+@media (max-width: 992px) {
+    .split_header {
+        .header-right {
+            display: block;
+            position: absolute;
+            right: 38px;
+        }
+        .header__digital--broadcast.centered-logo-and-content .branding  {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            img {
+                max-width: 100px;
+                max-height: 75px;
+            }
+        }
+    }
+}
+
 .top-menu-bar {
     .header-left2 {
         ul {

@@ -1,0 +1,61 @@
+
+{% if testimonial is not defined %}
+    {% set testimonial = {} %}
+{% endif %}
+
+{% if testimonial.testimonialTitle is not defined %}
+{% endif %}
+ {% if testimonial.testimonialBackground|length > 0 %}
+    {% set imageUrl = testimonial.testimonialBackground.first().getUrl() %}
+{% else %}
+    {% set imageUrl = '/assets/uploads/1591557140_footerbg.svg' %}
+ {% endif %}
+
+<div class="brook-element-carousel slick-arrow-center slick-dots-bottom wow move-up"
+    data-slick-options='{
+        "spaceBetween": 15, 
+        "slidesToShow": {{testimonial.slidesToShow}}, 
+        "slidesToScroll": {{testimonial.slidesToScroll}}, 
+        "arrows": true, 
+        "infinite": true,
+        "dots": true,
+        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
+        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
+    }'
+    data-slick-responsive='[
+        {"breakpoint":770, "settings": {"slidesToShow": 2}},
+        {"breakpoint":577, "settings": {"slidesToShow": 1}},
+        {"breakpoint":481, "settings": {"slidesToShow": 1}}
+    ]'>
+
+
+    {% for testimonialSlider in testimonial.testimonials.all() %}
+
+     <!-- Start Single Testimonial -->
+        <div class="testimonial testimonial_style--1">
+            <div class="content">
+                <p class="bk_pra">{{testimonialSlider.testimonialBody}}</p>
+                <div class="testimonial-info">
+                    {% if testimonialSlider.testimonialImage|length > 0 %}
+                        {% set image = testimonialSlider.testimonialImage.first() %}
+                        <div class="post-thumbnail">
+                            <img src="{{ image.getUrl() }}" alt="client image">
+                        </div>
+                    {% endif %}
+                    <div class="clint-info">
+                        <h6>{{testimonialSlider.testimonialAuthor}}</h6>
+                        {% if testimonialSlider.testimonialAuthorSubtitle %}
+                            <span>{{testimonialSlider.testimonialAuthorSubtitle}}</testimonialAuthorSubtitle>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="testimonial-quote">
+                    <span class="fa fa-quote-right"></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Single Testimonial -->
+
+    {% endfor %}
+
+</div>

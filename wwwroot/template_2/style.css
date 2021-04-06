@@ -165,10 +165,6 @@
   .container {
     max-width: 450px; } }
 
-@media only screen and (max-width: 479px) {
-  .container {
-    max-width: 320px; } }
-
 /**
  * Reset Styels
  */
@@ -18417,6 +18413,59 @@ body.loaded .page-loading {
       position: relative;
       display: inline-block; }
 
+.the-letting-station-block {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #2b4b98;
+  padding: 20px;
+  color: #fff; }
+  .the-letting-station-block form {
+    display: flex; }
+    .the-letting-station-block form button {
+      background: url(/assets/uploads/1616659002_logo-buttons.png);
+      background-size: contain;
+      color: #fff;
+      background-position: center center;
+      background-repeat: no-repeat;
+      flex-grow: 4 !important;
+      margin: 0px 10px;
+      min-width: 100px !important;
+      min-height: 100px !important;
+      width: 100px !important;
+      height: 100px !important;
+      border: 1px solid #2b4b98; }
+      .the-letting-station-block form button span {
+        font-size: 24px;
+        display: block;
+        text-transform: uppercase;
+        margin-top: 18px; }
+      .the-letting-station-block form button:hover {
+        border: 1px solid white; }
+    .the-letting-station-block form input {
+      background: white;
+      color: black;
+      margin-top: 32px;
+      border: 1px solid #e52733; }
+
+@media (max-width: 479px) {
+  .the-letting-station-block form {
+    flex-wrap: wrap; }
+    .the-letting-station-block form input {
+      flex: 0 0 100%;
+      order: -1;
+      margin-top: 0px;
+      margin-bottom: 15px; } }
+
+@media (max-width: 310px) {
+  .the-letting-station-block form button {
+    min-width: 75px !important;
+    min-height: 75px !important;
+    width: 75px !important;
+    height: 75px !important; }
+    .the-letting-station-block form button span {
+      font-size: 18px;
+      margin-top: 15px; } }
+
 /*==================================
 	Portfolio Styles
 ===================================*/
@@ -23089,6 +23138,22 @@ Main Components
 /*========================
  * Header
 =========================================*/
+@media only screen and (max-width: 575px) {
+  .split_header .header__digital--broadcast .header-center {
+    justify-content: center !important; } }
+
+@media (max-width: 992px) {
+  .split_header .header-right {
+    display: block;
+    position: absolute;
+    right: 38px; }
+  .split_header .header__digital--broadcast.centered-logo-and-content .branding {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    .split_header .header__digital--broadcast.centered-logo-and-content .branding img {
+      max-width: 100px;
+      max-height: 75px; } }
+
 .top-menu-bar .header-left2 ul {
   margin: 0px !important;
   padding: 0px !important; }
@@ -24701,9 +24766,9 @@ Header Font Family
         -ms-flex-positive: 1;
         flex-grow: 1; }
         .popup-mobile-manu .inner .mobileheader .logo a img {
-          width: 115px;
-          height: auto;
-          max-width: 100%; }
+          width: auto;
+          max-width: 100%;
+          max-height: 70px; }
       .popup-mobile-manu .inner .mobileheader a.mobile-close {
         position: relative;
         cursor: pointer;
@@ -24814,6 +24879,21 @@ Header Font Family
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center; }
+  .header__digital--broadcast.centered-logo-and-content .branding img {
+    max-width: 150px;
+    max-height: 100px; }
+  .header__digital--broadcast.centered-logo-and-content .header-left .bk-menu {
+    width: 100%;
+    justify-content: flex-end; }
+  .header__digital--broadcast.centered-logo-and-content .header-right {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-flex-basis: 40%;
+    -ms-flex-preferred-size: 40%;
+    flex-basis: 40%;
+    margin: auto; }
+  .header__digital--broadcast.centered-logo-and-content > .header-right,
   .header__digital--broadcast .header-left {
     -webkit-flex-shrink: 0;
     -ms-flex-negative: 0;
@@ -24821,20 +24901,24 @@ Header Font Family
     -webkit-flex-basis: 40%;
     -ms-flex-preferred-size: 40%;
     flex-basis: 40%; }
+    .header__digital--broadcast.centered-logo-and-content > .header-right .bk-menu,
     .header__digital--broadcast .header-left .bk-menu {
       list-style: none;
       padding: 0;
       margin: 0; }
-      .header__digital--broadcast .header-left .bk-menu li {
+      .header__digital--broadcast.centered-logo-and-content > .header-right .bk-menu > li,
+      .header__digital--broadcast .header-left .bk-menu > li {
         padding-top: 58px;
         padding-bottom: 58px;
         padding-left: 15px;
         padding-right: 15px; }
         @media only screen and (max-width: 767px) {
-          .header__digital--broadcast .header-left .bk-menu li {
+          .header__digital--broadcast.centered-logo-and-content > .header-right .bk-menu > li,
+          .header__digital--broadcast .header-left .bk-menu > li {
             padding-left: 8px;
             padding-right: 8px; } }
-        .header__digital--broadcast .header-left .bk-menu li a {
+        .header__digital--broadcast.centered-logo-and-content > .header-right .bk-menu > li a,
+        .header__digital--broadcast .header-left .bk-menu > li a {
           font-weight: 700;
           line-height: 1.18;
           font-size: 18px;
@@ -24874,7 +24958,16 @@ Header Font Family
     -ms-flex-pack: end;
     justify-content: flex-end; }
 
-.headroom--not-top .header__digital--broadcast .header-left .bk-menu li {
+.headroom--not-top .header__digital--broadcast .header-left .bk-menu > li {
+  padding-top: 30px;
+  padding-bottom: 25px; }
+
+.headroom--not-top .header__digital--broadcast.centered-logo-and-content .branding img {
+  max-width: 100px;
+  max-height: 60px; }
+
+.header__digital--broadcast.centered-logo-and-content > .header-right .bk-menu > li,
+.headroom--not-top .header__digital--broadcast.centered-logo-and-content .header-left .bk-menu > li {
   padding-top: 30px;
   padding-bottom: 25px; }
 

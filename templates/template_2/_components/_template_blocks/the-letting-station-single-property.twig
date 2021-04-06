@@ -1,8 +1,615 @@
 {% extends 'template_2/_layout' %}
+{% set urlItems = craft.request.getUrl() | split('/') %}
+{% set propertyId = urlItems | last %}
+
+
+{% set url = '/api/single-property?id='~propertyId~'' %}
+{% set client = {
+    base_uri : 'http://pm-premier-api.azurewebsites.net',
+    timeout : 10
+} %}
+
+{% set options = {} %}
+
+{% set request = fetch(client, 'GET', url, options, false) %}
+
+{% if(request.statusCode == 200) %}
+    {% set data = request.body | json_decode() %}
+{% endif %}
 
 {% block main %}
-    <!-- Page Conttent -->
-    <main class="page-content">
-        IN SINGLE PROPERTY!
+    {% if (data is defined and data is not null) %}
+
+        <main class="page-content pt--60 pt_md--40 pt_sm--20">
+        <!-- Start Single Product -->
+        <div class="brook-single-product plr--160 plr_lg--100 plr_md--50 plr_sm--50">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="single-product-left-side">
+                        <div class="product__details__container">
+                            <div class="tab_container big_img_container">
+                                {% if data['property_images'] %}
+                                    {% for propertyImage in data['property_images'] %}
+                                        <div class="big_img tab-pane fade
+                                        {% if loop.first %} show active {% endif %}
+                                         " id="img{{ propertyImage['id'] }}" role="tabpanel">
+                                            <img class="w-100" src="{{ propertyImage['imageURL'] }}" alt="{{ propertyImage['id'] }}">
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="sm_roduct_nav nav nav-tabs" role="tablist">
+                                {% if data['property_images'] %}
+                                    {% for propertyImage in data['property_images'] %}
+                                        <a {% if loop.first %} class="active" {% endif %}  id="img{{ propertyImage['id'] }}-tab" data-toggle="tab" href="#img{{ propertyImage['id'] }}" role="tab" aria-controls="img{{ propertyImage['id'] }}"
+                                                {% if loop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %}>
+                                            <img src="{{ propertyImage['imageURL'] }}" alt="{{ propertyImage['id'] }}-click">
+                                        </a>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt_sm--40">
+                    <div class="single-product-details-side">
+                        <div class="product-details">
+                            <div class="inner">
+                                <div class="header">
+                                    {#<div class="product-badges">#}
+                                    {#    <span>Hot</span>#}
+                                    {#</div>#}
+                                    <h4 class="heading heading-h4">
+                                        {% if data['addressName'] %}{{ data['addressName']  }}{% endif  %}
+                                        {% if data['addressNumber'] %}{{ data['addressNumber']  }}{% endif  %}
+                                        {% if data['addressStreet'] %}{{ data['addressStreet']  }}{% endif  %}
+                                        {% if data['address2'] %}{{ data['address2']  }}{% endif  %}
+                                        {% if data['address3'] %}{{ data['address3']  }}{% endif  %}
+                                        {% if data['address4'] %}{{ data['address4']  }}{% endif  %}
+                                        {% if data['addressPostcode'] %}{{ data['addressPostcode']  }}{% endif  %}
+                                    </h4>
+                                </div>
+                                <div class="price">
+                                    <p class="theme-color">
+                                        {% if data['department'] == "Lettings" %}
+                                            £{{ data['rent']|number_format(0, '', ',') }}
+                                            <span class="new-price"> Per Month</span>
+                                        {% else %}
+                                            £{{ data['price']|number_format(0, '', ',') }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="description">
+                                    <p class="bk_pra">
+                                        {% if data['mainSummary'] %}{{ data['mainSummary'] }}{% endif  %}
+                                    </p>
+                                </div>
+                                <div class="product-meta quenty-container">
+                                    {% if data['displayPropertyType'] and data['displayPropertyType'] != 0 %}
+                                        <div class="meta-item">
+                                            <h6 class="heading heading-h6">Property</h6>
+                                            <div class="item-list">{{ data['displayPropertyType'] }}</div>
+                                        </div>
+                                    {% endif %}
+                                    {% if data['propertyBedrooms'] and data['propertyBedrooms'] != 0 %}
+                                        <div class="meta-item">
+                                            <h6 class="heading heading-h6">Bedrooms</h6>
+                                            <div class="item-list">{{ data['propertyBedrooms'] }}</div>
+                                        </div>
+                                    {% endif %}
+                                    {% if data['propertyBathrooms'] and data['propertyBathrooms'] != 0 %}
+                                        <div class="meta-item">
+                                            <h6 class="heading heading-h6">Bathrooms</h6>
+                                            <div class="item-list">{{ data['propertyBathrooms'] }}</div>
+                                        </div>
+                                    {% endif %}
+                                    {% if data['propertyEnsuites'] and data['propertyEnsuites'] != 0 %}
+                                        <div class="meta-item">
+                                            <h6 class="heading heading-h6">Ensuites</h6>
+                                            <div class="item-list">{{ data['propertyEnsuites'] }}</div>
+                                        </div>
+                                    {% endif %}
+                                    {% if data['propertyReceptionRooms'] and data['propertyReceptionRooms'] != 0 %}
+                                        <div class="meta-item">
+                                            <h6 class="heading heading-h6">Reception Rooms</h6>
+                                            <div class="item-list">{{ data['propertyReceptionRooms'] }}</div>
+                                        </div>
+                                    {% endif %}
+                                    {% if data['propertyKitchens'] and data['propertyKitchens'] != 0 %}
+                                        <div class="meta-item">
+                                            <h6 class="heading heading-h6">Kitchens</h6>
+                                            <div class="item-list">{{ data['propertyKitchens'] }}</div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="product-meta">
+
+                                    <div class="quenty-button mt--20 mb-0">
+                                        <h6 class="heading heading-h6">Key Features</h6>
+                                    </div>
+
+                                    <div class="bk-list--2 mt--20" >
+                                        {% if data['propertyFeature1'] and data['propertyFeature1'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature1'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature2'] and data['propertyFeature2'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature2'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature3'] and data['propertyFeature3'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature3'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature4'] and data['propertyFeature4'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature4'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature5'] and data['propertyFeature5'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature5'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature6'] and data['propertyFeature6'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature6'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature7'] and data['propertyFeature7'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature7'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature8'] and data['propertyFeature8'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature8'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature9'] and data['propertyFeature9'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature9'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if data['propertyFeature10'] and data['propertyFeature10'] != "" %}
+                                            <div class="list-header">
+                                                <div class="marker with-dot"></div>
+                                                <div class="title-wrap">
+                                                    <h6 class="heading heading-h5">{{ data['propertyFeature10'] }}</h6>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Single Product -->
+        <!-- Start Product Review -->
+        <div class="product_review pb--100 pb_md--80 pb_sm--60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="description_nav nav nav-tabs d-block" role="tablist">
+                            <a class="active show" id="descrip-tab" data-toggle="tab" href="#descrip" role="tab" aria-controls="descrip" aria-selected="true">Description</a>
+                            {% if data['latitude'] and data['longitude'] and data['latitude'] != "" and data['longitude'] != "" %}
+                                <a id="nav-review" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false" class="">Map</a>
+                            {% endif %}
+                            <a id="nav-contact" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" class="">Request Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab_container">
+                    <div class="single_review_content tab-pane fade active show" id="descrip" role="tabpanel">
+                        <div class="content">
+                            {% if data['fullDescription'] and data['fullDescription'] != "" %}
+                                <p>{{ data['fullDescription'] | raw }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if data['latitude'] and data['longitude'] and data['latitude'] != "" and data['longitude'] != "" %}
+                        <div class="single_review_content tab-pane fade" id="review" role="tabpanel">
+                            <div class="classs__review__inner">
+                                <h4>
+                                    {% if data['addressName'] %}{{ data['addressName']  }}{% endif  %}
+                                    {% if data['addressNumber'] %}{{ data['addressNumber']  }}{% endif  %}
+                                    {% if data['addressStreet'] %}{{ data['addressStreet']  }}{% endif  %}
+                                    {% if data['address2'] %}{{ data['address2']  }}{% endif  %}
+                                    {% if data['address3'] %}{{ data['address3']  }}{% endif  %}
+                                    {% if data['address4'] %}{{ data['address4']  }}{% endif  %}
+                                    {% if data['addressPostcode'] %}{{ data['addressPostcode']  }}{% endif  %}
+                                </h4>
+
+                                <div class="mapouter">
+                                    <div class="gmap_canvas">
+                                        <iframe
+                                                frameborder="0"
+                                                scrolling="no"
+                                                marginheight="0"
+                                                marginwidth="0"
+                                                src="https://maps.google.com/maps?q={{ data['latitude'] }},{{ data['longitude'] }}&hl=en&z=18&amp;output=embed"
+                                        >
+                                        </iframe>
+                                    </div>
+                                </div>
+                                {% set mapCss %}
+                                    .gmap_canvas {
+                                        width: 100% !important;
+                                        height: 500px !important;
+                                    }
+                                    .gmap_canvas iframe {
+                                        width: 100% !important;
+                                        height: 500px !important;
+                                    }
+                                {% endset %}
+
+                                {% includeCss mapCss %}
+
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="single_review_content tab-pane fade" id="contact" role="tabpanel">
+                        <div class="content">
+                            <div class="contact-form">
+
+
+                                {% set form = craft.freeform.form("theLettingStationPropertyEnquiry", {
+                                submitClass: "",
+                                returnUrl: "{{ siteUrl }}contact-form-templates/bootstrap/{{ form.handle }}/{% if submission %}submissions/{{ submission.id }}/{% endif %}success",
+                                submissionToken: submissionToken|default(null),
+                                }) %}
+                                {% if form %}
+                                    {{ form.renderTag }}
+                                    {% for row in form %}
+                                        {% for field in row %}
+                                            {% set width = (12 / (row|length)) %}
+                                            {% set isCheckbox = field.type in ["checkbox","mailing_list"] %}
+                                            {% set columnClass = "form-group" %}
+                                            {% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+                                            {% set columnClass = columnClass ~ " col-sm-" ~ width ~ " col-xs-12" %}
+                                            {% set class = "form-control" ~ (field.hasErrors ? " is-invalid") %}
+                                            {% if field.type == "file" %}
+                                                {% set class = "form-control-file" ~ (field.hasErrors ? " is-invalid") %}
+                                            {% elseif field.type == "signature" %}
+                                                {% set class = "btn btn-light" %}
+                                            {% elseif field.type == "table" %}
+                                                {% set class = "table" %}
+                                            {% elseif isCheckbox %}
+                                                {% set class = "checkbox" %}
+                                            {% endif %}
+
+                                            {% set labelClass = (field.required ? " required" : "") %}
+                                            {% set errorClass = "invalid-feedback" %}
+                                            {% set instructionClass = "form-text text-muted" %}
+
+
+                                            {% if field.type == "submit" %}
+                                                {% set columnClass = columnClass ~ " submit-align-" ~ field.position %}
+                                            {% endif %}
+                                            {% if field.type == "checkbox_group" %}
+                                                {{ field.renderLabel({
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    errorClass: errorClass,
+                                                }) }}
+                                                {{ field.oneLine ? "<div>"|raw }}
+                                                {% for index, option in field.options %}
+                                                    <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                                        <input type="checkbox"
+                                                               name="{{ field.handle }}[]"
+                                                               value="{{ option.value }}"
+                                                               id="{{ field.idAttribute }}-{{ index }}"
+                                                               class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                                                {{ option.checked ? "checked" : "" }}
+                                                        />
+
+                                                        <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                                            {{ option.label|t|raw }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+                                                {{ field.oneLine ? "</div>"|raw }}
+                                                {{ field.renderInstructions() }}
+                                                {{ field.renderErrors({ errorClass: errorClass }) }}
+                                            {% elseif field.type == "radio_group" %}
+                                                {{ field.renderLabel({
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    errorClass: errorClass,
+                                                }) }}
+                                                {{ field.oneLine ? "<div>"|raw }}
+                                                {% for index, option in field.options %}
+                                                    <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                                        <input type="radio"
+                                                               name="{{ field.handle }}"
+                                                               value="{{ option.value }}"
+                                                               id="{{ field.idAttribute }}-{{ index }}"
+                                                               class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                                                {{ option.checked ? "checked" : "" }}
+                                                        />
+                                                        <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                                            {{ option.label|t|raw }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+                                                {{ field.oneLine ? "</div>"|raw }}
+                                                {{ field.renderInstructions() }}
+                                                {{ field.renderErrors() }}
+                                            {% elseif field.type == "dynamic_recipients" and (field.showAsRadio or field.showAsCheckboxes) %}
+                                                {{ field.renderLabel({
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    errorClass: errorClass,
+                                                }) }}
+                                                {{ field.oneLine ? "<div>"|raw }}
+                                                {% for index, option in field.options %}
+                                                    <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                                                        <input type="{{ field.showAsRadio ? "radio" : "checkbox" }}"
+                                                               name="{{ field.handle }}[]"
+                                                               value="{{ loop.index0 }}"
+                                                               class="form-check-input"
+                                                               id="{{ field.idAttribute }}-{{ index }}"
+                                                                {{ option.checked ? "checked" : "" }}
+                                                        />
+
+                                                        <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                                            {{ option.label|t|raw }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+                                                {{ field.oneLine ? "</div>"|raw }}
+                                                {{ field.renderInstructions() }}
+                                                {{ field.renderErrors() }}
+                                            {% elseif field.type in ["checkbox", "mailing_list"] %}
+                                                <div class="form-check">
+                                                    {{ field.renderInput({ class: class ~ " form-check-input" ~ (field.hasErrors ? " is-invalid") }) }}
+                                                    {{ field.renderLabel({ labelClass: "form-check-label" ~ (field.hasErrors ? " is-invalid") ~ (field.required ? " required") }) }}
+                                                    {{ field.renderErrors({ errorClass: errorClass }) }}
+                                                </div>
+                                            {% elseif field.type == "submit" %}
+                                                <div class="cs-form-submit cs-form-submit--center">
+                                                    {{ field.render({ class: "" }) }}
+                                                </div>
+                                            {% elseif field.type == "table" %}
+                                                {{ field.render({
+                                                    class: class,
+                                                    labelClass: labelClass,
+                                                    instructionsClass: instructionClass,
+                                                    instructionsBelowField: true,
+                                                    errorClass: errorClass,
+                                                    addButtonLabel: "Add +",
+                                                    addButtonClass: "btn btn-sm btn-primary",
+                                                    removeButtonLabel: "x",
+                                                    removeButtonClass: "btn btn-sm btn-danger",
+                                                    tableTextInputClass: "form-control",
+                                                    tableSelectInputClass: "form-control",
+                                                    tableCheckboxInputClass: "form-check-input"
+                                                }) }}
+                                            {% else %}
+
+                                                {% if field.handle == "address" %}
+                                                    {% set hiddenAddress = 'Property ID: '~propertyId ~ "  \r\n" %}
+                                                    {% if data['addressName'] %}
+                                                        {% set hiddenAddress  = hiddenAddress  ~ "Address Name: " ~ data['addressName'] ~ "  \r\n"  %}
+                                                    {% endif  %}
+                                                    {% if data['addressNumber'] %}
+                                                        {% set hiddenAddress  = hiddenAddress  ~ "Address Number: " ~ data['addressNumber'] ~ "  \r\n"  %}
+                                                    {% endif  %}
+                                                    {% if data['addressStreet'] %}
+                                                        {% set hiddenAddress  = hiddenAddress  ~ "Address Street: " ~ data['addressStreet'] ~ "  \r\n"  %}
+                                                    {% endif  %}
+                                                    {% if data['address2'] %}
+                                                        {% set hiddenAddress  = hiddenAddress  ~ "Address 2: " ~ data['address2'] ~ "  \r\n"  %}
+                                                    {% endif  %}
+                                                    {% if data['address3'] %}
+                                                        {% set hiddenAddress  = hiddenAddress  ~ "Address 3: " ~ data['address3'] ~ "  \r\n"  %}
+                                                    {% endif  %}
+                                                    {% if data['address4'] %}
+                                                        {% set hiddenAddress  = hiddenAddress  ~ "Address 4: " ~ data['address4'] ~ "  \r\n"  %}
+                                                    {% endif  %}
+                                                    {% if data['addressPostcode'] %}
+                                                        {% set hiddenAddress  = hiddenAddress  ~ "Address Postcode: " ~ data['addressPostcode'] ~ "  \r\n"  %}
+                                                    {% endif  %}
+
+
+
+                                                    {% set class = "hidden" %}
+                                                    {{ field.render({
+                                                        class: class,
+                                                        labelClass: labelClass,
+                                                        instructionsClass: instructionClass,
+                                                        instructionsBelowField: true,
+                                                        errorClass: errorClass,
+                                                        overrideValue: hiddenAddress|nl2br
+                                                    }) }}
+                                                {% else %}
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-xs-12">
+                                                            {{ field.render({
+                                                                class: class,
+                                                                labelClass: labelClass,
+                                                                instructionsClass: instructionClass,
+                                                                instructionsBelowField: true,
+                                                                errorClass: errorClass,
+                                                            }) }}
+                                                        </div>
+                                                    </div>
+
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {{ form.renderClosingTag }}
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Product Review -->
+
+        <!-- Start Related Product
+        <div class="brook-related-product pb--100 pb_md--80 pb_sm--60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="brook-section-title text-center">
+                            <h3 class="heading heading-h3">Related Products</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt--30">
+                    <div class="col-lg-4 mt--30 col-md-6 col-12">
+                        <div class="product">
+                            <div class="product-thumbnail">
+                                <div class="thumbnail">
+                                    <div class="product-main-image">
+                                        <img src="img/product/md-image/product-1.jpg" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-hover-image">
+                                        <img src="img/product/md-image/product-2.jpg" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-badges">
+                                        <div class="onsale">-7%</div>
+                                    </div>
+                                </div>
+                                <div class="product-action">
+                                    <ul class="action-list text-center tooltip-layout">
+                                        <li class="single-action addto-cart"><a href="cart.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></a></li>
+                                        <li class="single-action wishlist"><a href="wishlist.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="heading heading-h5"><a href="#">Metallic Silver Serving
+                                        Skillets</a>
+                                </h5>
+                                <ul class="rating">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <div class="price"><span>$89.00</span> <span class="new-price">$58.00</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt--30 col-md-6 col-12">
+                        <div class="product">
+                            <div class="product-thumbnail">
+                                <div class="thumbnail">
+                                    <div class="product-main-image">
+                                        <img src="img/product/md-image/product-1.jpg" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-hover-image">
+                                        <img src="img/product/md-image/product-2.jpg" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-badges">
+                                        <div class="onsale">-7%</div>
+                                    </div>
+                                </div>
+                                <div class="product-action">
+                                    <ul class="action-list text-center tooltip-layout">
+                                        <li class="single-action addto-cart"><a href="cart.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></a></li>
+                                        <li class="single-action wishlist"><a href="wishlist.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="heading heading-h5"><a href="#">Metallic Silver Serving
+                                        Skillets</a>
+                                </h5>
+                                <ul class="rating">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <div class="price"><span>$89.00</span> <span class="new-price">$58.00</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt--30 col-md-6 col-12">
+                        <div class="product">
+                            <div class="product-thumbnail">
+                                <div class="thumbnail">
+                                    <div class="product-main-image">
+                                        <img src="img/product/md-image/product-1.jpg" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-hover-image">
+                                        <img src="img/product/md-image/product-2.jpg" alt="Multipurpose">
+                                    </div>
+                                    <div class="product-badges">
+                                        <div class="onsale">-7%</div>
+                                    </div>
+                                </div>
+                                <div class="product-action">
+                                    <ul class="action-list text-center tooltip-layout">
+                                        <li class="single-action addto-cart"><a href="cart.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Cart"><i class="fas fa-shopping-bag"></i></a></li>
+                                        <li class="single-action wishlist"><a href="wishlist.html" class="link hint--bounce hint--top hint--dark" aria-label="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="heading heading-h5"><a href="#">Metallic Silver Serving
+                                        Skillets</a>
+                                </h5>
+                                <ul class="rating">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <div class="price"><span>$89.00</span> <span class="new-price">$58.00</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        End Related Product -->
     </main>
+
+    {% endif %}
 {% endblock %}

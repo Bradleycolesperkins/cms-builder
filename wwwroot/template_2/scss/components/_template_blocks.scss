@@ -1,0 +1,75 @@
+.the-letting-station-block {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #2b4b98;
+  padding: 20px;
+  color: #fff;
+
+  form {
+    display: flex;
+
+    button {
+      background: url(/assets/uploads/1616659002_logo-buttons.png);
+      background-size: contain;
+      color: #fff;
+      background-position: center center;
+      background-repeat: no-repeat;
+      flex-grow: 4 !important;
+      margin: 0px 10px;
+      min-width: 100px !important;
+      min-height: 100px !important;
+      width: 100px !important;
+      height: 100px !important;
+      border: 1px solid #2b4b98;
+
+      span {
+        font-size: 24px;
+        display: block;
+        text-transform: uppercase;
+        margin-top: 18px;
+      }
+
+      &:hover {
+        border: 1px solid white;
+      }
+    }
+
+    input {
+      background: white;
+      color: black;
+      margin-top: 32px;
+      border: 1px solid #e52733;
+    }
+  }
+}
+
+@media (max-width: 479px) {
+  .the-letting-station-block {
+    form {
+      flex-wrap: wrap;
+      input {
+        flex: 0 0 100%;
+        order: -1;
+        margin-top: 0px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+@media (max-width: 310px) {
+  .the-letting-station-block {
+    form {
+
+      button {
+        min-width: 75px !important;
+        min-height: 75px!important;
+        width: 75px!important;
+        height: 75px !important;
+        span {
+          font-size: 18px;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}

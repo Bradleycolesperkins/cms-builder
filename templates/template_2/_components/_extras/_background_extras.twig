@@ -1,0 +1,35 @@
+{% if block %}
+    {% if block.background %}
+        {% for background in block.background.all() %}
+            {% switch background.type %}
+
+            {% case "setColour" %}
+                background:{{ background.colour }}
+            {% case "dynamicColour" %}
+                {% switch background.colour %}
+                {% case "primaryColour" %}
+                    background:{{ companySiteStyles.primaryColour }}
+                {% case "secondaryColour" %}
+                    background:{{ companySiteStyles.secondaryColour }}
+                {% case "backgroundColour" %}
+                    background:{{ companySiteStyles.backgroundColour }}
+                {% default %}
+                {% endswitch %}
+            {% case "backgroundImage" %}
+                {% if background.backgroundImage|length > 0 %}
+                    {% set imageUrl = background.backgroundImage.first().getUrl() %}
+                {% else %}
+                    {% set imageUrl = '/img/bg/bg-image-16.jpg' %}
+                {% endif %}
+
+                background-image: url({{ imageUrl }});
+                background-size: {{ background.backgroundSize }};
+                background-position: {{ background.backgroundPosition }};
+                background-repeat: {{ background.backgroundRepeat }};
+
+
+            {% default %}
+            {% endswitch %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
