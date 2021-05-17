@@ -1,0 +1,15 @@
+
+{% if client_block %}
+    {% for block in client_block.clientBlock.all() %}
+        {% switch block.type.handle %}
+            {% case "sliderBlock1" %}
+                {% include '/template_2/_components/_client_blocks/_slider_block_1' with { 'client_block' : block } %}
+            {% case "sliderBlock2" %}
+                {% include '/template_2/_components/_client_blocks/_slider_block_2' with { 'client_block' : block } %}
+            {% case "gridBlock" %}
+                {% include '/template_2/_components/_client_blocks/_grid_block' with { 'client_block' : block } %}
+            {% default %}
+                {{ dd('Client Block entry', block.type.handle) }}
+        {% endswitch %}
+    {% endfor %}
+{% endif %}

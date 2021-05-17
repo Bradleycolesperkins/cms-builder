@@ -33,6 +33,8 @@
                 -webkit-transition: all .3s linear;
                 transition: all .3s linear;
                 display: inline-block;
+                max-height: 150px;
+                max-width: 150px;
             }
             &:hover{
                 img{

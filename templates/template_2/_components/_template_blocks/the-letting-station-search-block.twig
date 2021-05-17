@@ -3,13 +3,19 @@
     <div>
         <form action="/property-search" method="get" id="lettingSearch">
             <input name="status" type="hidden" id="lettingSearchStatus">
-            <button type="button" id="lettingSearchSales" style="background-image: url('/assets/uploads/1617640929_TLS-ForSale.png')">
-                {#<span>Sales</span>#}
-            </button>
+            <div id="lettingSearchSales" class="clickable-div">
+                <button type="button" style="background-image: url('/assets/uploads/1617640929_TLS-ForSale.png')">
+                    {#<span>Sales</span>#}
+                </button>
+                <p class="m-0">Click Here</p>
+            </div>
             <input name="keyword" placeholder="e.g. Cardiff" value="">
-            <button type="button" id="lettingSearchRent" style="background-image: url('/assets/uploads/1617640922_TLS-ToRent.png')">
-                {#<span>Rent</span>#}
-            </button>
+            <div id="lettingSearchRent" class="clickable-div">
+                <button type="button"  style="background-image: url('/assets/uploads/1617640922_TLS-ToRent.png')">
+                    {#<span>Rent</span>#}
+                </button>
+                <p class="m-0">Click Here</p>
+            </div>
         </form>
     </div>
 </div>

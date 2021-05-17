@@ -10,8 +10,10 @@
         {% set slidesToScroll = 3 %}
     {% endif %}
     <!-- Start Carousel Slider -->
-
-    <div class="bk-carousel-slider bg_color--1 ptb--150 slick-arrow-hover ptb-md--80 ptb-sm--60">
+    <div class="bk-carousel-slider bg_color--1 ptb--40 slick-arrow-hover ptb-md--30 ptb-sm--20
+    {{ carousel.elementClass }}" id="{{ carousel.elementId }}"
+         style="{% include '/template_2/_components/_extras/_element_extras' with { 'block' : carousel} %}"
+    >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

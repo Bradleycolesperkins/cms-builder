@@ -4,10 +4,14 @@
   background: #2b4b98;
   padding: 20px;
   color: #fff;
+  border-radius: 25px;
+  box-shadow: 4px 4px 8px #beabb5;
 
   form {
     display: flex;
-
+    .clickable-div {
+      cursor: pointer;
+    }
     button {
       background: url(/assets/uploads/1616659002_logo-buttons.png);
       background-size: contain;

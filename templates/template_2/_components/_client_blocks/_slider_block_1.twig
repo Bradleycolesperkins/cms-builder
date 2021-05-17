@@ -1,0 +1,27 @@
+<div class="brand-wrapper">
+    <div class="brand__list brand-default brand-style--1">
+        <div class="brook-element-carousel" data-slick-options='{
+                    "spaceBetween": 15,
+                    "slidesToShow": 5,
+                    "slidesToScroll": 1,
+                    "arrows": false,
+                    "infinite": true
+                }'
+             data-slick-responsive='[
+                    {"breakpoint":768, "settings": {"slidesToShow": 3}},
+                    {"breakpoint":577, "settings": {"slidesToShow": 3}},
+                    {"breakpoint":481, "settings": {"slidesToShow": 2}}
+                ]'>
+            {% for client in client_block.clients.all() %}
+                <div class="brand">
+                    <a href="{{ client.clientWebsite }}" target="_blank">
+                        {% if client.clientLogo|length > 0 %}
+                            {% set image = client.clientLogo.first() %}
+                                <img src="{{ image.getUrl() }}" alt="{{ image.imageAltTag  }}">
+                        {% endif %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

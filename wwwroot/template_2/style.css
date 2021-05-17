@@ -165,6 +165,10 @@
   .container {
     max-width: 450px; } }
 
+@media only screen and (max-width: 479px) {
+  .container {
+    max-width: 320px; } }
+
 /**
  * Reset Styels
  */
@@ -10396,7 +10400,9 @@ Wavify Area
       opacity: .3;
       -webkit-transition: all .3s linear;
       transition: all .3s linear;
-      display: inline-block; }
+      display: inline-block;
+      max-height: 150px;
+      max-width: 150px; }
     .brand-default .brand a:hover img {
       -webkit-filter: none;
       filter: none;
@@ -14313,6 +14319,14 @@ Testimonial Area
         line-height: 1.58;
         font-size: 14px;
         font-family: "Poppins", sans-serif; }
+  .testimonial_style--1 .content .testimonial-yeti {
+    display: flex;
+    justify-content: space-between; }
+    .testimonial_style--1 .content .testimonial-yeti .testimonial-quote {
+      display: flex;
+      flex-direction: column-reverse; }
+    .testimonial_style--1 .content .testimonial-yeti .testimonial-rating {
+      margin-left: 20px; }
   .testimonial_style--1 .content .testimonial-quote {
     padding: 2px 5px 0 0;
     font-size: 28px;
@@ -18418,9 +18432,13 @@ body.loaded .page-loading {
   margin: 0 auto;
   background: #2b4b98;
   padding: 20px;
-  color: #fff; }
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 4px 4px 8px #beabb5; }
   .the-letting-station-block form {
     display: flex; }
+    .the-letting-station-block form .clickable-div {
+      cursor: pointer; }
     .the-letting-station-block form button {
       background: url(/assets/uploads/1616659002_logo-buttons.png);
       background-size: contain;
@@ -20085,11 +20103,14 @@ Portfolio Nav Page
   height: 100%;
   -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
-  .blog-grid .post-thumb > a {
-    overflow: hidden;
-    display: block; }
-    .blog-grid .post-thumb > a img {
-      width: 100%; }
+  .blog-grid .post-thumb {
+    max-height: 180px; }
+    .blog-grid .post-thumb > a {
+      overflow: hidden;
+      display: block; }
+      .blog-grid .post-thumb > a img {
+        width: 100%;
+        min-height: 180px; }
   .blog-grid .post-content.post-content-list {
     min-height: auto !important;
     padding-top: 0.25rem !important;
@@ -24957,6 +24978,10 @@ Header Font Family
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;
     justify-content: flex-end; }
+
+.headroom--pinned .header__digital--broadcast.centered-logo-and-content > .header-right .bk-menu > li {
+  padding-top: 58px !important;
+  padding-bottom: 58px !important; }
 
 .headroom--not-top .header__digital--broadcast .header-left .bk-menu > li {
   padding-top: 30px;

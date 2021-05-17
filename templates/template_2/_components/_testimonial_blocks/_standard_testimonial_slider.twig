@@ -35,22 +35,33 @@
         <div class="testimonial testimonial_style--1">
             <div class="content">
                 <p class="bk_pra">{{testimonialSlider.testimonialBody}}</p>
-                <div class="testimonial-info">
-                    {% if testimonialSlider.testimonialImage|length > 0 %}
-                        {% set image = testimonialSlider.testimonialImage.first() %}
-                        <div class="post-thumbnail">
-                            <img src="{{ image.getUrl() }}" alt="client image">
+                <div class="testimonial-yeti">
+                    <div>
+                        <div class="testimonial-info">
+                            {% if testimonialSlider.testimonialImage|length > 0 %}
+                                {% set image = testimonialSlider.testimonialImage.first() %}
+                                <div class="post-thumbnail">
+                                    <img src="{{ image.getUrl() }}" alt="client image">
+                                </div>
+                            {% endif %}
+                            <div class="clint-info">
+                                <h6>{{testimonialSlider.testimonialAuthor}}</h6>
+                                {% if testimonialSlider.testimonialAuthorSubtitle %}
+                                    <span>{{testimonialSlider.testimonialAuthorSubtitle}}</testimonialAuthorSubtitle>
+                                {% endif %}
+                            </div>
                         </div>
-                    {% endif %}
-                    <div class="clint-info">
-                        <h6>{{testimonialSlider.testimonialAuthor}}</h6>
-                        {% if testimonialSlider.testimonialAuthorSubtitle %}
-                            <span>{{testimonialSlider.testimonialAuthorSubtitle}}</testimonialAuthorSubtitle>
+                        {% if testimonialSlider.testimonialRating and testimonialSlider.testimonialRating > 0 %}
+                            <div class="testimonial-rating">
+                                {% for i in 0..testimonialSlider.testimonialRating %}
+                                    <span class="fa fa-star secondary-color"></span>
+                                {% endfor %}
+                            </div>
                         {% endif %}
                     </div>
-                </div>
-                <div class="testimonial-quote">
-                    <span class="fa fa-quote-right"></span>
+                    <div class="testimonial-quote">
+                        <span class="fa fa-quote-right"></span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -29,6 +29,8 @@
             {% include '/template_2/_components/_button_blocks' with {'button_block': entry} %}
         {% case "TwigTemplate" %}
             {% include '/template_2/_components/_template_block' with {'block': entry} %}
+        {% case "clientBlocks" %}
+            {% include '/template_2/_components/_client_blocks' with {'client_block': entry} %}
         {% case "carouselBlocks" %}
             {% include '/template_2/_components/_carousel_blocks' with {'carousel_block': entry} %}
         {% case "counterBlocks" %}

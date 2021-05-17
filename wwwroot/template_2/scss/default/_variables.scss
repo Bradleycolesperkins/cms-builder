@@ -206,11 +206,11 @@ $small-mobile: 'only screen and (max-width: 479px)';
     }
 }
  
-//@media #{$small-mobile} {
-//    .container {
-//        max-width: 320px;
-//    }
-//}
+@media #{$small-mobile} {
+    .container {
+        max-width: 320px;
+    }
+}
 
 
 

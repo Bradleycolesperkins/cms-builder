@@ -103,7 +103,10 @@
         justify-content: flex-end;
     }
 }
-
+.headroom--pinned  .header__digital--broadcast.centered-logo-and-content > .header-right .bk-menu > li {
+    padding-top: 58px !important;
+    padding-bottom: 58px !important;
+}
 .headroom--not-top .header__digital--broadcast .header-left .bk-menu>li{
     padding-top: 30px;
     padding-bottom: 25px;

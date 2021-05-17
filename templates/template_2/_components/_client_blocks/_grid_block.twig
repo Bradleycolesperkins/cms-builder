@@ -1,0 +1,14 @@
+<div class="brand-wrapper">
+    <div class="brand__list brand-default brand-style--2">
+        {% for client in client_block.clients.all() %}
+            <div class="brand">
+                <a href="{{ client.clientWebsite }}" target="_blank">
+                    {% if client.clientLogo|length > 0 %}
+                        {% set image = client.clientLogo.first() %}
+                        <img src="{{ image.getUrl() }}" alt="{{ image.imageAltTag  }}">
+                    {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

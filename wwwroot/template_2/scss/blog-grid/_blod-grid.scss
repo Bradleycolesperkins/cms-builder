@@ -21,13 +21,13 @@
     transition: all .3s cubic-bezier(.645,.045,.355,1);
     
     .post-thumb{
-        
+        max-height: 180px;
         > a{
             overflow: hidden;
             display: block;
             img{
                 width: 100%;
-                
+                min-height: 180px;
             }
         }
     }

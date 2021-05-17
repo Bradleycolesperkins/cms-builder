@@ -48,6 +48,84 @@
                                     {% endfor %}
                                 {% endif %}
                             </div>
+
+                            <div class="brook-call-to-action primary-background mt--40 ptb--20">
+                                <div class="container">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-8 col-sm-6 col-12">
+                                            <div class="call-content text-center text-sm-left">
+                                                <h3 class="heading heading-h3 text-white wow move-up  animate" style="visibility: visible; opacity: 0;">Schedule a Viewing</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-6 col-12">
+                                            <div class="call-btn text-center text-sm-right mt_mobile--20 wow move-up  animate" style="visibility: visible; opacity: 0;">
+                                                <button class="brook-btn bk-btn-white text-theme btn-sd-size btn-rounded" id="bookButton">Book Here</button>
+                                                {% set myJs %}
+                                                    $("#bookButton").on("click", function(){
+                                                    $('.description_nav.nav-tabs > a.active').removeClass('active');
+                                                    $('.description_nav.nav-tabs > a.show').removeClass('show');
+
+                                                    $('.description_nav.nav-tabs > a#nav-contact').addClass('active');
+                                                    $('.description_nav.nav-tabs > a#nav-contact').addClass('show');
+
+                                                    $('.tab_container.review_container > .tab-pane.active').removeClass('active');
+                                                    $('.tab_container.review_container > .tab-pane.show').removeClass('show');
+
+                                                    $('.tab_container.review_container > .tab-pane#contact').addClass('active');
+                                                    $('.tab_container.review_container > .tab-pane#contact').addClass('show');
+
+
+                                                    $([document.documentElement, document.body]).animate({
+                                                    scrollTop: $("#elementtoScrollToID").offset().top - 180
+                                                    }, 2000);
+
+                                                    });
+                                                {% endset %}
+                                                {% includeJsFile "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" %}
+                                                {% includeJs myJs %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            {% if data['floor_plan_images'] %}
+
+                                <!-- Start Gallery Area -->
+                                <div class="brook-gallery-area ptb--40 ptb-md--40 ptb-sm--20 bg_color--1 basic-thine-line">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="mb--40">
+                                                    <h2 class="heading heading-h6">Floorplans</h2>
+                                                </div>
+
+                                                <div class="gallery-wrapper gallery-grid" id="animated-thumbnials2">
+
+                                                    {% for floorPlanImage in data['floor_plan_images'] %}
+                                                        <!-- Start Single Gallery -->
+                                                        <a class="gallery" href="{{ floorPlanImage['url'] }}">
+                                                            <div class="thumb">
+                                                                <img src="{{ floorPlanImage['url'] }}" alt="{{ floorPlanImage['id'] }}-floorplan">
+                                                            </div>
+                                                            <div class="hover-overlay">
+                                                                <div class="inner">
+                                                                    <span class="ion ion-android-add"></span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <!-- End Single Gallery -->
+                                                    {% endfor %}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Gallery Area -->
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
@@ -57,7 +135,7 @@
                             <div class="inner">
                                 <div class="header">
                                     {#<div class="product-badges">#}
-                                    {#    <span>Hot</span>#}
+                                    {#    <span>H.header__digital--broadcastot</span>#}
                                     {#</div>#}
                                     <h4 class="heading heading-h4">
                                         {% if data['addressName'] %}{{ data['addressName']  }}{% endif  %}
@@ -69,8 +147,48 @@
                                         {% if data['addressPostcode'] %}{{ data['addressPostcode']  }}{% endif  %}
                                     </h4>
                                 </div>
-                                <div class="price">
-                                    <p class="theme-color">
+                                <div class="price" style="display:block;clear: both;overflow: hidden;position: relative;width: 100%;">
+                                    <p class="theme-color float-left">
+                                        {% switch data['availability'] %}
+                                        {% case '1' %}
+                                            On Hold
+                                        {% case '2' %}
+                                            {% if data['availability'] is not null and data['department'] == "Lettings" %}
+                                                To Let
+                                            {% else %}
+                                                For Sale
+                                            {% endif %}
+                                        {% case '3' %}
+                                            {% if data['availability'] is not null and data['department'] == "Lettings" %}
+                                                {#References Pending#}
+                                                Let Agreed
+                                            {% else %}
+                                                Under Offer
+                                            {% endif %}
+                                        {% case '4' %}
+                                            {% if data['availability'] is not null and data['department'] == "Lettings" %}
+                                                Let Agreed
+                                            {% else %}
+                                                Sold STC
+                                            {% endif %}
+                                        {% case '5' %}
+                                            {% if data['availability'] is not null and data['department'] == "Lettings" %}
+                                                Let {#  #}
+                                            {% else %}
+                                                Sold
+                                            {% endif %}
+                                        {% case '6' %}
+                                            {% if data['availability'] is not null and data['department'] == "Lettings" %}
+                                                Withdrawn
+                                            {% else %}
+                                            {% endif %}
+                                        {% case '7' %}
+                                            Withdrawn
+                                        {% default %}
+                                            Other
+                                        {% endswitch %}
+                                    </p>
+                                    <p class="theme-color float-right">
                                         {% if data['department'] == "Lettings" %}
                                             £{{ data['rent']|number_format(0, '', ',') }}
                                             <span class="new-price"> Per Month</span>
@@ -222,8 +340,8 @@
         </div>
         <!-- End Single Product -->
         <!-- Start Product Review -->
-        <div class="product_review pb--100 pb_md--80 pb_sm--60">
-            <div class="container">
+        <div class="product_review plr--160 plr_lg--100 plr_md--50 plr_sm--50 pb--100 pb_md--80 pb_sm--60">
+            <div class="">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="description_nav nav nav-tabs d-block" role="tablist">
@@ -235,11 +353,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab_container">
+                <div class="tab_container review_container">
                     <div class="single_review_content tab-pane fade active show" id="descrip" role="tabpanel">
                         <div class="content">
                             {% if data['fullDescription'] and data['fullDescription'] != "" %}
                                 <p>{{ data['fullDescription'] | raw }}</p>
+                            {% elseif data['mainSummary'] and data['mainSummary'] != "" %}
+                                <p>{{ data['mainSummary'] | raw }}</p>
                             {% endif %}
                         </div>
                     </div>
@@ -285,6 +405,7 @@
                         </div>
                     {% endif %}
                     <div class="single_review_content tab-pane fade" id="contact" role="tabpanel">
+                        <div id="elementtoScrollToID"></div>
                         <div class="content">
                             <div class="contact-form">
 
