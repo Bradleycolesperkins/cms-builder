@@ -97,9 +97,11 @@
 
 
 
-
-
-
+@for $i from 1 through 20 {
+	.border-radius-#{$i*2} {
+		border-radius: $i * 2px;
+	}
+}
 
 
 

@@ -1,0 +1,44 @@
+@media (min-width: 992px) {
+    .site-15 header.headroom--pinned:not(.headroom--not-top) .branding img,
+    .site-15 header.headroom--top:not(.headroom--not-top) .branding img {
+        margin-top: -50px;
+        margin-bottom: -50px;
+        max-width: none !important;
+        max-height: 210px !important;
+    }
+}
+
+.site-15 header.headroom--pinned .branding img, .site-15 header.headroom--top .branding img {
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.97, -0.02, 1, 1);
+}
+
+
+.site-15 ul.product-svgs {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+
+    .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            width: 100%;
+            max-width: 30px;
+            height: auto;
+        }
+
+      .property-meta-number {
+          margin-left: 10px;
+          margin-right: 10px;
+          margin-bottom: 0px;
+          color: black;
+          font-size: 20px;
+      }
+    }
+}

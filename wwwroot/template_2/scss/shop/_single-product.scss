@@ -60,6 +60,19 @@
     }
 }
 
+.letting-station-border {
+    border: 1px solid black;
+    padding: 5px;
+    background: #ae1d27;
+    border-radius: 50px;
+    .letting-station-border-inner {
+        border: 1px solid white;
+        padding: 5px;
+        background: #2b4b98;
+        border-radius: 50px;
+        color: #ffffff;
+    }
+}
 
 .single-product-details-side{
     margin-bottom: 40px;
