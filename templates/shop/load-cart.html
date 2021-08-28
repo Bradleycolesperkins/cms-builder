@@ -1,0 +1,31 @@
+{% extends 'template_2/_layout' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="/shop/tailwind.css">
+<link rel="stylesheet" href="/shop/style.css">
+{% endblock %}
+
+{% block main %}
+  <div id="main" class="container mx-auto p-6">
+    <form method="POST" class="form-horizontal max-w-md">
+      <input type="hidden" name="action" value="commerce/cart/load-cart"/>
+      {{ redirectInput('/shop/cart') }}
+      {{ csrfInput() }}
+
+      <h1>Load Cart</h1>
+      <p>Enter a cart number to load that cart into the current session.</p>
+
+      <fieldset>
+        <div>
+          <label for="number">Cart Number</label>
+          <input type="text" id="number" class="w-full" name="number" value="">
+        </div>
+        <div class="mt-4 text-right">
+            <button class="button button-primary" type="submit">Load cart</button>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}

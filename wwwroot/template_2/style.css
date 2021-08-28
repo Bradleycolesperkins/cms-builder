@@ -18227,6 +18227,11 @@ Dividers Area
 /*============================
 Row And Column 
 ================================*/
+.row.even-columns > div[class*=' col-'] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
 .vc_row-separator {
   position: absolute;
   width: 100%;
@@ -20179,10 +20184,16 @@ Portfolio Nav Page
   -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
   .blog-grid .post-thumb {
-    max-height: 180px; }
+    max-height: 180px;
+    overflow: hidden;
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 1; }
     .blog-grid .post-thumb > a {
       overflow: hidden;
-      display: block; }
+      display: block;
+      width: 100%; }
       .blog-grid .post-thumb > a img {
         width: 100%;
         min-height: 180px; }

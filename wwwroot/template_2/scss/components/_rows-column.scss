@@ -2,6 +2,13 @@
 Row And Column 
 ================================*/
 
+.row.even-columns {
+    &>div[class*=' col-'] {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
 
 .vc_row-separator{
     position: absolute;

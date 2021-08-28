@@ -22,9 +22,15 @@
     
     .post-thumb{
         max-height: 180px;
+        overflow: hidden;
+        align-items: center;
+        display: flex;
+        flex-shrink: 0;
+        flex-grow: 1;
         > a{
             overflow: hidden;
             display: block;
+            width: 100%;
             img{
                 width: 100%;
                 min-height: 180px;

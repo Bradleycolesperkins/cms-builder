@@ -1,0 +1,25 @@
+<!-- Start Call To Action -->
+{% set image = block.callToActionBackground.first() %}
+<div class="brook-call-to-action bg_image--9 ptb--120 ptb-md--80 ptb-sm--60" style="
+        {% if image %}
+        background-image:url({{image.getUrl() }})
+        {% endif %}
+">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12 col-12">
+                <div class="call-content vertical-call-toaction text-center essential-cta">
+                    <h3 class="text-white wow move-up">{{block.callToActionTitle}}</h3>
+                    <p class="text-white wow move-up">{{block.callToActionSubtitle}}</p>
+                    {% if block.callToActionLink is not empty or block.callToActionButtonText is not empty  %}
+                        <div class="spacing"></div>
+                        <div class="call-btn text-center wow move-up">
+                            <a class="brook-btn text-white primary-background text-theme btn-sd-size" href="{{block.callToActionLink}}">{{block.callToActionButtonText}}</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Call To Action -->

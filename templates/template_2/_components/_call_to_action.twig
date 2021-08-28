@@ -7,8 +7,16 @@
                 {% include '/template_2/_components/_call_to_action_blocks/_plain_call_to_action' with {'block': block} %}
             {% case "plainCallToActionWithBlock" %}
                 {% include '/template_2/_components/_call_to_action_blocks/_plain_call_to_action_with_block' with {'block': block} %}
+            {% case "plainParallaxCallToAction" %}
+                {% include '/template_2/_components/_call_to_action_blocks/_plain_parallax_call_to_action' with {'block': block} %}
+
+            {# VETICAL CALL TO ACTIONS #}
             {% case "backgroundCallToAction" %}
                 {% include '/template_2/_components/_call_to_action_blocks/_bg_call_to_action' with {'block': block} %}
+            {% case "backgroundCallToActionWithBlock" %}
+                {% include '/template_2/_components/_call_to_action_blocks/_bg_call_to_action_with_block' with {'block': block} %}
+            {% case "backgroundParallaxCallToAction" %}
+                {% include '/template_2/_components/_call_to_action_blocks/_bg_parallax_call_to_action' with {'block': block} %}
 
 
             {% default %}

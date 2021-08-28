@@ -50,6 +50,11 @@
                                 </ul>
                             </nav>
 
+
+                            {% if companySiteLayout.shoppingCart == "yes" %}
+                                {% include '/template_2/_components/_header_shopping_cart' %}
+                            {% endif %}
+
                             <!-- Start Hamburger-->
                             <div class="manu-hamber popup-mobile-click d-block d-lg-none black-version d-block d-xl-none">
                                 <div>
@@ -57,6 +62,7 @@
                                 </div>
                             </div>
                             <!-- End Hamburger-->
+
                         </div>
 
                     </div>
@@ -93,6 +99,11 @@
                                 {# {% include '/template_2/_components/_toolbar_popup' %}#}
                             {% endif %}
 
+
+                            {% if companySiteLayout.shoppingCart == "yes" %}
+                                {% include '/template_2/_components/_header_shopping_cart' %}
+                            {% endif %}
+
                             {# {% include '/template_2/_components/_header_shopping_cart' %} #}
                             {# {% include '/template_2/_components/_header_search' %} #}
 
@@ -103,6 +114,7 @@
                                 </div>
                             </div>
                             <!-- End Hamberger -->
+
                         </div>
                     </div>
                 </div>

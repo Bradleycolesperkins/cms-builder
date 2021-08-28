@@ -1,77 +1,154 @@
+{% if cart is not defined %}
+    {% set cart = craft.commerce.carts.cart %}
+{% endif %}
 <!-- Start Minicart -->
 <div class="mini-cart">
-    <div id="minicart-trigger" class="minicart-trigger mini-cart-button" data-count="3">
+    <div id="minicart-trigger" class="minicart-trigger mini-cart-button" data-count="{{ craft.orders.number(cart.number).one().totalQty ?? 0}}">
         <button><i class="fas fa-shopping-bag"></i></button>
     </div>
     <div class="shopping-cart cart-box">
         <div class="shop-inner">
             <div class="header">
-                <ul class="product-list">
-                    <!-- Start Single Product -->
-                    <li>
-                        <div class="thumb">
-                            <a href="single-product.html">
-                                <img src="/template_2/img/product/sm-image/sm-cat1-01.jpg" alt="Multipurpose template">
-                            </a>
-                        </div>
-                        <div class="content">
-                            <div class="inner">
-                                <h4><a href="single-product.html">Bottle with Leather
-                                        Grip</a>
-                                </h4>
-                                <div class="quatity">
-                                    <span>1 ×</span>
-                                    <span>39.00</span>
-                                </div>
-                            </div>
-                            <button class="delete-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                    </li>
-                    <!-- Start Single Product -->
-                    <li>
-                        <div class="thumb">
-                            <a href="single-product.html">
-                                <img src="/template_2/img/product/sm-image/sm-cat1-02.jpg" alt="Multipurpose template">
-                            </a>
-                        </div>
-                        <div class="content">
-                            <div class="inner">
-                                <h4><a href="single-product.html">Crystal Glass Globe
-                                        Desk Lamp</a>
-                                </h4>
-                                <div class="quatity">
-                                    <span>1 ×</span>
-                                    <span>39.00</span>
-                                </div>
-                            </div>
-                            <button class="delete-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                    </li>
-                    <!-- Start Single Product -->
-                    <li>
-                        <div class="thumb">
-                            <a href="single-product.html">
-                                <img src="/template_2/img/product/sm-image/sm-cat1-03.jpg" alt="Multipurpose template">
-                            </a>
-                        </div>
-                        <div class="content">
-                            <div class="inner">
-                                <h4><a href="single-product.html">Gold Plated Desk
-                                        Lantern Lamp</a>
-                                </h4>
-                                <div class="quatity">
-                                    <span>1 ×</span>
-                                    <span>39.00</span>
-                                </div>
-                            </div>
-                            <button class="delete-btn brook-transition"><i class="fas fa-times"></i></button>
-                        </div>
-                    </li>
-                </ul>
+                {% set lineItemHasErrors = false %}
+                {% if cart.lineItems|length %}
+                    <form id="commerce-cart" method="post">
+                        <input type="hidden" name="action" value="commerce/cart/update-cart">
+                        <input type="hidden" name="cartUpdatedNotice" value="The cart was updated.">
+                        {{ redirectInput('shop/cart') }}
+                        {{ csrfInput() }}
+
+                        <ul class="product-list">
+                            {% for item in cart.lineItems %}
+                                <li>
+                                    {% if item.hasErrors() %}
+                                        {# if the line item has errors lets record it so we can hide totals later (since they wont make sense) #}
+                                        {% set lineItemHasErrors = true %}
+                                    {% endif %}
+                                    <div class="thumb">
+                                        <a href="{{ item.purchasable.url }}">
+                                            {% if item.purchasable.product.productImage|length %}
+                                                {% set image = item.purchasable.product.productImage.first() %}
+                                                <img src="{{ image.getUrl()  }}" alt="Cart Image">
+                                            {% else %}
+                                                <img src="/template_2/img/product/sm-image/sm-cat1-03.jpg" alt="Multipurpose template">
+                                            {% endif %}
+                                        </a>
+                                    </div>
+
+                                    <div class="content">
+                                        <div class="inner">
+                                            <h4>
+                                                <a href="{{ item.purchasable.url }}">
+                                                    {{ item.description }}
+                                                </a>
+                                                {# {{ item.description }}#}
+                                                {# ({{ item.sku }})#}
+                                                {# {{ item.options|json_encode }} #}
+                                            </h4>
+
+                                            {% if not lineItemHasErrors %}
+                                                {% if item.onSale %}
+                                                    <span title="{{ item.price}}"><s>Price: {{ item.priceAsCurrency }}</s></span>
+                                                    <br>
+                                                    <span title="{{ item.saleAmount}}">Sale Off: {{ item.saleAmountAsCurrency }}</span>
+                                                    <br>
+                                                    {% set itemSales = item.snapshot.sales ?? [] %}
+                                                    {% for sale in itemSales %}
+                                                        {% if loop.first %}
+                                                            Sales Applied:
+                                                        {% endif %}
+                                                        {{ sale.name }}<br>
+                                                    {% endfor %}
+                                                    <span title="{{ item.salePrice}}">Sale Price {{ item.salePriceAsCurrency }}</span>
+                                                    <br>
+                                                    <span title="{{ item.subtotal}}">Sale Price Subtotal: {{ item.subtotalAsCurrency }}</span>
+                                                    <br>
+
+                                                    <div class="quatity">
+                                                        <span>{{ item.qty }} ×</span>
+                                                        <span>Was: {{ item.priceAsCurrency }}</span>
+                                                        <span>Now: {{ item.salePriceAsCurrency }}</span>
+                                                    </div>
+
+                                                {% else %}
+                                                    <div class="quatity">
+                                                        <span>{{ item.qty }} ×</span>
+                                                        <span>{{ item.priceAsCurrency }}</span>
+                                                    </div>
+                                                {% endif %}
+                                            {% endif %}
+
+
+
+                                        </div>
+    {#                                    <input type="checkbox"#}
+    {#                                           name="lineItems[{{ item.id }}][remove]"#}
+    {#                                           value="1"> Remove Line#}
+                                        <button class="delete-btn brook-transition"><i class="fas fa-times"></i></button>
+                                    </div>
+
+                                    {% if not lineItemHasErrors %}
+                                        {% for adjustment in item.adjustments %}
+                                            <div class="quatity">
+                                                <span>
+                                                    <strong>{{ adjustment.type|upper }}</strong> {{ adjustment.name|title }}
+                                                    {% if adjustment.isEstimated %}<i class="text-sm text-grey-dark">{{ 'Estimated'|t('commerce') }}</i>{% endif %}<br>
+                                                    {{ adjustment.description }}
+                                                </span>
+                                                <span>
+                                                    <span title="{{ adjustment.amount }}">{{ adjustment.amountAsCurrency }}</span>
+                                                </span>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+
+                            {% if not lineItemHasErrors %}
+                                {% for adjustment in cart.orderAdjustments %}
+                                    <div class="quatity">
+                                        <span>
+                                            {{ adjustment.type }}
+                                        </span>
+                                        <span>
+                                            <strong>{{ adjustment.name }}</strong>{% if adjustment.isEstimated %}<br><i class="text-sm text-grey-dark">{{ 'Estimated'|t('commerce') }}</i>{% endif %}<br>({{ adjustment.description }}
+                                        </span>
+                                        <span title="{{ adjustment.amount }}">{{ adjustment.amountAsCurrency }}</span>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </form>
+                {% endif %}
+
+                {% if not cart.lineItems|length %}
+                    <p>You have no items in your cart, add some on the <a href="{{ url('shop/products') }}">products page</a>.</p>
+                {% endif %}
             </div>
             <div class="footer">
-                <div class="total">Total: <span>225.00</span></div>
-                <a class="cart-btn brook-transition" href="checkout.html">Check out</a>
+
+                {% if not lineItemHasErrors %}
+                    {#Item Sub Total: <span title="{{ cart.itemSubTotal }}">{{ cart.itemSubtotalAsCurrency }}</span>#}
+                    {#<br>#}
+
+                    {#<br>#}
+                    {#<strong>Adjustment Totals</strong>#}
+                    {#<br>#}
+                    {#<span title="{{cart.getTotalDiscount()}}"> Total Discount: {{ cart.totalAsCurrency }}</span>#}
+                    {#<br>#}
+                    {#<span title="{{cart.getTotalShippingCost()}}"> Total Shipping: {{ cart.totalShippingCostAsCurrency }}</span>#}
+                    {#<br>#}
+                    {#<span title="{{cart.getTotalTax()}}"> Total Tax: {{ cart.totalTaxAsCurrency }}</span>#}
+                    {#<br>#}
+                    {#<span title="{{cart.getTotalTaxIncluded()}}"> Total Tax (inc): {{ cart.totalTaxIncludedAsCurrency }}</span>#}
+                    {#<br>#}
+
+                    {#<h4 title="{{ cart.totalPrice }}">Total Price: {{ cart.totalPriceAsCurrency }}</h4>#}
+                    <div class="total">Total: <span>{{ cart.totalPriceAsCurrency }}</span></div>
+                {% endif %}
+                {% if not lineItemHasErrors %}
+                    <a class="cart-btn brook-transition" href="{{ url('shop/checkout') }}">Checkout</a>
+                {% endif %}
             </div>
         </div>
     </div>

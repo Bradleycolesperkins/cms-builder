@@ -32,9 +32,52 @@
 
 <!-- Wrapper -->
 <div id="wrapper" class="wrapper">
+    {% if cart is not defined %}
+        {% set cart = craft.commerce.carts.cart %}
+    {% endif %}
+
+    {% if showNav is not defined %}
+        {% set showNav = true %}
+    {% endif %}
+
     {% if companySiteLayout.headerBar != "no" %}
         {% include '/template_2/_components/_header' %}
         {# {% include '/template_2/_components/_toolbar_popup' %}#}
+    {% endif %}
+
+
+    {% set flashNotice = craft.app.session.getFlash('notice') %}
+
+    {% if flashNotice %}
+        <div class="bg-blue-500 text-white">
+            <div class="flash container mx-auto px-6 py-4">
+                {{ flashNotice }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% set flashError = craft.app.session.getFlash('error') %}
+
+    {% if flashError %}
+        <div class="bg-red-500 text-white">
+            <div class="flash container mx-auto px-6 py-4">
+                {{ flashError }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if cart.errors|length %}
+        <div class="bg-red-500 text-white">
+            <div class="container mx-auto px-6 py-4">
+                {% for attribute, errors in cart.errors %}
+                    {% if loop.first %}<ul>{% endif %}
+                    {% for key, error in errors %}
+                        <li>{{ attribute }}: {{ error }}</li>
+                    {% endfor %}
+                    {% if loop.last %}</ul>{% endif %}
+                {% endfor %}
+            </div>
+        </div>
     {% endif %}
 
     {% block main %}
@@ -51,7 +94,7 @@
                     {% endif %}
                 {% endfor %}
 
-            </div>.the-letting-station-block
+            </div>
             <!-- Start Footer Top Area -->
         </footer>
         <!--// Footer -->
