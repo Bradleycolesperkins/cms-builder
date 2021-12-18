@@ -105,7 +105,20 @@
 %}
 	{% includeCssFile "/global/css/Along-Sans-Semi-Bold.css" %}
 {% endif %}
-
+{% if (
+	(
+	companySiteStyles.headingFontFamily is defined and
+	companySiteStyles.headingFontFamily|length > 0 and
+	companySiteStyles.headingFontFamily.value is same as('cerebriSansRegular')
+	) or (
+	companySiteStyles.bodyFontFamily is defined and
+	companySiteStyles.bodyFontFamily|length > 0 and
+	companySiteStyles.bodyFontFamily.value is same as('cerebriSansRegular')
+	)
+	)
+%}
+	{% includeCssFile "/global/css/Cerebri-Sans-Regular.css" %}
+{% endif %}
 
 {% css %}
 

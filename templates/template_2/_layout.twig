@@ -7,6 +7,11 @@
     <meta name="robots" content="all" />
 
 
+    {#HEADER SCRIPTS#}
+    {% if companySiteScripts.additionalHeaderScripts is defined and companySiteScripts.additionalHeaderScripts|length > 0 %}
+        {{ companySiteScripts.additionalHeaderScripts|raw }}
+    {% endif %}
+
     {% include '/_global/_header_tags' %}
 
    {% block stylesheets %}

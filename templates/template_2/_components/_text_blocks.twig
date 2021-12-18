@@ -1,5 +1,10 @@
 
 {% if text_block %}
+    {% if text_block.urlLink is empty %}
+    {% else %}
+        <a href="{{ text_block.urlLink }}">
+    {% endif %}
+
     <div  style="
             {% include '/template_2/_components/_extras/_element_extras' with { 'block' : text_block} %}
             {% include '/template_2/_components/_extras/_element_colour_extras' with { 'block' : text_block} %}
@@ -41,4 +46,8 @@
             {% endswitch %}
         {% endfor %}
     </div>
+    {% if text_block.urlLink is empty %}
+    {% else %}
+        </a>
+    {% endif %}
 {% endif %}
