@@ -9740,15 +9740,12 @@ Creative Agency Section Title
   line-height: 1.28;
   font-weight: 200;
   margin-bottom: 30px; }
-  @media only screen and (min-width: 1200px) {
-    .service-content h3 {
-      font-size: 28px; } }
   @media only screen and (min-width: 768px) and (max-width: 1199px) {
     .service-content h3 {
-      font-size: 28px; } }
+      font-size: 30px; } }
   @media only screen and (max-width: 767px) {
     .service-content h3 {
-      font-size: 28px; } }
+      font-size: 20px; } }
 
 .service-content p {
   font-size: 18px;
@@ -16796,15 +16793,12 @@ Typography Area
   font-size: 40px;
   line-height: 1.28;
   margin-bottom: 0; }
-  @media only screen and (min-width: 1200px) {
-    .heading-40 {
-      font-size: 28px; } }
   @media only screen and (min-width: 768px) and (max-width: 1199px) {
     .heading-40 {
-      font-size: 28px; } }
+      font-size: 30px; } }
   @media only screen and (max-width: 767px) {
     .heading-40 {
-      font-size: 28px; } }
+      font-size: 20px; } }
 
 h1.heading-h1 {
   font-size: 56px; }

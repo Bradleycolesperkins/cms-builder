@@ -1,0 +1,12 @@
+
+{% if progress_blocks %}
+    {% for block in progress_blocks.progressBlock.all() %}
+        {% switch block.type.handle %}
+            {% case "basicPercentageProgress" %}
+                {% include '/template_2/_components/_progress_blocks/_basic_percentage_progress' with { 'block' : block, 'progress_block' : progress_blocks } %}
+
+            {% default %}
+                {{ dd('Progress Block entry', block.type.handle) }}
+        {% endswitch %}
+    {% endfor %}
+{% endif %}

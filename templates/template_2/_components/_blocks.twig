@@ -93,6 +93,9 @@
             {{ dd(block) }}
             {% include '/template_2/_components/_template_block' with {'block': block} %}
 
+    {% case "progressBlocks" %}
+        {% include '/template_2/_components/_progress_blocks' with {'progress_block': block} %}
+
     {% default %}
          {{ dd('DEFAULT BLOCK', block.type) }}
         {# NO DEFAULT FOR NOW PERHAPS A PROMPT TO SHOW THE USER INCORRECT #}

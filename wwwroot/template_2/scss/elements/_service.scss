@@ -466,14 +466,14 @@
         font-weight: 200;
         margin-bottom: 30px;
         // Responsive
-        @media #{$lg-layout}{
-            font-size: 28px;
-        }
+        //@media #{$lg-layout}{
+        //    font-size: 28px;
+        //}
         @media #{$md-layout}{
-            font-size: 28px;
+            font-size: 30px;
         }
         @media #{$sm-layout}{
-            font-size: 28px;
+            font-size: 20px;
         }
     }
     p{
